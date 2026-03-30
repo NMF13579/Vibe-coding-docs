@@ -1,0 +1,39 @@
+# Project AI Index
+
+> Помогает AI агентам быстро понять структуру проекта.
+
+## Новый проект — читать первым
+
+0. /START.md — конвейер запуска
+
+## Обязательное чтение (по порядку)
+
+1. /CLAUDE.md — контракт агента, правила, запреты
+2. /HANDOFF.md — текущее состояние сессии
+3. /docs/ROADMAP.md — дорожная карта
+4. /docs/ARCHITECTURE.md — стек, слои, ограничения
+5. /docs/SECURITY_POLICY.md — безопасность (читать перед auth/данными)
+
+## Перед реализацией фичи
+
+- /docs/PLANNING.md — шаблон планирования
+- /docs/TASK-TEMPLATE.md — атомарная задача
+- /memory-bank/project-status.md — статус проекта
+
+## Перед деплоем
+
+- /docs/REVIEW-CHECKLIST.md — чеклист
+
+## Справочник
+
+- /memory-bank/languages.md — стек и версии
+- /memory-bank/integrations.md — внешние сервисы
+- /memory-bank/features.md — история фич
+- /memory-bank/fixes.md — история багов
+- /docs/DECISIONS.md — журнал решений
+
+## Ключевые правила
+
+- Никогда не выполнять без показа плана
+- Никогда не трогать .env и секреты
+- Всегда обновлять memory-bank после изменений
