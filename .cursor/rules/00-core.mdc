@@ -7,6 +7,19 @@ alwaysApply: true
 
 This workspace is a docs-first operating system for vibe coding.
 
+## Session lifecycle
+
+onSessionStart (every new session — automatic, no command needed):
+  - Follow CLAUDE.md session lifecycle rules
+  - Read HANDOFF.md and memory-bank/project-status.md
+  - Summarize current state in 3-5 lines
+  - Suggest next 1-3 actions
+
+onTaskComplete (after every completed task — automatic):
+  - Follow CLAUDE.md auto-save rules
+  - Update HANDOFF.md and memory-bank/project-status.md
+  - Confirm: "Контекст сохранён ✅"
+
 ## Read first
 
 1. `README.md`

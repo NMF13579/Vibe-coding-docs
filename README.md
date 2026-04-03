@@ -60,6 +60,7 @@
 ├── HANDOFF.md ← передача контекста между сессиями
 ├── CHANGELOG.md ← история изменений
 ├── llms.txt ← маяк для всех агентов
+├── SCOPE-CREEP-GUARD.md ← защита от расползания scope
 └── SYSTEM_PROMPT.md ← вставить в system prompt инструмента
 
 docs/
@@ -86,7 +87,6 @@ docs/
 ├── ANTI-PATTERNS.md ← антипаттерны, которых надо избегать
 ├── CONTEXT-LOSS-RECOVERY.md ← восстановление после потери контекста
 ├── ROLLBACK-PROTOCOL.md ← протокол отката изменений
-├── SCOPE-CREEP-GUARD.md ← защита от расползания scope
 └── TESTING-GUIDE.md ← руководство по тестированию
 
 memory-bank/
