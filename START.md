@@ -28,6 +28,9 @@
 | Потеря контекста       | `docs/CONTEXT-LOSS-RECOVERY.md` |
 | Запрос новой функции   | `docs/SCOPE-CREEP-GUARD.md` |
 | Задача завершена       | `docs/TASK-REVIEW-PROTOCOL.md` |
+| Валидация результата   | `docs/VALIDATION.md` |
+| Ошибка в процессе      | `docs/ERROR-TYPES.md` |
+| Долгая память проекта  | `memory-bank/PROJECT-MEMORY.md` |
 | Перед деплоем          | `docs/RELEASE-CHECKLIST.md` |
 
 ## Этап 0 — Выбор уровня разработки
