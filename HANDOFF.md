@@ -4,9 +4,8 @@
 
 ## Что мы делали в последний раз
 
-- В `START.md`: единые пути в таблице MVP, явные пути в «три режима старта», одна строка про post-launch (MVP-SCOPE + POST-LAUNCH-REVIEW), различие очередной сессии и нового проекта, подсказка RELEASE vs deploy-чеклист с отсылкой к `DOCS-MAP.md`.
-- В `.cursor/rules/10-communication.mdc`: исключение для пошагового заполнения spec-driven доков по `START` / `AGENT-CONTRACT` с подтверждением владельца.
-- Ранее: разложен blueprint по `docs/discovery` … `docs/deploy`, `AGENT-CONTRACT.md`, `src/.gitkeep`, ссылки в `SYSTEM_PROMPT.md`.
+- Починена цепочка деплоя: переименован `docs/platforms/timeweb-cloud.md` (убран лишний символ в имени), добавлены `docs/deploy/DEPLOY-TIMEWEB.md` и `docs/deploy/MCP-SETUP.md`, `SETUP-ALL.md` ссылается на рабочие файлы, обновлены `docs/DEPLOY.md`, `docs/platforms/timeweb-cloud.md`, `docs/DOCS-MAP.md`, в `deploy/DEPLOY-CHECKLIST.md` — перекрёстные ссылки.
+- Ранее: `START.md`, `10-communication.mdc`, blueprint / `AGENT-CONTRACT` / `SYSTEM_PROMPT.md`.
 
 ## Что уже работает
 

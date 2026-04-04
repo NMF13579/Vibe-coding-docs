@@ -63,6 +63,8 @@
 
 Папки `discovery` … `deploy` и этот файл — ваша **spec-driven** цепочка под продукт; общие правила шаблона (старт сессии, интервью, дорожная карта, аудит) по-прежнему живут в корне репозитория и в `docs/*` вроде `START.md`, `WORKFLOW.md`, `PM-DIALOG-STYLE.md` — они дополняют эти документы, но не заменяют их.
 
+**Деплой — смежная цепочка (онбординг и MCP):** `docs/deploy/SETUP-ALL.md` → `ENV-SETUP.md` / `MCP-SETUP.md` → `DEPLOY-MCP-UNIVERSAL.md` → `DEPLOY-TIMEWEB.md`; универсальные правила — `docs/DEPLOY.md`, платформа Timeweb — `docs/platforms/timeweb-cloud.md` (см. также таблицу артефактов в `DEPLOY.md`).
+
 ## Куда писать: шаблон или продукт?
 
 | Файл | Для чего |
