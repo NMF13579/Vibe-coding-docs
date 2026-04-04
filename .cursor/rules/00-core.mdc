@@ -29,7 +29,7 @@ onTaskComplete (after every completed task — automatic):
 
 ## Route by task
 
-- Project startup → `START.md`, `docs/AGENT-BOOTSTRAP.md`
+- Project startup (new project or existing code) → `START.md` Этап 0, `docs/AGENT-BOOTSTRAP.md`
 - Communication style → `docs/PM-DIALOG-STYLE.md`, `docs/EXPLAINER-GLOSSARY.md`
 - Planning → `docs/PLANNING.md`, `docs/ROADMAP.md`
 - Architecture → `docs/ARCHITECTURE.md`, `docs/STACK-PRESETS.md`

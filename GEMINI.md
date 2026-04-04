@@ -18,7 +18,7 @@ This repository uses a docs-first structure for vibe coding.
 
 ## Route by task
 
-- Startup and onboarding → `START.md`, `docs/AGENT-BOOTSTRAP.md`
+- Startup and onboarding → `START.md` (Этап 0: новый проект или есть код?), `docs/AGENT-BOOTSTRAP.md`
 - Communication → `docs/PM-DIALOG-STYLE.md`, `docs/EXPLAINER-GLOSSARY.md`
 - Planning → `docs/PLANNING.md`, `docs/ROADMAP.md`
 - Architecture → `docs/ARCHITECTURE.md`, `docs/STACK-PRESETS.md`
