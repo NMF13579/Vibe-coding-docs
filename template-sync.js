@@ -2,6 +2,13 @@
 
 /**
  * TEMPLATE SYNC — Синхронизатор файлов Vibe Coding Docs
+ *
+ * Копирует только новые файлы из шаблона в целевой проект.
+ * Существующие файлы не перезаписываются.
+ *
+ * Использование:
+ *   node template-sync.js <source-dir> <target-dir> [--dry-run]
+ *
  * 
  * Копирует только новые файлы из шаблона в целевой проект.
  * Существующие файлы не перезаписываются.
@@ -27,6 +34,9 @@ const IGNORE_PATTERNS = [
   /^\.env/,
   /^\.DS_Store$/,
   /^Thumbs\.db$/,
+  /setup\.js$/,
+  /template-sync\.js$/,
+  /README-TEMPLATE\.md$/,
   /README-TEMPLATE\.md$/, // если есть файл с инструкциями
 ];
 
@@ -42,6 +52,7 @@ function shouldIgnore(filePath) {
 
 function getAllFiles(dir, baseDir = '') {
   let files = [];
+
   
   if (!fs.existsSync(dir)) {
     return files;
