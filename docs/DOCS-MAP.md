@@ -2,6 +2,8 @@
 
 Ниже — spec-driven цепочка: сначала понимаем проблему и процессы (контур 1), затем проектируем, строим, проверяем и выкатываем (контур 2).
 
+**Цепочка во втором контуре (по смыслу):** `processes/*` → потоки в `ux/UX-FLOWS-*.md` → `ux/SCREEN-MAP.md` → внутреннее описание экранов и блоков в `ux/*` (порядок заполнения — `ux/ATOMIC-DECOMPOSITION.md`; ведёт агент, без отдельного «дизайн-фреймворка» для владельца) → `specs/VALIDATION-RULES.md`, `specs/ACCESS-RULES.md`, `specs/COMPONENT-STATES.md` → `specs/SPEC.md` → задачи в `tasks/` и QA в `qa/*` → деплой.
+
 ## Контур 1 — Discovery и решение проблемы
 
 - `discovery/USER-PROFILE.md`
@@ -18,8 +20,18 @@
 - `ux/UX-FLOWS-DESKTOP.md`
 - `ux/UX-FLOWS-MOBILE.md`
 - `ux/SCREEN-MAP.md`
+- `ux/ATOMIC-DECOMPOSITION.md`
+- `ux/PAGES.md`
+- `ux/TEMPLATES.md`
+- `ux/ORGANISMS.md`
+- `ux/MOLECULES.md`
+- `ux/ATOMS.md`
+- `ux/WIREFRAMES.md`
 - `ux/UI-CHECKLIST.md`
 - `ux/UX-GAP-REPORT.md`
+- `specs/VALIDATION-RULES.md`
+- `specs/ACCESS-RULES.md`
+- `specs/COMPONENT-STATES.md`
 - `specs/SPEC.md`
 - `specs/ARCHITECTURE.md`
 - `specs/DECISIONS.md`
@@ -47,8 +59,18 @@
 | `ux/UX-FLOWS-DESKTOP.md` | 2 | Сценарии на компьютере |
 | `ux/UX-FLOWS-MOBILE.md` | 2 | Сценарии на телефоне |
 | `ux/SCREEN-MAP.md` | 2 | Карта экранов и переходов |
+| `ux/ATOMIC-DECOMPOSITION.md` | 2 | Связка процесс → экраны → блоки → спека (внутренний порядок для агента) |
+| `ux/PAGES.md` | 2 | Экраны целиком, связь с картой и потоками |
+| `ux/TEMPLATES.md` | 2 | Повторяемые раскладки экранов |
+| `ux/ORGANISMS.md` | 2 | Крупные блоки интерфейса на экране |
+| `ux/MOLECULES.md` | 2 | Малые составные блоки |
+| `ux/ATOMS.md` | 2 | Мельчайшие повторяемые элементы UI |
+| `ux/WIREFRAMES.md` | 2 | Схемы экранов (текстом или ссылками) |
 | `ux/UI-CHECKLIST.md` | 2 | Проверка UX против процессов |
 | `ux/UX-GAP-REPORT.md` | 2 | Пробелы между процессом и экранами |
+| `specs/VALIDATION-RULES.md` | 2 | Правила проверки ввода и сообщения пользователю |
+| `specs/ACCESS-RULES.md` | 2 | Кто что видит и что может (согласовать с ролями из процессов) |
+| `specs/COMPONENT-STATES.md` | 2 | Состояния интерфейса: загрузка, пусто, ошибка и т.д. |
 | `specs/SPEC.md` | 2 | Требования к продукту |
 | `specs/ARCHITECTURE.md` | 2 | Устройство системы |
 | `specs/DECISIONS.md` | 2 | Зафиксированные решения |
