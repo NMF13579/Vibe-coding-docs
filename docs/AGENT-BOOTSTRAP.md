@@ -60,6 +60,8 @@
 - [ ] /docs/PM-DIALOG-STYLE.md — стиль диалога и тон общения с владельцем
 - [ ] /docs/DECISION-GUIDE.md — справочник развилок: что выбрать и почему
 - [ ] /docs/EXPLAINER-GLOSSARY.md — словарь терминов простым языком
+- [ ] /docs/ERROR-TYPES.md — классификация ошибок: тип → действие
+- [ ] /docs/STACK-PRESETS.md — готовые наборы инструментов по типу проекта
 - [ ] /memory-bank/project-status.md
 - [ ] /memory-bank/languages.md
 - [ ] /memory-bank/integrations.md
