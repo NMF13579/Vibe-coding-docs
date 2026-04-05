@@ -62,6 +62,10 @@
 - [ ] /docs/EXPLAINER-GLOSSARY.md — словарь терминов простым языком
 - [ ] /docs/ERROR-TYPES.md — классификация ошибок: тип → действие
 - [ ] /docs/STACK-PRESETS.md — готовые наборы инструментов по типу проекта
+- [ ] /docs/PROJECT-INTERVIEW.md — протокол интервью при старте нового проекта
+- [ ] /docs/TASK-REVIEW-PROTOCOL.md — протокол проверки перед закрытием задачи
+- [ ] /docs/VALIDATION.md — объективная проверка: работает / не работает
+- [ ] /docs/ROLLBACK-PROTOCOL.md — инструкция при «всё сломалось» / «откати»
 - [ ] /memory-bank/project-status.md
 - [ ] /memory-bank/languages.md
 - [ ] /memory-bank/integrations.md
