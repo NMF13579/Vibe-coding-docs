@@ -91,7 +91,7 @@
 - **Аудит и здоровье проекта**  
   → `docs/AUDIT-GUIDE.md`, `docs/HEALTH-SCORE.md`
 - **Scope creep и анти‑паттерны**  
-  → `SCOPE-CREEP-GUARD.md`, `docs/ANTI-PATTERNS.md`
+  → `docs/SCOPE-CREEP-GUARD.md`, `docs/ANTI-PATTERNS.md`
 - **Безопасность**  
   → `docs/SECURITY_POLICY.md`, `memory-bank/security.md`
 - **Подсказки по фичам**  
