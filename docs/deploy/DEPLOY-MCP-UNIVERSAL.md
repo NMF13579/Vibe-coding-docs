@@ -149,7 +149,7 @@ claude mcp add --scope project github -- npx -y @modelcontextprotocol/server-git
 "Покажи статус деплоя"
 ```
 
-Агент сам читает `docs/deploy/DEPLOY-CHECKLIST-TIMEWEB.md`
+Агент сам читает `docs/deploy/DEPLOY-CHECKLIST.md`
 перед деплоем, если добавить в `AGENT-CONTRACT.md` блок ниже.
 
 ---
@@ -162,7 +162,7 @@ claude mcp add --scope project github -- npx -y @modelcontextprotocol/server-git
 ## Деплой
 
 - Всегда делаем через MCP-серверы — не вручную через браузер.
-- Перед деплоем проверяй `docs/deploy/DEPLOY-CHECKLIST-TIMEWEB.md`.
+- Перед деплоем проверяй `docs/deploy/DEPLOY-CHECKLIST.md`.
 - После деплоя фиксируй результат в `docs/deploy/RELEASE-NOTES.md`.
 - Post-launch review — в `docs/POST-LAUNCH-REVIEW.md`.
 - Если что-то пошло не так — записывай в `docs/deploy/RUNBOOK.md`.
@@ -180,7 +180,7 @@ claude mcp add --scope project github -- npx -y @modelcontextprotocol/server-git
 .mcp.json                 ← для Claude Code (НЕ коммитишь)
 
 docs/deploy/
-  DEPLOY-CHECKLIST-TIMEWEB.md   ← чеклист деплоя
+  DEPLOY-CHECKLIST.md   ← чеклист деплоя
   DEPLOY-MCP-UNIVERSAL.md       ← этот файл
   RELEASE-NOTES.md              ← лог релизов
   RUNBOOK.md                    ← что делать если что-то сломалось
