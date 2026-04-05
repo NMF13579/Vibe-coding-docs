@@ -12,7 +12,7 @@
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
-const { execSync } = require('child_process');
+const { execSync, execFileSync } = require('child_process');
 
 const COLORS = {
   reset: '\x1b[0m',
@@ -121,8 +121,9 @@ async function main() {
   console.log('');
 
   try {
-    const output = execSync(
-      `node template-sync.js "${sourceDir}" . --dry-run`,
+    const output = execFileSync(
+      process.execPath,
+      ['template-sync.js', sourceDir, '.', '--dry-run'],
       {
         encoding: 'utf-8',
         stdio: ['pipe', 'pipe', 'pipe'],
@@ -135,11 +136,12 @@ async function main() {
     let filesToSkip = 0;
 
     for (const line of lines) {
+      const match = line.match(/\d+/);
       if (line.includes('Файлы к добавлению:')) {
-        filesToAdd = parseInt(line.match(/\d+/)[0]);
+        filesToAdd = match ? parseInt(match[0]) : 0;
       }
       if (line.includes('Файлы к пропуску:')) {
-        filesToSkip = parseInt(line.match(/\d+/)[0]);
+        filesToSkip = match ? parseInt(match[0]) : 0;
       }
     }
 
@@ -160,9 +162,11 @@ async function main() {
 
     // Реальный запуск
     log('Копирую файлы...', 'cyan');
-    const syncOutput = execSync(`node template-sync.js "${sourceDir}" .`, {
-      encoding: 'utf-8',
-    });
+    const syncOutput = execFileSync(
+      process.execPath,
+      ['template-sync.js', sourceDir, '.'],
+      { encoding: 'utf-8' }
+    );
 
     console.log(syncOutput);
     console.log('');

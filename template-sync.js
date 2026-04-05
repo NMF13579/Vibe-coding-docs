@@ -70,7 +70,7 @@ function getAllFiles(dir, baseDir = '') {
 
     if (entry.isDirectory()) {
       files = files.concat(getAllFiles(fullPath, relativePath));
-    } else {
+    } else if (entry.isFile()) {
       files.push(relativePath);
     }
   }
