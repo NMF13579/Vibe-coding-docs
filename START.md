@@ -50,7 +50,7 @@
 | Задача завершена       | `docs/TASK-REVIEW-PROTOCOL.md` |
 | Валидация результата   | `docs/VALIDATION.md` |
 | Ошибка в процессе      | `docs/ERROR-TYPES.md` |
-| Долгая память проекта  | `memory-bank/PROJECT-MEMORY.md` |
+| Долгая память проекта  | `memory-bank/PROJECT-MEMORY.md` *(создаётся агентом при инициализации)* |
 | Перед деплоем          | `docs/RELEASE-CHECKLIST.md` (общий шаблон); чеклист конкретного продукта — `docs/deploy/DEPLOY-CHECKLIST.md` (см. `docs/DOCS-MAP.md`) |
 | Полный MVP-пайплайн (профиль → деплой) | `AGENT-CONTRACT.md` и дерево `docs/discovery`, `docs/processes`, `docs/ux`, `docs/specs`, `docs/qa`, `docs/deploy` |
 
