@@ -72,7 +72,6 @@ npm run sync-template          # выполнить
 | **QUICK-START.md** | 2 мин | Все | Если ты спешишь |
 | **TEMPLATE-SYNC-GUIDE.md** | 10 мин | Пользователи | Полная инструкция с примерами |
 | **TEMPLATE-SYNC-INTEGRATION.md** | 15 мин | Агенты (Claude Code) | Как агент должен использовать |
-| **QUICK-START.md** | 5 мин | Все | Старт + подробная инструкция |
 
 ---
 
