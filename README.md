@@ -1,5 +1,9 @@
 # Vibe-coding-docs
 
+[![Use this template](https://img.shields.io/badge/use%20this%20template-2ea44f?style=for-the-badge&logo=github)](https://github.com/NMF13579/Vibe-coding-docs/generate)
+
+[![Documentation](https://img.shields.io/badge/documentation-DOCS--MAP-0366d6?style=flat&logo=readthedocs)](./docs/DOCS-MAP.md)
+
 > Шаблон документации для работы с AI-агентами: помогает вести проект от идеи до MVP без хаоса и потери контекста.
 
 Создан для вайб-кодеров — врачей, дизайнеров, менеджеров и всех, кто строит продукты с помощью ИИ без глубокого погружения в код.
@@ -30,7 +34,7 @@
 
 ## Как начать
 
-1. Скопируй этот репозиторий как шаблон для нового проекта.
+1. Нажми кнопку **"Use this template"** на GitHub — это создаст чистый репозиторий без истории коммитов.
 2. Открой проект в удобном AI-инструменте.
 3. Напиши агенту: **«Начнём»** — он сам проведёт через всё остальное.
 4. После каждой сессии пиши: **«Сохрани контекст»**.
@@ -56,6 +60,7 @@
 | Ситуация | Документ |
 |---|---|
 | Первый запуск | [`START.md`](./START.md) |
+| Клонировал для нового проекта | [`docs/DOCS-MAP.md`](./docs/DOCS-MAP.md) → напиши агенту `Начнём` |
 | Не знаешь, что написать агенту | [`docs/OWNER-CHEATSHEET.md`](./docs/OWNER-CHEATSHEET.md) или [`docs/cheatsheet.html`](./docs/cheatsheet.html) |
 | Где мы остановились? | [`HANDOFF.md`](./HANDOFF.md) → [`memory-bank/project-status.md`](./memory-bank/project-status.md) |
 | Планирование и дорожная карта | [`docs/ROADMAP.md`](./docs/ROADMAP.md), [`docs/PLANNING.md`](./docs/PLANNING.md) |
