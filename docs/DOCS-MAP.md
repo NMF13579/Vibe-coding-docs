@@ -125,6 +125,7 @@
 При UX-работе смотри также: `memory-bank/open-ui-questions.md`, `memory-bank/ui-inventory.md`, `memory-bank/atomic-decisions.md`, `memory-bank/PROJECT-MEMORY.md`.
 
 **Деплой — смежная цепочка (онбординг и MCP):** `docs/deploy/SETUP-ALL.md` → `ENV-SETUP.md` / `MCP-SETUP.md` → `DEPLOY-MCP-UNIVERSAL.md` → `DEPLOY-TIMEWEB.md`; универсальные правила — `docs/DEPLOY.md`, платформа Timeweb — `docs/platforms/timeweb-cloud.md` (см. также таблицу артефактов в `DEPLOY.md`).
+`docs/platforms/vercel.md` — Деплой на Vercel.
 
 ## Куда писать: шаблон или продукт?
 
