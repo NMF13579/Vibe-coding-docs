@@ -37,17 +37,3 @@ text
 
 ## История
 
-## [0.3.0] — 2026-03-30
-
-### Добавлено
-- `docs/DECISION-GUIDE.md` — гид по выбору технологий
-- `docs/EXPLAINER-GLOSSARY.md` — глоссарий для не-программистов
-- `docs/PM-DIALOG-STYLE.md` — стиль диалога агента
-- `docs/STACK-PRESETS.md` — пресеты стеков
-- `memory-bank/deferred-decisions.md` — отложенные решения
-- `tasks/TASK-000-EXAMPLE.md` — пример задачи
-
-### Изменено
-- `README.md` — обновлена структура пакета, добавлены новые файлы
-- `memory-bank/languages.md` — добавлен раздел с примером заполнения
-- `START.md` — добавлены уровни 0/1/2, конвейер повышения уровня
