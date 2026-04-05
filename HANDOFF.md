@@ -5,10 +5,10 @@
 ## Что мы делали в последний раз
 
 ```text
-- Обновили `docs/standards/UX-CHECKLIST-INDEX.md` тремя точечными вставками.
-- Добавили раздел «0. Точка входа для агента» с `UX-CHECKLIST-STARTER-FLOW.md`.
-- Добавили `UX-CHECKLIST-ONBOARDING.md` в «1. Базовые чек-листы».
-- Добавили `UX-CHECKLIST-PERMISSIONS-AND-ACCESS.md` в «2. Домены и роли».
+- Обновили `docs/AGENT-BOOTSTRAP.md` двумя точечными вставками по чеклисту.
+- Добавили `/docs/ANTI-PATTERNS.md` в блок «Критичные (все уровни)».
+- Добавили `/docs/PM-DIALOG-STYLE.md` в блок «Важные».
+- Сохранили режим работы: «diff → подтверждение владельца → сохранение».
 ```
 
 ## Что уже работает
@@ -17,10 +17,11 @@
 - В `docs/DEPLOY.md` убрана устаревшая пометка про «Vercel — в разработке».
 - В `docs/DOCS-MAP.md` в разделе «Связь с Vibe-coding-docs» платформы оформлены таблицей (Timeweb Cloud / Vercel).
 - В `docs/standards/UX-CHECKLIST-INDEX.md` добавлены три новые точки навигации: STARTER-FLOW, ONBOARDING, PERMISSIONS-AND-ACCESS.
+- В `docs/AGENT-BOOTSTRAP.md` в чеклист добавлены `ANTI-PATTERNS.md` и `PM-DIALOG-STYLE.md`.
 
 ## Где мы остановились
 
-- Текущая задача завершена и зафиксирована в PR: индекс UX-чеклистов дополнен тремя файлами в нужных разделах.
+- Текущая задача завершена и зафиксирована в PR: `AGENT-BOOTSTRAP.md` дополнён двумя файлами в нужных секциях.
 
 ## Следующий лучший шаг
 

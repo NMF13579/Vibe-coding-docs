@@ -50,6 +50,7 @@
 
 | Дата | Задача | Результат |
 |------|--------|----------|
+| 2026-04-05 | AGENT-BOOTSTRAP: добавить ANTI-PATTERNS и PM-DIALOG-STYLE | В `docs/AGENT-BOOTSTRAP.md` добавлены пункты `/docs/ANTI-PATTERNS.md` в «Критичные (все уровни)» и `/docs/PM-DIALOG-STYLE.md` в «Важные» |
 | 2026-04-05 | UX-CHECKLIST-INDEX: добавить STARTER/ONBOARDING/PERMISSIONS | В `docs/standards/UX-CHECKLIST-INDEX.md` добавлены: раздел `0. Точка входа для агента` (`UX-CHECKLIST-STARTER-FLOW.md`), пункт `UX-CHECKLIST-ONBOARDING.md` в базовых чек-листах и пункт `UX-CHECKLIST-PERMISSIONS-AND-ACCESS.md` в доменных ролях |
 | 2026-04-05 | DOCS-MAP: привести vercel.md в таблицу платформ | В разделе «Связь с Vibe-coding-docs» заменён линейный блок на таблицу выбора платформ (Timeweb Cloud / Vercel) рядом с универсальными правилами `docs/DEPLOY.md` |
 | 2026-04-05 | DEPLOY/DOCS-MAP: выбор платформы деплоя + Vercel в навигации | В `docs/DEPLOY.md` убрана пометка «в разработке» для Vercel, добавлен блок «Выбор платформы деплоя»; в `docs/DOCS-MAP.md` добавлена строка `docs/platforms/vercel.md` |
