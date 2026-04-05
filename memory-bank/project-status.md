@@ -50,6 +50,7 @@
 
 | Дата | Задача | Результат |
 |------|--------|----------|
+| 2026-04-05 | DOCS-MAP: привести vercel.md в таблицу платформ | В разделе «Связь с Vibe-coding-docs» заменён линейный блок на таблицу выбора платформ (Timeweb Cloud / Vercel) рядом с универсальными правилами `docs/DEPLOY.md` |
 | 2026-04-05 | DEPLOY/DOCS-MAP: выбор платформы деплоя + Vercel в навигации | В `docs/DEPLOY.md` убрана пометка «в разработке» для Vercel, добавлен блок «Выбор платформы деплоя»; в `docs/DOCS-MAP.md` добавлена строка `docs/platforms/vercel.md` |
 | 2026-04-05 | Последовательные задачи по навигации (3 блока) | Переименован `docs/user-flows.md`→`docs/USER-FLOWS.md` с обновлением ссылок, `docs/ORPHAN-FILES-REPORT.md` добавлен в `docs/DOCS-MAP.md`, в `README.md` добавлен блок про TEMPLATE-SYNC документы |
 | 2026-04-05 | INDEX.md: удаление дубля QUICK-START.md | Удалена дублирующая строка QUICK-START.md в таблице порядка чтения |
