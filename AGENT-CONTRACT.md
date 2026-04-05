@@ -26,9 +26,9 @@
 | Собрать интервью | Контекст и ограничения |
 | Описать процессы | `PROCESSES.md` и `ROLES.md` |
 | Сделать UX | UX-документы из процессов |
-| Проверить UX | Чеклист и gap-анализ |
+| Проверить UX | Чеклист и gap-анализ; начни с `docs/standards/UX-CHECKLIST-INDEX.md` |
 | Собрать спецификацию | SPEC, MVP scope, архитектура |
-| Подготовить деплой | Чеклист, runbook, release notes |
+| Подготовить деплой | Чеклист, runbook, release notes; ENV: `docs/deploy/ENV-SETUP.md`; онбординг: `docs/deploy/SETUP-ALL.md` |
 | Post-launch review | Анализ запуска и следующая гипотеза |
 
 > см. `docs/POST-LAUNCH-REVIEW.md`

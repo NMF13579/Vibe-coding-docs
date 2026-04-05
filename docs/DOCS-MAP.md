@@ -29,6 +29,25 @@
 - `ux/WIREFRAMES.md`
 - `ux/UI-CHECKLIST.md`
 - `ux/UX-GAP-REPORT.md`
+
+---
+
+## UX-стандарты и чеклисты
+
+> Библиотека готовых чеклистов. Точка входа: `docs/standards/UX-CHECKLIST-INDEX.md`
+> Агент использует при команде «Проверить UX».
+
+| Файл | Когда использовать |
+|------|--------------------|
+| `docs/standards/UX-CHECKLIST-INDEX.md` | Всегда — навигация по всем чеклистам |
+| `docs/standards/UX-CHECKLIST-DEFAULT.md` | Основная проверка любого интерфейса |
+| `docs/standards/UX-CHECKLIST-MEDICAL.md` | Медицинские приложения |
+| `docs/standards/UX-CHECKLIST-MOBILE.md` | Мобильный интерфейс |
+| `docs/standards/UX-CHECKLIST-ACCESSIBILITY.md` | Доступность |
+| `docs/standards/UX-PRESET-MODES.md` | Пресеты UX-режимов |
+
+---
+
 - `specs/VALIDATION-RULES.md`
 - `specs/ACCESS-RULES.md`
 - `specs/COMPONENT-STATES.md`
@@ -37,6 +56,17 @@
 - `specs/DECISIONS.md`
 - `qa/TEST-SCENARIOS.md`
 - `qa/RELEASE-BLOCKERS.md`
+
+---
+
+## Пользовательские сценарии
+
+| Файл | Назначение |
+|------|------------|
+| `docs/user-flows.md` | Готовые сценарии тестирования: авторизация, CRUD, навигация, smoke-тест перед релизом |
+
+---
+
 - `deploy/DEPLOY-CHECKLIST.md`
 - `deploy/RELEASE-NOTES.md`
 - `deploy/RUNBOOK.md`
