@@ -124,8 +124,14 @@
 Папки `discovery` … `deploy` и этот файл — ваша **spec-driven** цепочка под продукт; общие правила шаблона (старт сессии, интервью, дорожная карта, аудит) по-прежнему живут в корне репозитория и в `docs/*` вроде `START.md`, `WORKFLOW.md`, `PM-DIALOG-STYLE.md` — они дополняют эти документы, но не заменяют их.
 При UX-работе смотри также: `memory-bank/open-ui-questions.md`, `memory-bank/ui-inventory.md`, `memory-bank/atomic-decisions.md`, `memory-bank/PROJECT-MEMORY.md`.
 
-**Деплой — смежная цепочка (онбординг и MCP):** `docs/deploy/SETUP-ALL.md` → `ENV-SETUP.md` / `MCP-SETUP.md` → `DEPLOY-MCP-UNIVERSAL.md` → `DEPLOY-TIMEWEB.md`; универсальные правила — `docs/DEPLOY.md`, платформа Timeweb — `docs/platforms/timeweb-cloud.md` (см. также таблицу артефактов в `DEPLOY.md`).
-`docs/platforms/vercel.md` — Деплой на Vercel.
+**Деплой — смежная цепочка (онбординг и MCP):** `docs/deploy/SETUP-ALL.md` → `ENV-SETUP.md` / `MCP-SETUP.md` → `DEPLOY-MCP-UNIVERSAL.md` → `DEPLOY-TIMEWEB.md`; универсальные правила — `docs/DEPLOY.md`.
+
+**Выбор платформы деплоя:**
+
+| Платформа | Файл | Когда использовать |
+|-----------|------|--------------------|
+| Timeweb Cloud | `docs/platforms/timeweb-cloud.md` | VPS, App Platform в России |
+| Vercel | `docs/platforms/vercel.md` | Фронтенд, Next.js, быстрый старт |
 
 ## Куда писать: шаблон или продукт?
 
