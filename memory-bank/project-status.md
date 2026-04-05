@@ -50,10 +50,6 @@
 
 | Дата | Задача | Результат |
 |------|--------|----------|
-| 2026-04-04 | Цепочка деплоя: DEPLOY-TIMEWEB, MCP-SETUP, rename timeweb-cloud, DEPLOY.md / DOCS-MAP / SETUP-ALL | Ссылки SETUP-ALL ведут в существующие файлы |
-| 2026-04-04 | Согласованность START + communication rules (пути MVP, сессия vs новый проект, spec-driven исключение) | START.md и 10-communication.mdc без смены пользовательского конвейера |
-| 2026-04-04 | Разложен full-mvp-process-blueprint по дереву docs (profile (устарело — переименовано в docs/discovery), discovery, processes, ux, specs, qa, deploy) | Добавлены шаблоны этапов, AGENT-CONTRACT.md, src/.gitkeep; START.md и SYSTEM_PROMPT.md дополнены ссылками на пайплайн |
-| 2026-04-03 | Структура инструкций: Copilot, Cursor rules, Claude agents, GEMINI, lessons-learned | Добавлены файлы по согласованной схеме репозитория |
 |      |        |          |
 
 ---

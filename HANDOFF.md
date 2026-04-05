@@ -4,8 +4,9 @@
 
 ## Что мы делали в последний раз
 
-- Починена цепочка деплоя: переименован `docs/platforms/timeweb-cloud.md` (убран лишний символ в имени), добавлены `docs/deploy/DEPLOY-TIMEWEB.md` и `docs/deploy/MCP-SETUP.md`, `SETUP-ALL.md` ссылается на рабочие файлы, обновлены `docs/DEPLOY.md`, `docs/platforms/timeweb-cloud.md`, `docs/DOCS-MAP.md`, в `deploy/DEPLOY-CHECKLIST.md` — перекрёстные ссылки.
-- Ранее: `START.md`, `10-communication.mdc`, blueprint / `AGENT-CONTRACT` / `SYSTEM_PROMPT.md`.
+```text
+- [что делали в прошлую сессию — заполняет агент]
+```
 
 ## Что уже работает
 
@@ -17,7 +18,7 @@
 
 ## Следующий лучший шаг
 
-- При желании связать новые пути с `README.md` / `INDEX.md` или дублирующими `docs/DECISIONS.md` и `docs/specs/DECISIONS.md` зафиксировать одну точку правды.
+- [следующий лучший шаг — заполняет агент]
 
 ## Риски и вопросы
 
