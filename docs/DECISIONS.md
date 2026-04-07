@@ -1,5 +1,11 @@
 # DECISIONS — журнал решений
 
+> Role: template
+> Status: not-started
+> Filled by: —
+> Needs approval: no
+> Next: docs/specs/DECISIONS.md (решения конкретного продукта)
+
 > ⚠️ **ШАБЛОННЫЙ ФАЙЛ — НЕ РЕДАКТИРОВАТЬ ПРИ РАБОТЕ НАД ПРОДУКТОМ**
 > Для решений конкретного проекта используй `docs/specs/DECISIONS.md`.
 > Этот файл — шаблонная заготовка подхода.

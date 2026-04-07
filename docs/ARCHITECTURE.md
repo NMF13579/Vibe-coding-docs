@@ -1,5 +1,11 @@
 # ARCHITECTURE — архитектура проекта
 
+> Role: template
+> Status: not-started
+> Filled by: —
+> Needs approval: no
+> Next: docs/specs/ARCHITECTURE.md (архитектура конкретного продукта)
+
 > ⚠️ **ШАБЛОННЫЙ ФАЙЛ — НЕ РЕДАКТИРОВАТЬ ПРИ РАБОТЕ НАД ПРОДУКТОМ**
 > Для архитектуры конкретного проекта используй `docs/specs/ARCHITECTURE.md`.
 > Этот файл — шаблонная заготовка подхода.
