@@ -84,7 +84,7 @@
 
 В каждом `BOOT.md`: что читать, куда писать в `PROJECT.md`, приоритет правил, **smoke-test** перед работой.
 
-Обзор системы для человека: `README-NEW-ARCHITECTURE.md`. Перед релизом: `CHECKLIST.md`.
+Обзор системы для человека: [`CLAUDE-CODE-FLOW.md`](./CLAUDE-CODE-FLOW.md). Перед релизом: `CHECKLIST.md`.
 
 ---
 
