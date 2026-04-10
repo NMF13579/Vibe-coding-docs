@@ -331,12 +331,12 @@ node setup.js
 - Агент предлагает вариант, пользователь подтверждает или правит.
 - Любое решение, влияющее на архитектуру/данные/безопасность, дублируется в `DECISIONS.md`.
 
-### 3. UX (`LAYER-2/ux/` и `LAYER-1/ux-checklist.md`)
+### 3. UX (`LAYER-2/ux/` и `LAYER-1/ux-checklist-*.md`)
 
 - `SCREEN-MAP.md` — карта экранов и переходов.
 - `PAGES.md`, `ATOMS.md`, `MOLECULES.md`, `ORGANISMS.md`, `TEMPLATES.md` — реестр UI.
 - `UX-FLOWS-*.md` — пользовательские сценарии.
-- Агрегированные чеклисты — в `LAYER-1/ux-checklist.md` (instruction), не заполняются данными проекта как ТЗ.
+- UX-чеклисты (instruction) — в `LAYER-1/ux-checklist-core.md`, `ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md`; не заполняются данными проекта как ТЗ.
 
 **Правило:**
 - Сначала `PAGES.md` и `SCREEN-MAP.md`, затем детализация по атомам/модулям.
@@ -480,13 +480,15 @@ node setup.js
 
 ## UX-стандарты и чеклисты
 
-> Библиотека готовых чеклистов. Точка входа: `LAYER-1/ux-checklist.md`  
+> Библиотека готовых чеклистов. Точки входа: `LAYER-1/ux-checklist-core.md`, `ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md` (оглавление — в последнем, раздел INDEX).  
 > Агент использует при команде «Проверить UX».
 
 | Файл | Когда использовать |
 |------|-------------------|
-| `LAYER-1/ux-checklist.md` | Всегда — навигация по всем чеклистам |
-| `LAYER-1/ux-checklist.md` | Все UX-чеклисты (сводный файл) |
+| `LAYER-1/ux-checklist-core.md` | Базовые стандарты, легенда, fallback, MINIMAL |
+| `LAYER-1/ux-checklist-accessibility.md` | Доступность, мобильный UX, empty states, онбординг |
+| `LAYER-1/ux-checklist-medical.md` | Медицина, роли, права, дашборды |
+| `LAYER-1/ux-checklist-interactions.md` | Уведомления, таблицы, поиск, история, микротекст, INDEX |
 
 ---
 

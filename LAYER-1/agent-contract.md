@@ -32,7 +32,7 @@
 | Собрать интервью | Контекст и ограничения |
 | Описать процессы | `LAYER-2/discovery/processes.md` и `LAYER-2/discovery/roles.md` |
 | Сделать UX | UX-документы из процессов |
-| Проверить UX | Чеклист и gap-анализ; начни с `LAYER-1/ux-checklist.md` |
+| Проверить UX | Чеклист и gap-анализ; выбери группу: `LAYER-1/ux-checklist-core.md`, `ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md` (навигация по темам — в `ux-checklist-interactions.md`, раздел INDEX) |
 | Собрать спецификацию | SPEC, MVP scope, архитектура |
 | Подготовить деплой | Чеклист, runbook, release notes; ENV: `LAYER-1/tools/deploy/ENV-SETUP.md`; онбординг: `LAYER-1/tools/deploy/SETUP-ALL.md` |
 | Post-launch review | Анализ запуска и следующая гипотеза |
