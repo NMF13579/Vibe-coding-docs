@@ -28,6 +28,11 @@
 - Правила валидации полей, сообщения об ошибках форм → [LAYER-2/specs/validation-rules.md](./LAYER-2/specs/validation-rules.md)
 - Работа с пользователем      → [LAYER-1/dialog-style.md](./LAYER-1/dialog-style.md)
 - Описание бизнес-процессов   → [LAYER-2/discovery/processes.md](./LAYER-2/discovery/processes.md) (и при необходимости [roles.md](./LAYER-2/discovery/roles.md))
+- Полный конвейер задач, этапы MVP, рабочий workflow → [LAYER-1/workflow.md](./LAYER-1/workflow.md)
+- Антипаттерны, что не делать → [LAYER-1/anti-patterns.md](./LAYER-1/anti-patterns.md)
+- Безопасность, секреты, чувствительные данные → [LAYER-1/security.md](./LAYER-1/security.md)
+- Глоссарий, термины простым языком → [LAYER-1/glossary.md](./LAYER-1/glossary.md)
+- Что добавить дальше, следующие фичи → [LAYER-1/feature-radar.md](./LAYER-1/feature-radar.md)
 
 ## Если подходящего маршрута нет
 

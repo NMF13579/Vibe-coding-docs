@@ -1,14 +1,18 @@
-> Trigger: Справочник навигации для человека (не маршрут агента)
+> Trigger: Справочник инструмента синхронизации шаблонов (не маршрут агента)
 > Read-time: ~30 min
 > Filled-by: both
 > Needs-approval: no
-> Next: README.md
+> Location: LAYER-1/tools/template-sync-index.md
 
-# INDEX
+# TEMPLATE SYNC — Индекс инструмента
 
 > ⚠️ **Это не общий индекс репозитория.**
 > Этот файл — индекс инструмента синхронизации шаблонов (template-sync).
 > Навигацию по документации смотри в `README.md`, `llms.txt` или `LAYER-1/workflow.md`.
+>
+> **Статус доп. документации:**
+> `template-sync.md` и `template-sync.md (раздел «Интеграция с агентами»)` — **не созданы** (запланированы).
+> До их создания используй `LAYER-1/tools/template-sync.md` как основную документацию.
 
 # 📚 TEMPLATE SYNC TOOLSET — Полный индекс
 
@@ -40,7 +44,7 @@ npm run sync-template:check    # проверить что будет
 npm run sync-template          # выполнить
 ```
 
-**Документация:** TEMPLATE-SYNC-GUIDE.md раздел "Использование"
+**Документация:** template-sync.md раздел "Использование"
 
 ---
 
@@ -48,14 +52,14 @@ npm run sync-template          # выполнить
 
 **Файлы в порядке чтения:**
 1. **QUICK-START.md** (5 минут) — Общее описание
-2. **TEMPLATE-SYNC-GUIDE.md** (15 минут) — Архитектура инструмента
+2. **template-sync.md** (15 минут) — Архитектура инструмента
 3. **template-sync.js** — Исходный код (350 строк)
 
 ---
 
 ### Я использую Claude Code / Cursor / агента
 
-**Файл:** TEMPLATE-SYNC-INTEGRATION.md
+**Файл:** template-sync.md (раздел «Интеграция с агентами»)
 
 **Что там:**
 - Как агент должен использовать инструмент
@@ -78,8 +82,8 @@ npm run sync-template          # выполнить
 | Файл | Длина | Для кого | Когда читать |
 |------|-------|----------|--------------|
 | **QUICK-START.md** | 2 мин | Все | Если ты спешишь |
-| **TEMPLATE-SYNC-GUIDE.md** | 10 мин | Пользователи | Полная инструкция с примерами |
-| **TEMPLATE-SYNC-INTEGRATION.md** | 15 мин | Агенты (Claude Code) | Как агент должен использовать |
+| **template-sync.md** | 10 мин | Пользователи | Полная инструкция с примерами |
+| **template-sync.md (раздел «Интеграция с агентами»)** | 15 мин | Агенты (Claude Code) | Как агент должен использовать |
 
 ---
 
@@ -117,9 +121,9 @@ npm run sync-template          # Выполнить
 ### Когда нужна помощь
 
 **Быстрая помощь:** QUICK-START.md
-**Подробная документация:** TEMPLATE-SYNC-GUIDE.md
-**Работа с агентом:** TEMPLATE-SYNC-INTEGRATION.md
-**Техническое понимание:** TEMPLATE-SYNC-GUIDE.md
+**Подробная документация:** template-sync.md
+**Работа с агентом:** template-sync.md (раздел «Интеграция с агентами»)
+**Техническое понимание:** template-sync.md
 
 ---
 
@@ -169,7 +173,7 @@ node --version
 О: Остальные — для понимания и справки
 
 **В: Где найти примеры?**
-О: TEMPLATE-SYNC-GUIDE.md раздел "Примеры использования"
+О: template-sync.md раздел "Примеры использования"
 
 **В: Что если что-то сломается?**
 О: `git reset --hard HEAD~1` откатит изменения
@@ -185,17 +189,17 @@ QUICK-START.md → node setup.js → готово ✓
 
 ### Уровень 1 — Пользователь (15 мин)
 ```
-QUICK-START.md → TEMPLATE-SYNC-GUIDE.md → использование ✓
+QUICK-START.md → template-sync.md → использование ✓
 ```
 
 ### Уровень 2 — Разработчик (30 мин)
 ```
-Все документы → TEMPLATE-SYNC-GUIDE.md → модификация скрипта ✓
+Все документы → template-sync.md → модификация скрипта ✓
 ```
 
 ### Уровень 3 — Агент/CI (20 мин)
 ```
-TEMPLATE-SYNC-INTEGRATION.md → интеграция в CI/CD ✓
+template-sync.md (раздел «Интеграция с агентами») → интеграция в CI/CD ✓
 ```
 
 ---
@@ -209,9 +213,9 @@ setup.js (интерактивный мастер)
 
 INDEX.md (ты здесь)
     ├→ QUICK-START.md (2 минуты)
-    ├→ TEMPLATE-SYNC-GUIDE.md (10 минут)
-    ├→ TEMPLATE-SYNC-INTEGRATION.md (для агентов)
-    └→ TEMPLATE-SYNC-GUIDE.md (для разработчиков — подробное описание)
+    ├→ template-sync.md (10 минут)
+    ├→ template-sync.md (раздел «Интеграция с агентами») (для агентов)
+    └→ template-sync.md (для разработчиков — подробное описание)
 ```
 
 ---
@@ -228,11 +232,11 @@ INDEX.md (ты здесь)
 - Время: 30 секунд
 
 **Для понимания:**
-- Читать: QUICK-START.md + TEMPLATE-SYNC-GUIDE.md
+- Читать: QUICK-START.md + template-sync.md
 - Время: 15 минут
 
 **Для агентов:**
-- Читать: TEMPLATE-SYNC-INTEGRATION.md
+- Читать: template-sync.md (раздел «Интеграция с агентами»)
 - Время: 10 минут
 
 ---
