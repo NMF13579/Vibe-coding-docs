@@ -14,7 +14,7 @@
 Проверить:
 
 - Понятно ли текущее состояние проекта.
-- Обновлены ли `memory-bank/project-status.md` и `memory-bank/handoff.md`.
+- Обновлены ли `memory-bank/project-status.md` и `HANDOFF.md`.
 - Есть ли следующий шаг.
 - Нет ли явных пустых или устаревших документов.
 
