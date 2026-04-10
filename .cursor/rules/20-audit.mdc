@@ -7,12 +7,12 @@ alwaysApply: false
 
 When the task is an audit, health check, or “how ready are we” assessment:
 
-1. `docs/AUDIT-GUIDE.md`
-2. `docs/HEALTH-SCORE.md`
-3. `docs/REVIEW-CHECKLIST.md`
-4. `docs/SECURITY_POLICY.md`
-5. `memory-bank/project-status.md`
-6. `memory-bank/security.md`
+1. `LAYER-1/audit.md`
+2. `LAYER-1/audit.md`
+3. `LAYER-1/task-protocol.md`
+4. `LAYER-1/security.md`
+5. `LAYER-3/project-status.md`
+6. `LAYER-3/security.md`
 
 Answer in plain language: what is already solid, what is missing, where the risks are, and the single best next step. Say honestly if data is insufficient.
 

@@ -10,12 +10,12 @@ description: Предлагает, какие функции, документы
 ## Сначала читать
 
 1. `README.md`
-2. `START.md`
+2. `llms.txt` / `LAYER-1/workflow.md`
 3. `HANDOFF.md`
-4. `docs/FEATURE-RADAR.md`
-5. `docs/ROADMAP.md`
-6. `memory-bank/project-status.md`
-7. `memory-bank/features.md`
+4. `LAYER-1/feature-radar.md`
+5. `LAYER-2/specs/roadmap.md`
+6. `LAYER-3/project-status.md`
+7. `LAYER-3/features.md`
 
 ## Как отвечать
 

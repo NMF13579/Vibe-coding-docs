@@ -7,9 +7,9 @@
 ## Шаг 1️⃣ — Скопировать два файла
 
 ```bash
-# Скопировать в корень проекта
-cp template-sync.js ./my-project/
-cp setup.js ./my-project/
+# Скопировать в корень проекта (или клонировать весь репозиторий-шаблон)
+cp -r LAYER-1/tools/setup.js LAYER-1/tools/template-sync.js ./my-project/LAYER-1/tools/ 2>/dev/null || true
+# Проще: клонируй шаблон и работай из него — скрипты уже в LAYER-1/tools/
 ```
 
 ---
@@ -18,7 +18,7 @@ cp setup.js ./my-project/
 
 ```bash
 cd ./my-project
-node setup.js
+node LAYER-1/tools/setup.js
 ```
 
 **Мастер спросит:**
@@ -44,12 +44,11 @@ git commit -m "feat: добавлены файлы из шаблона"
 ## Что получится
 
 ```
-✅ template-sync.js         — основной инструмент скопирован
-✅ setup.js                 — мастер скопирован
-✅ docs/                    — добавлена папка с документацией
-✅ memory-bank/             — добавлена структура памяти
-✅ tasks/                   — добавлена папка с задачами
-✅ template-sync-report.md  — отчёт о синхронизации
+✅ LAYER-1/                  — инструкции агента и инструменты
+✅ LAYER-2/                  — шаблоны ТЗ (discovery, specs, ux, qa)
+✅ LAYER-3/                  — память между сессиями
+✅ tasks/                    — папка с задачами
+✅ template-sync-report.md   — отчёт о синхронизации (если использовался template-sync)
 ```
 
 ---
@@ -61,7 +60,7 @@ git commit -m "feat: добавлены файлы из шаблона"
 git reset --hard HEAD~1
 
 # Попробовать снова
-node setup.js
+node LAYER-1/tools/setup.js
 ```
 
 ---

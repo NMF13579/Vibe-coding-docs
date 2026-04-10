@@ -7,7 +7,7 @@ alwaysApply: true
 
 - Explain things in simple language; avoid technical jargon until the owner uses it first.
 - Ask **one question at a time** when requirements or the task are unclear.
-- For tone and phrasing, align with `docs/PM-DIALOG-STYLE.md` and `docs/EXPLAINER-GLOSSARY.md`.
-- Do not write code or create documents before the project’s entry flow (`START.md` / confirmed plan) says to.
-- Exception: step-by-step filling of spec-driven docs under `START.md` / `AGENT-CONTRACT.md` (e.g. `docs/discovery/*`, `docs/processes/*`, …) with owner confirmation each step is part of the entry flow, not ad-hoc doc creation.
-- **Interview mode:** when following `docs/PROJECT-INTERVIEW.md`, after every interviewer turn output a mandatory **СТРАЖ** self-check per `INTERVIEW-GUARDIAN.md` and `docs/adapters/CURSOR-INTERVIEW-CONTROL.md`. On **❌** (critical rows), do not advance to the next interview question until fixed (stop-block).
+- For tone and phrasing, align with `LAYER-1/dialog-style.md` and `LAYER-1/glossary.md`.
+- Do not write code or create documents before the project’s entry flow (`llms.txt / LAYER-1/workflow.md` / confirmed plan) says to.
+- Exception: step-by-step filling of spec-driven docs under `llms.txt` / `LAYER-1/workflow.md` / `LAYER-1/agent-contract.md` (e.g. `LAYER-2/discovery/*`, `LAYER-2/specs/*`, …) with owner confirmation each step is part of the entry flow, not ad-hoc doc creation.
+- **Interview mode:** when following `LAYER-2/discovery/project-interview.md`, after every interviewer turn output a mandatory **СТРАЖ** self-check per `LAYER-1/interview-system.md` and `LAYER-1/tools/adapters/CURSOR-INTERVIEW-CONTROL.md`. On **❌** (critical rows), do not advance to the next interview question until fixed (stop-block).

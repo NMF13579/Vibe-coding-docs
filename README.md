@@ -2,7 +2,7 @@
 
 [![Use this template](https://img.shields.io/badge/use%20this%20template-2ea44f?style=for-the-badge&logo=github)](https://github.com/NMF13579/Vibe-coding-docs/generate)
 
-[![Documentation](https://img.shields.io/badge/documentation-DOCS--MAP-0366d6?style=flat&logo=readthedocs)](./docs/DOCS-MAP.md)
+[![Documentation](https://img.shields.io/badge/documentation-DOCS--MAP-0366d6?style=flat&logo=readthedocs)](./LAYER-1/navigation.md)
 
 > Шаблон документации для работы с AI-агентами: помогает вести проект от идеи до MVP без хаоса и потери контекста.
 
@@ -60,24 +60,26 @@
 | Ситуация | Документ |
 |---|---|
 | Совсем новый? Начни здесь | [`QUICK-START.md`](./QUICK-START.md) — минимум для старта |
-| Первый запуск | [`START.md`](./START.md) |
-| Клонировал для нового проекта | [`docs/DOCS-MAP.md`](./docs/DOCS-MAP.md) → напиши агенту `Начнём` |
-| Не знаешь, что написать агенту | [`docs/OWNER-CHEATSHEET.md`](./docs/OWNER-CHEATSHEET.md) или [`docs/cheatsheet.html`](./docs/cheatsheet.html) |
-| Где мы остановились? | [`HANDOFF.md`](./HANDOFF.md) → [`memory-bank/project-status.md`](./memory-bank/project-status.md) |
-| Планирование и дорожная карта | [`docs/ROADMAP.md`](./docs/ROADMAP.md), [`docs/PLANNING.md`](./docs/PLANNING.md) |
+| Точка входа для агента | [`llms.txt`](./llms.txt) → [`HANDOFF.md`](./HANDOFF.md) |
+| Первый запуск / конвейер | [`LAYER-1/workflow.md`](./LAYER-1/workflow.md) |
+| Клонировал для нового проекта | [`LAYER-1/navigation.md`](./LAYER-1/navigation.md) → напиши агенту `Начнём` |
+| Не знаешь, что написать агенту | [`LAYER-1/owner.md`](./LAYER-1/owner.md) или [`FAQ.md`](./FAQ.md) |
+| Где мы остановились? | [`HANDOFF.md`](./HANDOFF.md) → [`LAYER-3/project-status.md`](./LAYER-3/project-status.md) |
+| Планирование и дорожная карта | [`LAYER-2/specs/roadmap.md`](./LAYER-2/specs/roadmap.md), [`LAYER-2/specs/planning.md`](./LAYER-2/specs/planning.md) |
 | История изменений шаблона | [`CHANGELOG.md`](./CHANGELOG.md) |
 | Прямая подача в LLM | [`llms.txt`](./llms.txt) |
-| Задача начала расползаться | [`SCOPE-CREEP-GUARD.md`](./SCOPE-CREEP-GUARD.md) |
-| Всё перепуталось, нужен recovery | [`docs/CONTEXT-LOSS-RECOVERY.md`](./docs/CONTEXT-LOSS-RECOVERY.md) |
-| Нужно откатить изменения | [`docs/ROLLBACK-PROTOCOL.md`](./docs/ROLLBACK-PROTOCOL.md) |
-| Аудит проекта | [`docs/AUDIT-GUIDE.md`](./docs/AUDIT-GUIDE.md) |
-| Процессы и UX (spec-driven) | Если хочешь вести проект по процессам и UX — начни с [`docs/DOCS-MAP.md`](./docs/DOCS-MAP.md) и [`AGENT-CONTRACT.md`](./AGENT-CONTRACT.md). |
+| Частые ситуации (FAQ) | [`FAQ.md`](./FAQ.md) |
+| Задача начала расползаться | [`LAYER-1/scope-guard.md`](./LAYER-1/scope-guard.md) |
+| Всё перепуталось, нужен recovery | [`LAYER-1/context-recovery.md`](./LAYER-1/context-recovery.md) |
+| Нужно откатить изменения | [`LAYER-1/error-handling.md`](./LAYER-1/error-handling.md) |
+| Аудит проекта | [`LAYER-1/audit.md`](./LAYER-1/audit.md) |
+| Процессы и UX (spec-driven) | Если хочешь вести проект по процессам и UX — начни с [`LAYER-1/navigation.md`](./LAYER-1/navigation.md) и [`LAYER-1/agent-contract.md`](./LAYER-1/agent-contract.md). |
 
 ---
 
 ## Вставить в настройки AI-инструмента
 
-Для лучшей работы агента вставь содержимое [`SYSTEM_PROMPT.md`](./SYSTEM_PROMPT.md) в системный промпт своего инструмента:
+Для лучшей работы агента вставь содержимое [`LAYER-1/system-prompt.md`](./LAYER-1/system-prompt.md) в системный промпт своего инструмента:
 
 | Инструмент | Куда вставить |
 |---|---|
@@ -94,8 +96,8 @@
 - Агент не пишет код без подтверждённого плана.
 - Один вопрос за раз — агент не засыпает списком.
 - Документы заполняются, не остаются пустыми шаблонами.
-- `ROADMAP.md` защищает от расползания проекта.
-- `DECISIONS.md` останавливает повторное обсуждение уже принятых решений.
+- `LAYER-2/specs/roadmap.md` защищает от расползания проекта.
+- `LAYER-2/specs/decisions.md` останавливает повторное обсуждение уже принятых решений.
 
 ---
 
@@ -103,17 +105,16 @@
 
 Если хочешь детальнее настроить поведение агента или понять внутреннюю логику:
 
-- [Шпаргалка (HTML)](docs/cheatsheet.html) — визуальная шпаргалка по процессу
 - Правила агента → [`CLAUDE.md`](./CLAUDE.md)
-- Системный промпт → [`SYSTEM_PROMPT.md`](./SYSTEM_PROMPT.md)
-- Карта ролей агентов → [`docs/AGENTS.md`](./docs/AGENTS.md)
-- Все документы → [`docs/`](./docs/)
-- Память проекта → [`memory-bank/`](./memory-bank/)
+- Системный промпт → [`LAYER-1/system-prompt.md`](./LAYER-1/system-prompt.md)
+- Карта ролей агентов → [`LAYER-1/agents.md`](./LAYER-1/agents.md)
+- Инструкции агента (слой 1) → [`LAYER-1/`](./LAYER-1/)
+- ТЗ продукта (слой 2) → [`LAYER-2/`](./LAYER-2/)
+- Память проекта → [`LAYER-3/`](./LAYER-3/)
 
 **Документация по синхронизации шаблона:**
-- `TEMPLATE-SYNC-GUIDE.md` — полная инструкция с примерами
-- `TEMPLATE-SYNC-INTEGRATION.md` — как использовать с агентами (Claude Code, Cursor)
-- `INDEX.md` — навигация по всем файлам инструмента
+- [`LAYER-1/tools/template-sync.md`](./LAYER-1/tools/template-sync.md) — полная инструкция и интеграция
+- [`LAYER-1/navigation.md`](./LAYER-1/navigation.md) — навигация по файлам шаблона
 
 ### Поддерживаемые AI-среды
 
@@ -122,4 +123,4 @@
 - **GitHub Copilot** → `.github/copilot-instructions.md`
 - **Gemini** → `GEMINI.md`
 
-Основной источник правил для всех сред — `docs/*` и `memory-bank/*`. Tool-specific файлы только направляют AI, что читать.
+Основной источник правил для всех сред — `LAYER-1/`, `LAYER-2/` и `LAYER-3/`. Tool-specific файлы только направляют AI, что читать.

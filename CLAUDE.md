@@ -1,7 +1,7 @@
 # CLAUDE.md — инструкции для Claude Code
 
 Этот репозиторий — docs-first шаблон для vibe coding.  
-Основной источник истины — `docs/*` и `memory-bank/*`.  
+Основной источник истины — `LAYER-1/`, `LAYER-2/` и `LAYER-3/`.  
 Этот файл задаёт только поведение и маршрутизацию.
 
 ## Роль
@@ -15,12 +15,12 @@
 
 При КАЖДОМ первом сообщении в новой сессии — выполнять автоматически, без ожидания команды:
 
-**Если `HANDOFF.md` не существует** → проект не инициализирован. Перейти к `START.md` → **Этап 0** (задать вопрос: новый проект или уже есть код?).
+**Если `HANDOFF.md` не существует** → проект не инициализирован. Перейти к `llms.txt` и `LAYER-1/workflow.md` → **Этап 0** (задать вопрос: новый проект или уже есть код?).
 
 **Если `HANDOFF.md` существует** (обычная сессия):
-1. Прочитай `HANDOFF.md` и `memory-bank/project-status.md`.
-2. Прочитай `memory-bank/lessons-learned.md` (если существует) — чтобы не повторять прошлые ошибки.
-2.5. Прочитай `memory-bank/PROJECT-MEMORY.md` (если существует) — долгая память проекта: реализованное, паттерны, ошибки.
+1. Прочитай `HANDOFF.md` и `LAYER-3/project-status.md`.
+2. Прочитай `LAYER-3/lessons.md` (если существует) — чтобы не повторять прошлые ошибки.
+2.5. Прочитай `LAYER-3/PROJECT-MEMORY.md` (если существует) — долгая память проекта: реализованное, паттерны, ошибки.
 3. Если в `HANDOFF.md` одна и та же задача фигурирует как незакрытая второй раз подряд — предупреди:
    «⚠️ Задача [название] идёт уже несколько сессий. Разбить на части или продолжить?»
 4. Кратко скажи пользователю (3–5 строк):
@@ -37,19 +37,19 @@
 После завершения ЛЮБОЙ задачи — выполнять автоматически:
 
 1. Обнови `HANDOFF.md` — что сделали, где остановились, что дальше.
-2. Обнови `memory-bank/project-status.md` — актуальное состояние.
+2. Обнови `LAYER-3/project-status.md` — актуальное состояние.
 3. Дополнительные файлы — по таблице ниже:
 
 | Что произошло | Что обновить |
 |---|---|
-| Исправлен баг | `memory-bank/fixes.md` |
-| Реализована фича | `memory-bank/features.md` |
-| Повторно полезный урок | `memory-bank/lessons-learned.md` |
-| Новая интеграция / сервис | `memory-bank/integrations.md` |
-| Изменён стек или зависимости | `memory-bank/languages.md` |
-| Затронута безопасность | `memory-bank/security.md` |
-| Решение отложено явно | `memory-bank/deferred-decisions.md` |
-| Закрыта любая задача | `memory-bank/PROJECT-MEMORY.md` (добавить пункт в «Что реализовано») |
+| Исправлен баг | `LAYER-3/fixes.md` |
+| Реализована фича | `LAYER-3/features.md` |
+| Повторно полезный урок | `LAYER-3/lessons.md` |
+| Новая интеграция / сервис | `LAYER-3/integrations.md` |
+| Изменён стек или зависимости | `LAYER-3/languages.md` |
+| Затронута безопасность | `LAYER-3/security.md` |
+| Решение отложено явно | `LAYER-3/deferred-decisions.md` |
+| Закрыта любая задача | `LAYER-3/PROJECT-MEMORY.md` (добавить пункт в «Что реализовано») |
 
 4. Сообщи пользователю: «Контекст сохранён ✅»
 
@@ -62,48 +62,48 @@
 При подключении к репозиторию:
 
 1. `README.md` — обзор, о чём этот пакет.
-2. `START.md` — как запускать проект и на каком он уровне.
+2. `llms.txt` — точка входа; `LAYER-1/workflow.md` — конвейер и уровни.
 3. `HANDOFF.md` — где мы остановились в прошлый раз.
-4. `memory-bank/project-status.md` — фактическое состояние проекта.
+4. `LAYER-3/project-status.md` — фактическое состояние проекта.
 
 Если нужна более глубокая картина — смотри также:
-- `memory-bank/lessons-learned.md` — накопленные уроки.
-- `memory-bank/features.md` — идеи и реализованные фичи.
+- `LAYER-3/lessons.md` — накопленные уроки.
+- `LAYER-3/features.md` — идеи и реализованные фичи.
 
 ## Маршрутизация по задачам
 
 В зависимости от типа запроса пользователя, читай:
 
 - **Общий процесс работы**  
-  → `docs/WORKFLOW.md`, `AGENT-CONTRACT.md` (модульный MVP-пайплайн от профиля до деплоя)  
+  → `LAYER-1/workflow.md`, `LAYER-1/agent-contract.md` (модульный MVP-пайплайн от профиля до деплоя)  
 - **Интервью и прояснение продукта**  
-  → `docs/PROJECT-INTERVIEW.md`, `INTERVIEWER.md`, `INTERVIEW-GUARDIAN.md`, `docs/adapters/CLAUDE-INTERVIEW-CONTROL.md` (обязательный self-check стража после каждого шага; при **❌** — stop-block); `docs/OWNER-GUIDE.md`, `docs/OWNER-CHEATSHEET.md`
+  → `LAYER-2/discovery/project-interview.md`, `LAYER-1/interview-system.md`, `LAYER-1/tools/adapters/CLAUDE-INTERVIEW-CONTROL.md` (обязательный self-check стража после каждого шага; при **❌** — stop-block); `LAYER-1/owner.md`
 - **Стиль общения и объяснений**  
-  → `docs/PM-DIALOG-STYLE.md`, `docs/EXPLAINER-GLOSSARY.md`
+  → `LAYER-1/dialog-style.md`, `LAYER-1/glossary.md`
 - **Планирование и roadmap**  
-  → `docs/PLANNING.md`, `docs/ROADMAP.md`
+  → `LAYER-2/specs/planning.md`, `LAYER-2/specs/roadmap.md`
 - **Архитектура и стек**  
-  → `docs/ARCHITECTURE.md`, `docs/STACK-PRESETS.md`
+  → `LAYER-2/specs/architecture.md`, `LAYER-1/stack-presets.md`
 - **Решения и развилки**  
-  → `docs/DECISION-GUIDE.md`, `docs/DECISIONS.md` *(шаблон)*, `docs/specs/DECISIONS.md` *(продукт)*, `memory-bank/deferred-decisions.md`
+  → `LAYER-1/decision-guide.md`, `LAYER-2/specs/decisions.md`, `LAYER-3/deferred-decisions.md`
 - **Тестирование и качество**  
-  → `docs/TESTING-GUIDE.md`, `docs/REVIEW-CHECKLIST.md`, `docs/TASK-REVIEW-PROTOCOL.md`
+  → `LAYER-1/testing-guide.md`, `LAYER-1/task-protocol.md`
 - **Откат изменений**  
-  → `docs/ROLLBACK-PROTOCOL.md`
+  → `LAYER-1/error-handling.md`
 - **Аудит и здоровье проекта**  
-  → `docs/AUDIT-GUIDE.md`, `docs/HEALTH-SCORE.md`
+  → `LAYER-1/audit.md`
 - **Scope creep и анти‑паттерны**  
-  → `SCOPE-CREEP-GUARD.md`, `docs/ANTI-PATTERNS.md`
+  → `LAYER-1/scope-guard.md`, `LAYER-1/anti-patterns.md`
 - **Безопасность**  
-  → `docs/SECURITY_POLICY.md`, `memory-bank/security.md`
+  → `LAYER-1/security.md`, `LAYER-3/security.md`
 - **Подсказки по фичам**  
-  → `docs/FEATURE-RADAR.md`, `memory-bank/features.md`
+  → `LAYER-1/feature-radar.md`, `LAYER-3/features.md`
 - **Восстановление контекста, если всё перепуталось**  
-  → `docs/CONTEXT-LOSS-RECOVERY.md`, `docs/AGENT-BOOTSTRAP.md`
+  → `LAYER-1/context-recovery.md`, `LAYER-1/agent-bootstrap.md`
 
 ## Контроль интервью (не OpenCode)
 
-Если ведёшь интервью по `docs/PROJECT-INTERVIEW.md` без отдельного агента guardian: в **каждом** ответе выполняй протокол из `docs/adapters/CLAUDE-INTERVIEW-CONTROL.md` (таблица из `INTERVIEW-GUARDIAN.md`, вердикт ✅/⚠️/❌). При критическом **❌** не переходи к следующему вопросу маршрута до исправления.
+Если ведёшь интервью по `LAYER-2/discovery/project-interview.md` без отдельного агента guardian: в **каждом** ответе выполняй протокол из `LAYER-1/tools/adapters/CLAUDE-INTERVIEW-CONTROL.md` (таблица из `LAYER-1/interview-system.md`, вердикт ✅/⚠️/❌). При критическом **❌** не переходи к следующему вопросу маршрута до исправления.
 
 ## Использование subagents
 
@@ -118,7 +118,7 @@
 ## Как вести сессию
 
 - В начале сессии:
-  - **автоматически** прочитай `HANDOFF.md` и `memory-bank/project-status.md` (см. раздел «Автозапуск»);
+  - **автоматически** прочитай `HANDOFF.md` и `LAYER-3/project-status.md` (см. раздел «Автозапуск»);
   - кратко перескажи, что уже сделано и где остановились;
   - предложи 1–3 варианта, чем заняться дальше.
 
@@ -128,18 +128,18 @@
   - выполняй шаги по очереди, комментируя важные решения.
 
 - В конце задачи:
-  - проверь результат по `docs/TASK-REVIEW-PROTOCOL.md`;
-  - **автоматически** обнови `HANDOFF.md` и `memory-bank/project-status.md` (см. раздел «Автосохранение»);
-  - если появился повторно полезный урок — добавь запись в `memory-bank/lessons-learned.md`;
-  - при необходимости обнови `memory-bank/fixes.md` и `memory-bank/features.md`.
+  - проверь результат по `LAYER-1/task-protocol.md`;
+  - **автоматически** обнови `HANDOFF.md` и `LAYER-3/project-status.md` (см. раздел «Автосохранение»);
+  - если появился повторно полезный урок — добавь запись в `LAYER-3/lessons.md`;
+  - при необходимости обнови `LAYER-3/fixes.md` и `LAYER-3/features.md`.
 
 ## Приоритет источников
 
 Если инструкции конфликтуют:
 
 1. Конкретный документ задачи (из `tasks/`), если он есть.
-2. `HANDOFF.md` и `memory-bank/project-status.md` (фактическое состояние).
-3. Профильный doc из `docs/*` для этой темы.
-4. `SYSTEM_PROMPT.md` / этот файл.
+2. `HANDOFF.md` и `LAYER-3/project-status.md` (фактическое состояние).
+3. Профильный документ из `LAYER-1/` или `LAYER-2/` для этой темы.
+4. `LAYER-1/system-prompt.md` / этот файл.
 
 Если информации недостаточно — честно скажи об этом и предложи короткий список уточняющих вопросов.

@@ -37,3 +37,15 @@ text
 
 ## История
 
+[0.2.0] — 2026-04-10
+Добавлено
+- Слои `LAYER-1/` (инструкции агента), `LAYER-2/` (ТЗ), `LAYER-3/` (память); точка входа `llms.txt`.
+- `FAQ.md`, `LICENSE` (MIT), `LAYER-3/session-log.md`.
+
+Изменено
+- Документация перенесена из `docs/` и `memory-bank/` в LAYER-*; корень очищен.
+- Скрипты `setup.js` и `template-sync.js` — в `LAYER-1/tools/`.
+
+Исправлено
+- Ссылки в README, CLAUDE, GEMINI, правилах Cursor, Copilot, OpenCode, workflow.
+

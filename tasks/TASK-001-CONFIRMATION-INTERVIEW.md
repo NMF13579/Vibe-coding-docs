@@ -13,19 +13,19 @@
 
 ## Контекст
 
-Репозиторий `Vibe-coding-docs` содержит файлы `INTERVIEWER.md` и `INTERVIEW-GUARDIAN.md`, определяющие поведение агента на этапе Discovery. Отсутствует явный stop-point перед фиксацией итогов и автоматического перехода статуса после подтверждения пользователем.
+Репозиторий `Vibe-coding-docs` содержит файлы `LAYER-1/interview-system.md` и `LAYER-1/interview-system.md`, определяющие поведение агента на этапе Discovery. Отсутствует явный stop-point перед фиксацией итогов и автоматического перехода статуса после подтверждения пользователем.
 
 ## Цель
 
-Добавить в `docs/PROJECT-INTERVIEW.md` явный stop-point и секцию `## Confirmation`, обновить `PROJECT-STATUS.md`, `HEALTH-SCORE.md` и `DOCS-MAP.md`, чтобы статус `accepted` выставлялся только после явного согласия пользователя.
+Добавить в `LAYER-2/discovery/project-interview.md` явный stop-point и секцию `## Confirmation`, обновить `PROJECT-STATUS.md`, `HEALTH-SCORE.md` и `DOCS-MAP.md`, чтобы статус `accepted` выставлялся только после явного согласия пользователя.
 
 ## Шаги
 
-1. Открыть `docs/PROJECT-INTERVIEW.md`, найти конец блока интервью
+1. Открыть `LAYER-2/discovery/project-interview.md`, найти конец блока интервью
 2. Добавить stop-point перед фиксацией:
    ```
    > STOP: Покажи саммари пользователю и дождись явного подтверждения,
-   > прежде чем фиксировать файл в docs/discovery/INTERVIEW-SUMMARY.md.
+   > прежде чем фиксировать файл в LAYER-2/discovery/INTERVIEW-SUMMARY.md.
    ```
 3. Добавить в конец `PROJECT-INTERVIEW.md` секцию:
    ```markdown
@@ -34,9 +34,9 @@
    Только при ответе "Да" → обновить PROJECT-STATUS.md:
    `discovery/INTERVIEW-SUMMARY.md = accepted`
    ```
-4. В `docs/PROJECT-STATUS.md` добавить колонку `Approved by` в таблицу статусов
-5. В `docs/HEALTH-SCORE.md` обновить правило: `INTERVIEW-SUMMARY = accepted` → Discovery 🟢
-6. В `docs/DOCS-MAP.md` дополнить блок Discovery пунктом о подтверждении интервью
+4. В `LAYER-3/project-status.md` добавить колонку `Approved by` в таблицу статусов
+5. В `LAYER-1/audit.md` обновить правило: `INTERVIEW-SUMMARY = accepted` → Discovery 🟢
+6. В `LAYER-1/navigation.md` дополнить блок Discovery пунктом о подтверждении интервью
 7. Провести тестовый сценарий (см. «Критерии готовности»)
 
 ## Критерии готовности
@@ -51,7 +51,7 @@
 
 ## Зависимости
 
-- Требует: существование `docs/PROJECT-INTERVIEW.md`, `docs/PROJECT-STATUS.md`, `docs/HEALTH-SCORE.md`, `docs/DOCS-MAP.md`
+- Требует: существование `LAYER-2/discovery/project-interview.md`, `LAYER-3/project-status.md`, `LAYER-1/audit.md`, `LAYER-1/navigation.md`
 - Блокирует: корректная визуализация прогресса Discovery в HEALTH-SCORE
 - Тип: `improvement` | Приоритет: `high`
 
