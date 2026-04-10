@@ -1,12 +1,20 @@
 # Vibe-coding-docs
 
-[![Use this template](https://img.shields.io/badge/use%20this%20template-2ea44f?style=for-the-badge&logo=github)](https://github.com/NMF13579/Vibe-coding-docs/generate)
+> Шаблон документации для работы с AI-агентами: от идеи до MVP без хаоса и потери контекста.  
+> Создан для вайб-кодеров — врачей, дизайнеров, менеджеров и всех, кто строит продукты с ИИ без глубокого погружения в код.
 
-[![Documentation](https://img.shields.io/badge/documentation-DOCS--MAP-0366d6?style=flat&logo=readthedocs)](./LAYER-1/tools/template-sync-index.md)
+---
 
-> Шаблон документации для работы с AI-агентами: помогает вести проект от идеи до MVP без хаоса и потери контекста.
+<div align="center">
 
-Создан для вайб-кодеров — врачей, дизайнеров, менеджеров и всех, кто строит продукты с помощью ИИ без глубокого погружения в код.
+[![Я новичок — начать здесь](https://img.shields.io/badge/🔰_Я_новичок_—_начать_здесь-2ea44f?style=for-the-badge)](./QUICK-START-NOVICE.md)
+[![Я разработчик](https://img.shields.io/badge/🛠_Я_разработчик-0366d6?style=for-the-badge)](./QUICK-START.md)
+[![FAQ](https://img.shields.io/badge/❓_Частые_вопросы-6e40c9?style=for-the-badge)](./FAQ.md)
+
+[![Use this template](https://img.shields.io/badge/use%20this%20template-238636?style=flat-square&logo=github)](https://github.com/NMF13579/Vibe-coding-docs/generate)
+[![Documentation](https://img.shields.io/badge/docs-DOCS--MAP-0366d6?style=flat-square&logo=readthedocs)](./LAYER-1/tools/template-sync-index.md)
+
+</div>
 
 ---
 
@@ -21,36 +29,16 @@
 
 ---
 
-## Для кого
-
-Подойдёт, если ты:
-
-- хочешь быстро стартовать цифровой продукт и довести до MVP;
-- работаешь через Claude, Cursor, Copilot, Gemini или похожие AI-сервисы;
-- не хочешь каждый раз заново объяснять агенту весь проект;
-- хочешь, чтобы AI помогал по правилам, а не импровизировал.
-
----
-
-## Как начать
-
-1. Нажми кнопку **"Use this template"** на GitHub — это создаст чистый репозиторий без истории коммитов.
-2. Открой проект в удобном AI-инструменте.
-3. Напиши агенту: **«Начнём»** — он сам проведёт через всё остальное.
-4. После каждой сессии пиши: **«Сохрани контекст»**.
-5. В начале новой сессии пиши: **«Восстанови контекст»**.
-
----
-
 ## С чего начать — выбери свою роль
 
 | Роль | Ситуация | Твой путь |
 |---|---|---|
-| 🩺 Врач / медик | Хочу автоматизировать рутину или сделать медицинский сервис | [`QUICK-START.md`](./QUICK-START.md) → [`LAYER-1/ux-checklist-medical.md`](./LAYER-1/ux-checklist-medical.md) → [`stages/01-interview/BOOT.md`](./stages/01-interview/BOOT.md) |
-| 🎨 Дизайнер / творческий | Есть идея продукта, хочу прототип без кода | [`QUICK-START.md`](./QUICK-START.md) → [`LAYER-1/interview-system.md`](./LAYER-1/interview-system.md) → [`LAYER-2/specs/`](./LAYER-2/specs/) |
-| 📋 Менеджер / предприниматель | Хочу проверить идею и дойти до MVP быстро | [`QUICK-START.md`](./QUICK-START.md) → [`project/PROJECT.md`](./project/PROJECT.md) → [`LAYER-1/decision-guide.md`](./LAYER-1/decision-guide.md) |
-| 🔁 Уже начал, потерял контекст | Проект есть, но что-то пошло не так или сессия прервалась | [`HANDOFF.md`](./HANDOFF.md) → [`LAYER-1/context-recovery.md`](./LAYER-1/context-recovery.md) → [`FAQ.md`](./FAQ.md) |
-| 🛠️ Хочу разобраться глубже | Понимаю базу, хочу настроить агента под себя | [`CLAUDE.md`](./CLAUDE.md) → [`LAYER-1/agent-contract.md`](./LAYER-1/agent-contract.md) → [`LAYER-1/workflow.md`](./LAYER-1/workflow.md) |
+| 🔰 Первый раз | Нет опыта с кодом и агентами | [`QUICK-START-NOVICE.md`](./QUICK-START-NOVICE.md) — 3 шага без терминала |
+| 🩺 Врач / медик | Хочу автоматизировать рутину или сделать медицинский сервис | [`QUICK-START-NOVICE.md`](./QUICK-START-NOVICE.md) → [`LAYER-1/ux-checklist-medical.md`](./LAYER-1/ux-checklist-medical.md) |
+| 🎨 Дизайнер / творческий | Есть идея продукта, хочу прототип без кода | [`QUICK-START-NOVICE.md`](./QUICK-START-NOVICE.md) → [`LAYER-1/interview-system.md`](./LAYER-1/interview-system.md) |
+| 📋 Менеджер / предприниматель | Хочу проверить идею и дойти до MVP быстро | [`QUICK-START-NOVICE.md`](./QUICK-START-NOVICE.md) → [`project/PROJECT.md`](./project/PROJECT.md) |
+| 🔁 Уже начал, потерял контекст | Проект есть, но что-то пошло не так | [`HANDOFF.md`](./HANDOFF.md) → [`LAYER-1/context-recovery.md`](./LAYER-1/context-recovery.md) → [`FAQ.md`](./FAQ.md) |
+| 🛠️ Разработчик | Понимаю базу, хочу настроить агента под себя | [`QUICK-START.md`](./QUICK-START.md) → [`CLAUDE.md`](./CLAUDE.md) → [`LAYER-1/workflow.md`](./LAYER-1/workflow.md) |
 
 ---
 
@@ -67,13 +55,15 @@
 
 ---
 
-## Куда смотреть дальше
+<details>
+<summary>📂 Куда смотреть дальше — полная карта документов</summary>
 
 | Ситуация | Документ |
 |---|---|
-| Совсем новый? Начни здесь | [`QUICK-START.md`](./QUICK-START.md) — минимум для старта |
+| Совсем новый? Начни здесь | [`QUICK-START-NOVICE.md`](./QUICK-START-NOVICE.md) — без терминала |
+| Технический старт | [`QUICK-START.md`](./QUICK-START.md) — для разработчиков |
 | Точка входа для агента | [`llms.txt`](./llms.txt) → [`HANDOFF.md`](./HANDOFF.md) |
-| **Claude Code: одно ТЗ + этапы** | [`README-NEW-ARCHITECTURE.md`](./README-NEW-ARCHITECTURE.md) → [`project/PROJECT.md`](./project/PROJECT.md) → [`stages/01-interview/BOOT.md`](./stages/01-interview/BOOT.md) |
+| Claude Code: одно ТЗ + этапы | [`README-NEW-ARCHITECTURE.md`](./README-NEW-ARCHITECTURE.md) → [`project/PROJECT.md`](./project/PROJECT.md) → [`stages/01-interview/BOOT.md`](./stages/01-interview/BOOT.md) |
 | Первый запуск / конвейер | [`LAYER-1/workflow.md`](./LAYER-1/workflow.md) |
 | Клонировал для нового проекта | [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md) → напиши агенту `Начнём` |
 | Не знаешь, что написать агенту | [`LAYER-1/owner.md`](./LAYER-1/owner.md) или [`FAQ.md`](./FAQ.md) |
@@ -85,12 +75,13 @@
 | Задача начала расползаться | [`LAYER-1/scope-guard.md`](./LAYER-1/scope-guard.md) |
 | Всё перепуталось, нужен recovery | [`LAYER-1/context-recovery.md`](./LAYER-1/context-recovery.md) |
 | Нужно откатить изменения | [`LAYER-1/error-handling.md`](./LAYER-1/error-handling.md) |
-| Аудит проекта | [`LAYER-1/audit.md`](./LAYER-1/audit.md) (протокол), [`LAYER-1/audit-checklist.md`](./LAYER-1/audit-checklist.md) (чек-лист и HEALTH-SCORE) |
-| Процессы и UX (spec-driven) | Если хочешь вести проект по процессам и UX — начни с [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md) и [`LAYER-1/agent-contract.md`](./LAYER-1/agent-contract.md). |
+| Аудит проекта | [`LAYER-1/audit.md`](./LAYER-1/audit.md), [`LAYER-1/audit-checklist.md`](./LAYER-1/audit-checklist.md) |
+| Процессы и UX (spec-driven) | [`LAYER-1/agent-contract.md`](./LAYER-1/agent-contract.md) |
 
----
+</details>
 
-## Вставить в настройки AI-инструмента
+<details>
+<summary>⚙️ Вставить в настройки AI-инструмента</summary>
 
 Для лучшей работы агента вставь содержимое [`LAYER-1/system-prompt.md`](./LAYER-1/system-prompt.md) в системный промпт своего инструмента:
 
@@ -102,19 +93,10 @@
 | Bolt | Project Settings → AI Instructions |
 | Gemini | Используй [`GEMINI.md`](./GEMINI.md) |
 
----
+</details>
 
-## Принципы работы агента
-
-- Агент не пишет код без подтверждённого плана.
-- Один вопрос за раз — агент не засыпает списком.
-- Документы заполняются, не остаются пустыми шаблонами.
-- `LAYER-2/specs/roadmap.md` защищает от расползания проекта.
-- `LAYER-2/specs/decisions.md` останавливает повторное обсуждение уже принятых решений.
-
----
-
-## Для продвинутой настройки
+<details>
+<summary>🔧 Для продвинутой настройки</summary>
 
 Если хочешь детальнее настроить поведение агента или понять внутреннюю логику:
 
@@ -126,14 +108,24 @@
 - Память проекта → [`LAYER-3/`](./LAYER-3/)
 
 **Документация по синхронизации шаблона:**
-- [`LAYER-1/tools/template-sync.md`](./LAYER-1/tools/template-sync.md) — полная инструкция и интеграция
-- [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md) — навигация по файлам шаблона
+- [`LAYER-1/tools/template-sync.md`](./LAYER-1/tools/template-sync.md) — полная инструкция
+- [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md) — навигация по файлам
 
-### Поддерживаемые AI-среды
-
+**Поддерживаемые AI-среды:**
 - **Claude Code** → `CLAUDE.md`, `.claude/agents/*`
-- **Cursor** → `.cursor/rules/*` и [`.cursor/CLAUDE-WORKFLOW.md`](./.cursor/CLAUDE-WORKFLOW.md) (ссылка на поток из [`CLAUDE.md`](./CLAUDE.md))
+- **Cursor** → `.cursor/rules/*` и [`.cursor/CLAUDE-WORKFLOW.md`](./.cursor/CLAUDE-WORKFLOW.md)
 - **GitHub Copilot** → `.github/copilot-instructions.md`
 - **Gemini** → `GEMINI.md`
 
-Основной источник правил для всех сред — `LAYER-1/`, `LAYER-2/` и `LAYER-3/`. Tool-specific файлы только направляют AI, что читать.
+</details>
+
+<details>
+<summary>📐 Принципы работы агента</summary>
+
+- Агент не пишет код без подтверждённого плана.
+- Один вопрос за раз — агент не засыпает списком.
+- Документы заполняются, не остаются пустыми шаблонами.
+- `LAYER-2/specs/roadmap.md` защищает от расползания проекта.
+- `LAYER-2/specs/decisions.md` останавливает повторное обсуждение уже принятых решений.
+
+</details>
