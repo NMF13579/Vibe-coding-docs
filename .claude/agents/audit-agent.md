@@ -13,7 +13,7 @@ description: Проверяет состояние пакета документ
 2. `CLAUDE.md`
 3. `HANDOFF.md`
 4. `LAYER-1/audit.md`
-5. `LAYER-1/audit.md`
+5. `LAYER-1/audit-checklist.md`
 6. `LAYER-1/task-protocol.md`
 7. `LAYER-1/security.md`
 8. `LAYER-3/project-status.md`

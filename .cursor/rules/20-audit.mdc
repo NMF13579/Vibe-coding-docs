@@ -7,8 +7,8 @@ alwaysApply: false
 
 When the task is an audit, health check, or “how ready are we” assessment:
 
-1. `LAYER-1/audit.md`
-2. `LAYER-1/audit.md`
+1. `LAYER-1/audit.md` (протокол AUDIT-FULL)
+2. `LAYER-1/audit-checklist.md` (чек-лист и HEALTH-SCORE)
 3. `LAYER-1/task-protocol.md`
 4. `LAYER-1/security.md`
 5. `LAYER-3/project-status.md`

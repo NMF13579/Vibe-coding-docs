@@ -47,7 +47,7 @@ When conducting the product interview per `LAYER-2/discovery/project-interview.m
 - Planning → `LAYER-2/specs/planning.md`, `LAYER-2/specs/roadmap.md`
 - Architecture → `LAYER-2/specs/architecture.md`, `LAYER-1/stack-presets.md`
 - Review → `LAYER-1/task-protocol.md`
-- Audit → `LAYER-1/audit.md`
+- Audit → `LAYER-1/audit.md` + `LAYER-1/audit-checklist.md`
 - Security → `LAYER-1/security.md`, `LAYER-3/security.md`
 - Product suggestions → `LAYER-1/feature-radar.md`, `LAYER-3/features.md`
 - Recovery after confusion → `LAYER-1/context-recovery.md`
@@ -56,7 +56,7 @@ When conducting the product interview per `LAYER-2/discovery/project-interview.m
 
 | Trigger | Action |
 |---|---|
-| «проверь проект», «аудит», «здоровье» | Run `LAYER-1/audit.md` protocol |
+| «проверь проект», «аудит», «здоровье» | Run `LAYER-1/audit.md` protocol; use `LAYER-1/audit-checklist.md` for checklist + HEALTH-SCORE |
 | «что добавить», «что дальше», after phase close | Read `LAYER-1/feature-radar.md` + `LAYER-3/features.md`, suggest top 3 |
 | 10+ edits or 3+ step plan without saving | Remind to save context |
 

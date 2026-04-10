@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-10 (Аудит v3 by Perplexity)
+> Updated: 2026-04-10 (аудит v3 + split audit / audit-checklist)
 
 ## Слои
 

@@ -35,6 +35,7 @@
 - UX: медицина, роли, права, дашборды               → [LAYER-1/ux-checklist-medical.md](./LAYER-1/ux-checklist-medical.md)
 - UX: уведомления, таблицы, поиск, история, микротекст → [LAYER-1/ux-checklist-interactions.md](./LAYER-1/ux-checklist-interactions.md)
 - Аудит проекта               → [LAYER-1/audit.md](./LAYER-1/audit.md)
+- Проверка пакета в новой AI-среде → [LAYER-1/audit-checklist.md](./LAYER-1/audit-checklist.md)
 - Проверка задачи             → [LAYER-1/task-protocol.md](./LAYER-1/task-protocol.md)
 - Проверка результата, валидация задачи, PASS/FAIL, тест сценария → [LAYER-2/specs/validation.md](./LAYER-2/specs/validation.md)
 - Правила валидации полей, сообщения об ошибках форм → [LAYER-2/specs/validation-rules.md](./LAYER-2/specs/validation-rules.md)

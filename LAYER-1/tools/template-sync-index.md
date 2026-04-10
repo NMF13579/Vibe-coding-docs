@@ -422,8 +422,8 @@ node setup.js
 | `LAYER-1/task-protocol.md` | instruction | Перед каждым релизом |
 | `LAYER-1/security.md` | instruction | При работе с персональными данными и доступами |
 | `LAYER-2/specs/roadmap.md` | project-record | После принятия MVP-решений — дорожная карта |
-| `LAYER-1/audit.md` | instruction | При проведении аудита проекта |
-| `LAYER-1/audit.md` | instruction | Расширенный чеклист качества и готовности |
+| `LAYER-1/audit.md` | instruction | Протокол полного аудита (AUDIT-FULL), шаги и правила |
+| `LAYER-1/audit-checklist.md` | instruction | Чек-лист структуры, шесть направлений, таблица HEALTH-SCORE |
 | `LAYER-1/tools/adapters/` | instruction | При работе в Cursor / Copilot / Claude / Gemini — IDE-специфичный self-check |
 
 ---
@@ -562,7 +562,8 @@ node setup.js
 | `LAYER-1/agents.md` | 2 | instruction | Карта ролей агентов и правила многоагентной работы |
 | `LAYER-1/deploy-guide.md` | 2 | project-record | Описание переменных окружения и правила хранения секретов |
 | `LAYER-1/deploy-guide.md` | 2 | instruction | Базовый мониторинг после релиза и сигналы для отката |
-| `LAYER-1/audit.md` | 2 | instruction | Расширенный чеклист проверки качества и готовности |
+| `LAYER-1/audit.md` | 2 | instruction | Полный аудит перед релизом / передачей (протокол AUDIT-FULL) |
+| `LAYER-1/audit-checklist.md` | 2 | instruction | Чек-лист и HEALTH-SCORE для аудита |
 | `LAYER-2/ux/user-flows.md` | 2 | instruction | Ключевые пользовательские сценарии для smoke-теста |
 | `deploy/DEPLOY-CHECKLIST.md` | 2 | template | Контроль перед выкладкой |
 | `deploy/RELEASE-NOTES.md` | 2 | project-record | Содержание версии для людей |
@@ -584,7 +585,8 @@ node setup.js
 | `LAYER-1/task-protocol.md` | 0 | instruction | Чеклист перед каждым релизом |
 | `LAYER-1/security.md` | 0 | instruction | Безопасность и работа с чувствительными данными |
 | `LAYER-2/specs/roadmap.md` | 0 | project-record | Дорожная карта после принятия MVP-решений |
-| `LAYER-1/audit.md` | 0 | instruction | Руководство по проведению аудита |
+| `LAYER-1/audit.md` | 0 | instruction | Протокол аудита (AUDIT-FULL) |
+| `LAYER-1/audit-checklist.md` | 0 | instruction | Чек-лист и HEALTH-SCORE (в т.ч. быстрая проверка) |
 | `LAYER-1/tools/adapters/` | 0 | instruction | IDE-специфичный self-check для Cursor / Copilot / Claude / Gemini |
 
 > **Контур 0** — базовые инструкции агента, читаются до начала любой работы.
@@ -593,7 +595,7 @@ node setup.js
 
 ## Связь с Vibe-coding-docs
 
-Папки `LAYER-2/discovery` … `LAYER-1/tools/deploy` и этот файл — ваша **spec-driven** цепочка под продукт; общие правила шаблона (старт сессии, интервью, дорожная карта, аудит) живут в корне (`llms.txt`, `HANDOFF.md`) и в `LAYER-1/` (`workflow.md`, `dialog-style.md`, `audit.md` и др.) — они дополняют эти документы, но не заменяют их.  
+Папки `LAYER-2/discovery` … `LAYER-1/tools/deploy` и этот файл — ваша **spec-driven** цепочка под продукт; общие правила шаблона (старт сессии, интервью, дорожная карта, аудит) живут в корне (`llms.txt`, `HANDOFF.md`) и в `LAYER-1/` (`workflow.md`, `dialog-style.md`, `audit.md`, `audit-checklist.md` и др.) — они дополняют эти документы, но не заменяют их.  
 При UX-работе смотри также: `LAYER-3/open-questions.md`, `LAYER-3/ui-inventory.md`, `LAYER-3/atomic-decisions.md`, `LAYER-3/PROJECT-MEMORY.md`.
 
 **Деплой — смежная цепочка (онбординг и MCP):** `LAYER-1/tools/deploy/SETUP-ALL.md` → `ENV-SETUP.md` / `MCP-SETUP.md` → `DEPLOY-MCP-UNIVERSAL.md` → `DEPLOY-TIMEWEB.md`; универсальные правила — `LAYER-1/deploy-guide.md`.

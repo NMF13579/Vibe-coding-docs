@@ -74,7 +74,7 @@
 
 | Триггер от пользователя | Действие |
 |---|---|
-| «проверь проект», «аудит», «здоровье» | Попроси прислать `LAYER-1/audit.md` и запусти протокол |
+| «проверь проект», «аудит», «здоровье» | Попроси прислать `LAYER-1/audit.md` и запусти протокол; чек-лист и HEALTH-SCORE — `LAYER-1/audit-checklist.md`; в новой AI-среде удобно передать чек-лист + `HANDOFF.md` + `LAYER-3/project-status.md` |
 | «что добавить», «что дальше» | Попроси прислать `LAYER-1/feature-radar.md` + `LAYER-3/features.md`, предложи топ-3 |
 | Много правок без сохранения | Напомни: «⚠️ Контекст не сохранялся. Попроси пользователя обновить HANDOFF.md» |
 
@@ -123,7 +123,7 @@
   → `LAYER-1/testing-guide.md`, `LAYER-1/task-protocol.md`, `LAYER-1/task-protocol.md`, `LAYER-1/task-protocol.md`, `LAYER-1/error-handling.md`
 
 - **Аудит / здоровье / риски**  
-  → `LAYER-1/audit.md`, `LAYER-1/audit.md`, `LAYER-1/anti-patterns.md`, `LAYER-1/scope-guard.md`
+  → `LAYER-1/audit.md`, `LAYER-1/audit-checklist.md`, `LAYER-1/anti-patterns.md`, `LAYER-1/scope-guard.md`
 
 - **Безопасность**  
   → `LAYER-1/security.md`, `LAYER-3/security.md`

@@ -73,7 +73,7 @@
 | Задача начала расползаться | [`LAYER-1/scope-guard.md`](./LAYER-1/scope-guard.md) |
 | Всё перепуталось, нужен recovery | [`LAYER-1/context-recovery.md`](./LAYER-1/context-recovery.md) |
 | Нужно откатить изменения | [`LAYER-1/error-handling.md`](./LAYER-1/error-handling.md) |
-| Аудит проекта | [`LAYER-1/audit.md`](./LAYER-1/audit.md) |
+| Аудит проекта | [`LAYER-1/audit.md`](./LAYER-1/audit.md) (протокол), [`LAYER-1/audit-checklist.md`](./LAYER-1/audit-checklist.md) (чек-лист и HEALTH-SCORE) |
 | Процессы и UX (spec-driven) | Если хочешь вести проект по процессам и UX — начни с [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md) и [`LAYER-1/agent-contract.md`](./LAYER-1/agent-contract.md). |
 
 ---

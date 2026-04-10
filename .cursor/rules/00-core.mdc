@@ -48,7 +48,7 @@ onFeatureRequest ("что добавить", "что дальше", after phase 
 - Planning → `LAYER-2/specs/planning.md`, `LAYER-2/specs/roadmap.md`
 - Architecture → `LAYER-2/specs/architecture.md`, `LAYER-1/stack-presets.md`
 - Review → `LAYER-1/task-protocol.md`
-- Audit → `LAYER-1/audit.md`
+- Audit → `LAYER-1/audit.md`, `LAYER-1/audit-checklist.md`
 - Security → `LAYER-1/security.md`, `LAYER-3/security.md`
 - Product suggestions → `LAYER-1/feature-radar.md`, `LAYER-3/features.md`
 - Recovery after confusion → `LAYER-1/context-recovery.md`
@@ -58,7 +58,7 @@ onFeatureRequest ("что добавить", "что дальше", after phase 
 Specialized sub-agents (audit-agent, feature-advisor-agent, session-guard-agent)
 are available only in Claude Code and cannot be invoked from Cursor.
 Use the corresponding docs directly:
-audit → `LAYER-1/audit.md`, features → `LAYER-1/feature-radar.md`,
+audit → `LAYER-1/audit.md` + `LAYER-1/audit-checklist.md`, features → `LAYER-1/feature-radar.md`,
 context guard → follow `CLAUDE.md` save triggers manually.
 
 ## Working principles

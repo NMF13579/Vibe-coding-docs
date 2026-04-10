@@ -160,7 +160,7 @@
 - Архитектура: `LAYER-2/specs/architecture.md`, `LAYER-1/stack-presets.md`.
 - Тесты и задачи: `LAYER-1/testing-guide.md`, `LAYER-1/task-protocol.md`.
 - Деплой: `LAYER-1/deploy-guide.md`, `LAYER-1/tools/deploy/`.
-- Аудит: `LAYER-1/audit.md`.
+- Аудит: `LAYER-1/audit.md` (протокол), `LAYER-1/audit-checklist.md` (чек-лист и HEALTH-SCORE).
 - Subagents в `.claude/agents/` — по триггерам в их описаниях.
 
 ---

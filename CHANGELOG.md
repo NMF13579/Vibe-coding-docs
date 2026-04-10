@@ -37,6 +37,13 @@ text
 
 ## История
 
+[0.3.2] — 2026-04-10
+Изменено
+
+- Аудит разделён: протокол AUDIT-FULL остаётся в `LAYER-1/audit.md`, чек-лист и HEALTH-SCORE вынесены в `LAYER-1/audit-checklist.md`
+- В `llms.txt` добавлен маршрут «Проверка пакета в новой AI-среде» → `audit-checklist.md`
+- Обновлены перекрёстные ссылки: README, CLAUDE.md, system-prompt, copilot-instructions, cursor rules, audit-agent, template-sync-index
+
 [0.3.1] — 2026-04-10
 Добавлено
 - [`.cursor/CLAUDE-WORKFLOW.md`](./.cursor/CLAUDE-WORKFLOW.md) — для Cursor: ссылка на [`CLAUDE.md`](./CLAUDE.md) и этапы `stages/*/BOOT.md`.
