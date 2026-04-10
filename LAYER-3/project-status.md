@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-10
+> Updated: 2026-04-10 (аудит v1)
 
 ## Слои
 
@@ -12,10 +12,17 @@
 
 ## Текущий этап
 
-Стабилизация шаблона документации (слои LAYER-1/2/3).
+Стабилизация шаблона документации завершена. Проведён полный аудит и исправлены все найденные проблемы.
 
-## Последнее действие
+## Последнее действие (2026-04-10)
 
-- Обновлены `validation.md` / `validation-rules.md` (шапки, ссылки), `project-interview.md` (таблица после интервью + порядок), `llms.txt` (маршруты validation).
+Полный аудит репозитория как системы управления AI-агентами:
+- Исправлены 8 битых ссылок в `project-interview.md`
+- Удалена директория `docs/` (21 legacy-файл)
+- Добавлены 5 маршрутов в `llms.txt`
+- Убраны embedded-дубли в `architecture.md` / `decisions.md`
+- Переименован `navigation.md` → `tools/template-sync-index.md`
+- Удалены: `SCOPE-CREEP-GUARD.md`, `opencode.json`
+- Ветка: `claude/audit-documentation-105k7`
 
 См. также `LAYER-3/session-log.md` и `HANDOFF.md`.
