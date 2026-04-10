@@ -33,6 +33,10 @@
 - Безопасность, секреты, чувствительные данные → [LAYER-1/security.md](./LAYER-1/security.md)
 - Глоссарий, термины простым языком → [LAYER-1/glossary.md](./LAYER-1/glossary.md)
 - Что добавить дальше, следующие фичи → [LAYER-1/feature-radar.md](./LAYER-1/feature-radar.md)
+- Тестирование, сценарии, чеклисты качества → [LAYER-1/testing-guide.md](./LAYER-1/testing-guide.md)
+- Развилки, выбор решений, гайд по принятию решений → [LAYER-1/decision-guide.md](./LAYER-1/decision-guide.md)
+- Гайд для владельца проекта, FAQ → [LAYER-1/owner.md](./LAYER-1/owner.md)
+- Диагностика агента, bootstrap при потере контекста → [LAYER-1/agent-bootstrap.md](./LAYER-1/agent-bootstrap.md)
 
 ## Если подходящего маршрута нет
 

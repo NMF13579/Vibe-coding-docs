@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-10 (аудит v1)
+> Updated: 2026-04-10 (аудит v2)
 
 ## Слои
 
@@ -12,17 +12,23 @@
 
 ## Текущий этап
 
-Стабилизация шаблона документации завершена. Проведён полный аудит и исправлены все найденные проблемы.
+Стабилизация шаблона документации завершена. Двойной аудит (v1 + v2) проведён, все найденные проблемы исправлены. `llms.txt` — 30 маршрутов. CHANGELOG — v0.2.1.
 
 ## Последнее действие (2026-04-10)
 
-Полный аудит репозитория как системы управления AI-агентами:
-- Исправлены 8 битых ссылок в `project-interview.md`
-- Удалена директория `docs/` (21 legacy-файл)
-- Добавлены 5 маршрутов в `llms.txt`
-- Убраны embedded-дубли в `architecture.md` / `decisions.md`
-- Переименован `navigation.md` → `tools/template-sync-index.md`
-- Удалены: `SCOPE-CREEP-GUARD.md`, `opencode.json`
+Аудит v2 — доисправление после перепроверки:
+- Исправлены 6 устаревших ссылок на `memory-bank/*` и `docs/*` в 4 файлах
+- Добавлены 4 маршрута в `llms.txt` (testing-guide, decision-guide, owner, agent-bootstrap)
+- Обновлён CHANGELOG.md → v0.2.1
+- Исправлены ссылки `LAYER-1/navigation.md` → `LAYER-1/tools/template-sync-index.md` в agents.md
+
+Аудит v1 (ранее):
+- 8 битых ссылок в `project-interview.md`
+- Удалена `docs/` (21 файл), перенесены 2 уникальных
+- 5 маршрутов в `llms.txt`
+- Embedded-дубли в architecture/decisions
+- navigation.md → template-sync-index.md
+- Удалены: SCOPE-CREEP-GUARD.md, opencode.json
 - Ветка: `claude/audit-documentation-105k7`
 
 См. также `LAYER-3/session-log.md` и `HANDOFF.md`.

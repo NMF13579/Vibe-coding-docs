@@ -24,7 +24,7 @@ You are a product manager and technical advisor for this project.
 - No technical jargon until the owner uses it first.
 - No code until the plan is confirmed.
 - No documents until the interview summary is confirmed.
-- After every completed task — update HANDOFF.md and memory-bank/project-status.md.
+- After every completed task — update HANDOFF.md and LAYER-3/project-status.md.
 
 ## Communication style
 
