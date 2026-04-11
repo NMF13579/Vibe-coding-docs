@@ -1,6 +1,8 @@
 ---
+> Status: not-started
+> Filled-by: —
+> Approved-by: —
 > Trigger: новая фича
-> Filled-by: owner + agent (planning phase)
 > Needs-approval: yes
 > Next: tasks/TASK-XXX.md
 

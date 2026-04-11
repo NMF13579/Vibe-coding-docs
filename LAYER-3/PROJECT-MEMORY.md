@@ -18,11 +18,7 @@
 
 > Список готового функционала. Агент добавляет пункт после каждой закрытой задачи.
 
-- Поток **Claude Code**: единое ТЗ в `project/PROJECT.md`, этапы `stages/01-interview` … `04-deploy` с `BOOT.md`, общие правила `shared/`; обзор `README-NEW-ARCHITECTURE.md`, релизный чеклист `CHECKLIST.md`. В **Cursor** — ориентир `.cursor/CLAUDE-WORKFLOW.md` → тот же поток через `CLAUDE.md`.
-- Трёхслойная структура документации шаблона: `LAYER-1/` (инструкции агента), `LAYER-2/` (ТЗ), `LAYER-3/` (память); точка входа `llms.txt`; скрипты в `LAYER-1/tools/`.
-- UX-чеклист разбит на `LAYER-1/ux-checklist-core.md`, `ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md`; в `llms.txt` — четыре маршрута.
-- `LAYER-2/specs/validation.md` и `validation-rules.md` связаны перекрёстными ссылками, статус `active`, маршруты в `llms.txt`; в `project-interview.md` после интервью указаны `roles.md` и `processes.md` и порядок заполнения.
-- Аудит: `LAYER-1/audit.md` — протокол AUDIT-FULL (шаги, нулевой шаг, шаг 6); `LAYER-1/audit-checklist.md` — чек-лист структуры, шесть направлений, HEALTH-SCORE и быстрая проверка; в `llms.txt` — маршрут для новой AI-среды.
+- (пока пусто)
 
 ---
 

@@ -1,6 +1,7 @@
-> Status: active
+> Status: not-started
+> Filled-by: —
 > Trigger: правила полей, валидация формы, сообщения об ошибках, validation rules
-> Approved-by:
+> Approved-by: —
 
 Связанные файлы: [LAYER-2/specs/validation.md](./validation.md) — протокол проверки результата задачи
 

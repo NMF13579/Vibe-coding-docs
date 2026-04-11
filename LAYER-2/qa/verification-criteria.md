@@ -1,7 +1,9 @@
 ---
+> Status: not-started
+> Filled-by: —
+> Approved-by: —
 > Trigger: перед закрытием любой задачи
 > Read-time: ~5 min
-> Filled-by: agent
 > Needs-approval: no
 > Next: LAYER-1/task-protocol.md → TASK-REVIEW-PROTOCOL
 

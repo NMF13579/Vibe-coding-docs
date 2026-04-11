@@ -1,6 +1,6 @@
 > Status: not-started
-> Filled-by: both
-> Approved-by:
+> Filled-by: —
+> Approved-by: —
 
 # HYPOTHESIS-RESEARCH — есть ли смысл делать продукт
 

@@ -1,6 +1,6 @@
 > Status: not-started
-> Filled-by: both
-> Approved-by:
+> Filled-by: —
+> Approved-by: —
 
 # UX-GAP-REPORT — где интерфейс не дотягивает до процесса
 

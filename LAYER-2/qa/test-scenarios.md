@@ -1,5 +1,5 @@
-> Status: active
-> Filled-by: audit v3 (2026-04-10)
+> Status: not-started
+> Filled-by: —
 > Approved-by: —
 
 # TEST-SCENARIOS — smoke-тесты шаблона Vibe-coding-docs

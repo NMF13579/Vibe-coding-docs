@@ -1,6 +1,6 @@
-> Status: active
-> Filled-by: agent
-> Approved-by:
+> Status: not-started
+> Filled-by: —
+> Approved-by: —
 > Trigger: UX-проектирование, новый экран, ревью интерфейса
 > Next: LAYER-2/ux/UI-CHECKLIST.md
 

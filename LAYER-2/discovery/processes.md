@@ -1,6 +1,6 @@
 > Status: not-started
-> Filled-by: agent + user
-> Approved-by:
+> Filled-by: —
+> Approved-by: —
 > Trigger: после подтверждения `LAYER-2/discovery/interview-summary.md`, перед UX
 
 # PROCESSES — бизнес-процессы

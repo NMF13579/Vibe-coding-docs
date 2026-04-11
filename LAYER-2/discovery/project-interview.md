@@ -1,7 +1,7 @@
 > Файл: `LAYER-2/discovery/project-interview.md`
 > Status: not-started
-> Filled-by: both
-> Approved-by:
+> Filled-by: —
+> Approved-by: —
 > Версия: 2.0 — максимальное покрытие ТЗ
 
 # PROJECT INTERVIEW — интервью для запуска проекта
