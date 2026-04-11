@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vibe-coding-docs — документационный фреймворк</title>
+    <meta
+      name="description"
+      content="От идеи до MVP без потери контекста. Фреймворк для Claude Code, Cursor и OpenCode."
+    />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js" defer></script>
+    <script src="../assets/nav.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="logo-link" href="#home" aria-label="Vibe-coding-docs — главная">
+          <svg class="logo-svg" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="color: var(--color-accent)">
+            <rect width="32" height="32" rx="8" fill="currentColor" opacity="0.1" />
+            <path
+              d="M9 22V10l7 12 7-12v12"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+          </svg>
+          <span>Vibe-coding-docs</span>
+        </a>
+        <div class="header-actions">
+          <div class="lang-switch" role="group" aria-label="Язык">
+            <a href="../index.html#home" hreflang="en">EN</a>
+            <a href="index.html#home" class="is-active" hreflang="ru">RU</a>
+          </div>
+          <button type="button" class="icon-btn" id="theme-toggle" aria-label="Переключить тему">
+            <i data-lucide="sun" data-theme-icon="sun" aria-hidden="true"></i>
+            <i data-lucide="moon" data-theme-icon="moon" aria-hidden="true" style="display: none"></i>
+          </button>
+          <a href="#" class="btn btn--primary" id="link-install">Установить</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="views">
+        <article id="view-home" class="view is-active">
+          <section class="hero">
+            <h1 class="hero__title">Документационный фреймворк для вайб-кодеров</h1>
+            <p class="hero__lead">От идеи до MVP без потери контекста. Работает с Claude Code, Cursor, OpenCode.</p>
+            <div class="hero__actions">
+              <a href="#home" class="btn btn--primary" id="hero-get-started">Начать <span aria-hidden="true">→</span></a>
+              <a
+                href="https://github.com/NMF13579/Vibe-coding-docs"
+                class="btn btn--ghost"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <div class="badges" aria-label="Поддерживаемые платформы">
+              <span class="badge">Claude Code</span>
+              <span class="badge">Cursor</span>
+              <span class="badge">OpenCode</span>
+            </div>
+          </section>
+
+          <section id="who" aria-labelledby="who-heading">
+            <h2 id="who-heading" class="section-title">Для кого это</h2>
+            <p class="section-lead">Выберите роль — откроется пошаговая инструкция, как работать с AI-агентами.</p>
+            <div class="role-grid">
+              <button type="button" class="role-card" data-role-hash="#role-medical">
+                <div class="role-card__icon" aria-hidden="true">🏥</div>
+                <h3 class="role-card__title">Медицинский специалист</h3>
+                <p class="role-card__desc">Создавайте клинические инструменты без кода.</p>
+              </button>
+              <button type="button" class="role-card" data-role-hash="#role-designer">
+                <div class="role-card__icon" aria-hidden="true">🎨</div>
+                <h3 class="role-card__title">Дизайнер</h3>
+                <p class="role-card__desc">Превращайте макеты из Figma в работающие приложения.</p>
+              </button>
+              <button type="button" class="role-card" data-role-hash="#role-manager">
+                <div class="role-card__icon" aria-hidden="true">📋</div>
+                <h3 class="role-card__title">Менеджер</h3>
+                <p class="role-card__desc">Автоматизируйте процессы с помощью AI-агентов.</p>
+              </button>
+              <button type="button" class="role-card" data-role-hash="#role-developer">
+                <div class="role-card__icon" aria-hidden="true">💻</div>
+                <h3 class="role-card__title">Разработчик</h3>
+                <p class="role-card__desc">Структурированный фреймворк для вайб-кодинга.</p>
+              </button>
+            </div>
+          </section>
+
+          <section id="how" aria-labelledby="how-heading">
+            <h2 id="how-heading" class="section-title">Как это устроено</h2>
+            <p class="section-lead">Четыре этапа держат описание продукта в одном месте — агенты не начинают с нуля.</p>
+            <div class="steps">
+              <div class="step">
+                <h3>Установите плагин</h3>
+                <p>Одна команда (или короткая настройка) добавляет интервью, спеки и чек-листы в проект.</p>
+              </div>
+              <div class="step">
+                <h3>Опишите проект</h3>
+                <p>Этап интервью фиксирует цели, пользователей и ограничения в одном «живом» документе.</p>
+              </div>
+              <div class="step">
+                <h3>Агент строит с контекстом</h3>
+                <p>Разработка опирается на тот же файл — решения остаются согласованными.</p>
+              </div>
+              <div class="step">
+                <h3>Деплой с сохранённой памятью</h3>
+                <p>Handoff и статус помогают следующей сессии продолжить без повторных объяснений.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="install-section" aria-labelledby="install-heading">
+            <h2 id="install-heading" class="section-title">Установка</h2>
+            <p class="section-lead">Выберите инструмент и скопируйте команду. Остальное — в README репозитория.</p>
+            <div class="install-panel">
+              <div class="tablist" role="tablist" aria-label="Способ установки">
+                <button type="button" class="tab" role="tab" id="tab-claude" aria-selected="true" aria-controls="panel-claude">
+                  Claude Code
+                </button>
+                <button type="button" class="tab" role="tab" id="tab-cursor" aria-selected="false" aria-controls="panel-cursor">
+                  Cursor
+                </button>
+                <button type="button" class="tab" role="tab" id="tab-opencode" aria-selected="false" aria-controls="panel-opencode">
+                  OpenCode
+                </button>
+              </div>
+              <div class="tab-panels">
+                <div class="tab-panel is-active" id="panel-claude" role="tabpanel" aria-labelledby="tab-claude">
+                  <div class="code-block-wrap">
+                    <pre class="code-block" id="install-claude"><code>/plugin install vibe-coding-docs@https://github.com/NMF13579/Vibe-coding-docs.git</code></pre>
+                    <button type="button" class="copy-btn" data-copy-target="install-claude" aria-label="Скопировать команду">
+                      <i data-lucide="copy" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <p class="panel-note">Запустите в Claude Code. Плагин подтянет актуальные файлы фреймворка в проект.</p>
+                </div>
+                <div class="tab-panel" id="panel-cursor" role="tabpanel" aria-labelledby="tab-cursor" hidden>
+                  <p class="panel-note" style="margin-top: 0">
+                    В Cursor: <strong>Настройки</strong> → <strong>Rules</strong> — добавьте правило со ссылкой на файл
+                    <code>CLAUDE.md</code> в репозитории (или укажите путь). Это точка входа в тот же сценарий.
+                  </p>
+                  <p class="panel-note">
+                    Файл на GitHub:
+                    <a
+                      href="https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/CLAUDE.md"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >CLAUDE.md (raw)</a
+                    >
+                  </p>
+                  <div class="code-block-wrap">
+                    <pre class="code-block" id="install-cursor"><code>https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/CLAUDE.md</code></pre>
+                    <button type="button" class="copy-btn" data-copy-target="install-cursor" aria-label="Скопировать ссылку">
+                      <i data-lucide="copy" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="tab-panel" id="panel-opencode" role="tabpanel" aria-labelledby="tab-opencode" hidden>
+                  <div class="code-block-wrap">
+                    <pre class="code-block" id="install-opencode"><code>{ "plugin": ["vibe-coding-docs@git+https://github.com/NMF13579/Vibe-coding-docs.git"] }</code></pre>
+                    <button type="button" class="copy-btn" data-copy-target="install-opencode" aria-label="Скопировать JSON">
+                      <i data-lucide="copy" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <p class="panel-note">Вставьте фрагмент в конфигурацию OpenCode в список плагинов.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        <article id="view-role-medical" class="view" hidden>
+          <div class="role-detail">
+            <button type="button" class="back-link" data-back-home>
+              <i data-lucide="arrow-left" aria-hidden="true"></i>
+              Назад к обзору
+            </button>
+            <h1>Медицинский специалист</h1>
+            <p class="lead">Делайте понятные клинические помощники, задавая продуктовые факты — без программирования.</p>
+            <ol>
+              <li><strong>Пройдите интервью.</strong> Опишите сценарий, кто пользователь и чего нельзя допустить.</li>
+              <li><strong>Один источник правды.</strong> Пусть правки идут в проектный документ — каждая сессия видит ту же историю.</li>
+              <li><strong>Проверяйте результат, а не код.</strong> Просите агента объяснить экраны и сценарии простым языком до согласования.</li>
+              <li><strong>Комплаенс с начала.</strong> Когда команда готова — фиксируйте согласие, данные и юрисдикцию в защищённых секциях.</li>
+            </ol>
+          </div>
+        </article>
+
+        <article id="view-role-designer" class="view" hidden>
+          <div class="role-detail">
+            <button type="button" class="back-link" data-back-home>
+              <i data-lucide="arrow-left" aria-hidden="true"></i>
+              Назад к обзору
+            </button>
+            <h1>Дизайнер</h1>
+            <p class="lead">От макетов к прототипу с сохранением UX-намерения между сессиями агента.</p>
+            <ol>
+              <li><strong>Прикрепите референсы.</strong> Экспортируйте ключевые кадры и дайте ссылки в заметках discovery.</li>
+              <li><strong>Описывайте состояния.</strong> Пустые, загрузка, ошибка, успех — так промпты остаются конкретными.</li>
+              <li><strong>Короткие циклы.</strong> Запросите экран, ответьте скрином или списком правок, обновите спеку.</li>
+              <li><strong>Ворота фреймворка.</strong> «План → ревью → подтверждение» снижает случайные переделки посреди сборки.</li>
+            </ol>
+          </div>
+        </article>
+
+        <article id="view-role-manager" class="view" hidden>
+          <div class="role-detail">
+            <button type="button" class="back-link" data-back-home>
+              <i data-lucide="arrow-left" aria-hidden="true"></i>
+              Назад к обзору
+            </button>
+            <h1>Менеджер</h1>
+            <p class="lead">Координируйте подрядчиков или внутреннюю команду без потери решений между сессиями AI.</p>
+            <ol>
+              <li><strong>Сначала результат.</strong> Зафиксируйте метрики успеха и сроки в интервью — агенты ориентируются на бизнес-цель.</li>
+              <li><strong>Назначьте владельцев.</strong> Кто утверждает тексты, бренд и релизы — в проектном файле.</li>
+              <li><strong>Контролируйте объём.</strong> Новые идеи заносите в «отложено», а не в тихий scope creep.</li>
+              <li><strong>Читайте handoff.</strong> Перед сессией откройте статус — увидите, что изменилось в прошлый раз.</li>
+            </ol>
+          </div>
+        </article>
+
+        <article id="view-role-developer" class="view" hidden>
+          <div class="role-detail">
+            <button type="button" class="back-link" data-back-home>
+              <i data-lucide="arrow-left" aria-hidden="true"></i>
+              Назад к обзору
+            </button>
+            <h1>Разработчик</h1>
+            <p class="lead">Дайте вайб-кодингу структуру: контракты, слои и ревью, которые масштабируются.</p>
+            <ol>
+              <li><strong>Установка на репозиторий.</strong> Держите `CLAUDE.md`, слои и BOOT этапов по путям шаблона.</li>
+              <li><strong>Уважайте lock.</strong> Обучите команду, какие секции `PROJECT.md` трогать только с явного согласия.</li>
+              <li><strong>Автопроверки.</strong> Направьте CI на те же smoke-тесты, что в dev-доках этапа.</li>
+              <li><strong>ADR.</strong> При смене стека дописывайте решения — иначе агенты откатят выбор.</li>
+            </ol>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <a href="https://github.com/NMF13579/Vibe-coding-docs" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span>Лицензия MIT</span>
+      <span>Сделано для нетехнических авторов продуктов</span>
+    </footer>
+
+    <script>
+      (function () {
+        function scrollToInstall() {
+          var el = document.getElementById("install-section");
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        function bindInstallLinks() {
+          var hi = document.getElementById("link-install");
+          var hero = document.getElementById("hero-get-started");
+          if (hi) {
+            hi.addEventListener("click", function (e) {
+              e.preventDefault();
+              if (window.location.hash !== "#home") {
+                window.location.hash = "#home";
+                setTimeout(scrollToInstall, 120);
+              } else {
+                scrollToInstall();
+              }
+            });
+          }
+          if (hero) {
+            hero.addEventListener("click", function (e) {
+              e.preventDefault();
+              scrollToInstall();
+            });
+          }
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", bindInstallLinks);
+        } else {
+          bindInstallLinks();
+        }
+      })();
+    </script>
+  </body>
+</html>

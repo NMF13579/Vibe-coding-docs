@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: (заполняется агентом)
+> Updated: 2026-04-11
 
 ## Текущий этап
 
@@ -17,4 +17,4 @@
 
 ## Последнее действие
 
-(заполняется агентом)
+Добавлен сайт `docs/` (GitHub Pages): `index.html`, `ru/index.html`, `assets/style.css`, `assets/nav.js`.
