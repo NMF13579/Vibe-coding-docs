@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-11
+> Updated: 2026-04-12
 
 ## Текущий этап
 
@@ -17,4 +17,4 @@
 
 ## Последнее действие
 
-Добавлен сайт `docs/` (GitHub Pages): `index.html`, `ru/index.html`, `assets/style.css`, `assets/nav.js`.
+Добавлены файлы `.cursor/rules/30-plan-gate.mdc`, `31-stage-routing.mdc`, `32-document-priority.mdc`, `33-scope-guard.mdc` и запушены в ветку Pages.

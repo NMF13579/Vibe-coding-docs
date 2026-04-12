@@ -1,0 +1,21 @@
+---
+description: Priority order for conflicting instructions across repo documents
+alwaysApply: true
+---
+
+# Document Priority
+
+При конфликте инструкций — приоритет сверху вниз:
+
+1. `tasks/` — файл конкретной задачи (если есть)
+2. `project/PROJECT.md` + `HANDOFF.md` + `LAYER-3/project-status.md`
+3. Активный `stages/*/BOOT.md`
+4. `shared/scope-guard.md` → `shared/agent-contract.md` → `shared/workflow.md`
+5. Профильный файл `LAYER-1/` или `LAYER-2/` по теме
+6. `CLAUDE.md` и общие правила Cursor
+
+Если в документе написано `❓ НЕ ОПРЕДЕЛЕНО` — не заполнять вымыслом.
+Написать явно: «❓ НЕ ОПРЕДЕЛЕНО — требуется уточнение».
+
+Предпочитать существующие документы репозитория
+над собственными предположениями.
