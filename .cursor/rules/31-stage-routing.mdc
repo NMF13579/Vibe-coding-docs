@@ -1,0 +1,23 @@
+---
+description: Load the correct stage BOOT.md when the owner names a stage or task type
+alwaysApply: false
+---
+
+# Stage Routing
+
+Когда владелец называет этап или тип задачи — **читай соответствующий BOOT.md первым**:
+
+| Ситуация | Файл |
+|---|---|
+| Новый проект, «начнём», «интервью» | `stages/01-interview/BOOT.md` |
+| «дизайн», «UX», «экраны» | `stages/02-ux/BOOT.md` |
+| «разработка», «код», «фича» | `stages/03-dev/BOOT.md` |
+| «деплой», «запуск», «прод» | `stages/04-deploy/BOOT.md` |
+
+После чтения BOOT.md — **smoke-test в первом ответе**:
+1. Среда: Cursor
+2. Номер и имя этапа
+3. Что нельзя делать (чужие секции, LOCKED, скоуп)
+4. Куда пишешь результат в `project/PROJECT.md`
+
+Если BOOT.md не найден — сообщи явно.
