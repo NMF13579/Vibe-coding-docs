@@ -26,7 +26,8 @@
 
   function getTheme() {
     var s = parseState();
-    return s.theme === "dark" ? "dark" : "light";
+    if (s.theme === "dark" || s.theme === "light") return s.theme;
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
 
   function setTheme(theme) {
@@ -47,12 +48,23 @@
   }
 
   function normalizeHash(hash) {
-    if (!hash || hash === "#") return "#home";
+    if (!hash || hash === "#" || hash === "") return "#home";
     return hash.split("?")[0];
   }
 
   function getRoute() {
-    return normalizeHash(window.location.hash || "#home");
+    return normalizeHash(window.location.hash);
+  }
+
+  /* Retry lucide.createIcons up to 10 times with 100ms interval */
+  function tryCreateIcons(attempts) {
+    if (typeof lucide !== "undefined" && lucide.createIcons) {
+      lucide.createIcons();
+      return;
+    }
+    if (attempts > 0) {
+      setTimeout(function () { tryCreateIcons(attempts - 1); }, 100);
+    }
   }
 
   function showView(route) {
@@ -64,19 +76,14 @@
     }
     var id = route === "#home" ? "view-home" : "view-" + route.slice(1);
     var el = document.getElementById(id);
+    if (!el) {
+      el = document.getElementById("view-home");
+    }
     if (el) {
       el.hidden = false;
       el.classList.add("is-active");
-    } else {
-      var home = document.getElementById("view-home");
-      if (home) {
-        home.hidden = false;
-        home.classList.add("is-active");
-      }
     }
-    if (typeof lucide !== "undefined" && lucide.createIcons) {
-      lucide.createIcons();
-    }
+    tryCreateIcons(10);
   }
 
   function onHashChange() {
@@ -88,10 +95,12 @@
     var cards = document.querySelectorAll("[data-role-hash]");
     var j;
     for (j = 0; j < cards.length; j++) {
-      cards[j].addEventListener("click", function () {
-        var h = this.getAttribute("data-role-hash");
-        if (h) window.location.hash = h;
-      });
+      (function (card) {
+        card.addEventListener("click", function () {
+          var h = card.getAttribute("data-role-hash");
+          if (h) window.location.hash = h;
+        });
+      })(cards[j]);
     }
   }
 
@@ -155,8 +164,7 @@
       })(tabs[n]);
     }
 
-    var first = tabs[0];
-    if (first) activateTab(first);
+    if (tabs[0]) activateTab(tabs[0]);
   }
 
   function bindCopyButtons() {
@@ -174,9 +182,7 @@
         ta.style.left = "-9999px";
         document.body.appendChild(ta);
         ta.select();
-        try {
-          document.execCommand("copy");
-        } catch (err) {}
+        try { document.execCommand("copy"); } catch (err) {}
         document.body.removeChild(ta);
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -186,9 +192,7 @@
       }
       var orig = btn.getAttribute("aria-label") || "Copy";
       btn.setAttribute("aria-label", "Copied");
-      setTimeout(function () {
-        btn.setAttribute("aria-label", orig);
-      }, 2000);
+      setTimeout(function () { btn.setAttribute("aria-label", orig); }, 2000);
     });
   }
 
@@ -201,13 +205,8 @@
     });
   }
 
-  function initIcons() {
-    if (typeof lucide !== "undefined" && lucide.createIcons) {
-      lucide.createIcons();
-    }
-  }
-
   function init() {
+    /* Apply theme immediately to avoid flash */
     var theme = getTheme();
     document.documentElement.setAttribute("data-theme", theme);
     updateThemeToggle(theme);
@@ -219,9 +218,12 @@
     bindCopyButtons();
 
     window.addEventListener("hashchange", onHashChange);
-    onHashChange();
 
-    initIcons();
+    /* Show correct view on first load — defer one tick so browser
+       finishes painting, avoiding the blank-page race condition */
+    setTimeout(onHashChange, 0);
+
+    tryCreateIcons(10);
   }
 
   if (document.readyState === "loading") {
