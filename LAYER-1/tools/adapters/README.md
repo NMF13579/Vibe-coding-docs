@@ -15,5 +15,6 @@
 | GitHub Copilot | [COPILOT-INTERVIEW-CONTROL.md](COPILOT-INTERVIEW-CONTROL.md) |
 | Claude (Code / чат с репо) | [CLAUDE-INTERVIEW-CONTROL.md](CLAUDE-INTERVIEW-CONTROL.md) |
 | Gemini | [GEMINI-INTERVIEW-CONTROL.md](GEMINI-INTERVIEW-CONTROL.md) |
+| OpenCode | [OPENCODE-INTERVIEW-CONTROL.md](OPENCODE-INTERVIEW-CONTROL.md) |
 
 Общий вход: [`llms.txt`](../../../llms.txt) → [`LAYER-2/discovery/project-interview.md`](../../../LAYER-2/discovery/project-interview.md) → [`LAYER-1/interview-system.md`](../../../LAYER-1/interview-system.md).
