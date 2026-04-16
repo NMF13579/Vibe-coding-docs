@@ -3,18 +3,29 @@
 
 > ⚠️ ОБСЛУЖИВАНИЕ: при добавлении файла в LAYER-1/, LAYER-2/ или stages/ — добавить маршрут в этот файл.
 > Последнее обновление: 2026-04-16
-> Файлов в LAYER-1/: 28 | Маршрутов в LAYER-2/: 9
+> Файлов в LAYER-1/ (markdown): 52 | Ссылок на LAYER-2/ в списке маршрутов ниже: 13
 
 > Шаблон документации для AI-агентов.
-> Читай только этот файл первым. Затем следуй маршруту под свою ситуацию.
+> Старт сессии: сначала `START.md`, затем этот файл.
 
-## Всегда читать вторым
+## Всегда читать после START.md
 
-- [HANDOFF.md](./HANDOFF.md) — где остановились, следующий шаг
+- [HANDOFF.md](./HANDOFF.md) — состояние шаблона и следующий шаг
+- [LAYER-3/project-status.md](./LAYER-3/project-status.md) — статус пакета шаблона
+
+## Главная модель шаблона
+
+- Основной поток: `shared/` + `stages/` + `project/PROJECT.md`
+- Полная библиотека правил: `LAYER-1/`, `LAYER-2/`, `LAYER-3/`
+- При конфликте приоритетов: [shared/priority-order.md](./shared/priority-order.md)
+
+## Дополнительные маршруты и совместимость
+
+- Аудит ветки dev, сводка исправлений → [AUDIT-REPORT-DEV.md](./AUDIT-REPORT-DEV.md)
 
 ## Claude Code — единое ТЗ и этапы (узкий контекст)
 
-- [README-NEW-ARCHITECTURE.md](./README-NEW-ARCHITECTURE.md) — как устроен поток Claude Code
+- [CLAUDE-CODE-FLOW.md](./CLAUDE-CODE-FLOW.md) — как устроен поток Claude Code
 - [project/PROJECT.md](./project/PROJECT.md) — живое ТЗ продукта (Discovery, UX, Specs, Deploy, Decisions)
 - Этап интервью → [stages/01-interview/BOOT.md](./stages/01-interview/BOOT.md)
 - Этап UX → [stages/02-ux/BOOT.md](./stages/02-ux/BOOT.md)
@@ -68,8 +79,8 @@
 **Не останавливайся и не предполагай — сначала ищи:**
 
 ```bash
-grep -r "[тема запроса]" ./LAYER-1/ --include="*.md" -l
-grep -r "[тема запроса]" ./LAYER-2/ --include="*.md" -l
+rg -l "[тема запроса]" LAYER-1 --glob "*.md"
+rg -l "[тема запроса]" LAYER-2 --glob "*.md"
 ```
 
 → Прочитать первый релевантный результат.  
@@ -80,6 +91,6 @@ grep -r "[тема запроса]" ./LAYER-2/ --include="*.md" -l
 - Один вопрос за раз
 - Не писать код без подтверждённого плана
 - При неясности — спросить, не предполагать
-- Приоритет: HANDOFF.md > LAYER-1/agent-contract.md > остальное
+- Приоритет источников: [shared/priority-order.md](./shared/priority-order.md)
 
 ---

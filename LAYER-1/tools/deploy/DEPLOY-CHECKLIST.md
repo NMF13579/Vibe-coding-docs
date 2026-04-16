@@ -6,7 +6,7 @@
 
 # DEPLOY-CHECKLIST — перед выкладкой
 
-> Универсальный шаблон репозитория: [`LAYER-1/deploy-guide.md`](../DEPLOY-CHECKLIST.md).  
-> Общая логика релиза: [`LAYER-1/deploy-guide.md`](../DEPLOY.md). Онбординг Timeweb: [`DEPLOY-TIMEWEB.md`](./DEPLOY-TIMEWEB.md).
+> Полное руководство по деплою: [`LAYER-1/deploy-guide.md`](../../deploy-guide.md).  
+> Онбординг Timeweb: [`DEPLOY-TIMEWEB.md`](./DEPLOY-TIMEWEB.md).
 
 Чеклист перед публикацией: настройки окружения, сборка, базовые проверки путей пользователя, что с откатом если что-то пойдёт не так. Цель — не удивлять себя и пользователей в день запуска.

@@ -8,7 +8,7 @@
 > Status: not-started
 > Filled by: agent + user
 > Needs approval: yes
-> Next: `discovery/HYPOTHESIS-RESEARCH.md`
+> Next: [`hypothesis.md`](./hypothesis.md)
 
 > Это «северная звезда» проекта. Не редактируется агентом без явного запроса.
 > Заполняется на основе интервью и уточняется пользователем.

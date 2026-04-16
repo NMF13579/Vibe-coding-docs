@@ -113,9 +113,9 @@
 > Status: not-started
 > Filled by: agent + user
 > Needs approval: yes
-> Next: `ux/SCREEN-MAP.md`
+> Next: [`SCREEN-MAP.md`](./SCREEN-MAP.md)
 
-Описывает ключевые сценарии: кто, зачем и как использует продукт. Строится на основе `LAYER-1/workflow.md` и `LAYER-2/discovery/USER-PROFILE.md`. Это основа для проектирования экранов.
+Описывает ключевые сценарии: кто, зачем и как использует продукт. Строится на основе `LAYER-1/workflow.md` и [`LAYER-2/discovery/user-profile.md`](../discovery/user-profile.md). Это основа для проектирования экранов.
 
 ---
 
@@ -142,6 +142,6 @@
 ## Сценарии продукта
 
 <!-- Добавляйте сценарии копированием блока выше. -->
-<!-- Начинайте с ключевых сценариев из LAYER-2/discovery/MVP-SCOPE.md -->
+<!-- Начинайте с ключевых сценариев из LAYER-2/discovery/mvp-scope.md -->
 
 _не заполнено_

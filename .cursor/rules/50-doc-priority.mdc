@@ -1,5 +1,5 @@
 ---
-description: Docs over assumptions — always prefer repository documents over internal knowledge
+description: Docs over assumptions — canonical instruction priority + prefer repository sources
 alwaysApply: true
 ---
 
@@ -7,17 +7,24 @@ alwaysApply: true
 
 Repository documents are the single source of truth. Internal model knowledge is a fallback only.
 
-## Priority order
+## Conflict resolution (canonical)
 
-1. `LAYER-3/` — project-specific context (status, decisions, features, fixes)
-2. `LAYER-2/specs/` — architecture, stack, roadmap, planning
-3. `LAYER-1/` — framework rules and protocols
-4. `CLAUDE.md` + `llms.txt` — framework entry points
-5. Model internal knowledge — last resort only
+Full hierarchy: [`shared/priority-order.md`](../../shared/priority-order.md).
+
+When instructions conflict, follow this order (1 = highest):
+
+1. Active task file in `tasks/TASK-XXX.md`, if there is an open task
+2. `project/PROJECT.md` + `HANDOFF.md` + `LAYER-3/project-status.md`
+3. Active `stages/*/BOOT.md` (`priority` in frontmatter)
+4. `shared/scope-guard.md` → `shared/agent-contract.md` → stage-local doc → `shared/workflow.md`
+5. Topic-specific file in `LAYER-1/` or `LAYER-2/`
+6. `CLAUDE.md` and `LAYER-1/system-prompt.md`
+
+If two sources at the same level disagree, stop and ask the owner which wins. Do not pick silently.
 
 ## Before answering any question about the project
 
-- Check if the answer exists in the docs above
+- Resolve conflicts using the canonical order above, then look for the answer in the repo.
 - Cite the file: "По `LAYER-3/project-status.md`:..."
 - If docs conflict with each other → flag it, do not silently pick one
 - If docs are missing info → say what is missing and where it should be added
@@ -25,7 +32,8 @@ Repository documents are the single source of truth. Internal model knowledge is
 ## Self-verification before every code response
 
 Run this checklist mentally before writing code:
-- [ ] Did I read the relevant BOOT.md for this stage?
+
+- [ ] Did I read the relevant `BOOT.md` for this stage?
 - [ ] Did I check `LAYER-2/specs/architecture.md` for stack decisions?
 - [ ] Did I check `LAYER-3/deferred-decisions.md` for relevant postponed choices?
 - [ ] Is my plan consistent with `HANDOFF.md` current task?

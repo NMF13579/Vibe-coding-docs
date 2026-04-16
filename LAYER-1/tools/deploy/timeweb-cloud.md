@@ -13,9 +13,9 @@
 
 | Этап | Документ |
 |------|----------|
-| Первый раз: GitHub + App Platform + env | [`LAYER-1/tools/deploy/DEPLOY-TIMEWEB.md`](../deploy/DEPLOY-TIMEWEB.md) |
-| Быстрый онбординг (токены → MCP → деплой) | [`LAYER-1/tools/deploy/SETUP-ALL.md`](../deploy/SETUP-ALL.md) |
-| MCP и автоматизация в IDE | [`LAYER-1/tools/deploy/DEPLOY-MCP-UNIVERSAL.md`](../deploy/DEPLOY-MCP-UNIVERSAL.md) |
-| Общая логика сред и production | [`LAYER-1/deploy-guide.md`](../DEPLOY.md) |
+| Первый раз: GitHub + App Platform + env | [`DEPLOY-TIMEWEB.md`](./DEPLOY-TIMEWEB.md) |
+| Быстрый онбординг (токены → MCP → деплой) | [`SETUP-ALL.md`](./SETUP-ALL.md) |
+| MCP и автоматизация в IDE | [`DEPLOY-MCP-UNIVERSAL.md`](./DEPLOY-MCP-UNIVERSAL.md) |
+| Общая логика сред и production | [`LAYER-1/deploy-guide.md`](../../deploy-guide.md) |
 
-Дополнительно: переменные окружения в концепции проекта — [`LAYER-1/deploy-guide.md`](../ENV.md).
+Дополнительно: переменные окружения — [`ENV-SETUP.md`](./ENV-SETUP.md) и [`LAYER-1/deploy-guide.md`](../../deploy-guide.md).

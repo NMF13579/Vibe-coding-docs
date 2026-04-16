@@ -71,16 +71,28 @@
 
 ## Где мы остановились
 
-Этап 5 закрыт: выполнена финальная валидация, синхронизация документации и подготовка релизного комплекта `v1.1.0`.
+Этап 5 закрыт для **исходного шаблона**: выполнена финальная валидация каркаса, синхронизация маршрутов и подготовка релизного комплекта `v1.1.0`.
+Пустые product-record файлы (`LAYER-2/*`, `LAYER-3/*`, `project/PROJECT.md`) в исходнике считаются нормой до копирования в конкретный проект.
+
+2026-04-16 — Исправлены внутренние ссылки по репозиторию (автопроверка markdown: **0** битых целей). Добавлен корневой [`GEMINI.md`](./GEMINI.md). Выровнены относительные пути в адаптерах интервью, деплой-файлах в `LAYER-1/tools/deploy/`, [`LAYER-1/interview-system.md`](./LAYER-1/interview-system.md), [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md), примерах в `tasks/`.
+
+2026-04-16 — Проверка на остаточные **конфликты инструкций**: уточнён блок «что читать» в [`START.md`](./START.md); выровнен порядок чтения в [`.cursor/rules/00-core.mdc`](./.cursor/rules/00-core.mdc) и точка входа в [`.cursor/rules/10-communication.mdc`](./.cursor/rules/10-communication.mdc) с `START.md` + `llms.txt`; приоритет в [`LAYER-1/agent-contract.md`](./LAYER-1/agent-contract.md) явно отсылает к [`shared/priority-order.md`](./shared/priority-order.md).
+
+2026-04-16 — **Минимальная стабилизация шаблона:** закреплён [`AUDIT-REPORT-DEV.md`](./AUDIT-REPORT-DEV.md); выровнен [`.cursor/rules/32-document-priority.mdc`](./.cursor/rules/32-document-priority.mdc) с [`shared/priority-order.md`](./shared/priority-order.md); поля `Next` и отсылки в ключевых файлах `LAYER-2/` приведены к реальным путям; в [`llms.txt`](./llms.txt) добавлен маршрут на отчёт dev.
+
+2026-04-16 — **Уборка остаточного шума:** [`.cursor/rules/50-doc-priority.mdc`](./.cursor/rules/50-doc-priority.mdc) приведён к канону [`shared/priority-order.md`](./shared/priority-order.md); устаревшие имена файлов вычищены в [`LAYER-1/system-prompt.md`](./LAYER-1/system-prompt.md), [`LAYER-1/interview-system.md`](./LAYER-1/interview-system.md), [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md), точечно в [`LAYER-1/workflow.md`](./LAYER-1/workflow.md), [`LAYER-1/agent-contract.md`](./LAYER-1/agent-contract.md), [`LAYER-1/dialog-style.md`](./LAYER-1/dialog-style.md); сжаты пересечения в [`LAYER-1/audit-checklist.md`](./LAYER-1/audit-checklist.md); обновлена шапка и пример поиска в [`llms.txt`](./llms.txt).
+
+2026-04-16 — **Финальная выверка маршрутов:** обновлены [`tasks/TASK-001-CONFIRMATION-INTERVIEW.md`](./tasks/TASK-001-CONFIRMATION-INTERVIEW.md) (терминология `interview-summary.md`); [`LAYER-1/levels-guide.md`](./LAYER-1/levels-guide.md) приведён к реальным путям шаблона (`discovery/`, `ux/`, `specs/decisions.md`); в [`LAYER-2/discovery/mvp-scope.md`](./LAYER-2/discovery/mvp-scope.md) и [`LAYER-2/qa/post-launch-review.md`](./LAYER-2/qa/post-launch-review.md) выровнены текстовые отсылки на `vision.md` / `mvp-scope.md`.
 
 ## Следующий лучший шаг
 
-- Провести полевую проверку на реальной группе пользователей (врачи/координаторы), собрать обратную связь по онбордингу за 15 минут.
-- По итогам обратной связи запланировать `v1.1.1` как пакет точечных улучшений формулировок и сценариев поддержки.
+- Выполнить по согласованию владельца шаги из [`tasks/TASK-001-CONFIRMATION-INTERVIEW.md`](./tasks/TASK-001-CONFIRMATION-INTERVIEW.md) (stop-point и Confirmation в `project-interview.md`), если это ещё не сделано в копии проекта.
+- При следующем крупном изменении структуры — повторить скан внутренних ссылок и обновить счётчики в шапке [`llms.txt`](./llms.txt).
+- По желанию: пройтись `rg` по репо на остаточные имена в ВЕРХНЕМ регистре в тексте (кроме истории в `CHANGELOG` / `project/archive/`).
 
 ## Риски и вопросы
 
-- В `audit-checklist.md` в Направлении 3 и 6 частично дублируются формулировки про `HANDOFF.md` / `llms.txt` — это по тексту патча; при желании можно сжать в одну строку позже.
+- В [`LAYER-1/workflow.md`](./LAYER-1/workflow.md) по-прежнему описаны опциональные артефакты (`data-models` и др.) как шаги углублённого контура — это сценарий «создать по мере надобности», не обязательный набор файлов в исходном шаблоне.
 
 ## Применимые уроки
 

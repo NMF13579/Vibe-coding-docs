@@ -13,7 +13,7 @@
 ## Читать перед интервью
 
 1. [`llms.txt`](../../../llms.txt)
-2. [`CLAUDE.md`](../../CLAUDE.md) — общий контракт сессии.
+2. [`CLAUDE.md`](../../../CLAUDE.md) — общий контракт сессии.
 3. [`LAYER-2/discovery/project-interview.md`](../../../LAYER-2/discovery/project-interview.md)
 4. [`LAYER-1/interview-system.md`](../../../LAYER-1/interview-system.md)
 5. [`LAYER-1/interview-system.md`](../../../LAYER-1/interview-system.md)
@@ -24,7 +24,7 @@
 1. Вопрос владельцу (один шаг по маршруту).
 2. Блок **СТРАЖ**: таблица 7 пунктов из `LAYER-1/interview-system.md` с отметками и доказательствами.
 3. Вердикт: `СТРАЖ: ✅` / `⚠️` / `❌`.
-4. При **❌** — **stop-block**: только исправленный вопрос и снова чеклист; без следующего пункта `PROJECT-INTERVIEW.md`.
+4. При **❌** — **stop-block**: только исправленный вопрос и снова чеклист; без следующего пункта `project-interview.md`.
 
 ## Stop-block
 
@@ -32,4 +32,4 @@
 
 ## Журнал
 
-[`LAYER-3/interview-session.md`](../../LAYER-3/interview-session.md); `control-mode: claude-self-check`.
+[`LAYER-3/interview-session.md`](../../../LAYER-3/interview-session.md); `control-mode: claude-self-check`.

@@ -25,11 +25,11 @@
 Каждое твоё сообщение в ходе интервью строится **строго в таком порядке**:
 
 1. **Вопрос владельцу** (или «резюме + Правильно понимаю?» — один смысловой шаг по `LAYER-2/discovery/project-interview.md`).
-2. **Блок СТРАЖ** — таблица из 7 строк по [`LAYER-1/interview-system.md`](LAYER-1/interview-system.md) (self-check, если нет отдельного агента).
+2. **Блок СТРАЖ** — таблица из 7 строк по [`LAYER-1/interview-system.md`](./interview-system.md) (self-check, если нет отдельного агента).
 3. **Вердикт одной строкой:** `СТРАЖ: ✅` / `СТРАЖ: ⚠️` / `СТРАЖ: ❌` + при необходимости краткое пояснение.
 4. **Следующий шаг** — только если вердикт **не ❌**. При **❌** следующего вопроса по маршруту **нет**: только исправление и повторная проверка (stop-block).
 
-В IDE без subagent следуй адаптеру: [`LAYER-1/tools/adapters/CURSOR-INTERVIEW-CONTROL.md`](LAYER-1/tools/adapters/CURSOR-INTERVIEW-CONTROL.md) и аналоги для других сред.
+В IDE без subagent следуй адаптеру: [`LAYER-1/tools/adapters/CURSOR-INTERVIEW-CONTROL.md`](./tools/adapters/CURSOR-INTERVIEW-CONTROL.md) и аналоги для других сред.
 
 ---
 
@@ -148,7 +148,7 @@
 
 **Как вызывается страж:**
 - **OpenCode:** отдельный агент `guardian` в `opencode.json` (если среда поддерживает) или явный вызов `@guardian`.
-- **Cursor, Copilot, Claude, Gemini и др.:** тот же чеклист выполняется как **self-check** в том же ответе агента (см. [`LAYER-1/tools/adapters/`](LAYER-1/tools/adapters/) — файлы `*-INTERVIEW-CONTROL.md`).
+- **Cursor, Copilot, Claude, Gemini и др.:** тот же чеклист выполняется как **self-check** в том же ответе агента (см. [`LAYER-1/tools/adapters/README.md`](./tools/adapters/README.md) — файлы `*-INTERVIEW-CONTROL.md`).
 
 ---
 
@@ -264,7 +264,7 @@
   Читает `.github/copilot-instructions.md` и path-specific инструкции из `.github/instructions/*`.
 
 - **Gemini и похожие системы**  
-  Для них есть адаптер `GEMINI.md`.
+  Для них есть адаптер [`GEMINI-INTERVIEW-CONTROL.md`](./tools/adapters/GEMINI-INTERVIEW-CONTROL.md) и ориентир [`GEMINI.md`](../GEMINI.md) в корне репозитория.
 
 Во всех случаях основной источник истины — документы в `LAYER-1/`, `LAYER-2/` и состояние в `LAYER-3/`.
 > Этот файл агент читает ПЕРВЫМ при старте нового проекта.
@@ -274,14 +274,14 @@
 
 ### Кросс-IDE контроль интервью
 
-При ведении интервью по [`LAYER-2/discovery/project-interview.md`](LAYER-2/discovery/project-interview.md) после **каждого** шага обязательна проверка по [`LAYER-1/interview-system.md`](LAYER-1/interview-system.md):
+При ведении интервью по [`LAYER-2/discovery/project-interview.md`](../LAYER-2/discovery/project-interview.md) после **каждого** шага обязательна проверка по [`LAYER-1/interview-system.md`](./interview-system.md):
 
-- **OpenCode:** отдельный агент guardian в `opencode.json` или вызов `@guardian` — см. [`LAYER-1/navigation.md`](LAYER-1/navigation.md).
-- **Cursor, GitHub Copilot, Claude, Gemini:** обязательный **self-check** в ответе агента по инструкциям в [`LAYER-1/tools/adapters/`](LAYER-1/tools/adapters/) (`CURSOR-`, `COPILOT-`, `CLAUDE-`, `GEMINI-INTERVIEW-CONTROL.md`).
+- **OpenCode:** отдельный агент guardian в `opencode.json` или вызов `@guardian` — см. карту [`LAYER-1/tools/template-sync-index.md`](./tools/template-sync-index.md) и [`llms.txt`](../llms.txt).
+- **Cursor, GitHub Copilot, Claude, Gemini:** обязательный **self-check** в ответе агента по инструкциям в [`LAYER-1/tools/adapters/README.md`](./tools/adapters/README.md) (`CURSOR-`, `COPILOT-`, `CLAUDE-`, `GEMINI-INTERVIEW-CONTROL.md`).
 
 Правило **stop-block:** при **❌** нельзя переходить к следующему вопросу маршрута, пока шаг не исправлен и проверка не пройдена.
 
-Журнал шагов: [`LAYER-3/interview-session.md`](LAYER-3/interview-session.md).
+Журнал шагов: [`LAYER-3/interview-session.md`](../LAYER-3/interview-session.md).
 
 ---
 
@@ -312,7 +312,7 @@
 | Валидация результата   | `LAYER-2/specs/validation.md` |
 | Ошибка в процессе      | `LAYER-1/error-handling.md` |
 | Долгая память проекта  | `LAYER-3/PROJECT-MEMORY.md` *(создаётся агентом при инициализации)* |
-| Перед деплоем          | `LAYER-1/task-protocol.md` (общий шаблон); чеклист конкретного продукта — `LAYER-1/tools/deploy/DEPLOY-CHECKLIST.md` (см. `LAYER-1/navigation.md`) |
+| Перед деплоем          | `LAYER-1/task-protocol.md` (общий шаблон); чеклист конкретного продукта — `LAYER-1/tools/deploy/DEPLOY-CHECKLIST.md` (см. `LAYER-1/tools/template-sync-index.md` / [`llms.txt`](../llms.txt)) |
 | Полный MVP-пайплайн (профиль → деплой) | `LAYER-1/agent-contract.md` и дерево `LAYER-2/discovery` (в т.ч. `processes.md`, `roles.md`), `LAYER-2/ux`, `LAYER-2/specs`, `LAYER-2/qa`, `LAYER-1/tools/deploy` |
 
 ---
@@ -423,22 +423,22 @@ MEDICAL:
 
 | Этап | Цель | Выходные файлы |
 |------|------|----------------|
-| 0. Профиль | Подстроить интервью | `LAYER-2/discovery/USER-PROFILE.md` |
-| 1. Быстрый старт | Идея и цель MVP | `LAYER-2/discovery/VISION.md`, черновик `LAYER-2/discovery/MVP-SCOPE.md` |
-| 2. Гипотеза и research | Проверить нужность идеи | `LAYER-2/discovery/HYPOTHESIS-RESEARCH.md` |
-| 3. Интервью | Контекст и ограничения | `LAYER-2/discovery/INTERVIEW-SUMMARY.md` |
+| 0. Профиль | Подстроить интервью | `LAYER-2/discovery/user-profile.md` |
+| 1. Быстрый старт | Идея и цель MVP | `LAYER-2/discovery/vision.md`, черновик `LAYER-2/discovery/mvp-scope.md` |
+| 2. Гипотеза и research | Проверить нужность идеи | `LAYER-2/discovery/hypothesis.md` |
+| 3. Интервью | Контекст и ограничения | `LAYER-2/discovery/interview-summary.md` |
 | 4. Процессы | Предметная область | `LAYER-2/discovery/processes.md`, `LAYER-2/discovery/roles.md` |
 | 5. UX из процессов | Потоки и экраны | `LAYER-2/ux/UX-DESIGN-GUIDE.md`, `LAYER-2/ux/UX-FLOWS-DESKTOP.md`, `LAYER-2/ux/UX-FLOWS-MOBILE.md`, `LAYER-2/ux/SCREEN-MAP.md` |
 | 6. Проверка UX | Сверка с процессами | `LAYER-2/ux/UI-CHECKLIST.md`, `LAYER-2/ux/UX-GAP-REPORT.md` |
-| 7. Спека | Задача на разработку | `LAYER-2/specs/SPEC.md`, `LAYER-2/specs/ARCHITECTURE.md`, `LAYER-2/discovery/MVP-SCOPE.md` |
+| 7. Спека | Задача на разработку | `LAYER-2/specs/spec.md`, `LAYER-2/specs/architecture.md`, `LAYER-2/discovery/mvp-scope.md` |
 | 8. Тесты | Проверка по процессам | `LAYER-2/qa/TEST-SCENARIOS.md`, `LAYER-2/qa/RELEASE-BLOCKERS.md` |
 | 9. Деплой | Готовность к релизу | `LAYER-1/tools/deploy/DEPLOY-CHECKLIST.md`, `LAYER-1/tools/deploy/RELEASE-NOTES.md`, `LAYER-1/tools/deploy/RUNBOOK.md` |
-| 10. Post-launch | Оценка после запуска | контекст scope в `LAYER-2/discovery/MVP-SCOPE.md`; итог — `LAYER-2/qa/post-launch-review.md` |
+| 10. Post-launch | Оценка после запуска | контекст scope в `LAYER-2/discovery/mvp-scope.md`; итог — `LAYER-2/qa/post-launch-review.md` |
 
 ### Три режима старта
 
-1. **Быстрый старт** — есть идея, мало времени на полный discovery: что за идея, для кого, боль, платформа; выход: `LAYER-2/discovery/USER-PROFILE.md`, `LAYER-2/discovery/VISION.md`, черновик `LAYER-2/discovery/MVP-SCOPE.md`.
-2. **Идея + проверка гипотезы** — сначала быстрый старт, затем веб-исследование; выход: `LAYER-2/discovery/VISION.md`, `LAYER-2/discovery/HYPOTHESIS-RESEARCH.md`, решение: делать / не делать / сузить scope.
+1. **Быстрый старт** — есть идея, мало времени на полный discovery: что за идея, для кого, боль, платформа; выход: `LAYER-2/discovery/user-profile.md`, `LAYER-2/discovery/vision.md`, черновик `LAYER-2/discovery/mvp-scope.md`.
+2. **Идея + проверка гипотезы** — сначала быстрый старт, затем веб-исследование; выход: `LAYER-2/discovery/vision.md`, `LAYER-2/discovery/hypothesis.md`, решение: делать / не делать / сузить scope.
 3. **Полный пакет** — весь pipeline по этапам; каждый следующий модуль — только после подтверждения владельца.
 
 Код продукта при необходимости ведётся в `src/`; остальная методология шаблона (`LAYER-1/`, `LAYER-2/`, `LAYER-3/`) остаётся параллельным слоем.

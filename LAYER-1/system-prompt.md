@@ -142,12 +142,12 @@
 
 - **MVP-пайплайн (профиль → discovery → процессы → UX → спека → QA → деплой)**  
   → `LAYER-1/agent-contract.md`, затем по этапам:
-  - `LAYER-2/discovery/USER-PROFILE.md`
-  - `LAYER-2/discovery/VISION.md`, `HYPOTHESIS-RESEARCH.md`, `INTERVIEW-SUMMARY.md`, `MVP-SCOPE.md`
+  - `LAYER-2/discovery/user-profile.md`
+  - `LAYER-2/discovery/vision.md`, `hypothesis.md`, `interview-summary.md`, `mvp-scope.md`
   - `LAYER-1/workflow.md`, `LAYER-2/discovery/roles.md`
-  - `LAYER-2/ux/UX-DESIGN-GUIDE.md`, `UX-FLOWS-DESKTOP.md`, `UX-FLOWS-MOBILE.md`, `SCREEN-MAP.md`, `UI-CHECKLIST.md`, `UX-GAP-REPORT.md`
-  - `LAYER-2/specs/SPEC.md`, `ARCHITECTURE.md`, `DECISIONS.md`
-  - `LAYER-2/qa/TEST-SCENARIOS.md`, `RELEASE-BLOCKERS.md`
+  - `LAYER-2/ux/UX-DESIGN-GUIDE.md`, `LAYER-2/ux/UX-FLOWS-DESKTOP.md`, `LAYER-2/ux/UX-FLOWS-MOBILE.md`, `LAYER-2/ux/SCREEN-MAP.md`, `LAYER-2/ux/UI-CHECKLIST.md`, `LAYER-2/ux/UX-GAP-REPORT.md`
+  - `LAYER-2/specs/spec.md`, `LAYER-2/specs/architecture.md`, `LAYER-2/specs/decisions.md`
+  - `LAYER-2/qa/test-scenarios.md`, `release-blockers.md`
   - `LAYER-1/tools/deploy/DEPLOY-CHECKLIST.md`, `RELEASE-NOTES.md`, `RUNBOOK.md`
 
 Этот файл не дублирует содержимое остальной документации — он задаёт общий способ работы для AI-системы и направляет к нужным документам только тогда, когда они реально доступны в контексте.

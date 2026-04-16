@@ -18,7 +18,7 @@
 **Создаётся минимальный набор документов:**
 - `CLAUDE.md` (минимальный)
 - `HANDOFF.md`
-- `tasks/TASK-001.md`
+- при необходимости задача в `tasks/` (в шаблоне есть пример [`TASK-001-CONFIRMATION-INTERVIEW.md`](../tasks/TASK-001-CONFIRMATION-INTERVIEW.md))
 
 > 💡 Когда проект вырастет — пиши агенту: `Переходим на уровень выше`
 
@@ -40,7 +40,7 @@
 - `project/PROJECT.md` (видение, архитектура)
 - `LAYER-2/specs/roadmap.md`
 - `LAYER-3/project-status.md`, `LAYER-3/languages.md`
-- `tasks/TASK-001.md`
+- задачи в `tasks/` по мере работы
 
 > 💡 Когда проект вырастет — пиши агенту: `Переходим на уровень выше`
 
@@ -56,12 +56,12 @@
 **Этапы:**
 1. Контекст платформы (устно)
 2. Исследование концепции (без документов)
-3. Видение продукта → `LAYER-2/specs/product-vision.md`
-4. Границы MVP → `LAYER-2/specs/mvp-scope.md`
-5. Пользовательские сценарии → `LAYER-2/specs/user-flows.md`
-6. Модели данных → `LAYER-2/specs/data-models.md`
-7. Принципы решений → `LAYER-2/specs/decision-principles.md`
-8. Контекст проекта → первая задача → код
+3. Видение продукта → `LAYER-2/discovery/vision.md` (в шаблоне уже есть заготовка)
+4. Границы MVP → `LAYER-2/discovery/mvp-scope.md`
+5. Пользовательские сценарии → `LAYER-2/ux/USER-FLOWS.md`
+6. Модели данных → по необходимости отдельный `LAYER-2/specs/data-models.md` **или** раздел в `LAYER-2/specs/architecture.md` (отдельного файла в каркасе может не быть)
+7. Принципы решений → `LAYER-2/specs/decisions.md`
+8. Контекст проекта (например `LAYER-3/PROJECT-MEMORY.md` / `project-context-draft.md`) → первая задача → код
 
 ---
 
@@ -76,8 +76,8 @@
 | Переход | Что добавляется |
 |---|---|
 | 0 → 1 | `project/PROJECT.md`, `LAYER-2/specs/roadmap.md`, `LAYER-3/` |
-| 1 → 2 | `LAYER-2/specs/product-vision.md`, `user-flows.md`, `data-models.md`, `decision-principles.md` |
-| 0 → 2 | Всё документы уровней 1 и 2 по очереди |
+| 1 → 2 | `LAYER-2/discovery/vision.md`, `LAYER-2/discovery/mvp-scope.md`, `LAYER-2/ux/USER-FLOWS.md`, `LAYER-2/specs/decisions.md` (+ при необходимости модели данных в `specs/` или в `architecture.md`) |
+| 0 → 2 | Все документы уровней 1 и 2 по очереди |
 
 ---
 

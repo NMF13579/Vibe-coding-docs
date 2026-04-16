@@ -18,7 +18,7 @@
 4. [`LAYER-1/interview-system.md`](../../../LAYER-1/interview-system.md)
 5. [`LAYER-1/agent-contract.md`](../../../LAYER-1/agent-contract.md)
 
-Учитывайте [`.github/copilot-instructions.md`](../../.github/copilot-instructions.md).
+Учитывайте [`.github/copilot-instructions.md`](../../../.github/copilot-instructions.md).
 
 ## Обязательный формат каждого ответа
 
@@ -33,4 +33,4 @@
 
 ## Журнал
 
-[`LAYER-3/interview-session.md`](../../LAYER-3/interview-session.md); указывайте `control-mode: copilot-self-check`.
+[`LAYER-3/interview-session.md`](../../../LAYER-3/interview-session.md); указывайте `control-mode: copilot-self-check`.

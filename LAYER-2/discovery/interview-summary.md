@@ -8,12 +8,12 @@
 > Status: not-started
 > Filled by: agent
 > Needs approval: yes
-> Next: `discovery/USER-PROFILE.md`
+> Next: [`user-profile.md`](./user-profile.md)
 
 > ⚠️ STOP: агент заполняет черновик на основе `LAYER-3/interview-session.md`,
 > показывает его пользователю и **ждёт явного подтверждения** перед тем,
 > как считать этот файл источником истины.
-> После подтверждения: статус → `accepted`, `Approved by` заполняется в `PROJECT-STATUS.md`.
+> После подтверждения: статус → `accepted`, `Approved by` заполняется в [`LAYER-3/project-status.md`](../../LAYER-3/project-status.md).
 
 ---
 

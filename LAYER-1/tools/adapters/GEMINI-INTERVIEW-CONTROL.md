@@ -13,7 +13,7 @@
 ## Читать перед интервью
 
 1. [`llms.txt`](../../../llms.txt)
-2. [`GEMINI.md`](../../GEMINI.md) — если есть в репозитории.
+2. [`GEMINI.md`](../../../GEMINI.md) — ориентир для Gemini в корне репозитория.
 3. [`LAYER-2/discovery/project-interview.md`](../../../LAYER-2/discovery/project-interview.md)
 4. [`LAYER-1/interview-system.md`](../../../LAYER-1/interview-system.md)
 5. [`LAYER-1/interview-system.md`](../../../LAYER-1/interview-system.md)
@@ -28,8 +28,8 @@
 
 ## Stop-block
 
-Без следующего вопроса по `PROJECT-INTERVIEW.md`, пока критический **❌** не устранён повторной проверкой.
+Без следующего вопроса по `project-interview.md`, пока критический **❌** не устранён повторной проверкой.
 
 ## Журнал
 
-[`LAYER-3/interview-session.md`](../../LAYER-3/interview-session.md); `control-mode: gemini-self-check`.
+[`LAYER-3/interview-session.md`](../../../LAYER-3/interview-session.md); `control-mode: gemini-self-check`.

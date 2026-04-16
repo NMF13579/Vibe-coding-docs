@@ -8,7 +8,7 @@
 > Status: not-started
 > Filled by: agent + user
 > Needs approval: yes
-> Next: `specs/ARCHITECTURE.md`
+> Next: [`architecture.md`](./architecture.md)
 
 Сюда переводят договорённости в ясный список: что система должна уметь, какие данные хранить, какие ограничения важны (скорость, доступность, безопасность). Это опора для разработки и проверки «сделано ли то, что обещали».
 

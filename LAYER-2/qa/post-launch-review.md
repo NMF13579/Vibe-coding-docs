@@ -8,7 +8,7 @@
 > Status: not-started
 > Filled by: agent + user
 > Needs approval: yes
-> Next: discovery/HYPOTHESIS-RESEARCH.md (следующий цикл)
+> Next: [`hypothesis.md`](../discovery/hypothesis.md) (следующий цикл)
 
 > Заполняется после появления реального использования.
 > Агент предлагает черновик на основе данных — пользователь подтверждает.
@@ -18,8 +18,8 @@
 
 ## 1. Что проверяли
 
-- Гипотеза из VISION.md: [вписать]
-- Критерий успеха из MVP-SCOPE.md: [вписать]
+- Гипотеза из [`vision.md`](../discovery/vision.md): [вписать]
+- Критерий успеха из [`mvp-scope.md`](../discovery/mvp-scope.md): [вписать]
 
 ## 2. Что произошло по факту
 

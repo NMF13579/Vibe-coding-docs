@@ -6,7 +6,7 @@
 ## С чего начать
 
 1. **[`CLAUDE.md`](../CLAUDE.md)** — роль, автозапуск, **Plan → Confirm → Execute**, приоритет источников, автосохранение шаблона.
-2. **[`README-NEW-ARCHITECTURE.md`](../README-NEW-ARCHITECTURE.md)** — краткая карта системы для человека.
+2. **[`CLAUDE-CODE-FLOW.md`](../CLAUDE-CODE-FLOW.md)** — краткая карта потока по этапам.
 3. **[`project/PROJECT.md`](../project/PROJECT.md)** — единое живое ТЗ продукта (Discovery, UX, Specs, Deploy, Decisions).
 
 ## Этапы (узкий контекст)

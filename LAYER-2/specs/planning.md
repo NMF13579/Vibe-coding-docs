@@ -21,7 +21,7 @@
 
 ## Контекст
 - Этап ROADMAP: [этап X]
-- Связанные файлы: [SPEC.md / SCREEN-MAP.md / UX-FLOWS]
+- Связанные файлы: [`spec.md`](./spec.md) / [`SCREEN-MAP.md`](../ux/SCREEN-MAP.md) / [`USER-FLOWS.md`](../ux/USER-FLOWS.md)
 
 ## Описание
 [2–3 предложения: что это, зачем, кому нужно]
@@ -33,7 +33,7 @@
 - [ ] [условие]
 - [ ] [условие]
 - [ ] HANDOFF.md обновлён
-- [ ] PROJECT-STATUS.md обновлён
+- [ ] [`LAYER-3/project-status.md`](../../LAYER-3/project-status.md) обновлён
 
 ## Детализация
 

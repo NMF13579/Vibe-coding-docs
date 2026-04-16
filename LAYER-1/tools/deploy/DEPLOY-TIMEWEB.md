@@ -7,8 +7,8 @@
 # DEPLOY-TIMEWEB — деплой на Timeweb Cloud (App Platform)
 
 > Пошаговая выкладка через **Timeweb Cloud** при связке с **GitHub** и автосборкой.
-> Универсальные правила релиза (staging → production, откат): [`LAYER-1/deploy-guide.md`](../DEPLOY.md).
-> Приоритет платформы над общим текстом — см. [`LAYER-1/tools/deploy/timeweb-cloud.md`](../platforms/timeweb-cloud.md).
+> Универсальные правила релиза (staging → production, откат): [`LAYER-1/deploy-guide.md`](../../deploy-guide.md).
+> Приоритет платформы над общим текстом — см. [`timeweb-cloud.md`](./timeweb-cloud.md).
 
 Переменные окружения и токены: [ENV-SETUP.md](./ENV-SETUP.md).
 
@@ -57,7 +57,7 @@ git remote -v
 3. Добавьте переменные из вашего `.env` (имена и значения — как в проекте)
 4. Сохраните — приложение перезапустится само
 
-Концепция переменных: [`LAYER-1/deploy-guide.md`](../ENV.md).
+Концепция переменных: [`ENV-SETUP.md`](./ENV-SETUP.md) и [`LAYER-1/deploy-guide.md`](../../deploy-guide.md).
 
 ---
 

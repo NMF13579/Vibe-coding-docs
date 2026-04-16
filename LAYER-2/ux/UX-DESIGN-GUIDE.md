@@ -2,7 +2,7 @@
 > Filled-by: —
 > Approved-by: —
 > Trigger: UX-проектирование, новый экран, ревью интерфейса
-> Next: LAYER-2/ux/UI-CHECKLIST.md
+> Next: [`UI-CHECKLIST.md`](./UI-CHECKLIST.md)
 
 # UX-DESIGN-GUIDE — универсальные правила интерфейса
 

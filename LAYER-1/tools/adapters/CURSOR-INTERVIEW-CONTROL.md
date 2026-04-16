@@ -29,8 +29,8 @@
 
 ## Stop-block
 
-При **❌** по критическим пунктам (1, 2, 3, 6, 7) в [`LAYER-1/interview-system.md`](../../../LAYER-1/interview-system.md): не задавать следующий вопрос из `PROJECT-INTERVIEW.md` до исправления и нового прохода чеклиста.
+При **❌** по критическим пунктам (1, 2, 3, 6, 7) в [`LAYER-1/interview-system.md`](../../../LAYER-1/interview-system.md): не задавать следующий вопрос из `project-interview.md` до исправления и нового прохода чеклиста.
 
 ## Журнал
 
-После каждого ответа владельца (когда ведёте журнал) — запись в [`LAYER-3/interview-session.md`](../../LAYER-3/interview-session.md); в поле вердикта укажите `control-mode: cursor-self-check`.
+После каждого ответа владельца (когда ведёте журнал) — запись в [`LAYER-3/interview-session.md`](../../../LAYER-3/interview-session.md); в поле вердикта укажите `control-mode: cursor-self-check`.

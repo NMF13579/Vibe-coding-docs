@@ -303,32 +303,32 @@ node setup.js
 
 ### 1. Discovery (`LAYER-2/discovery/`)
 
-- `VISION.md` — зачем этот проект.
-- `MVP-SCOPE.md` — что входит в первую версию, что сознательно откладываем.
-- `HYPOTHESIS-RESEARCH.md` — есть ли смысл делать продукт (рынок, конкуренты, незакрытая боль).
-- `INTERVIEW-SUMMARY.md` — итог разговора с заказчиком/пользователем.
-- `USER-PROFILE.md` — кто реальный пользователь.
+- `vision.md` — зачем этот проект.
+- `mvp-scope.md` — что входит в первую версию, что сознательно откладываем.
+- `hypothesis.md` — есть ли смысл делать продукт (рынок, конкуренты, незакрытая боль).
+- `interview-summary.md` — итог разговора с заказчиком/пользователем.
+- `user-profile.md` — кто реальный пользователь.
 
 **Правило:**
 - Исследование может инициировать пользователь или агент.
 - Если фактов не хватает — агент формулирует запросы/бриф для внешнего поиска, а не придумывает рынок.
-- `INTERVIEW-SUMMARY.md` заполняется агентом, **затем обязательно показывается пользователю**.
+- `interview-summary.md` заполняется агентом, **затем обязательно показывается пользователю**.
 - Только после явного согласия пользователя этот файл считается подтверждённым.
 
-**Процедура подтверждения интервью (`PROJECT-INTERVIEW.md` → секция Confirmation):**
+**Процедура подтверждения интервью ([`project-interview.md`](../../LAYER-2/discovery/project-interview.md) → секция Confirmation):**
 - После Этапа 5 агент **останавливается** (STOP-блок) и показывает саммари — не фиксирует файл без ответа.
 - Агент задаёт вопрос подтверждения и ждёт ответа:
   - **«Да»** → статус `accepted`, поле `Approved by` заполняется, файл считается источником истины.
   - **«Нет / правки»** → агент принимает корректировки и повторяет саммари для повторного подтверждения.
-- Статус `accepted` и поле `Approved by` отражаются в `PROJECT-STATUS.md` (колонка **Approved by**, таблица Discovery) и в `HEALTH-SCORE.md` (светофор: `accepted` → 🟢).
+- Статус `accepted` и поле `Approved by` отражаются в [`LAYER-3/project-status.md`](../../LAYER-3/project-status.md) и при полном аудите — в таблице HEALTH-SCORE в [`LAYER-1/audit-checklist.md`](../audit-checklist.md).
 
 ### 2. Specs (`LAYER-2/specs/`)
 
 - `ARCHITECTURE.md` — архитектура именно этого проекта (стек, сущности, потоки).
 - `DECISIONS.md` — журнал ключевых решений.
-- `SPEC.md` — спецификация фич/модулей.
-- `ACCESS-RULES.md` — правила доступа и роли.
-- `COMPONENT-STATES.md`, `VALIDATION-RULES.md` — состояния и валидация.
+- `spec.md` — спецификация фич/модулей.
+- `access-rules.md` — правила доступа и роли.
+- `component-states.md`, `validation-rules.md` — состояния и валидация.
 - `features/_template.md` — шаблон описания новой фичи (заполняется Team Lead + Developer до кодирования).
 
 **Правило:**
@@ -371,8 +371,8 @@ node setup.js
 ## 3. Кто за что отвечает
 
 - **Пользователь (владелец проекта):**
-  - подтверждает `INTERVIEW-SUMMARY.md`;
-  - согласует `VISION`, `MVP-SCOPE`, ключевые архитектурные решения;
+  - подтверждает `interview-summary.md`;
+  - согласует `vision.md`, `mvp-scope.md`, ключевые архитектурные решения;
   - может исправлять любые project-record файлы.
 
 - **Агент:**
@@ -381,7 +381,7 @@ node setup.js
   - не считает документ "истиной", пока пользователь явно не согласился.
 
 - **Исследование (интернет/другие источники):**
-  - попадает в `HYPOTHESIS-RESEARCH.md` и частично в specs;
+  - попадает в `hypothesis.md` и частично в specs;
   - всегда отделяется от личного опыта пользователя.
 
 ---
@@ -435,35 +435,35 @@ node setup.js
 
 Ниже — spec-driven цепочка: сначала понимаем проблему и процессы (контур 1), затем проектируем, строим, проверяем и выкатываем (контур 2).
 
-**Цепочка во втором контуре (по смыслу):** `processes/*` → потоки в `ux/UX-FLOWS-*.md` → `ux/SCREEN-MAP.md` → внутреннее описание экранов и блоков в `ux/*` (порядок заполнения — `ux/ATOMIC-DECOMPOSITION.md`; ведёт агент, без отдельного «дизайн-фреймворка» для владельца) → `specs/VALIDATION-RULES.md`, `specs/ACCESS-RULES.md`, `specs/COMPONENT-STATES.md` → `specs/SPEC.md` → задачи в `tasks/` и QA в `qa/*` → деплой.
+**Цепочка во втором контуре (по смыслу):** `processes/*` → потоки в `ux/UX-FLOWS-*.md` → `ux/SCREEN-MAP.md` → внутреннее описание экранов и блоков в `ux/*` (порядок заполнения — `ux/ATOMIC-DECOMPOSITION.md`; ведёт агент, без отдельного «дизайн-фреймворка» для владельца) → `specs/validation-rules.md`, `specs/access-rules.md`, `specs/component-states.md` → `specs/spec.md` → задачи в `tasks/` и QA в `qa/*` → деплой.
 
 ---
 
 ## Контур 1 — Discovery и решение проблемы
 
-- `discovery/USER-PROFILE.md`
-- `discovery/VISION.md`
-- `discovery/HYPOTHESIS-RESEARCH.md`
-- `discovery/INTERVIEW-SUMMARY.md`
-- `discovery/MVP-SCOPE.md`
+- `discovery/user-profile.md`
+- `discovery/vision.md`
+- `discovery/hypothesis.md`
+- `discovery/interview-summary.md`
+- `discovery/mvp-scope.md`
 - `LAYER-2/discovery/processes.md`, `LAYER-2/discovery/roles.md`
 
 ### Стартовое интервью и кросс-IDE контроль (до заполнения discovery)
 
 | Артефакт | Назначение |
 |----------|------------|
-| [`PROJECT-INTERVIEW.md`](PROJECT-INTERVIEW.md) | Маршрут вопросов и этапов интервью |
-| [`LAYER-1/interview-system.md`](../LAYER-1/interview-system.md) | Единый чеклист стража (7 пунктов); **stop-block** при критическом ❌ |
+| [`project-interview.md`](../../LAYER-2/discovery/project-interview.md) | Маршрут вопросов и этапов интервью |
+| [`LAYER-1/interview-system.md`](../interview-system.md) | Единый чеклист стража (7 пунктов); **stop-block** при критическом ❌ |
 | [`adapters/README.md`](adapters/README.md) | Индекс адаптеров: self-check в Cursor / Copilot / Claude / Gemini |
 | `adapters/CURSOR-INTERVIEW-CONTROL.md` и др. | Обязательный формат ответа и self-check без subagent |
 | `LAYER-3/interview-session.md` | **Сырой журнал** ответов по шагам (канон для черновика интервью); поле `control-mode` |
 | `LAYER-3/project-context-draft.md` | Устаревшее имя — редирект на `interview-session.md` |
-| Корень: `llms.txt`, `LAYER-1/agent-contract.md`, `LAYER-1/interview-system.md`, `opencode.json`, `LAYER-1/navigation.md` | Вход, контракт, OpenCode (опционально), карта размещения |
+| Корень: [`llms.txt`](../../llms.txt), [`START.md`](../../START.md), `LAYER-1/agent-contract.md`, [`LAYER-1/interview-system.md`](../interview-system.md), `opencode.json`, [`template-sync-index.md`](./template-sync-index.md) | Вход, контракт, OpenCode (опционально), карта документов |
 
 **Режимы контроля:** **OpenCode** — отдельный агент `guardian` или `@guardian`. **Остальные IDE** — тот же чеклист как **self-check** в каждом ответе интервьюера (см. `LAYER-1/tools/adapters/*`).
 
-**Поток данных:** сырой лог в `interview-session.md` → после подтверждения резюме (см. `PROJECT-INTERVIEW.md`) → структурированные файлы **контура 1** (`discovery/USER-PROFILE.md`, `discovery/VISION.md`, `discovery/INTERVIEW-SUMMARY.md` и т.д.).  
-`discovery/INTERVIEW-SUMMARY.md` — это **итог/выжимка** для цепочки discovery, а не замена журналу `interview-session.md`.
+**Поток данных:** сырой лог в `interview-session.md` → после подтверждения резюме (см. [`project-interview.md`](../../LAYER-2/discovery/project-interview.md)) → структурированные файлы **контура 1** (`discovery/user-profile.md`, `discovery/vision.md`, `discovery/interview-summary.md` и т.д.).  
+`discovery/interview-summary.md` — это **итог/выжимка** для цепочки discovery, а не замена журналу `interview-session.md`.
 
 ---
 
@@ -499,10 +499,10 @@ node setup.js
 
 ---
 
-- `specs/VALIDATION-RULES.md`
-- `specs/ACCESS-RULES.md`
-- `specs/COMPONENT-STATES.md`
-- `specs/SPEC.md`
+- `specs/validation-rules.md`
+- `specs/access-rules.md`
+- `specs/component-states.md`
+- `specs/spec.md`
 - `specs/ARCHITECTURE.md`
 - `specs/DECISIONS.md`
 - `specs/features/_template.md`
@@ -535,11 +535,11 @@ node setup.js
 | Файл | Контур | Тип | Для чего |
 |------|--------|-----|----------|
 | `LAYER-3/interview-session.md` | 1 (черновик) | project-record | Пошаговый журнал интервью до переноса в discovery |
-| `discovery/USER-PROFILE.md` | 1 | project-record | Подстроить вопросы и язык под владельца |
-| `discovery/VISION.md` | 1 | project-record | Идея, аудитория, боль, критерий успеха |
-| `discovery/HYPOTHESIS-RESEARCH.md` | 1 | project-record | Проверка, стоит ли делать продукт |
-| `discovery/INTERVIEW-SUMMARY.md` | 1 | project-record | Итог разговора: сроки, риски, чувствительные данные |
-| `discovery/MVP-SCOPE.md` | 1 | project-record | Что в первой версии, что отложено |
+| `discovery/user-profile.md` | 1 | project-record | Подстроить вопросы и язык под владельца |
+| `discovery/vision.md` | 1 | project-record | Идея, аудитория, боль, критерий успеха |
+| `discovery/hypothesis.md` | 1 | project-record | Проверка, стоит ли делать продукт |
+| `discovery/interview-summary.md` | 1 | project-record | Итог разговора: сроки, риски, чувствительные данные |
+| `discovery/mvp-scope.md` | 1 | project-record | Что в первой версии, что отложено |
 | `LAYER-2/discovery/processes.md` | 1 | project-record | Как устроена работа шаг за шагом |
 | `LAYER-2/discovery/roles.md` | 1 | project-record | Роли участников продукта |
 | `ux/UX-DESIGN-GUIDE.md` | 2 | instruction | Общие правила интерфейса |
@@ -555,10 +555,10 @@ node setup.js
 | `ux/WIREFRAMES.md` | 2 | project-record | Схемы экранов (текстом или ссылками) |
 | `ux/UI-CHECKLIST.md` | 2 | instruction | Проверка UX против процессов |
 | `ux/UX-GAP-REPORT.md` | 2 | project-record | Пробелы между процессом и экранами |
-| `specs/VALIDATION-RULES.md` | 2 | project-record | Правила проверки ввода и сообщения пользователю |
-| `specs/ACCESS-RULES.md` | 2 | project-record | Кто что видит и что может |
-| `specs/COMPONENT-STATES.md` | 2 | project-record | Состояния интерфейса: загрузка, пусто, ошибка и т.д. |
-| `specs/SPEC.md` | 2 | project-record | Требования к продукту |
+| `specs/validation-rules.md` | 2 | project-record | Правила проверки ввода и сообщения пользователю |
+| `specs/access-rules.md` | 2 | project-record | Кто что видит и что может |
+| `specs/component-states.md` | 2 | project-record | Состояния интерфейса: загрузка, пусто, ошибка и т.д. |
+| `specs/spec.md` | 2 | project-record | Требования к продукту |
 | `specs/ARCHITECTURE.md` | 2 | project-record | Устройство системы |
 | `specs/DECISIONS.md` | 2 | project-record | Зафиксированные решения |
 | `specs/features/_template.md` | 2 | template | Шаблон описания новой фичи — заполняется до начала кодирования |

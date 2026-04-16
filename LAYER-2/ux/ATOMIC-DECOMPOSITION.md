@@ -38,6 +38,6 @@
 
 - Входящие данные: `LAYER-1/workflow.md`, `LAYER-1/workflow.md`
 - Список экранов: `LAYER-2/ux/PAGES.md`
-- Состояния компонентов: `LAYER-2/specs/COMPONENT-STATES.md`
+- Состояния компонентов: `LAYER-2/specs/component-states.md`
 - UX-правила: `LAYER-2/ux/UX-DESIGN-GUIDE.md`
-- Исходящие данные: `LAYER-2/specs/SPEC.md`, `LAYER-2/specs/COMPONENT-STATES.md`
+- Исходящие данные: `LAYER-2/specs/spec.md`, `LAYER-2/specs/component-states.md`

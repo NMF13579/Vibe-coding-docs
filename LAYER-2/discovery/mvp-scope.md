@@ -8,9 +8,9 @@
 > Status: not-started
 > Filled by: agent + user
 > Needs approval: yes
-> Next: `discovery/INTERVIEW-SUMMARY.md`
+> Next: [`interview-summary.md`](./interview-summary.md)
 
-> Заполняется после согласования VISION.md.
+> Заполняется после согласования [`vision.md`](./vision.md).
 > Агент предлагает черновик, пользователь подтверждает или правит.
 
 ---

@@ -79,7 +79,7 @@ text
 [0.3.0] — 2026-04-10
 Добавлено
 - Поток **Claude Code**: единое ТЗ [`project/PROJECT.md`](./project/PROJECT.md), этапы [`stages/01-interview`](./stages/01-interview/BOOT.md) … [`stages/04-deploy`](./stages/04-deploy/BOOT.md) с `BOOT.md`, общие правила [`shared/`](./shared/README.md).
-- [`README-NEW-ARCHITECTURE.md`](./README-NEW-ARCHITECTURE.md) — краткий обзор; [`CHECKLIST.md`](./CHECKLIST.md) — чеклист перед деплоем.
+- [`CLAUDE-CODE-FLOW.md`](./CLAUDE-CODE-FLOW.md) — краткий обзор потока по этапам; [`CHECKLIST.md`](./CHECKLIST.md) — чеклист перед деплоем.
 - [`CLAUDE.md`](./CLAUDE.md) переписан под Plan → Confirm → Execute, `LOCKED`, `❓ НЕ ОПРЕДЕЛЕНО`, smoke-test и приоритет источников.
 
 Изменено

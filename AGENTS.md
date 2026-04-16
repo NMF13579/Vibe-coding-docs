@@ -4,10 +4,11 @@
 
 ## Агент, читай в таком порядке
 
-1. [`CLAUDE.md`](CLAUDE.md) — основной контракт сессии (правила, стиль, ограничения).
-2. [`llms.txt`](llms.txt) — карта репозитория, навигация по файлам.
-3. [`LAYER-1/tools/adapters/OPENCODE-INTERVIEW-CONTROL.md`](LAYER-1/tools/adapters/OPENCODE-INTERVIEW-CONTROL.md) — адаптер интервью-протокола.
+1. [`START.md`](START.md) — единый старт и модель шаблона.
+2. [`llms.txt`](llms.txt) — карта репозитория и маршруты.
+3. [`CLAUDE.md`](CLAUDE.md) — поведение агента в сессии.
+4. [`LAYER-1/tools/adapters/OPENCODE-INTERVIEW-CONTROL.md`](LAYER-1/tools/adapters/OPENCODE-INTERVIEW-CONTROL.md) — адаптер интервью-протокола.
 
 ## Быстрый старт
 
-Скажи агенту **«Начнём»** — он прочтёт `CLAUDE.md` и запустит интервью по [`LAYER-2/discovery/project-interview.md`](LAYER-2/discovery/project-interview.md).
+Скажи агенту **«Начнём»** — он пройдёт `START.md` и `llms.txt`, затем запустит нужный маршрут.

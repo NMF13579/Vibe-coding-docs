@@ -36,10 +36,11 @@ onFeatureRequest ("что добавить", "что дальше", after phase 
 
 ## Read first
 
-1. `README.md`
-2. `llms.txt / LAYER-1/workflow.md`
-3. `CLAUDE.md`
-4. `HANDOFF.md`
+1. `START.md` — единая точка входа и модель шаблона
+2. `llms.txt` — карта маршрутов (затем по ситуации один файл из карты)
+3. `HANDOFF.md` и `LAYER-3/project-status.md`
+4. `CLAUDE.md` — при работе в Claude Code / как эталон сессии
+5. При необходимости полного конвейера: `LAYER-1/workflow.md`
 
 ## Route by task
 

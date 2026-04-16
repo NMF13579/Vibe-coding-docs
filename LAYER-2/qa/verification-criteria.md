@@ -5,7 +5,7 @@
 > Trigger: перед закрытием любой задачи
 > Read-time: ~5 min
 > Needs-approval: no
-> Next: LAYER-1/task-protocol.md → TASK-REVIEW-PROTOCOL
+> Next: [`LAYER-1/task-protocol.md`](../../LAYER-1/task-protocol.md)
 
 # VERIFICATION CRITERIA — стандарт доказательства готовности
 

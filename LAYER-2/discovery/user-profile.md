@@ -8,7 +8,7 @@
 > Status: not-started
 > Filled by: agent + user
 > Needs approval: yes
-> Next: `LAYER-2/discovery/vision.md`
+> Next: [`vision.md`](./vision.md)
 
 > Описывает реального человека, а не абстрактную персону.
 > Помогает агенту подстраивать язык и приоритеты под конкретный контекст.

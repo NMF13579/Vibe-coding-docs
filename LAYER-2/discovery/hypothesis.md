@@ -8,7 +8,7 @@
 > Status: not-started
 > Filled by: agent (на основе внешних данных)
 > Needs approval: yes
-> Next: `discovery/MVP-SCOPE.md`
+> Next: [`mvp-scope.md`](./mvp-scope.md)
 
 > Агент не придумывает рынок. Если данных нет — формулирует бриф для поиска.
 > Результаты исследования всегда отделяются от личного опыта пользователя.
