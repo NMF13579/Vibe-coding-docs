@@ -32,19 +32,12 @@
 
 ---
 
-> **Не знаешь с чего начать?**
->
-> | Если ты... | Твой первый файл |
-> |---|---|
-> | Никогда не работал с AI-агентами | [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) — 3 шага, без терминала |
-> | Уже пробовал Cursor или Claude Code | [QUICK-START.md](./QUICK-START.md) — быстрая настройка |
+> → **[START.md](./START.md)** — одна точка входа для всех
 
 ---
 
 <div align="center">
 
-[![🔰 I'm a beginner · Я новичок](https://img.shields.io/badge/🔰_I'm_a_beginner_·_Я_новичок-2ea44f?style=for-the-badge&logoColor=white)](./QUICK-START-NOVICE.md)
-[![🖱️ GUI Quick Start · Быстрый GUI старт](https://img.shields.io/badge/🖱️_GUI_Quick_Start_·_Быстрый_старт-0366d6?style=for-the-badge&logoColor=white)](./QUICK-START.md)
 [![❓ FAQ](https://img.shields.io/badge/❓_FAQ-6e40c9?style=for-the-badge&logoColor=white)](./FAQ.md)
 
 <br/>

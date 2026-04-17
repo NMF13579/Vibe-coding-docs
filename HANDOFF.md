@@ -9,6 +9,11 @@
 
 ## Что мы делали в последний раз
 
+**Единая точка входа** (2026-04-17):
+
+- [`START.md`](./START.md) — одна точка входа для людей и явный блок для AI; таблица «кто ты → куда идти».
+- [`README.md`](./README.md) Quick Start: ссылка только на `START.md`; убраны верхние бейджи на `QUICK-START-NOVICE` / `QUICK-START` (маршруты остаются в Docs Map и др. разделах).
+
 **Iteration 1** (2026-04-17):
 
 - В [`LAYER-1/error-handling.md`](./LAYER-1/error-handling.md) добавлена цепочка реагирования: self-verification → error-handling → [`ROLLBACK.md`](./LAYER-1/ROLLBACK.md).
