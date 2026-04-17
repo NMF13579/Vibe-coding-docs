@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-17
+> Updated: 2026-04-17 (Iteration 1)
 
 ## Текущий этап
 
@@ -27,6 +27,8 @@
 Пояснение: знаки `❓` в исходном шаблоне ожидаемы до начала реального проекта.
 
 ## Последнее действие
+
+2026-04-17 — **Iteration 1:** цепочка в [`error-handling.md`](../LAYER-1/error-handling.md); [`HANDOFF-SHORT.md`](../HANDOFF-SHORT.md); алиас [`SYSTEM_PROMPT.md`](../SYSTEM_PROMPT.md); маршруты в [`llms.txt`](../llms.txt); user-блок в [`self-verification.md`](../LAYER-1/self-verification.md). См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-17 — **FIX-PLAN:** [`FIX-PLAN.md`](../FIX-PLAN.md); сверка `stages/` ↔ `40-stage-routing.mdc` — несовпадение имён/нумерации, ждём решения владельца. [`HANDOFF.md`](../HANDOFF.md), [`memory-bank/project-status.md`](../memory-bank/project-status.md).
 

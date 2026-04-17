@@ -2,7 +2,7 @@
 # Vibe-coding-docs
 
 > ⚠️ ОБСЛУЖИВАНИЕ: при добавлении файла в LAYER-1/, LAYER-2/ или stages/ — добавить маршрут в этот файл.
-> Последнее обновление: 2026-04-16
+> Последнее обновление: 2026-04-17
 > Файлов в LAYER-1/ (markdown): 52 | Ссылок на LAYER-2/ в списке маршрутов ниже: 13
 
 > Шаблон документации для AI-агентов.
@@ -67,6 +67,13 @@
 - Полный конвейер задач, этапы MVP, рабочий workflow → [LAYER-1/workflow.md](./LAYER-1/workflow.md)
 - Антипаттерны, что не делать → [LAYER-1/anti-patterns.md](./LAYER-1/anti-patterns.md)
 - Безопасность, секреты, чувствительные данные → [LAYER-1/security.md](./LAYER-1/security.md)
+- 152-ФЗ, персональные данные, медкомплаенс → [LAYER-1/LEGAL-152FZ.md](./LAYER-1/LEGAL-152FZ.md)
+- Prompt injection, защита промптов         → [LAYER-1/PROMPT-SECURITY.md](./LAYER-1/PROMPT-SECURITY.md)
+- Откат изменений (не деплой)               → [LAYER-1/ROLLBACK.md](./LAYER-1/ROLLBACK.md)
+- Архитектура фреймворка                    → [ARCHITECTURE.md](./ARCHITECTURE.md)
+- Глоссарий терминов                        → [GLOSSARY.md](./GLOSSARY.md)
+- Адаптация под другой домен                → [DOMAIN-ADAPTER.md](./DOMAIN-ADAPTER.md)
+- Быстрый старт сессии (1 экран)            → [HANDOFF-SHORT.md](./HANDOFF-SHORT.md)
 - Глоссарий, термины простым языком → [LAYER-1/glossary.md](./LAYER-1/glossary.md)
 - Что добавить дальше, следующие фичи → [LAYER-1/feature-radar.md](./LAYER-1/feature-radar.md)
 - Тестирование, сценарии, чеклисты качества → [LAYER-1/testing-guide.md](./LAYER-1/testing-guide.md)

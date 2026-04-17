@@ -9,6 +9,14 @@
 
 ## Что мы делали в последний раз
 
+**Iteration 1** (2026-04-17):
+
+- В [`LAYER-1/error-handling.md`](./LAYER-1/error-handling.md) добавлена цепочка реагирования: self-verification → error-handling → [`ROLLBACK.md`](./LAYER-1/ROLLBACK.md).
+- Создан [`HANDOFF-SHORT.md`](./HANDOFF-SHORT.md) — быстрый блок контекста для вставки в чат.
+- [`SYSTEM_PROMPT.md`](./SYSTEM_PROMPT.md) заменён на алиас → канон [`LAYER-1/system-prompt.md`](./LAYER-1/system-prompt.md), таблица куда вставлять промпт.
+- [`llms.txt`](./llms.txt): дата шапки 2026-04-17; маршруты v1.1.0 (LEGAL-152FZ, PROMPT-SECURITY, ROLLBACK, ARCHITECTURE, GLOSSARY корня, DOMAIN-ADAPTER, HANDOFF-SHORT).
+- В [`LAYER-1/self-verification.md`](./LAYER-1/self-verification.md) — user-facing фразы для некорректного поведения агента.
+
 Патч **«Этап 5 — финальная валидация и релиз v1.1.0»**:
 
 - Проведена сквозная проверка ссылок и терминологии в ключевых релизных документах.
