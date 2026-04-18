@@ -41,6 +41,10 @@ text
 ### Изменено
 - `LAYER-3/STATE.md`: формальный канон состояния (приоритет над `project-status.md`), Session BOOTSTRAP после старта, guard `close_task_without_review`, формат Transition Log `Domain | Event | From → To`.
 
+## [state-transitions-full] — 2026-04-19
+### Изменено
+- `LAYER-1/state-transitions.md`: единый источник переходов — диаграммы и таблицы Project / Session / Task, illegal transitions, правила агента; события из `event-dictionary.md`.
+
 ## [2026-04-19] — 2026-04-19
 ### Изменено
 - `HANDOFF.md`: новый Terminal Snapshot (TASK-001), Session History, Persistent Context; предыдущая версия — в конце файла под `## [2026-04-19] Pre-state-layer history`.

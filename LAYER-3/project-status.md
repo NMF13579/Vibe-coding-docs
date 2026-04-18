@@ -28,6 +28,8 @@
 
 ## Последнее действие
 
+2026-04-19 — **state-transitions.md:** полная машина состояний (Project / Session / Task), illegal transitions и правила агента; события только из [`event-dictionary.md`](../LAYER-1/event-dictionary.md). См. [`HANDOFF.md`](../HANDOFF.md).
+
 2026-04-19 — **STATE.md v2:** [`STATE.md`](./STATE.md) переписан как **формальное** состояние (приоритет над этим файлом при конфликте); Session **BOOTSTRAP**, Task пустой, новый guard `close_task_without_review`, формат Transition Log `YYYY-MM-DD | Domain | Event | From → To`. Снимок сессии и TASK-001 — по-прежнему в [`HANDOFF.md`](../HANDOFF.md) до следующего перехода в STATE.
 
 2026-04-19 — **HANDOFF / STATE / roadmap:** новый контракт в [`HANDOFF.md`](../HANDOFF.md); [`STATE.md`](./STATE.md) — Task PLANNED, TASK-001; добавлен [`roadmap.md`](./roadmap.md); архив прежнего HANDOFF в [`CHANGELOG.md`](../CHANGELOG.md). См. [`HANDOFF.md`](../HANDOFF.md).
