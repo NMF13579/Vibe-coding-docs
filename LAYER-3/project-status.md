@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-17 (ШАГ 1д UX-чеклисты)
+> Updated: 2026-04-18 (STATE.md MAINTENANCE / iteration-1-state-machine)
 
 ## Текущий этап
 
@@ -27,6 +27,8 @@
 Пояснение: знаки `❓` в исходном шаблоне ожидаемы до начала реального проекта.
 
 ## Последнее действие
+
+2026-04-18 — **STATE.md:** Project state **MAINTENANCE**, `ITERATION_3_COMPLETED`, итерация state-machine в `sub_state`. Файл: [`STATE.md`](./STATE.md). См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-17 — **Оптимизация ШАГ 1д + скан ссылок:** все UX-чеклисты в [`ux-checklist-core.md`](../LAYER-1/ux-checklist-core.md); удалены отдельные UX-файлы; скан относительных ссылок в `*.md` / `*.mdc` / `*.txt` — 0 битых. См. [`HANDOFF.md`](../HANDOFF.md).
 

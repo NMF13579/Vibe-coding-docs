@@ -9,6 +9,10 @@
 
 ## Что мы делали в последний раз
 
+**LAYER-3/STATE.md** (2026-04-18):
+
+- Обновлён [`LAYER-3/STATE.md`](./LAYER-3/STATE.md): Project **MAINTENANCE**, `sub_state: iteration-1-state-machine`, событие **ITERATION_3_COMPLETED**, `next_allowed_actions` — read_HANDOFF / continue_iteration_1_state_machine; запись в Transition Log.
+
 **Оптимизация документов — ШАГ 1д** (2026-04-17):
 
 - Содержимое `LAYER-1/ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md` перенесено в [`LAYER-1/ux-checklist-core.md`](./LAYER-1/ux-checklist-core.md); три отдельных файла удалены; [`stages/02-ux/ux-checklist-core.md`](./stages/02-ux/ux-checklist-core.md) — указатель на канон; ссылки и `install.sh` обновлены.
