@@ -5,4 +5,4 @@
 
 ## Статус
 
-Смотри [`LAYER-3/project-status.md`](../LAYER-3/project-status.md) (обновлено 2026-04-17: ШАГ 1д + скан ссылок; 1г/1в/1б/1а; см. [`HANDOFF.md`](../HANDOFF.md)).
+Смотри [`LAYER-3/project-status.md`](../LAYER-3/project-status.md) (обновлено 2026-04-18: `STATE.md`; ранее 2026-04-17 ШАГ 1д и др.; см. [`HANDOFF.md`](../HANDOFF.md)).

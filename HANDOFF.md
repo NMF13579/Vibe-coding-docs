@@ -9,6 +9,10 @@
 
 ## Что мы делали в последний раз
 
+**STATE.md** (2026-04-18):
+
+- Добавлен [`LAYER-3/STATE.md`](./LAYER-3/STATE.md) — стартовое состояние проекта, сессии и задачи для агентов (INIT / BOOTSTRAP, guards, next allowed actions, transition log). PR: https://github.com/NMF13579/Vibe-coding-docs/pull/21
+
 **Оптимизация документов — ШАГ 1д** (2026-04-17):
 
 - Содержимое `LAYER-1/ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md` перенесено в [`LAYER-1/ux-checklist-core.md`](./LAYER-1/ux-checklist-core.md); три отдельных файла удалены; [`stages/02-ux/ux-checklist-core.md`](./stages/02-ux/ux-checklist-core.md) — указатель на канон; ссылки и `install.sh` обновлены.
@@ -142,4 +146,4 @@
 
 ## Применимые уроки
 
-- Перед началом сессии: `LAYER-3/project-status.md`, `LAYER-3/lessons.md`, `LAYER-3/session-log.md`.
+- Перед началом сессии: `LAYER-3/STATE.md` (если есть), `LAYER-3/project-status.md`, `LAYER-3/lessons.md`, `LAYER-3/session-log.md`.
