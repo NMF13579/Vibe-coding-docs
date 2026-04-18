@@ -9,6 +9,10 @@
 
 ## Что мы делали в последний раз
 
+**state-transitions.md** (2026-04-18):
+
+- Добавлен [`LAYER-1/state-transitions.md`](./LAYER-1/state-transitions.md) — политика переходов состояний (Project / Session / Task), запрещённые переходы и чеклист агента; связка с обновлением [`LAYER-3/STATE.md`](./LAYER-3/STATE.md).
+
 **Оптимизация документов — ШАГ 1д** (2026-04-17):
 
 - Содержимое `LAYER-1/ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md` перенесено в [`LAYER-1/ux-checklist-core.md`](./LAYER-1/ux-checklist-core.md); три отдельных файла удалены; [`stages/02-ux/ux-checklist-core.md`](./stages/02-ux/ux-checklist-core.md) — указатель на канон; ссылки и `install.sh` обновлены.
