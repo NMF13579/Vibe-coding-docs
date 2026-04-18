@@ -40,6 +40,7 @@ Blockers: нет
 |---|---|---|---|
 | 2026-04-18 | MAINTENANCE | Итерация 3 завершена | State Layer Migration |
 | 2026-04-19 | MAINTENANCE | Архитектурный анализ, план итерации 1 | TASK-001 |
+| 2026-04-19 | MAINTENANCE | agent-rules: расширенный bootstrap + STATE AUTHORITY TABLE | TASK-001 |
 
 ---
 

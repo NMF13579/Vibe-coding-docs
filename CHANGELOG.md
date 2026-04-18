@@ -37,6 +37,10 @@ text
 
 ## История
 
+## [agent-rules-bootstrap-v3] — 2026-04-19
+### Добавлено
+- `LAYER-1/agent-rules.md`: префикс BOOTSTRAP (event-dictionary / state-transitions, roadmap, CONTEXT_RESTORED), блок при отсутствии `STATE.md`, таблица **STATE AUTHORITY TABLE** (ответственность за файлы).
+
 ## [HANDOFF-reset-2026-04-19b] — 2026-04-19
 ### Изменено
 - `HANDOFF.md`: сброс Session History до двух строк шаблона; предыдущая версия с расширенной таблицей — в конце файла под `## [2026-04-19] Pre-state-layer history` (подраздел «Снимок HANDOFF от 2026-04-19»).

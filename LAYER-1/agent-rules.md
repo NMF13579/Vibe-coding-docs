@@ -1,3 +1,49 @@
+---
+# BOOTSTRAP PROTOCOL
+<!-- Выполняется строго до любых других действий в любой сессии -->
+<!-- События из event-dictionary.md, переходы из state-transitions.md -->
+
+## Шаги (порядок строгий):
+1. Прочитать LAYER-3/STATE.md
+   → определить Project / Session / Task state
+   → проверить forbidden и next_allowed_actions
+2. Прочитать LAYER-3/project-status.md (narrative)
+3. Прочитать LAYER-3/roadmap.md (активные задачи)
+4. Прочитать LAYER-3/session-log.md
+5. Если active_task не пустой → прочитать описание задачи
+6. Сообщить пользователю:
+   - Project state / Session state / Task state
+   - Active task (если есть)
+   - Next allowed actions
+   - Blockers (если есть)
+7. Выполнить переход Session: BOOTSTRAP → CONTEXT_LOADED (событие: CONTEXT_RESTORED)
+8. [BOOTSTRAP COMPLETE] — только теперь начинать работу
+
+## Если STATE.md не существует:
+→ Сообщить: "STATE.md не найден. Требуется инициализация state layer."
+→ Предложить выполнить П-2 из плана State Layer Migration.
+→ Не начинать работу до создания STATE.md.
+
+---
+
+# STATE AUTHORITY TABLE
+<!-- Кто что обновляет и когда -->
+
+| Файл | Кто обновляет | Когда |
+|---|---|---|
+| LAYER-3/STATE.md | агент | при каждом переходе состояния |
+| HANDOFF.md Terminal | агент | конец каждой сессии |
+| LAYER-3/session-log.md | агент | конец каждой сессии |
+| LAYER-3/project-status.md | агент | завершение задачи |
+| LAYER-3/roadmap.md | пользователь добавляет, агент обновляет статус | по ходу работы |
+| LAYER-3/atomic-decisions.md | агент | при прохождении развилки |
+| LAYER-1/* | владелец | при изменении политики |
+| CLAUDE.md / .cursorrules / AGENTS.md | владелец | при изменении IDE |
+| llms.txt | владелец | при добавлении нового маршрута |
+
+---
+<!-- конец добавленного блока — ниже следует существующее содержимое -->
+
 # BOOTSTRAP PROTOCOL
 <!-- Выполняется строго до любых других действий -->
 
