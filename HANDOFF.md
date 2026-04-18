@@ -9,6 +9,10 @@
 
 ## Что мы делали в последний раз
 
+**agent-rules.md — BOOTSTRAP / STATE AUTHORITY / HANDOFF** (2026-04-18):
+
+- В начало [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) добавлены протоколы: строгий bootstrap (STATE.md, guards `forbidden` / `next_allowed_actions`), таблица STATE AUTHORITY, HANDOFF PROTOCOL с путями к `session-log.md` и terminal snapshot в `HANDOFF.md`.
+
 **Оптимизация документов — ШАГ 1д** (2026-04-17):
 
 - Содержимое `LAYER-1/ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md` перенесено в [`LAYER-1/ux-checklist-core.md`](./LAYER-1/ux-checklist-core.md); три отдельных файла удалены; [`stages/02-ux/ux-checklist-core.md`](./stages/02-ux/ux-checklist-core.md) — указатель на канон; ссылки и `install.sh` обновлены.
