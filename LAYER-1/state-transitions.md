@@ -4,6 +4,7 @@
 
 ## Где смотреть детали
 
+- **Канонические имена событий** — [`event-dictionary.md`](./event-dictionary.md) (все `Event` в таблицах переходов должны совпадать с этим словарём).
 - **Три домена** (Project / Session / Task) и состав control plane — [`ARCHITECTURE.md`](../ARCHITECTURE.md), раздел **State Control Plane**.
 - **Bootstrap, STATE AUTHORITY, HANDOFF** — [`agent-rules.md`](./agent-rules.md) (начало файла).
 - **Жизненный цикл сессии** (старт, конец задачи, напоминания, аудит, фичи) — [`session-lifecycle.md`](./session-lifecycle.md).

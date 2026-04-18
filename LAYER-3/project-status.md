@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-18 (llms.txt navigation index)
+> Updated: 2026-04-18 (event-dictionary.md)
 
 ## Текущий этап
 
@@ -27,6 +27,8 @@
 Пояснение: знаки `❓` в исходном шаблоне ожидаемы до начала реального проекта.
 
 ## Последнее действие
+
+2026-04-18 — **event-dictionary:** добавлен [`event-dictionary.md`](../LAYER-1/event-dictionary.md) — канон событий для переходов; см. [`state-transitions.md`](../LAYER-1/state-transitions.md). См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-18 — **llms.txt:** полная замена на навигационный индекс (bootstrap, situation routes, canonical sources). См. [`HANDOFF.md`](../HANDOFF.md).
 

@@ -23,7 +23,7 @@ Blockers:
 - ""
 
 Что сделано в последней сессии:
-- Полная замена `llms.txt` на навигационный индекс (bootstrap, situation routes, canonical sources; не policy source)
+- Добавлен [`LAYER-1/event-dictionary.md`](./LAYER-1/event-dictionary.md) — канон событий по доменам Project / Session / Task и запрещённые события; связка с [`state-transitions.md`](./LAYER-1/state-transitions.md)
 
 Что должен сделать следующий агент первым шагом:
 - Прочитать LAYER-3/STATE.md
@@ -40,6 +40,7 @@ Blockers:
 | 2026-04-18 | MAINTENANCE | В ARCHITECTURE.md: State Control Plane + Принцип каноничности (роли файлов) | Итерация 1 state-machine |
 | 2026-04-18 | MAINTENANCE | IDE entry points → указатели; новые модули LAYER-1/ для логики сессии, плана, этапов, приоритетов | Итерация 1 state-machine |
 | 2026-04-18 | MAINTENANCE | `llms.txt` переписан: navigation index, bootstrap, situation routes | Итерация 1 state-machine |
+| 2026-04-18 | MAINTENANCE | `event-dictionary.md`: канон событий для state-transitions | Итерация 1 state-machine |
 
 ---
 

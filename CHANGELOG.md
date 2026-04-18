@@ -55,6 +55,10 @@ text
 ### Изменено
 - `llms.txt`: полностью заменён на навигационный индекс (не policy source): bootstrap, таблица situation routes, canonical sources.
 
+## [event-dictionary] — 2026-04-18
+### Добавлено
+- `LAYER-1/event-dictionary.md`: канонический словарь событий (Project / Session / Task) и запрещённые события; связка с `state-transitions.md`.
+
 ## [1.1.1] - 2026-04-17
 ### Изменено
 - Чеклист аудита объединён с протоколом AUDIT-FULL: раздел «Чеклист аудита» в `LAYER-1/audit.md`; файл `LAYER-1/audit-checklist.md` удалён; маршруты (`llms.txt`, README, правила IDE и др.) обновлены.
