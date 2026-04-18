@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-19 (HANDOFF + STATE TASK-001)
+> Updated: 2026-04-19 (STATE.md формальный канон v2)
 
 ## Текущий этап
 
@@ -27,6 +27,8 @@
 Пояснение: знаки `❓` в исходном шаблоне ожидаемы до начала реального проекта.
 
 ## Последнее действие
+
+2026-04-19 — **STATE.md v2:** [`STATE.md`](./STATE.md) переписан как **формальное** состояние (приоритет над этим файлом при конфликте); Session **BOOTSTRAP**, Task пустой, новый guard `close_task_without_review`, формат Transition Log `YYYY-MM-DD | Domain | Event | From → To`. Снимок сессии и TASK-001 — по-прежнему в [`HANDOFF.md`](../HANDOFF.md) до следующего перехода в STATE.
 
 2026-04-19 — **HANDOFF / STATE / roadmap:** новый контракт в [`HANDOFF.md`](../HANDOFF.md); [`STATE.md`](./STATE.md) — Task PLANNED, TASK-001; добавлен [`roadmap.md`](./roadmap.md); архив прежнего HANDOFF в [`CHANGELOG.md`](../CHANGELOG.md). См. [`HANDOFF.md`](../HANDOFF.md).
 
