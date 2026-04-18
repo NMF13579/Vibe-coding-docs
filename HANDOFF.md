@@ -9,6 +9,10 @@
 
 ## Что мы делали в последний раз
 
+**ARCHITECTURE.md — State Control Plane** (2026-04-18):
+
+- В [`ARCHITECTURE.md`](./ARCHITECTURE.md) после раздела «Поток данных и решений» добавлен раздел **State Control Plane** (гибрид LAYER-1 / LAYER-3, таблица компонентов control plane, три домена состояния, поток сессии).
+
 **Оптимизация документов — ШАГ 1д** (2026-04-17):
 
 - Содержимое `LAYER-1/ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md` перенесено в [`LAYER-1/ux-checklist-core.md`](./LAYER-1/ux-checklist-core.md); три отдельных файла удалены; [`stages/02-ux/ux-checklist-core.md`](./stages/02-ux/ux-checklist-core.md) — указатель на канон; ссылки и `install.sh` обновлены.
