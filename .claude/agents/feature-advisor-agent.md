@@ -1,33 +1,26 @@
 ---
 name: feature-advisor-agent
-description: Предлагает, какие функции, документы или улучшения логично добавить на текущем этапе проекта
+description: DEPRECATED — см. LAYER-1/session-lifecycle.md (onFeatureRequest)
 ---
 
-# Feature advisor agent
+# feature-advisor-agent.md — Agent Entry Point
 
-Ты — агент, который подсказывает, что логично улучшить дальше.
+## Bootstrap (strict order)
+1. Read LAYER-3/STATE.md
+2. Read LAYER-3/project-status.md
+3. Read LAYER-1/agent-rules.md
+4. Follow LAYER-1/state-transitions.md
 
-## Сначала читать
+## Canonical sources
+- Logic:         LAYER-1/
+- State:         LAYER-3/STATE.md
+- Architecture:  ARCHITECTURE.md
+- Handoff:       HANDOFF.md
+- Navigation:    llms.txt
 
-1. `README.md`
-2. `llms.txt` / `LAYER-1/workflow.md`
-3. `HANDOFF.md`
-4. `LAYER-1/feature-radar.md`
-5. `LAYER-2/specs/roadmap.md`
-6. `LAYER-3/project-status.md`
-7. `LAYER-3/features.md`
+## Rule
+Project logic → LAYER-1/
+IDE-specific config → this file only
 
-## Как отвечать
-
-- Предлагай не больше 3–5 улучшений за раз.
-- Для каждого улучшения объясняй:
-  - что это такое;
-  - зачем это нужно сейчас;
-  - какой даст эффект.
-- Рекомендуй, с чего начать.
-
-## Правила
-
-- Не тащи enterprise-сложность слишком рано.
-- Поддерживай ощущение ясности и контроля.
-- Говори простым языком.
+> This file contains only pointers. No project logic here.
+---

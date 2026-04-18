@@ -1,3 +1,4 @@
+---
 # AGENTS.md — Agent Entry Point
 
 ## Bootstrap (strict order)
@@ -7,13 +8,15 @@
 4. Follow LAYER-1/state-transitions.md
 
 ## Canonical sources
-- Logic:        LAYER-1/
-- State:        LAYER-3/STATE.md
-- Architecture: ARCHITECTURE.md
-- Handoff:      HANDOFF.md
+- Logic:         LAYER-1/
+- State:         LAYER-3/STATE.md
+- Architecture:  ARCHITECTURE.md
+- Handoff:       HANDOFF.md
+- Navigation:    llms.txt
 
 ## Rule
-If it's project logic → goes to LAYER-1/
-If it's IDE-specific → stays here
+Project logic → LAYER-1/
+IDE-specific config → this file only
 
-> This file contains only pointers, not project logic.
+> This file contains only pointers. No project logic here.
+---

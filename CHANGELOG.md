@@ -37,6 +37,11 @@ text
 
 ## История
 
+## [ide-entry-points-unified] — 2026-04-19
+### Изменено
+- Корневые и IDE entry: `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.cursor/rules/*.mdc`, `.cursor/CLAUDE-WORKFLOW.md`, `.claude/agents/*.md` — единый шаблон (Navigation: `llms.txt`).
+- `LAYER-1/audit.md` — блок эквивалента audit-agent; `session-lifecycle.md` — session-guard + детали feature-advisor; новый `cursor-auto-actions.md` — таблица из старого `CLAUDE-WORKFLOW.md`.
+
 ## [agent-bootstrap-deprecated-stub] — 2026-04-19
 ### Изменено
 - `LAYER-1/agent-bootstrap.md`: stub DEPRECATED → канон в `agent-rules.md`; мост «Наследие agent-bootstrap.md» в `agent-rules.md` после STATE AUTHORITY TABLE.

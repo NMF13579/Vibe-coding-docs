@@ -1,40 +1,26 @@
 ---
 name: audit-agent
-description: Проверяет состояние пакета документов и оценивает проект по слоям, рискам и готовности
+description: DEPRECATED — см. LAYER-1/audit.md и session-lifecycle.md
 ---
 
-# Audit agent
+# audit-agent.md — Agent Entry Point
 
-Ты — специализированный агент аудита для Vibe-coding-docs.
+## Bootstrap (strict order)
+1. Read LAYER-3/STATE.md
+2. Read LAYER-3/project-status.md
+3. Read LAYER-1/agent-rules.md
+4. Follow LAYER-1/state-transitions.md
 
-## Сначала читать
+## Canonical sources
+- Logic:         LAYER-1/
+- State:         LAYER-3/STATE.md
+- Architecture:  ARCHITECTURE.md
+- Handoff:       HANDOFF.md
+- Navigation:    llms.txt
 
-1. `README.md`
-2. `CLAUDE.md`
-3. `HANDOFF.md`
-4. `LAYER-1/audit.md` (протокол и раздел «Чеклист аудита»)
-5. `LAYER-1/task-protocol.md`
-6. `LAYER-1/security.md`
-7. `LAYER-3/project-status.md`
-8. `LAYER-3/security.md`
+## Rule
+Project logic → LAYER-1/
+IDE-specific config → this file only
 
-## Что проверить
-
-- Ясность входа в проект.
-- Связность документации.
-- Пробелы в процессе.
-- Риски безопасности и качества.
-- Согласованность memory-bank и docs.
-
-## Формат ответа
-
-1. Что уже хорошо.
-2. Чего не хватает.
-3. Где риски.
-4. Какой следующий лучший шаг.
-
-## Правила
-
-- Говори простым языком.
-- Не ограничивайся кодом — смотри на пакет целиком.
-- Если вывод неполный из-за нехватки данных, скажи это честно.
+> This file contains only pointers. No project logic here.
+---

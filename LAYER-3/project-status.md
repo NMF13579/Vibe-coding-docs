@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-19 (agent-rules bootstrap + authority table)
+> Updated: 2026-04-19 (IDE entry points unified)
 
 ## Текущий этап
 
@@ -27,6 +27,8 @@
 Пояснение: знаки `❓` в исходном шаблоне ожидаемы до начала реального проекта.
 
 ## Последнее действие
+
+2026-04-19 — **Entry points + канон:** `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, Copilot, `.cursor/*` (rules + CLAUDE-WORKFLOW), `.claude/agents/*` — единый шаблон с `Navigation: llms.txt`; логика из `.claude/agents` и `CLAUDE-WORKFLOW` вынесена в `audit.md`, `session-lifecycle.md`, `cursor-auto-actions.md`. См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-19 — **agent-bootstrap:** восстановлен stub [`agent-bootstrap.md`](../LAYER-1/agent-bootstrap.md) (DEPRECATED → `agent-rules.md`); в [`agent-rules.md`](../LAYER-1/agent-rules.md) — мост «Наследие agent-bootstrap.md». См. [`HANDOFF.md`](../HANDOFF.md).
 

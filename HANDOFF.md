@@ -42,6 +42,7 @@ Blockers: нет
 | 2026-04-19 | MAINTENANCE | Архитектурный анализ, план итерации 1 | TASK-001 |
 | 2026-04-19 | MAINTENANCE | agent-rules: расширенный bootstrap + STATE AUTHORITY TABLE | TASK-001 |
 | 2026-04-19 | MAINTENANCE | agent-bootstrap.md → DEPRECATED stub; мост в agent-rules | TASK-001 |
+| 2026-04-19 | MAINTENANCE | Унификация entry points + перенос логики .claude / CLAUDE-WORKFLOW в LAYER-1 | TASK-001 |
 
 ---
 

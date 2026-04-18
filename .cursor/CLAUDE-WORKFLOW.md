@@ -1,47 +1,22 @@
-# Cursor → дальнейший воркфлоу (как у Claude Code)
-
-В **Cursor** этот репозиторий по-прежнему подхватывает правила из [`.cursor/rules/`](./rules/).  
-**Эталон поведения агента и поэтапный поток** описаны в корневом **[`../CLAUDE.md`](../CLAUDE.md)** — открывай и следуй ему, как в Claude Code.
-
-## С чего начать
-
-1. **[`CLAUDE.md`](../CLAUDE.md)** — роль, автозапуск, **Plan → Confirm → Execute**, приоритет источников, автосохранение шаблона.
-2. **[`CLAUDE-CODE-FLOW.md`](../CLAUDE-CODE-FLOW.md)** — краткая карта потока по этапам.
-3. **[`project/PROJECT.md`](../project/PROJECT.md)** — единое живое ТЗ продукта (Discovery, UX, Specs, Deploy, Decisions).
-
-## Этапы (узкий контекст)
-
-Запускай так же, как в Claude Code: попроси агента **прочитать нужный `BOOT.md`**.
-
-| Этап | Файл |
-|------|------|
-| Интервью | [`stages/01-interview/BOOT.md`](../stages/01-interview/BOOT.md) |
-| UX | [`stages/02-ux/BOOT.md`](../stages/02-ux/BOOT.md) |
-| Разработка | [`stages/03-dev/BOOT.md`](../stages/03-dev/BOOT.md) |
-| Деплой | [`stages/04-deploy/BOOT.md`](../stages/04-deploy/BOOT.md) |
-
-Общие правила всех этапов: [`shared/`](../shared/README.md). Перед релизом: [`CHECKLIST.md`](../CHECKLIST.md).
-
-## Классический маршрут шаблона (LAYER-*)
-
-Точка входа по темам: [`llms.txt`](../llms.txt) → [`HANDOFF.md`](../HANDOFF.md) → файлы в `LAYER-1/` … `LAYER-3/`.
-
 ---
+# CLAUDE-WORKFLOW.md — Agent Entry Point
 
-## Auto-Actions (псевдо-хуки для Cursor)
+## Bootstrap (strict order)
+1. Read LAYER-3/STATE.md
+2. Read LAYER-3/project-status.md
+3. Read LAYER-1/agent-rules.md
+4. Follow LAYER-1/state-transitions.md
 
-Следующие действия выполняются **автоматически** при наступлении триггера:
+## Canonical sources
+- Logic:         LAYER-1/
+- State:         LAYER-3/STATE.md
+- Architecture:  ARCHITECTURE.md
+- Handoff:       HANDOFF.md
+- Navigation:    llms.txt
 
-| Триггер | Автоматическое действие |
-|---|---|
-| Задача помечена как выполненная (Done / ✅) | Обнови статус в `HANDOFF.md` + `LAYER-3/project-status.md` |
-| Создан или изменён файл в `LAYER-2/specs/features/` | Проверь: заполнен ли `_template.md` полностью (все секции, статус не Draft) |
-| Фича затрагивает данные пациентов, диагнозы, МИС | Предложи Medical Review: «Эта фича требует Medical Reviewer — запустить?» |
-| Завершена задача типа TASK-XXX | Спроси: «Обновить CHANGELOG.md?» |
-| Обнаружена ошибка / баг в процессе работы | Зафикси в `LAYER-3/fixes.md` до исправления, не правь молча |
-| Scope расширяется за пределы текущей задачи | Остановись: «⚠️ Это выходит за скоуп TASK-XXX. Согласовать расширение?» |
-| Завершена сессия (последнее сообщение в потоке) | Напомни: «Сохранить контекст в HANDOFF.md перед закрытием?» |
+## Rule
+Project logic → LAYER-1/
+IDE-specific config → this file only
 
+> This file contains only pointers. No project logic here.
 ---
-
-*Имеет смысл держать этот файл открытым или вставить путь к `CLAUDE.md` в заметки проекта в Cursor.*

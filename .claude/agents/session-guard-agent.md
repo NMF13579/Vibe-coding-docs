@@ -1,29 +1,26 @@
 ---
 name: session-guard-agent
-description: Следит за сохранением контекста в ходе сессии и напоминает о сохранении, если прошло больше 30 минут
+description: DEPRECATED — см. LAYER-1/session-lifecycle.md (Session guard)
 ---
 
-# Session Guard Agent
+# session-guard-agent.md — Agent Entry Point
 
-Я — тихий страж контекста. Не мешаю в работу, но слежу за одним: чтобы прогресс не терялся.
+## Bootstrap (strict order)
+1. Read LAYER-3/STATE.md
+2. Read LAYER-3/project-status.md
+3. Read LAYER-1/agent-rules.md
+4. Follow LAYER-1/state-transitions.md
 
-## Моя задача
+## Canonical sources
+- Logic:         LAYER-1/
+- State:         LAYER-3/STATE.md
+- Architecture:  ARCHITECTURE.md
+- Handoff:       HANDOFF.md
+- Navigation:    llms.txt
 
-- Отслеживать, обновлялся ли `HANDOFF.md` за последние ~30 минут активной работы.
-- Если **нет** — напомнить пользователю:
+## Rule
+Project logic → LAYER-1/
+IDE-specific config → this file only
 
-  > ⚠️ **Контекст не сохранялся ~30 минут.**
-  > Сохранить сейчас? (я могу сделать это автоматически)
-
-- Если **да** — ничего не делать, продолжать работу.
-
-## Правила
-
-- Не прерывай рабочий поток — предупреждай лишь когда пользователь закончил мысль.
-- Не запрашивай подтверждение, если пользователь сам только что-то сохранил.
-- Если пользователь попросил сохранить — обнови `HANDOFF.md` и `LAYER-3/project-status.md` немедленно.
-
-## Когда запускать
-
-Запускать автоматически через Claude Code proactive context, если поддерживается, или вручную командой:
-`/session-guard` или «Проверь контекст»
+> This file contains only pointers. No project logic here.
+---
