@@ -45,6 +45,10 @@ text
 ### Изменено
 - `LAYER-1/state-transitions.md`: единый источник переходов — диаграммы и таблицы Project / Session / Task, illegal transitions, правила агента; события из `event-dictionary.md`.
 
+## [atomic-decisions] — 2026-04-19
+### Добавлено
+- `LAYER-3/atomic-decisions.md`: журнал решений по развилкам из `decision-guide.md`, шаблон строки, статусы ACTIVE / SUPERSEDED / REVERTED.
+
 ## [2026-04-19] — 2026-04-19
 ### Изменено
 - `HANDOFF.md`: новый Terminal Snapshot (TASK-001), Session History, Persistent Context; предыдущая версия — в конце файла под `## [2026-04-19] Pre-state-layer history`.

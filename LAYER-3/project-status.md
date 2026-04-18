@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-19 (STATE.md формальный канон v2)
+> Updated: 2026-04-19 (atomic-decisions.md)
 
 ## Текущий этап
 
@@ -27,6 +27,8 @@
 Пояснение: знаки `❓` в исходном шаблоне ожидаемы до начала реального проекта.
 
 ## Последнее действие
+
+2026-04-19 — **atomic-decisions:** создан [`atomic-decisions.md`](./atomic-decisions.md) — журнал атомарных решений (шаблон записи, статусы ACTIVE / SUPERSEDED / REVERTED). См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-19 — **state-transitions.md:** полная машина состояний (Project / Session / Task), illegal transitions и правила агента; события только из [`event-dictionary.md`](../LAYER-1/event-dictionary.md). См. [`HANDOFF.md`](../HANDOFF.md).
 

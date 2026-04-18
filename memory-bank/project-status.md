@@ -5,4 +5,4 @@
 
 ## Статус
 
-Смотри [`LAYER-3/project-status.md`](../LAYER-3/project-status.md) (обновлено 2026-04-19: `state-transitions.md` полный; см. [`HANDOFF.md`](../HANDOFF.md)).
+Смотри [`LAYER-3/project-status.md`](../LAYER-3/project-status.md) (обновлено 2026-04-19: `atomic-decisions.md`; см. [`HANDOFF.md`](../HANDOFF.md)).
