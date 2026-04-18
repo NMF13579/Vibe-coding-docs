@@ -32,7 +32,7 @@
 1. [`../../../START.md`](../../../START.md) и [`../../../llms.txt`](../../../llms.txt) — единый вход и карта маршрутов (новая сессия).
 2. [`../../../LAYER-2/discovery/project-interview.md`](../../../LAYER-2/discovery/project-interview.md) — маршрут вопросов и этапов.
 3. [`../../interview-system.md`](../../interview-system.md) — формат сообщения, таблица **СТРАЖ** (7 пунктов), **stop-block**.
-4. [`../../agent-rules.md`](../../agent-rules.md) — bootstrap, контракт и модули.
+4. [`../../agent-rules.md`](../../agent-rules.md) — bootstrap и модули; [`../../agent-contract.md`](../../agent-contract.md) — локальный entrypoint контракта (source of truth: `shared/agent-contract.md`).
 
 Среда может требовать **дополнительный** файл — см. дельту в таблице выше.
 

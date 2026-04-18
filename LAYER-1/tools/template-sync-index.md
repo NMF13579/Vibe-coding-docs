@@ -408,6 +408,7 @@ node setup.js
 | Файл | Тип | Когда читать |
 |------|-----|-------------|
 | `LAYER-1/agent-rules.md` | instruction | При старте новой сессии или потере контекста — **читать первым** |
+| `LAYER-1/agent-contract.md` | instruction | Локальный entrypoint контракта; source of truth пока в `shared/agent-contract.md` |
 | `LAYER-1/context-recovery.md` | instruction | При симптомах потери контекста агентом |
 | `LAYER-1/anti-patterns.md` | instruction | При сомнении в выборе подхода — чего не делать |
 | `LAYER-1/decision-guide.md` | instruction | При архитектурных развилках — что выбрать и почему |
@@ -457,7 +458,7 @@ node setup.js
 | `adapters/CURSOR-INTERVIEW-CONTROL.md` и др. | Обязательный формат ответа и self-check без subagent |
 | `LAYER-3/interview-session.md` | **Сырой журнал** ответов по шагам (канон для черновика интервью); поле `control-mode` |
 | `LAYER-3/project-context-draft.md` | Устаревшее имя — редирект на `interview-session.md` |
-| Корень: [`llms.txt`](../../llms.txt), [`START.md`](../../START.md), `LAYER-1/agent-rules.md`, [`LAYER-1/interview-system.md`](../interview-system.md), `opencode.json`, [`template-sync-index.md`](./template-sync-index.md) | Вход, контракт, OpenCode (опционально), карта документов |
+| Корень: [`llms.txt`](../../llms.txt), [`START.md`](../../START.md), [`LAYER-1/agent-rules.md`](../agent-rules.md), [`LAYER-1/agent-contract.md`](../agent-contract.md), [`LAYER-1/interview-system.md`](../interview-system.md), `opencode.json`, [`template-sync-index.md`](./template-sync-index.md) | Вход, bootstrap, контракт, OpenCode (опционально), карта документов |
 
 **Режимы контроля:** **OpenCode** — отдельный агент `guardian` или `@guardian`. **Остальные IDE** — тот же чеклист как **self-check** в каждом ответе интервьюера (см. `LAYER-1/tools/adapters/*`).
 
@@ -570,6 +571,7 @@ node setup.js
 | `deploy/RUNBOOK.md` | 2 | project-record | Эксплуатация и типовые сбои |
 | `LAYER-2/qa/post-launch-review.md` | 2 | project-record | Разбор после запуска и фактов использования |
 | `LAYER-1/agent-rules.md` | 0 | instruction | Диагностика и старт агента — читать первым |
+| `LAYER-1/agent-contract.md` | 0 | instruction | Локальный entrypoint контракта; source of truth пока в `shared/agent-contract.md` |
 | `LAYER-1/context-recovery.md` | 0 | instruction | Восстановление после потери контекста |
 | `LAYER-1/anti-patterns.md` | 0 | instruction | Чего не делать при выборе решений |
 | `LAYER-1/decision-guide.md` | 0 | instruction | Справочник развилок: что выбрать и почему |

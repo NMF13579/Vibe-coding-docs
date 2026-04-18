@@ -205,7 +205,8 @@
 | `llms.txt` | Карта навигации — агент знает куда смотреть |
 | `LAYER-1/workflow.md` | Конвейер работы — как движется проект |
 | `LAYER-1/scope-guard.md` | Защита от расползания задач |
-| `LAYER-1/agent-rules.md` | Bootstrap, контракт и границы агента (бывш. agent-bootstrap + agent-contract) |
+| `LAYER-1/agent-rules.md` | Bootstrap и границы агента |
+| `LAYER-1/agent-contract.md` | Локальный entrypoint контракта (source of truth: `shared/agent-contract.md`) |
 | `LAYER-3/project-status.md` | Текущий статус всех задач |
 
 ---

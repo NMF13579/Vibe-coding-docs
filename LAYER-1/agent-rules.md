@@ -6,7 +6,7 @@
 
 # AGENT-RULES — инициализация, контракт и границы агента
 
-Единый документ: **диагностика и bootstrap** (как войти в контекст) и **контракт** (как работать в MVP-пайплайне). Детали этапов — в `LAYER-2/`, `LAYER-1/workflow.md`, `stages/*/BOOT.md`.
+Документ покрывает **диагностику и bootstrap** (как войти в контекст). Локальная точка входа для контракта: `LAYER-1/agent-contract.md` (канонический source of truth пока в `shared/agent-contract.md`). Детали этапов — в `LAYER-2/`, `LAYER-1/workflow.md`, `stages/*/BOOT.md`.
 
 ---
 
@@ -137,6 +137,8 @@
 ---
 
 ## 2. Контракт: права и обязанности агента
+
+Локальный entrypoint контракта: `LAYER-1/agent-contract.md`.
 
 Этот раздел задаёт правила работы агента в рамках **модульного** процесса от профиля до деплоя. Детали этапов разложены по папкам `LAYER-2/discovery` (в т.ч. `processes.md`, `roles.md`), `LAYER-1/workflow.md`, `LAYER-2/ux`, `LAYER-2/specs`, `LAYER-2/qa`, `LAYER-1/tools/deploy`.
 
