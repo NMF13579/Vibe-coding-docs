@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-17 (ШАГ 1д UX-чеклисты)
+> Updated: 2026-04-18 (agent-rules bootstrap protocol)
 
 ## Текущий этап
 
@@ -27,6 +27,8 @@
 Пояснение: знаки `❓` в исходном шаблоне ожидаемы до начала реального проекта.
 
 ## Последнее действие
+
+2026-04-18 — **agent-rules:** в начало [`agent-rules.md`](../LAYER-1/agent-rules.md) добавлен BOOTSTRAP / STATE AUTHORITY / HANDOFF протоколы. См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-17 — **Оптимизация ШАГ 1д + скан ссылок:** все UX-чеклисты в [`ux-checklist-core.md`](../LAYER-1/ux-checklist-core.md); удалены отдельные UX-файлы; скан относительных ссылок в `*.md` / `*.mdc` / `*.txt` — 0 битых. См. [`HANDOFF.md`](../HANDOFF.md).
 

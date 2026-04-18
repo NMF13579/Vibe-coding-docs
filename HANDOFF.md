@@ -9,6 +9,10 @@
 
 ## Что мы делали в последний раз
 
+**agent-rules.md — BOOTSTRAP PROTOCOL** (2026-04-18):
+
+- В начало [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) добавлены блоки BOOTSTRAP PROTOCOL, STATE AUTHORITY и HANDOFF PROTOCOL (строгий порядок чтения STATE / project-status / session-log / atomic-decisions, handoff-шаги).
+
 **Оптимизация документов — ШАГ 1д** (2026-04-17):
 
 - Содержимое `LAYER-1/ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md` перенесено в [`LAYER-1/ux-checklist-core.md`](./LAYER-1/ux-checklist-core.md); три отдельных файла удалены; [`stages/02-ux/ux-checklist-core.md`](./stages/02-ux/ux-checklist-core.md) — указатель на канон; ссылки и `install.sh` обновлены.

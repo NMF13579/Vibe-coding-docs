@@ -1,3 +1,50 @@
+# BOOTSTRAP PROTOCOL — Обязательный старт каждой сессии
+<!-- Выполняется строго до любых других действий. Нарушение протокола недопустимо. -->
+
+## Шаги bootstrap (порядок строгий):
+
+1. Прочитать LAYER-3/STATE.md
+   → определить Project State, Session State, Task State
+   → проверить Guards и blockers
+2. Прочитать LAYER-3/project-status.md
+   → уточнить детали прогресса
+3. Прочитать LAYER-3/session-log.md
+   → что происходило в прошлую сессию
+4. Прочитать LAYER-3/atomic-decisions.md
+   → какие решения закрыты и не обсуждаются повторно
+5. Прочитать активную задачу (если есть active_task в STATE.md)
+6. Сформировать и сообщить пользователю:
+   - текущий Project State
+   - текущий Task State
+   - Next Allowed Actions из STATE.md
+   - список блокеров (если есть)
+7. Перевести Session State: BOOTSTRAP → CONTEXT_LOADED
+8. [BOOTSTRAP COMPLETE] — только теперь начинать работу
+
+## STATE AUTHORITY — Кто меняет состояние:
+
+| Переход | Инициатор | Требуется подтверждение пользователя |
+|---|---|---|
+| INIT → DISCOVERY | агент | нет |
+| DISCOVERY → PLANNING | агент | нет |
+| PLANNING → DEVELOPMENT | агент | ДА — явное "да" |
+| DEVELOPMENT → REVIEW | агент | нет |
+| REVIEW → RELEASE_READY | агент после audit | нет |
+| RELEASE_READY → MAINTENANCE | агент | ДА — явное "да" |
+| любая → ERROR | агент | нет |
+| AWAITING_CONFIRMATION → EXECUTING | агент | ДА — явное "да" |
+
+## HANDOFF PROTOCOL — Завершение каждой сессии:
+
+1. Обновить STATE.md (все три домена)
+2. Дописать в session-log.md: `[дата] [фаза] [что сделано] [следующий шаг]`
+3. Обновить project-status.md
+4. Перевести Session State → HANDOFF
+5. Обновить HANDOFF.md в формате terminal snapshot
+
+---
+<!-- конец протокола, ниже существующее содержимое agent-rules.md -->
+
 > Trigger: Старт сессии, конфликт инструкций, модульный пайплайн
 > Read-time: ~20 min
 > Filled-by: agent / both
