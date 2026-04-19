@@ -5,7 +5,7 @@
 <!-- SOURCE_OF_TRUTH: no -->
 <!-- MUST_NOT_CONTAIN: policy, bootstrap order, runtime state -->
 
-# AGENTS.md — Universal Agent Entry Point
+# .windsurfrules — Windsurf Entry Point
 
 This file is an adapter, not a policy source.
 Read `LAYER-1/agent-rules.md` — canonical bootstrap protocol.

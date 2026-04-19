@@ -1,0 +1,5 @@
+# Aider Entry Point — adapter only, not a policy source
+# Canonical bootstrap: LAYER-1/agent-rules.md
+# Then follow that protocol exactly
+read:
+  - LAYER-1/agent-rules.md
