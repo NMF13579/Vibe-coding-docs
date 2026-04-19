@@ -37,6 +37,19 @@ text
 
 ## История
 
+## [migration-phases-2-4-state-governance] — 2026-04-19
+### Добавлено
+- `LAYER-1/document-governance.md` — роли, authority, lifecycle, metadata, registry, 7 governance rules.
+- `LAYER-1/deprecated/legacy-bootstrap.md` — архив второго bootstrap + checklist-bootstrap.
+- `LAYER-1/audit.md`: разделы **State Consistency Audit** и **Document Governance Audit**, строки HEALTH-SCORE, интеграция в Шаг 1 и быструю проверку; metadata-шапка.
+
+### Изменено
+- `LAYER-3/STATE.md`, `HANDOFF.md`, `LAYER-3/project-status.md`: ROLE/AUTHORITY шапки; governance в STATE; HANDOFF без canonical state-полей; project-status — нарратив без датированной летописи.
+- `LAYER-3/session-log.md`: append-миграция Session History и «Последнее действие» из project-status.
+- `LAYER-1/agent-rules.md`: один `# BOOTSTRAP PROTOCOL`, удалён дубликат STATE/HANDOFF между таблицами и телом; шаг HANDOFF в bootstrap; metadata; §3 anti-recidivism.
+- `LAYER-1/agent-bootstrap.md`: DEPRECATED stub с REPLACED_BY.
+- `llms.txt`, `START.md`, `read-order-and-triggers.md`, `ARCHITECTURE.md`, `memory-bank/project-status.md`, `LAYER-1/context-recovery.md` — порядок STATE → HANDOFF → narrative; маршрут governance.
+
 ## [ide-entry-points-unified] — 2026-04-19
 ### Изменено
 - Корневые и IDE entry: `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.cursor/rules/*.mdc`, `.cursor/CLAUDE-WORKFLOW.md`, `.claude/agents/*.md` — единый шаблон (Navigation: `llms.txt`).

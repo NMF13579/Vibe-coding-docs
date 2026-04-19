@@ -1,3 +1,10 @@
+<!-- ROLE: CANONICAL_POLICY -->
+<!-- AUTHORITY: PRIMARY -->
+<!-- STATUS: ACTIVE -->
+<!-- UPDATED_BY: owner -->
+<!-- SOURCE_OF_TRUTH: yes -->
+<!-- MUST_NOT_CONTAIN: duplicate governance model (см. document-governance.md), runtime narrative -->
+
 ---
 # BOOTSTRAP PROTOCOL
 <!-- Выполняется строго до любых других действий в любой сессии -->
@@ -7,17 +14,18 @@
 1. Прочитать LAYER-3/STATE.md
    → определить Project / Session / Task state
    → проверить forbidden и next_allowed_actions
-2. Прочитать LAYER-3/project-status.md (narrative)
-3. Прочитать LAYER-3/roadmap.md (активные задачи)
-4. Прочитать LAYER-3/session-log.md
-5. Если active_task не пустой → прочитать описание задачи
-6. Сообщить пользователю:
+2. Прочитать HANDOFF.md (контракт сессии; не источник формального state)
+3. Прочитать LAYER-3/project-status.md (нарратив)
+4. Прочитать LAYER-3/roadmap.md (активные задачи)
+5. Прочитать LAYER-3/session-log.md
+6. Если active_task не пустой → прочитать описание задачи
+7. Сообщить пользователю:
    - Project state / Session state / Task state
    - Active task (если есть)
    - Next allowed actions
    - Blockers (если есть)
-7. Выполнить переход Session: BOOTSTRAP → CONTEXT_LOADED (событие: CONTEXT_RESTORED)
-8. [BOOTSTRAP COMPLETE] — только теперь начинать работу
+8. Выполнить переход Session: BOOTSTRAP → CONTEXT_LOADED (событие: CONTEXT_RESTORED)
+9. [BOOTSTRAP COMPLETE] — только теперь начинать работу
 
 ## Если STATE.md не существует:
 → Сообщить: "STATE.md не найден. Требуется инициализация state layer."
@@ -43,60 +51,16 @@
 
 ### Наследие `agent-bootstrap.md`
 
-Исторический файл **`agent-bootstrap.md`** (до слияния в этот документ) задавал расширенную диагностику: `shared/priority-order.md`, `lessons` / `fixes` / `features`, матрица IDE, **чеклист**, **формат отчёта**, **вопросы для пробелов**, блок **«Предложение следующих шагов»** и правило вывода **`[BOOTSTRAP COMPLETE]`**. Всё это сохранено ниже в разделе **«1. Инициализация агента (bootstrap)»** — отдельных уникальных разделов сверх этого префикса **не осталось**.
+> Исторический checklist-bootstrap архивирован в
+> `LAYER-1/deprecated/legacy-bootstrap.md`.
+> Для текущей работы использовать только state-first протокол выше.
 
-Если достаточно **STATE-first** цепочки в начале файла — раздел 1 можно не дублировать в одной сессии; при потере контекста, уровне 1+ или симптомах из `context-recovery.md` выполняй **полный** раздел 1 как прежний `agent-bootstrap.md`.
-
----
-<!-- конец добавленного блока — ниже следует существующее содержимое -->
-
-# BOOTSTRAP PROTOCOL
-<!-- Выполняется строго до любых других действий -->
-
-## Шаги (порядок строгий):
-1. Прочитать LAYER-3/STATE.md
-   → определить Project / Session / Task state
-   → проверить forbidden и next_allowed_actions
-2. Прочитать LAYER-3/project-status.md
-3. Прочитать LAYER-3/session-log.md
-4. Прочитать LAYER-3/atomic-decisions.md
-5. Прочитать активную задачу (если active_task не пустой)
-6. Сообщить пользователю:
-   - текущий Project state
-   - текущий Task state
-   - next_allowed_actions
-   - блокеры (если есть)
-7. Перевести Session state: BOOTSTRAP → CONTEXT_LOADED
-8. [BOOTSTRAP COMPLETE] — только теперь начинать работу
+> **Правило против рецидива:** в этом файле допускается **ровно один**
+> заголовок `# BOOTSTRAP PROTOCOL` (state-first). Любой второй вариант
+> переносится в `LAYER-1/deprecated/` и не используется в runtime.
 
 ---
-
-# STATE AUTHORITY
-
-| Переход | Инициатор | Подтверждение пользователя |
-|---|---|---|
-| INIT → DISCOVERY | агент | нет |
-| DISCOVERY → PLANNING | агент | нет |
-| PLANNING → DEVELOPMENT | агент | ДА — явное "да" |
-| DEVELOPMENT → REVIEW | агент | нет |
-| REVIEW → RELEASE_READY | агент после audit | нет |
-| RELEASE_READY → MAINTENANCE | агент | ДА — явное "да" |
-| любая → ERROR | агент | нет |
-| AWAITING_CONFIRMATION → EXECUTING | агент | ДА — явное "да" |
-
----
-
-# HANDOFF PROTOCOL
-
-При завершении каждой сессии:
-1. Обновить LAYER-3/STATE.md (все три домена)
-2. Дописать в LAYER-3/session-log.md: [YYYY-MM-DD] [state] [сделано] [следующий шаг]
-3. Обновить LAYER-3/project-status.md
-4. Перевести Session state → HANDOFF
-5. Обновить Terminal Snapshot в HANDOFF.md
-
----
-<!-- конец протокола — ниже существующее содержимое agent-rules.md -->
+<!-- конец добавленного блока — ниже существующее содержимое agent-rules.md -->
 
 Канон вынесен из adapter-файлов: [`session-lifecycle.md`](./session-lifecycle.md), [`plan-and-scope-gate.md`](./plan-and-scope-gate.md), [`stage-routing.md`](./stage-routing.md), [`instruction-priority.md`](./instruction-priority.md), [`read-order-and-triggers.md`](./read-order-and-triggers.md), [`cursor-auto-actions.md`](./cursor-auto-actions.md); переходы — [`state-transitions.md`](./state-transitions.md).
 
@@ -112,129 +76,11 @@
 
 ---
 
-## 1. Инициализация агента (bootstrap)
+## 1. Bootstrap
 
-### С чего начинает агент (bootstrap)
-
-> **Уровень 0:** bootstrap опционален — запускай только при потере контекста или неожиданной поломке.
-> **Уровень 1 и выше:** выполнять перед первой задачей в проекте.
-> **Любой уровень:** выполнять при симптомах потери контекста (см. `LAYER-1/context-recovery.md`).
-
-Перед началом работы агент должен:
-
-1. Следовать порядку из `shared/priority-order.md`.
-   Обязательный минимум для старта:
-   - `project/PROJECT.md` (или `README.md` если PROJECT не существует)
-   - `HANDOFF.md`
-   - `LAYER-3/project-status.md`
-   - `llms.txt` / `LAYER-1/workflow.md`
-
-2. Если сессия не первая — заглянуть в:
-   - `LAYER-3/lessons.md` — применимые уроки
-   - `LAYER-3/fixes.md` — повторяемые фиксы
-   - `LAYER-3/features.md` — список фич
-
-3. В зависимости от того, через какой инструмент идёт работа:
-   - Claude Code → учесть правила из `CLAUDE.md` и доступные `.claude/agents/*`
-   - Cursor → учитывать `.cursor/rules/*`
-   - GitHub Copilot → учитывать `.github/copilot-instructions.md`
-   - Gemini → учитывать `GEMINI.md`
-
-4. Кратко пересказать владельцу:
-   - что сейчас с проектом;
-   - где мы остановились;
-   - какие 1–3 варианта есть для следующего шага.
-
-### Порядок работы с чеклистом
-
-1. Проверить все файлы из чеклиста
-2. Заполнить отчёт честно (отсутствует = отсутствует)
-3. Задать вопросы для заполнения пробелов (по одному)
-4. Предложить следующие шаги
-
-### Чеклист
-
-#### Критичные (все уровни)
-- [ ] /llms.txt — точка входа для агента
-- [ ] /LAYER-1/workflow.md — конвейер и уровни
-- [ ] /CLAUDE.md — заполнен стек?
-- [ ] /HANDOFF.md
-- [ ] /LAYER-1/anti-patterns.md — прочитать перед выбором подхода к решению
-
-#### Критичные (Уровень 1 и выше)
-- [ ] /LAYER-2/specs/roadmap.md — заполнена цель и текущий этап?
-- [ ] /LAYER-2/specs/architecture.md — заполнены разделы 1–4?
-- [ ] /LAYER-1/security.md (если данные чувствительные)
-
-#### Важные
-- [ ] /shared/ai-failure-modes.md — сбои LLM-агентов: диагностика и действия
-- [ ] /LAYER-2/specs/planning.md
-- [ ] /LAYER-1/task-protocol.md
-- [ ] /LAYER-1/dialog-style.md — стиль диалога и тон общения с владельцем
-- [ ] /LAYER-1/decision-guide.md — справочник развилок: что выбрать и почему
-- [ ] /LAYER-1/glossary.md — словарь терминов простым языком
-- [ ] /LAYER-1/error-handling.md — классификация ошибок: тип → действие
-- [ ] /LAYER-1/stack-presets.md — готовые наборы инструментов по типу проекта
-- [ ] /LAYER-2/discovery/project-interview.md — протокол интервью при старте нового проекта
-- [ ] /LAYER-2/specs/validation.md — объективная проверка: работает / не работает
-- [ ] /LAYER-1/testing-guide.md — чеклист проверки после каждой задачи
-- [ ] /LAYER-2/ux/user-flows.md — ключевые сценарии для smoke-теста перед релизом
-- [ ] /LAYER-3/project-status.md
-- [ ] /LAYER-3/languages.md
-- [ ] /LAYER-3/integrations.md
-
-### Формат отчёта
-
-```
-## Отчёт о состоянии проекта
-
-Проект: [название или «не определено»]
-Тип: [web / mobile / bot / «не определено»]
-Стек: [или «не заполнен»]
-
-Готово и заполнено: [список]
-Есть, но пустое: [файл — что пустое]
-Отсутствует: [список]
-
-Текущий этап ROADMAP: [этап X]
-Последнее действие: [из HANDOFF.md]
-Следующий шаг: [из ROADMAP]
-```
-
-### Вопросы для пробелов
-
-**Стек не заполнен:**
-> «Какие сервисы используешь? Supabase, Vercel, Lovable, Telegram?»
-
-**Тип не определён:**
-> «Это сайт, мобильное приложение или Telegram-бот?»
-
-**HANDOFF пустой (не новый проект):**
-> «Что делали в последний раз? На чём остановились?»
-
-### Предложение следующих шагов
-
-```
-## Предлагаемые следующие шаги
-
-Немедленно:
-1. [действие] — [почему критично]
-
-В ближайшей сессии:
-2. [действие]
-
-***
-[BOOTSTRAP COMPLETE]
-Контекст загружен. Готов принимать задачи.
-Что начнём прямо сейчас?
-```
-
-> **Правило:** агент не принимает задачи к выполнению ДО момента вывода `[BOOTSTRAP COMPLETE]`.
-> Если владелец даёт задачу до завершения bootstrap — агент отвечает:
-> «Одну секунду — заканчиваю диагностику состояния проекта.
-> [BOOTSTRAP COMPLETE] — теперь готов. Итак, твоя задача: [повторить].»
-
-Только после этого переходить к конкретной задаче.
+> Актуальный протокол — в начале этого файла (`# BOOTSTRAP PROTOCOL`).
+> Архивный checklist-bootstrap: `LAYER-1/deprecated/legacy-bootstrap.md`
+> (не использовать в runtime).
 
 ---
 
@@ -314,7 +160,12 @@
 |--|-------------------------|-------------------------|
 | **Когда** | Первая задача в проекте, новая сессия, симптомы потери контекста, уровень 0 при сбое | Уже в работе над задачей по согласованному плану |
 | **Цель** | Загрузить факты о проекте, выровнять источники, вывести `[BOOTSTRAP COMPLETE]` | Выполнять фазы: решение → self-check → явный апрув → исполнение → отчёт |
-| **Фокус** | Чеклист файлов, отчёт о пробелах, один вопрос за раз на заполнение | Модули пайплайна, scope-guard, приоритет `shared/priority-order.md` |
+| **Фокус** | State-first шаги из `# BOOTSTRAP PROTOCOL` в начале файла; при потере контекста — `LAYER-1/context-recovery.md` | Модули пайплайна, scope-guard, приоритет `shared/priority-order.md` |
 | **Триггер «стоп»** | Нет: bootstrap не заменяет явное подтверждение плана на задачу | Несоответствие контракту / расширение скоупа → пауза и вопрос владельцу |
 
 Кратко: **bootstrap** отвечает на «где мы и что читать»; **контракт** — на «как вести задачу и когда остановиться».
+
+> **Правило против рецидива:** в runtime-документах не допускается
+> сосуществование канонического bootstrap/protocol и альтернативной версии.
+> Исторические или экспериментальные варианты выносятся в `LAYER-1/deprecated/`
+> с явной пометкой non-runtime.

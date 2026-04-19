@@ -12,7 +12,7 @@
 ## 🤖 Ты AI-агент (Claude Code, Cursor и др.):
 
 1. Прочитай `llms.txt`.
-2. Прочитай `HANDOFF.md` и `LAYER-3/project-status.md`.
+2. Прочитай `LAYER-3/STATE.md`, затем `HANDOFF.md`, затем `LAYER-3/project-status.md`.
 3. Жди команды от владельца. Без команды — не действуй.
 
 ## Обязательное правило

@@ -1,6 +1,13 @@
+<!-- ROLE: SESSION_CONTEXT -->
+<!-- AUTHORITY: SECONDARY -->
+<!-- STATUS: ACTIVE -->
+<!-- UPDATED_BY: agent -->
+<!-- SOURCE_OF_TRUTH: no -->
+<!-- MUST_NOT_CONTAIN: formal state как canonical (см. LAYER-3/STATE.md), полная история сессий -->
+
 # HANDOFF.md — Session Handoff Contract
 <!-- Terminal Snapshot: перезаписывается агентом при каждом завершении сессии. -->
-<!-- Session History: только дозапись, одна строка на сессию. -->
+<!-- Session History: см. LAYER-3/session-log.md -->
 <!-- Persistent Context: меняется редко, только при изменении архитектуры. -->
 <!-- Историческое → CHANGELOG.md | Формальное состояние → LAYER-3/STATE.md -->
 
@@ -9,43 +16,36 @@
 ## Terminal Snapshot
 <!-- Агент ПЕРЕЗАПИСЫВАЕТ этот блок при завершении каждой сессии -->
 
-Project state: MAINTENANCE
-Session state: HANDOFF
-Task state: PLANNED
-Active task: TASK-001 State Layer Migration
-Last event: ITERATION_3_COMPLETED
-Last transition: DEVELOPMENT → MAINTENANCE (2026-04-19)
+> ⚠️ HANDOFF.md не является источником состояния.
+> Перед началом работы ОБЯЗАТЕЛЬНО прочитать:
+> 1. `LAYER-3/STATE.md` — canonical state (**PRIMARY**)
+> 2. Затем этот файл — session context (**SECONDARY**)
+
+> **State (canonical):** см. `LAYER-3/STATE.md` — Project / Session / Task, `next_allowed_actions`, `forbidden`, `blockers`.
+
+Last event (reference, не canonical): ITERATION_3_COMPLETED
+Last transition (reference, не canonical): DEVELOPMENT → MAINTENANCE (2026-04-19)
 
 Что сделано в последней сессии:
+- Миграция фаз 2–4: разведены STATE / HANDOFF / project-status; session-log append; state-aware + document governance audit в `audit.md`; `document-governance.md`; единый bootstrap в `agent-rules.md`.
 - В `dev` влита ветка `cursor/handoff-three-zone-restructure-e7fa`: разрешены конфликты в
   `HANDOFF.md`, `LAYER-3/STATE.md`, `LAYER-3/project-status.md`, `memory-bank/project-status.md`.
 - Сохранён формальный `LAYER-3/STATE.md` (MAINTENANCE, guards, Transition Log).
 - История шаблона до state layer — в [`CHANGELOG.md`](./CHANGELOG.md) (`## [2026-04-19] Pre-state-layer history` и связанные секции).
 
 Что должен сделать следующий агент первым шагом:
-1. Прочитать LAYER-3/STATE.md
-2. Прочитать LAYER-3/project-status.md
-3. Прочитать LAYER-3/roadmap.md → найти TASK-001
-4. Продолжить TASK-001 (State Layer Migration) по плану владельца
+1. Прочитать `LAYER-3/STATE.md` (canonical state)
+2. Прочитать этот файл (`HANDOFF.md`) — контекст сессии
+3. Прочитать `LAYER-3/project-status.md` — нарратив проекта
+4. Прочитать `LAYER-3/roadmap.md` → найти TASK-001
+5. Продолжить TASK-001 (State Layer Migration) по плану владельца
 
-Next allowed actions:
-- continue TASK-001 (State Layer Migration)
-
-Blockers: нет
+Blockers (reference, не canonical): нет
 
 ---
 
 ## Session History
-<!-- Дозапись. Одна строка на сессию. Не редактировать старые записи. -->
-
-| Дата | Project state | Что сделано | Следующий шаг |
-|---|---|---|---|
-| 2026-04-18 | MAINTENANCE | Итерация 3 завершена | State Layer Migration |
-| 2026-04-19 | MAINTENANCE | Архитектурный анализ, план итерации 1 | TASK-001 |
-| 2026-04-19 | MAINTENANCE | agent-rules: расширенный bootstrap + STATE AUTHORITY TABLE | TASK-001 |
-| 2026-04-19 | MAINTENANCE | agent-bootstrap.md → DEPRECATED stub; мост в agent-rules | TASK-001 |
-| 2026-04-19 | MAINTENANCE | Унификация entry points + перенос логики .claude / CLAUDE-WORKFLOW в LAYER-1 | TASK-001 |
-| 2026-04-19 | MAINTENANCE | Merge `cursor/handoff-three-zone-restructure-e7fa` → `dev` | TASK-001 |
+> Полный лог сессий: `LAYER-3/session-log.md`
 
 ---
 
