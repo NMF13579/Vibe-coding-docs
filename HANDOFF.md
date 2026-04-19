@@ -1,3 +1,10 @@
+<!-- ROLE: SESSION_CONTEXT -->
+<!-- AUTHORITY: SECONDARY -->
+<!-- STATUS: ACTIVE -->
+<!-- UPDATED_BY: agent -->
+<!-- SOURCE_OF_TRUTH: no -->
+<!-- MUST_NOT_CONTAIN: formal state as canonical (см. LAYER-3/STATE.md), полная история сессий как единственный лог -->
+
 # HANDOFF.md — Session Handoff Contract
 <!-- Terminal Snapshot: перезаписывается агентом при каждом завершении сессии. -->
 <!-- Session History: только дозапись, одна строка на сессию. -->

@@ -1,14 +1,21 @@
+<!-- ROLE: NAVIGATION -->
+<!-- AUTHORITY: SECONDARY -->
+<!-- STATUS: ACTIVE -->
+<!-- UPDATED_BY: owner -->
+<!-- SOURCE_OF_TRUTH: no -->
+<!-- MUST_NOT_CONTAIN: policy вместо маршрутов, дублирование LAYER-1 logic -->
+
 # Vibe-coding-docs
 > Navigation index. Not a policy source.
-> Логика: LAYER-1/ | Состояние: LAYER-3/ | Архитектура: ARCHITECTURE.md
+> Логика: LAYER-1/ | Состояние: LAYER-3/ | Архитектура: ARCHITECTURE.md | Governance: LAYER-1/document-governance.md
 
 ---
 
 ## Bootstrap (строгий порядок)
 1. LAYER-3/STATE.md
-2. LAYER-3/project-status.md
-3. LAYER-1/agent-rules.md
-4. HANDOFF.md
+2. HANDOFF.md
+3. LAYER-3/project-status.md
+4. LAYER-1/agent-rules.md
 
 ---
 
@@ -17,7 +24,7 @@
 | Ситуация | Файл |
 |---|---|
 | Первый запуск | LAYER-1/interview-system.md |
-| Продолжение работы | LAYER-3/project-status.md |
+| Продолжение работы | LAYER-3/STATE.md → HANDOFF.md |
 | Ошибка / откат | LAYER-1/error-handling.md |
 | Задача расползается | LAYER-1/scope-guard.md |
 | Потеря контекста | LAYER-1/context-recovery.md |
@@ -25,6 +32,7 @@
 | Деплой | LAYER-1/deploy-guide.md |
 | Откат после деплоя | LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md |
 | Аудит | LAYER-1/audit.md |
+| Управление документами (роли, lifecycle) | LAYER-1/document-governance.md |
 | UX и экраны | LAYER-1/ux-checklist-core.md |
 | Безопасность | LAYER-1/security.md |
 | Тестирование | LAYER-1/testing-guide.md |
@@ -44,6 +52,8 @@
 
 ## Canonical sources
 - Logic:        LAYER-1/
+- Governance:   LAYER-1/document-governance.md
+- Audit:        LAYER-1/audit.md (в т.ч. State Consistency Audit)
 - State:        LAYER-3/STATE.md
 - Status:       LAYER-3/project-status.md
 - Architecture: ARCHITECTURE.md

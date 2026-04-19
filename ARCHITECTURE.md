@@ -77,6 +77,8 @@ Task:     DRAFT → PLANNED → IN_PROGRESS → REVIEW → DONE
 - Если логика относится к проекту → LAYER-1/
 - Если к конкретной IDE → в adapter file
 
+Классификация документов (роль, статус, authority, lifecycle): [`LAYER-1/document-governance.md`](./LAYER-1/document-governance.md) — канон; не дублировать таблицы здесь.
+
 ---
 
 ## Таблица компонентов

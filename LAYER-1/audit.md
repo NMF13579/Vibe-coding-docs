@@ -4,6 +4,13 @@
 > Needs-approval: yes (Шаг 6)
 > Next: LAYER-1/task-protocol.md
 
+<!-- ROLE: CANONICAL_POLICY -->
+<!-- AUTHORITY: PRIMARY -->
+<!-- STATUS: ACTIVE -->
+<!-- UPDATED_BY: owner -->
+<!-- SOURCE_OF_TRUTH: yes -->
+<!-- MUST_NOT_CONTAIN: полный текст governance (см. document-governance.md), дублирование правил переходов state machine -->
+
 # AUDIT-FULL — полный аудит проекта перед релизом или передачей
 
 ---
@@ -65,13 +72,16 @@
 Читаю эти файлы по порядку:
 
 1. `START.md` — единая точка входа шаблона (если аудит идёт в этом репозитории)
-2. `HANDOFF.md` — текущее состояние
-3. `LAYER-3/project-status.md` — статус всех задач
-4. `LAYER-3/lessons.md` — накопленные уроки
-5. `LAYER-3/fixes.md` — известные проблемы
-6. `llms.txt` — маршруты и структура
+2. `LAYER-1/document-governance.md` — роли, authority, lifecycle (мета-слой)
+3. `HANDOFF.md` — текущее состояние
+4. `LAYER-3/project-status.md` — статус всех задач
+5. `LAYER-3/lessons.md` — накопленные уроки
+6. `LAYER-3/fixes.md` — известные проблемы
+7. `llms.txt` — маршруты и структура
 
-После чтения — перехожу к Шагу 2. Молчу.
+После чтения — перехожу к **State Consistency Audit**, затем к **Document Governance Audit** (разделы ниже, перед Шагом 2). Молчу.
+
+> Если по итогам **State Consistency Audit** зафиксирован **STATE BROKEN** — к Шагу 2 не переходить: выполнение остановлено по STOP-правилу этого раздела.
 
 ---
 
@@ -97,7 +107,7 @@
 
 ## ШАГ 4 — Оцениваю здоровье проекта
 
-Заполняю таблицу **HEALTH-SCORE** в конце раздела **«Чеклист аудита»** (оценки: 🟢 Хорошо | 🟡 Есть пробелы | 🔴 Требует внимания). Итог таблицы показываю владельцу в ходе шага 5.
+Заполняю таблицу **HEALTH-SCORE** в конце раздела **«Чеклист аудита»** (оценки: 🟢 Хорошо | 🟡 Есть пробелы | 🔴 Требует внимания), включая строку **State machine (control plane)** по вердикту из **State Consistency Audit** (🟢 = CONSISTENT, 🟡 = WARNING, 🔴 = BROKEN) и строку **Document governance** по вердикту из **Document Governance Audit** (🟢 = CONSISTENT, 🟡 = WARNING, 🔴 = BROKEN). Итог таблицы показываю владельцу в ходе шага 5.
 
 Если есть хотя бы один 🔴 — агент останавливается и спрашивает владельца:
 
@@ -202,9 +212,208 @@
 
 ---
 
+## State Consistency Audit
+
+> **Цель:** проверить, что state layer существует, валиден
+> и является единственным control plane системы.
+>
+> **Canonical sources (не дублировать — только читать):**
+> - [`LAYER-3/STATE.md`](../LAYER-3/STATE.md) — formal state
+> - [`event-dictionary.md`](./event-dictionary.md) — события
+> - [`state-transitions.md`](./state-transitions.md) — переходы
+>
+> **Важно:** `audit.md` **не** определяет правила переходов.
+> Он только проверяет соответствие canonical sources.
+
+> **Правило:** state-поля могут существовать только в `LAYER-3/STATE.md`.
+> Любое появление их в других файлах как source of truth —
+> архитектурная ошибка.
+
+### Execution order
+
+Проверки выполняются **строго** в порядке:
+
+1. Control plane existence  
+2. Snapshot validity  
+3. Transition legality  
+4. Authority consistency  
+5. Side effects consistency  
+
+Если на любом этапе получен **STATE BROKEN** — дальнейшие проверки **не** выполняются.
+
+---
+
+### Проверка 1 — Control plane existence
+
+Проверить наличие файлов:
+
+- `LAYER-3/STATE.md`
+- `LAYER-1/event-dictionary.md`
+- `LAYER-1/state-transitions.md`
+
+Если какой-либо отсутствует → **STATE BROKEN**.
+
+---
+
+### Проверка 2 — Snapshot validity
+
+В [`LAYER-3/STATE.md`](../LAYER-3/STATE.md) проверить наличие **всех** элементов снимка состояния:
+
+- Project state (секция `## Project` и поле `state:`)
+- Session state (секция `## Session` и поле `state:`)
+- Task state (секция `## Task` и поле `state:`)
+- `next_allowed_actions`
+- `forbidden` (в т.ч. под ключом `forbidden:` в блоке Guards)
+- `blockers` (явный список или эквивалент в структуре файла; если канон ещё не введён — **STATE BROKEN** до исправления)
+
+Если чего-то нет → **STATE BROKEN**.
+
+---
+
+### Проверка 3 — Transition legality
+
+По **Transition Log** в `LAYER-3/STATE.md` (и при необходимости по последним событиям в снимке):
+
+- каждое именованное событие **должно** быть элементом канона в [`event-dictionary.md`](./event-dictionary.md);
+- каждый описанный переход **должен** быть допустим по таблицам в [`state-transitions.md`](./state-transitions.md);
+- не должно быть переходов из раздела **Illegal transitions** в [`state-transitions.md`](./state-transitions.md);
+- не должно быть пропусков через обязательные состояния, **если** такой запрет явно следует из [`state-transitions.md`](./state-transitions.md) (Guards / таблицы).
+
+Если нарушение → **STATE BROKEN**.
+
+---
+
+### Проверка 4 — Authority consistency
+
+Проверить согласованность runtime с formal state (чтение файлов репозитория):
+
+- `LAYER-3/STATE.md` — единственный source of truth для Project / Session / Task state, `next_allowed_actions`, `forbidden`, `blockers`;
+- при любом конфликте интерпретации выигрывает `STATE.md`;
+- в `HANDOFF.md` **нет** строк `Project state:`, `Session state:`, `Task state:`, `Next allowed actions:` как **канонического** дубля state (допустимы только явно помеченные reference / предупреждение, что HANDOFF не канон);
+- в `LAYER-3/project-status.md` **нет** state-полей как канона и **нет** датированной летописи сессий вида `YYYY-MM-DD — ...` (нарратив — отдельно от formal state);
+- в [`llms.txt`](../llms.txt) маршрут **«Продолжение работы»** ведёт **`LAYER-3/STATE.md` → `HANDOFF.md`** (не `project-status.md` первым шагом);
+- в [`agent-rules.md`](./agent-rules.md) ровно **один** заголовок `# BOOTSTRAP PROTOCOL` (дубликаты протокола = нарушение authority).
+
+Оценка:
+
+- активный конфликт с каноном → **STATE BROKEN**;
+- слабая несогласованность (косметика, устаревший reference без противоречия STATE) → **STATE WARNING**.
+
+---
+
+### Проверка 5 — Side effects consistency
+
+Сверить ожидаемые побочные эффекты с [`state-transitions.md`](./state-transitions.md) (колонка **Side Effects** в таблицах). Если для события side effects заданы — проверять **строго**; если в таблице не описаны — достаточно базовой консистентности:
+
+- сессия завершена / handoff: обновлён `HANDOFF.md` (Terminal Snapshot);
+- история сессий: используется `LAYER-3/session-log.md` (нет полной истории только в `HANDOFF.md` вместо лога);
+- завершение задачи: обновлён нарратив в `LAYER-3/project-status.md` при необходимости;
+- переход: отражён в `LAYER-3/STATE.md` (в т.ч. Transition Log при смене домена).
+
+Если не выполнено → **STATE WARNING** (если нет оснований для BROKEN по проверкам 1–4).
+
+---
+
+### State audit checklist
+
+#### Control plane
+- [ ] `LAYER-3/STATE.md` существует
+- [ ] `LAYER-1/event-dictionary.md` существует
+- [ ] `LAYER-1/state-transitions.md` существует
+
+#### Snapshot
+- [ ] Project state
+- [ ] Session state
+- [ ] Task state
+- [ ] next_allowed_actions
+- [ ] forbidden
+- [ ] blockers
+
+#### Transitions
+- [ ] события валидны (∈ event-dictionary)
+- [ ] переходы валидны (∈ state-transitions)
+- [ ] нет illegal transitions
+- [ ] нет запрещённых пропусков (если явно в state-transitions)
+
+#### Authority
+- [ ] STATE.md — единственный source of truth
+- [ ] HANDOFF.md не содержит state как canonical
+- [ ] project-status.md не содержит state
+- [ ] llms.txt → STATE.md first (continuation)
+- [ ] agent-rules.md → один `# BOOTSTRAP PROTOCOL`
+
+#### Side effects
+- [ ] HANDOFF.md актуален
+- [ ] session-log.md используется
+- [ ] project-status.md обновлён (нарратив при завершении задачи)
+- [ ] Transition Log согласован с каноном
+
+---
+
+### State audit verdicts
+
+| Verdict | Условие |
+|--------|--------|
+| ✅ STATE CONSISTENT | всё ок |
+| ⚠️ STATE WARNING | есть несоответствия без поломки control plane |
+| 🔴 STATE BROKEN | control plane сломан или нарушена legality |
+
+**STOP при STATE BROKEN**
+
+- Агент **обязан** остановить выполнение аудита и любых задач, идущих **после** этого аудита в той же сессии, пока причина не устранена или владелец явно не сменил режим.
+- **Запрещено:** вносить изменения в репозиторий «в обход» state layer; запускать новые задачи исполнения, опираясь на сломанный control plane.
+- **Сообщение (обязательно):** `State layer нарушен: [краткая причина]` (указать этап Execution order и конкретное нарушение).
+
+При **STATE WARNING** — продолжить можно, но отразить в HEALTH-SCORE и в письме владельцу (Шаг 5).
+
+---
+
+## Document Governance Audit
+
+> **Цель:** проверить, что документы системы классифицированы,
+> соответствуют своим ролям и не нарушают governance rules.
+>
+> **Canonical source:** [`LAYER-1/document-governance.md`](./document-governance.md)  
+> Этот раздел **не** дублирует governance — только проверяет соответствие.
+
+### Document governance checklist
+
+#### Классификация
+- [ ] Ключевые документы имеют governance metadata
+- [ ] Нет ACTIVE-документов без role/status
+- [ ] Нет документов без owner (updated_by)
+
+#### Роли соблюдены
+- [ ] ADAPTER-файлы не содержат policy
+- [ ] RUNTIME_STATE — только STATE.md
+- [ ] CANONICAL_POLICY — только LAYER-1/ документы
+
+#### Lifecycle соблюдён
+- [ ] DEPRECATED-документы не используются как runtime
+- [ ] DEPRECATED-документы содержат шапку и REPLACED_BY
+- [ ] ARCHIVED-документы не фигурируют в navigation
+
+#### Ссылки актуальны
+- [ ] Нет navigation-ссылок на DEPRECATED как рабочий путь
+- [ ] Нет navigation-ссылок на несуществующие документы
+- [ ] При downgrade — ссылки обновлены в llms.txt и ARCHITECTURE.md
+
+#### Новые документы
+- [ ] Нет документов без governance-классификации
+
+### Document governance verdicts
+
+| Verdict | Условие |
+|--------|--------|
+| ✅ GOVERNANCE CONSISTENT | все проверки пройдены |
+| ⚠️ GOVERNANCE WARNING | есть документы без metadata или устаревшие ссылки |
+| 🔴 GOVERNANCE BROKEN | DEPRECATED используется как runtime; ADAPTER содержит policy; конкурирующий PRIMARY в одной зоне |
+
+---
+
 ## Чеклист аудита
 
-Ниже — чек-листы, семь направлений и таблица HEALTH-SCORE. Протокол шагов (нулевой шаг, остановки, шаги 1–6) — в основном тексте этого файла **выше**.
+Ниже — чек-листы, семь направлений, **State Consistency Audit** и **Document Governance Audit** (выше) и таблица HEALTH-SCORE. Протокол шагов (нулевой шаг, остановки, шаги 1–6) — в основном тексте этого файла **выше**.
 
 ### Когда использовать
 
@@ -218,27 +427,31 @@
 
 ### Быстрая проверка — порядок работы
 
-1. Прочитать: `HANDOFF.md`, `LAYER-3/project-status.md`; при наличии — `LAYER-3/fixes.md`, `LAYER-3/lessons.md`; пробежать `llms.txt` (структура маршрутов).
-2. Проверить **критичные файлы** (таблица ниже) — каждый отсутствующий: остановка и вопрос владельцу по правилам выше в этом файле.
-3. Отметить **продуктовые документы** и **что должно отсутствовать**.
-4. Пройти **семь направлений** (кратко, по пунктам).
-5. Заполнить **HEALTH-SCORE** (хотя бы в ответе владельцу).
-6. Краткий устный итог. Сохранение в репозиторий — только если владелец явно просит (полный аудит → шаг 6 выше).
+1. Выполнить **State Consistency Audit** (раздел выше). При **STATE BROKEN** — STOP; иначе зафиксировать вердикт для строки HEALTH-SCORE «State machine».
+2. Выполнить **Document Governance Audit** (раздел выше). Зафиксировать вердикт для строки HEALTH-SCORE «Document governance» (при **GOVERNANCE BROKEN** — отметить 🔴 и остановиться по согласованию с владельцем до исправления нарушений governance).
+3. Прочитать: `LAYER-3/STATE.md`, `HANDOFF.md`, `LAYER-3/project-status.md`; при наличии — `LAYER-3/fixes.md`, `LAYER-3/lessons.md`; пробежать `llms.txt` (структура маршрутов).
+4. Проверить **критичные файлы** (таблица ниже) — каждый отсутствующий: остановка и вопрос владельцу по правилам выше в этом файле.
+5. Отметить **продуктовые документы** и **что должно отсутствовать**.
+6. Пройти **семь направлений** (кратко, по пунктам).
+7. Заполнить **HEALTH-SCORE** (хотя бы в ответе владельцу).
+8. Краткий устный итог. Сохранение в репозиторий — только если владелец явно просит (полный аудит → шаг 6 выше).
 
 ---
 
 ### CHECKLIST — критичные файлы
 
-Для каждого отсутствующего файла — остановка и вопрос владельцу (текст шаблона в основном тексте этого файла, шаг 2). После «продолжить» — отметить 🔴 в HEALTH-SCORE.
+Для каждого отсутствующего файла — остановка и вопрос владельцу (текст шаблона в основном тексте этого файла, шаг 2 полного аудита / шаг 4 быстрой проверки). После «продолжить» — отметить 🔴 в HEALTH-SCORE.
 
 | Файл | Зачем нужен |
 |------|-------------|
+| `LAYER-3/STATE.md` | Formal control plane — без него state layer не проверяем |
 | `CLAUDE.md` | Главные правила для агента — без него агент работает вслепую |
 | `HANDOFF.md` | Память проекта — где остановились, что дальше |
 | `llms.txt` | Карта навигации — агент знает куда смотреть |
 | `LAYER-1/workflow.md` | Конвейер работы — как движется проект |
 | `LAYER-1/scope-guard.md` | Защита от расползания задач |
 | `LAYER-1/agent-rules.md` | Bootstrap и границы агента |
+| `LAYER-1/document-governance.md` | Роли, статусы, lifecycle документов |
 | `LAYER-1/agent-contract.md` | Локальный entrypoint контракта (source of truth: `shared/agent-contract.md`) |
 | `LAYER-3/project-status.md` | Текущий статус всех задач |
 
@@ -318,6 +531,8 @@
 
 | Направление | Оценка | Главная проблема |
 |-------------|--------|------------------|
+| State machine (control plane) | | Вердикт из **State Consistency Audit**: CONSISTENT → 🟢, WARNING → 🟡, BROKEN → 🔴 |
+| Document governance | | Вердикт из **Document Governance Audit**: CONSISTENT → 🟢, WARNING → 🟡, BROKEN → 🔴 |
 | Продукт (цель и фокус) | | |
 | Архитектура (стек и код) | | |
 | Процесс (задачи и фиксация) | | |

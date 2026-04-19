@@ -37,6 +37,19 @@ text
 
 ## История
 
+## [document-governance-v1] — 2026-04-19
+### Добавлено
+- `LAYER-1/document-governance.md` — роли, статусы, authority, lifecycle, metadata standard, canonical registry, governance rules (7).
+- `LAYER-1/audit.md` — раздел **Document Governance Audit** (чеклист, вердикты), строка **Document governance** в HEALTH-SCORE; в Шаге 1 и быстрой проверке — чтение `document-governance.md`.
+- `LAYER-1/deprecated/legacy-bootstrap.md` — stub архива с шапкой DEPRECATED и `REPLACED_BY`.
+
+### Изменено
+- Governance metadata (единый формат) в `LAYER-3/STATE.md`, `HANDOFF.md`, `LAYER-3/project-status.md`, `LAYER-1/agent-rules.md`, `LAYER-1/audit.md`, `llms.txt`.
+- `llms.txt`: bootstrap `STATE` → `HANDOFF` → `project-status`; маршрут «Продолжение работы» — `STATE → HANDOFF`; canonical sources — Governance + Audit.
+- `ARCHITECTURE.md` — ссылка на `document-governance.md` как на канон классификации.
+- `LAYER-1/agent-rules.md` — один `# BOOTSTRAP PROTOCOL`; шаг 2 чтения `HANDOFF.md`.
+- `LAYER-3/STATE.md` — поле `blockers` для state-aware audit.
+
 ## [ide-entry-points-unified] — 2026-04-19
 ### Изменено
 - Корневые и IDE entry: `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.cursor/rules/*.mdc`, `.cursor/CLAUDE-WORKFLOW.md`, `.claude/agents/*.md` — единый шаблон (Navigation: `llms.txt`).

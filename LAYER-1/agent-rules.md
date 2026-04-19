@@ -1,3 +1,10 @@
+<!-- ROLE: CANONICAL_POLICY -->
+<!-- AUTHORITY: PRIMARY -->
+<!-- STATUS: ACTIVE -->
+<!-- UPDATED_BY: owner -->
+<!-- SOURCE_OF_TRUTH: yes -->
+<!-- MUST_NOT_CONTAIN: duplicate governance model (см. document-governance.md), runtime narrative -->
+
 ---
 # BOOTSTRAP PROTOCOL
 <!-- Выполняется строго до любых других действий в любой сессии -->
@@ -7,17 +14,18 @@
 1. Прочитать LAYER-3/STATE.md
    → определить Project / Session / Task state
    → проверить forbidden и next_allowed_actions
-2. Прочитать LAYER-3/project-status.md (narrative)
-3. Прочитать LAYER-3/roadmap.md (активные задачи)
-4. Прочитать LAYER-3/session-log.md
-5. Если active_task не пустой → прочитать описание задачи
-6. Сообщить пользователю:
+2. Прочитать HANDOFF.md (контракт сессии; не источник формального state)
+3. Прочитать LAYER-3/project-status.md (нарратив)
+4. Прочитать LAYER-3/roadmap.md (активные задачи)
+5. Прочитать LAYER-3/session-log.md
+6. Если active_task не пустой → прочитать описание задачи
+7. Сообщить пользователю:
    - Project state / Session state / Task state
    - Active task (если есть)
    - Next allowed actions
    - Blockers (если есть)
-7. Выполнить переход Session: BOOTSTRAP → CONTEXT_LOADED (событие: CONTEXT_RESTORED)
-8. [BOOTSTRAP COMPLETE] — только теперь начинать работу
+8. Выполнить переход Session: BOOTSTRAP → CONTEXT_LOADED (событие: CONTEXT_RESTORED)
+9. [BOOTSTRAP COMPLETE] — только теперь начинать работу
 
 ## Если STATE.md не существует:
 → Сообщить: "STATE.md не найден. Требуется инициализация state layer."
@@ -49,27 +57,6 @@
 
 ---
 <!-- конец добавленного блока — ниже следует существующее содержимое -->
-
-# BOOTSTRAP PROTOCOL
-<!-- Выполняется строго до любых других действий -->
-
-## Шаги (порядок строгий):
-1. Прочитать LAYER-3/STATE.md
-   → определить Project / Session / Task state
-   → проверить forbidden и next_allowed_actions
-2. Прочитать LAYER-3/project-status.md
-3. Прочитать LAYER-3/session-log.md
-4. Прочитать LAYER-3/atomic-decisions.md
-5. Прочитать активную задачу (если active_task не пустой)
-6. Сообщить пользователю:
-   - текущий Project state
-   - текущий Task state
-   - next_allowed_actions
-   - блокеры (если есть)
-7. Перевести Session state: BOOTSTRAP → CONTEXT_LOADED
-8. [BOOTSTRAP COMPLETE] — только теперь начинать работу
-
----
 
 # STATE AUTHORITY
 

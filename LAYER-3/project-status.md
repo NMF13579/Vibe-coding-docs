@@ -1,3 +1,10 @@
+<!-- ROLE: NARRATIVE_CONTEXT -->
+<!-- AUTHORITY: TERTIARY -->
+<!-- STATUS: ACTIVE -->
+<!-- UPDATED_BY: agent -->
+<!-- SOURCE_OF_TRUTH: no -->
+<!-- MUST_NOT_CONTAIN: formal runtime state как канон, датированная история сессий как единственный журнал -->
+
 # Project Status
 
 > Updated: 2026-04-19 (merge state layer → dev; см. HANDOFF)
