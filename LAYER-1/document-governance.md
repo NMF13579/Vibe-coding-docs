@@ -127,6 +127,9 @@
 | CLAUDE.md | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Adapter only |
 | .cursor/rules/* | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Adapter only |
 | AGENTS.md | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Adapter only |
+| GEMINI.md | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Gemini CLI native adapter |
+| .windsurfrules | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Windsurf repository convention |
+| .aider.conf.yml | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Aider repository convention |
 | LAYER-3/session-log.md | REFERENCE | SECONDARY | ACTIVE | agent | Append only |
 | CHANGELOG.md | REFERENCE | NON-AUTHORITY | LIMITED | both | Historical record |
 | LAYER-1/deprecated/* | DEPRECATED | NON-AUTHORITY | DEPRECATED | manual-only | Replaced by: см. шапку каждого файла |

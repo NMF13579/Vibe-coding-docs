@@ -27,6 +27,7 @@ Last event (reference, не canonical): ITERATION_3_COMPLETED
 Last transition (reference, не canonical): DEVELOPMENT → MAINTENANCE (2026-04-19)
 
 Что сделано в последней сессии:
+- Adapter entrypoints сведены к минимальному указателю на `LAYER-1/agent-rules.md`: `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `.cursor/rules/00-core.mdc`; добавлены `.windsurfrules`, `.aider.conf.yml`; в `LAYER-1/document-governance.md` — строки registry для GEMINI, Windsurf, Aider; `opencode.json` не менялся (в текущей схеме нет безопасного поля для текста инструкций); `llms.txt` проверен — без конфликта с каноническим bootstrap в `agent-rules.md`.
 - Миграция фаз 2–4: разведены STATE / HANDOFF / project-status; session-log append; state-aware + document governance audit в `audit.md`; `document-governance.md`; единый bootstrap в `agent-rules.md`.
 - В `dev` влита ветка `cursor/handoff-three-zone-restructure-e7fa`: разрешены конфликты в
   `HANDOFF.md`, `LAYER-3/STATE.md`, `LAYER-3/project-status.md`, `memory-bank/project-status.md`.
