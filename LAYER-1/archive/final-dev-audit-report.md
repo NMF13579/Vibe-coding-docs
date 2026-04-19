@@ -1,3 +1,20 @@
+---
+archived: true
+reason: "Temporary operational document, superseded by audit.md"
+replaced_by:
+  - "../audit.md"
+  - "../STATE.md"
+archived_at: 2026-04-19
+---
+
+# FINAL DEV AUDIT REPORT (ARCHIVED)
+
+Одноразовый аудит-отчёт по состоянию ветки `dev` до миграции фаз 1–4.
+Актуальный аудит — см. `LAYER-1/audit.md`.
+Текущее состояние системы — см. `LAYER-3/STATE.md`.
+
+---
+
 # FINAL DEV AUDIT REPORT — Vibe-coding-docs (dev)
 
 **RESULT:** ✅ Pass
