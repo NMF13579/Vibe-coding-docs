@@ -28,13 +28,15 @@
 
 ## Последнее действие
 
+2026-04-19 — **agent-rules:** устранён dual-bootstrap; исторический checklist — [`LAYER-1/deprecated/legacy-bootstrap.md`](../LAYER-1/deprecated/legacy-bootstrap.md) (архивирован, см. deprecated/). См. [`HANDOFF.md`](../HANDOFF.md).
+
 2026-04-19 — **Merge в dev:** влита ветка `cursor/handoff-three-zone-restructure-e7fa` (state layer, HANDOFF-контракт, roadmap, atomic-decisions, event-dictionary, унификация IDE entry). См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-18 — **STATE.md:** добавлен [`STATE.md`](./STATE.md) — машиночитаемое состояние проекта/сессии/задачи и guards для агентов. PR: https://github.com/NMF13579/Vibe-coding-docs/pull/21. См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-19 — **Entry points + канон:** `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, Copilot, `.cursor/*` (rules + CLAUDE-WORKFLOW), `.claude/agents/*` — единый шаблон с `Navigation: llms.txt`; логика из `.claude/agents` и `CLAUDE-WORKFLOW` вынесена в `audit.md`, `session-lifecycle.md`, `cursor-auto-actions.md`. См. [`HANDOFF.md`](../HANDOFF.md).
 
-2026-04-19 — **agent-bootstrap:** восстановлен stub [`agent-bootstrap.md`](../LAYER-1/agent-bootstrap.md) (DEPRECATED → `agent-rules.md`); в [`agent-rules.md`](../LAYER-1/agent-rules.md) — мост «Наследие agent-bootstrap.md». См. [`HANDOFF.md`](../HANDOFF.md).
+2026-04-19 — **agent-bootstrap:** восстановлен stub [`agent-bootstrap.md`](../LAYER-1/agent-bootstrap.md) (DEPRECATED → [`agent-rules.md`](../LAYER-1/agent-rules.md) state-first bootstrap; архивирован, см. deprecated/). См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-19 — **agent-rules:** в начало [`agent-rules.md`](../LAYER-1/agent-rules.md) добавлены расширенный BOOTSTRAP (roadmap, CONTEXT_RESTORED, ветка «если нет STATE.md»), **STATE AUTHORITY TABLE** (кто обновляет какие файлы). См. [`HANDOFF.md`](../HANDOFF.md).
 

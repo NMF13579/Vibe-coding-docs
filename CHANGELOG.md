@@ -37,6 +37,12 @@ text
 
 ## История
 
+## [agent-rules-single-bootstrap] — 2026-04-19
+### Изменено
+- `LAYER-1/agent-rules.md`: один канонический `# BOOTSTRAP PROTOCOL`; второй протокол и checklist-bootstrap вынесены в [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md); блок «Наследие agent-bootstrap» сокращён; правило против рецидива в разделе startup vs runtime.
+- `LAYER-1/agent-bootstrap.md`: указатели на state-first канон и архив.
+- Ссылки в `ARCHITECTURE.md`, `AUDIT-REPORT.md`, `HANDOFF.md`, `LAYER-3/project-status.md`, `LAYER-1/context-recovery.md` — выровнены под state-first bootstrap с пометками об архиве.
+
 ## [ide-entry-points-unified] — 2026-04-19
 ### Изменено
 - Корневые и IDE entry: `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.cursor/rules/*.mdc`, `.cursor/CLAUDE-WORKFLOW.md`, `.claude/agents/*.md` — единый шаблон (Navigation: `llms.txt`).
@@ -44,7 +50,7 @@ text
 
 ## [agent-bootstrap-deprecated-stub] — 2026-04-19
 ### Изменено
-- `LAYER-1/agent-bootstrap.md`: stub DEPRECATED → канон в `agent-rules.md`; мост «Наследие agent-bootstrap.md» в `agent-rules.md` после STATE AUTHORITY TABLE.
+- `LAYER-1/agent-bootstrap.md`: stub DEPRECATED → канон в [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) (state-first bootstrap); мост «Наследие agent-bootstrap.md» в `agent-rules.md` после STATE AUTHORITY TABLE. *(Исторически; checklist-bootstrap позже вынесен в [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md) — архивирован, см. deprecated/.)*
 
 ## [agent-rules-bootstrap-v3] — 2026-04-19
 ### Добавлено
@@ -161,7 +167,7 @@ text
 - `LAYER-1/navigation.md` переименован → `LAYER-1/tools/template-sync-index.md`; ссылки на TEMPLATE-SYNC-*.md исправлены.
 
 Добавлено
-- 9 маршрутов в `llms.txt`: workflow, anti-patterns, security, glossary, feature-radar, testing-guide, decision-guide, owner, agent-bootstrap.
+- 9 маршрутов в `llms.txt`: workflow, anti-patterns, security, glossary, feature-radar, testing-guide, decision-guide, owner, agent-bootstrap *(исторически; см. [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) state-first bootstrap; архив — [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md))*.
 - Платформенный контекст в `START.md` и `SYSTEM_PROMPT.md` (deprecated-заголовки для Lovable/Bolt).
 
 Удалено
@@ -212,7 +218,7 @@ text
 
 **Оптимизация документов — ШАГ 1а** (2026-04-17):
 
-- Слияние `LAYER-1/agent-bootstrap.md` + `LAYER-1/agent-contract.md` → [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md); ссылки обновлены по репозиторию; [`shared/agent-contract.md`](./shared/agent-contract.md) указывает на полную версию в `LAYER-1/`.
+- Слияние `LAYER-1/agent-bootstrap.md` + `LAYER-1/agent-contract.md` → [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) *(state-first bootstrap; исторический checklist — [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md), архивирован, см. deprecated/)*; ссылки обновлены по репозиторию; [`shared/agent-contract.md`](./shared/agent-contract.md) указывает на полную версию в `LAYER-1/`.
 
 **Единая точка входа** (2026-04-17):
 

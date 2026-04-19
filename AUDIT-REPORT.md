@@ -27,7 +27,7 @@
 ```
 
 **Проблемы ядра:**
-- agent-bootstrap.md отсутствует.
+- agent-bootstrap.md отсутствует. *(Снимок аудита; актуально: [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) — state-first bootstrap; исторический checklist — [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md), архивирован, см. deprecated/.)*
 - Layer-1 agent-contract пустой.
 - Разделение bootstrap/runtime не оформлено.
 - Decision-guide требует контекста других документов.
@@ -82,7 +82,7 @@ LAYER-3: runtime, HANDOFF, project-status
 ### ТОП-10 проблем
 | Проблема | Файл | Суть | Рекомендация |
 |----------|------|------|--------------|
-| agent-bootstrap.md отсутствует | LAYER-1 | Нет описания старта агента | Создать bootstrap.md с пошаговой инициализацией |
+| agent-bootstrap.md отсутствует *(исторически; см. [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) state-first bootstrap; архив — [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md))* | LAYER-1 | Нет описания старта агента | Создать bootstrap.md с пошаговой инициализацией |
 | Layer-1 agent-contract пуст | agent-contract.md | Нет проверяемого контракта | Добавить Layer-1 контракт с обязанностями агента |
 | Отсутствие error-handling | - | Нет централизованной обработки ошибок | Создать error-handling.md + self-verification.md |
 | Отсутствие audit/checklist | - | Нет формального аудита | Создать audit.md и audit-checklist.md |
@@ -96,7 +96,7 @@ LAYER-3: runtime, HANDOFF, project-status
 ### Матрица покрытия сценариев (10 кейсов)
 | Сценарий | Покрыт | Где описан | Пробел |
 |----------|--------|------------|-------|
-| Новый task | Да | workflow.md | Bootstrap отсутствует |
+| Новый task | Да | workflow.md | Bootstrap отсутствует *(снимок; актуально: [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) state-first bootstrap; исторический checklist — [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md))* |
 | Ошибка в задаче | Частично | decision-guide.md | Нет error-handling.md |
 | Semantic error | Да | dialog-style.md | Novice не всегда понимает |
 | Подтверждение критичного действия | Да | ux-checklist-medical.md | Некоторые `[ ]` опциональны |

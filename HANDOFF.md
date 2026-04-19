@@ -17,6 +17,7 @@ Last event: ITERATION_3_COMPLETED
 Last transition: DEVELOPMENT → MAINTENANCE (2026-04-19)
 
 Что сделано в последней сессии:
+- Устранён dual-bootstrap в [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md): один `# BOOTSTRAP PROTOCOL`; исторический checklist — [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md) (архивирован, см. deprecated/).
 - В `dev` влита ветка `cursor/handoff-three-zone-restructure-e7fa`: разрешены конфликты в
   `HANDOFF.md`, `LAYER-3/STATE.md`, `LAYER-3/project-status.md`, `memory-bank/project-status.md`.
 - Сохранён формальный `LAYER-3/STATE.md` (MAINTENANCE, guards, Transition Log).
@@ -43,9 +44,10 @@ Blockers: нет
 | 2026-04-18 | MAINTENANCE | Итерация 3 завершена | State Layer Migration |
 | 2026-04-19 | MAINTENANCE | Архитектурный анализ, план итерации 1 | TASK-001 |
 | 2026-04-19 | MAINTENANCE | agent-rules: расширенный bootstrap + STATE AUTHORITY TABLE | TASK-001 |
-| 2026-04-19 | MAINTENANCE | agent-bootstrap.md → DEPRECATED stub; мост в agent-rules | TASK-001 |
+| 2026-04-19 | MAINTENANCE | agent-bootstrap.md → DEPRECATED stub; мост в agent-rules *(исторически; checklist-bootstrap — [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md))* | TASK-001 |
 | 2026-04-19 | MAINTENANCE | Унификация entry points + перенос логики .claude / CLAUDE-WORKFLOW в LAYER-1 | TASK-001 |
 | 2026-04-19 | MAINTENANCE | Merge `cursor/handoff-three-zone-restructure-e7fa` → `dev` | TASK-001 |
+| 2026-04-19 | MAINTENANCE | agent-rules: единый state-first bootstrap; legacy-bootstrap в deprecated | TASK-001 |
 
 ---
 
