@@ -7,17 +7,18 @@
 1. Прочитать LAYER-3/STATE.md
    → определить Project / Session / Task state
    → проверить forbidden и next_allowed_actions
-2. Прочитать LAYER-3/project-status.md (narrative)
-3. Прочитать LAYER-3/roadmap.md (активные задачи)
-4. Прочитать LAYER-3/session-log.md
-5. Если active_task не пустой → прочитать описание задачи
-6. Сообщить пользователю:
+2. Прочитать HANDOFF.md (контракт сессии; не источник формального state)
+3. Прочитать LAYER-3/project-status.md (нарратив)
+4. Прочитать LAYER-3/roadmap.md (активные задачи)
+5. Прочитать LAYER-3/session-log.md
+6. Если active_task не пустой → прочитать описание задачи
+7. Сообщить пользователю:
    - Project state / Session state / Task state
    - Active task (если есть)
    - Next allowed actions
    - Blockers (если есть)
-7. Выполнить переход Session: BOOTSTRAP → CONTEXT_LOADED (событие: CONTEXT_RESTORED)
-8. [BOOTSTRAP COMPLETE] — только теперь начинать работу
+8. Выполнить переход Session: BOOTSTRAP → CONTEXT_LOADED (событие: CONTEXT_RESTORED)
+9. [BOOTSTRAP COMPLETE] — только теперь начинать работу
 
 ## Если STATE.md не существует:
 → Сообщить: "STATE.md не найден. Требуется инициализация state layer."

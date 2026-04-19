@@ -6,9 +6,9 @@
 
 ## Bootstrap (строгий порядок)
 1. LAYER-3/STATE.md
-2. LAYER-3/project-status.md
-3. LAYER-1/agent-rules.md
-4. HANDOFF.md
+2. HANDOFF.md
+3. LAYER-3/project-status.md
+4. LAYER-1/agent-rules.md
 
 ---
 
@@ -17,7 +17,7 @@
 | Ситуация | Файл |
 |---|---|
 | Первый запуск | LAYER-1/interview-system.md |
-| Продолжение работы | LAYER-3/project-status.md |
+| Продолжение работы | LAYER-3/STATE.md → HANDOFF.md |
 | Ошибка / откат | LAYER-1/error-handling.md |
 | Задача расползается | LAYER-1/scope-guard.md |
 | Потеря контекста | LAYER-1/context-recovery.md |

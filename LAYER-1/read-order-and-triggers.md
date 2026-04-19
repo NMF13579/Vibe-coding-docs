@@ -10,7 +10,7 @@
 
 1. `README.md` или `START.md` (см. карту для вашей среды).
 2. `llms.txt`.
-3. `HANDOFF.md` и `LAYER-3/project-status.md`.
+3. `LAYER-3/STATE.md`, затем `HANDOFF.md`, затем при необходимости `LAYER-3/project-status.md` (нарратив).
 
 Детали: `LAYER-1/agent-rules.md`, полный конвейер: `LAYER-1/workflow.md`.
 

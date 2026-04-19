@@ -37,6 +37,12 @@ text
 
 ## История
 
+## [state-handoff-status-roles] — 2026-04-19
+### Изменено
+- `LAYER-3/STATE.md`, `HANDOFF.md`, `LAYER-3/project-status.md`: шапки ROLE / AUTHORITY; governance о единственном каноне state; `HANDOFF` Terminal Snapshot без Project/Session/Task state и без Next allowed actions как канона; Session History → ссылка на `LAYER-3/session-log.md`; `project-status.md` — только нарратив (без датированной летописи).
+- `LAYER-3/session-log.md`: append-перенос таблицы Session History из `HANDOFF.md` и всех строк «Последнее действие» из `project-status.md` (без дедупликации).
+- `llms.txt`, `START.md`, `LAYER-1/read-order-and-triggers.md`, `LAYER-1/agent-rules.md` (bootstrap): порядок continuation — `STATE.md` → `HANDOFF.md` → нарратив; `ARCHITECTURE.md` — роли control plane; `memory-bank/project-status.md` — указатель на тройку файлов.
+
 ## [agent-rules-single-bootstrap] — 2026-04-19
 ### Изменено
 - `LAYER-1/agent-rules.md`: один канонический `# BOOTSTRAP PROTOCOL`; второй протокол и checklist-bootstrap вынесены в [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md); блок «Наследие agent-bootstrap» сокращён; правило против рецидива в разделе startup vs runtime (формулировка: канон + альтернатива не сосуществуют; вынос в `LAYER-1/deprecated/` с пометкой non-runtime).
