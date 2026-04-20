@@ -4,6 +4,8 @@
 
 ## Порядок чтения (обычно)
 
+> Это порядок для Claude Code workflow, не агентский bootstrap. Canonical bootstrap: llms.txt
+
 1. `project/PROJECT.md` — живое ТЗ (источник истины по продукту).
 2. `shared/scope-guard.md` — что нельзя делать, одна задача за раз.
 3. `shared/agent-contract.md` — базовый контракт агента.

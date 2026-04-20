@@ -242,7 +242,7 @@ text
 **Iteration 1** (2026-04-17):
 
 - В [`LAYER-1/error-handling.md`](./LAYER-1/error-handling.md) добавлена цепочка реагирования: self-verification → error-handling → протокол отката (тот же файл, раздел «Процедура отката»).
-- Создан [`HANDOFF-SHORT.md`](./HANDOFF-SHORT.md) — быстрый блок контекста для вставки в чат.
+- Создан HANDOFF-SHORT.md [removed] — быстрый блок контекста для вставки в чат.
 - [`SYSTEM_PROMPT.md`](./SYSTEM_PROMPT.md) заменён на алиас → канон [`LAYER-1/system-prompt.md`](./LAYER-1/system-prompt.md), таблица куда вставлять промпт.
 - [`llms.txt`](./llms.txt): дата шапки 2026-04-17; маршруты v1.1.0 (LEGAL-152FZ, prompt injection → `security.md`, откат → `error-handling`, ARCHITECTURE, GLOSSARY корня, DOMAIN-ADAPTER, HANDOFF-SHORT).
 - В [`LAYER-1/self-verification.md`](./LAYER-1/self-verification.md) — user-facing фразы для некорректного поведения агента.
@@ -314,19 +314,19 @@ text
 Этап 5 закрыт для **исходного шаблона**: выполнена финальная валидация каркаса, синхронизация маршрутов и подготовка релизного комплекта `v1.1.0`.
 Пустые product-record файлы (`LAYER-2/*`, `LAYER-3/*`, `project/PROJECT.md`) в исходнике считаются нормой до копирования в конкретный проект.
 
-2026-04-17 — **FIX-PLAN и сверка этапов:** создан [`FIX-PLAN.md`](./FIX-PLAN.md) (журнал исправлений по аудиту 2026-04); сверка `stages/` и [`.cursor/rules/40-stage-routing.mdc`](./.cursor/rules/40-stage-routing.mdc) — расхождения зафиксированы, правки маршрутизации без подтверждения владельца не вносились.
+2026-04-17 — **FIX-PLAN и сверка этапов:** создан FIX-PLAN.md [removed] (журнал исправлений по аудиту 2026-04); сверка `stages/` и [`.cursor/rules/40-stage-routing.mdc`](./.cursor/rules/40-stage-routing.mdc) — расхождения зафиксированы, правки маршрутизации без подтверждения владельца не вносились.
 
 2026-04-17 — **Онбординг README и риски:** в [`README.md`](./README.md) — таблица «Не знаешь с чего начать?» под Quick Start и таблица IDE под Supported AI Tools; в [`CLAUDE.md`](./CLAUDE.md) ограничение по скоупу ведёт на [`LAYER-1/scope-guard.md`](./LAYER-1/scope-guard.md); в [`LAYER-1/anti-patterns.md`](./LAYER-1/anti-patterns.md) — блок AI-специфичных анти-паттернов.
 
-2026-04-17 — **Слияние веток:** разрешены конфликты в [`HANDOFF-SHORT.md`](./HANDOFF-SHORT.md) и [`SYSTEM_PROMPT.md`](./SYSTEM_PROMPT.md) — единый шаблон восстановления контекста, таблица команд агента, блок Lovable/Bolt с шагом `START.md`, исправлена опечатка в тексте алиаса.
+2026-04-17 — **Слияние веток:** разрешены конфликты в HANDOFF-SHORT.md [removed] и [`SYSTEM_PROMPT.md`](./SYSTEM_PROMPT.md) — единый шаблон восстановления контекста, таблица команд агента, блок Lovable/Bolt с шагом `START.md`, исправлена опечатка в тексте алиаса.
 
-2026-04-17 — **Правила Cursor:** удалены дублирующие `.mdc` (`31-stage-routing`, `32-document-priority`, `33-scope-guard`); в [`.cursor/rules/00-core.mdc`](./.cursor/rules/00-core.mdc) зафиксированы единственные источники: `40-stage-routing.mdc`, `50-doc-priority.mdc`, `60-scope-guard.mdc`. Ссылка в [`AUDIT-REPORT-DEV.md`](./AUDIT-REPORT-DEV.md) ведёт на `50-doc-priority.mdc`.
+2026-04-17 — **Правила Cursor:** удалены дублирующие `.mdc` (`31-stage-routing`, `32-document-priority`, `33-scope-guard`); в [`.cursor/rules/00-core.mdc`](./.cursor/rules/00-core.mdc) зафиксированы единственные источники: `40-stage-routing.mdc`, `50-doc-priority.mdc`, `60-scope-guard.mdc`. Ссылка в AUDIT-REPORT-DEV.md [removed] ведёт на `50-doc-priority.mdc`.
 
 2026-04-16 — Исправлены внутренние ссылки по репозиторию (автопроверка markdown: **0** битых целей). Добавлен корневой [`GEMINI.md`](./GEMINI.md). Выровнены относительные пути в адаптерах интервью, деплой-файлах в `LAYER-1/tools/deploy/`, [`LAYER-1/interview-system.md`](./LAYER-1/interview-system.md), [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md), примерах в `tasks/`.
 
 2026-04-16 — Проверка на остаточные **конфликты инструкций**: уточнён блок «что читать» в [`START.md`](./START.md); выровнен порядок чтения в [`.cursor/rules/00-core.mdc`](./.cursor/rules/00-core.mdc) и точка входа в [`.cursor/rules/10-communication.mdc`](./.cursor/rules/10-communication.mdc) с `START.md` + `llms.txt`; приоритет в [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) явно отсылает к [`shared/priority-order.md`](./shared/priority-order.md).
 
-2026-04-16 — **Минимальная стабилизация шаблона:** закреплён [`AUDIT-REPORT-DEV.md`](./AUDIT-REPORT-DEV.md); выровнен [`.cursor/rules/50-doc-priority.mdc`](./.cursor/rules/50-doc-priority.mdc) с [`shared/priority-order.md`](./shared/priority-order.md); поля `Next` и отсылки в ключевых файлах `LAYER-2/` приведены к реальным путям; в [`llms.txt`](./llms.txt) добавлен маршрут на отчёт dev.
+2026-04-16 — **Минимальная стабилизация шаблона:** закреплён AUDIT-REPORT-DEV.md [removed]; выровнен [`.cursor/rules/50-doc-priority.mdc`](./.cursor/rules/50-doc-priority.mdc) с [`shared/priority-order.md`](./shared/priority-order.md); поля `Next` и отсылки в ключевых файлах `LAYER-2/` приведены к реальным путям; в [`llms.txt`](./llms.txt) добавлен маршрут на отчёт dev.
 
 2026-04-16 — **Уборка остаточного шума:** [`.cursor/rules/50-doc-priority.mdc`](./.cursor/rules/50-doc-priority.mdc) приведён к канону [`shared/priority-order.md`](./shared/priority-order.md); устаревшие имена файлов вычищены в [`LAYER-1/system-prompt.md`](./LAYER-1/system-prompt.md), [`LAYER-1/interview-system.md`](./LAYER-1/interview-system.md), [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md), точечно в [`LAYER-1/workflow.md`](./LAYER-1/workflow.md), [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md), [`LAYER-1/dialog-style.md`](./LAYER-1/dialog-style.md); сжаты пересечения в чеклисте [`LAYER-1/audit.md`](./LAYER-1/audit.md); обновлена шапка и пример поиска в [`llms.txt`](./llms.txt).
 
