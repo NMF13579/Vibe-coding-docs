@@ -6,13 +6,12 @@
 
 # Порядок чтения и триггеры
 
-## Рекомендуемая цепочка (Cursor / общий ориентир)
+## Рекомендуемая цепочка (люди и общий ориентир)
 
-1. `README.md` или `START.md` (см. карту для вашей среды).
-2. `llms.txt`.
-3. `LAYER-3/STATE.md`, затем `HANDOFF.md`, затем при необходимости `LAYER-3/project-status.md` (нарратив).
+- Для **людей**: `README.md` или [`START.md`](../START.md).
+- Для **агента** при старте сессии: перечень файлов и порядок чтения задаются **только** в [`llms.txt`](../llms.txt); после загрузки — [`agent-rules.md`](./agent-rules.md) (раздел `# SESSION LOAD`).
 
-Детали: `LAYER-1/agent-rules.md`, полный конвейер: `LAYER-1/workflow.md`.
+Полный конвейер процесса: `LAYER-1/workflow.md`.
 
 Перед реализацией: `LAYER-1/scope-guard.md`. Перед завершением: `LAYER-1/self-verification.md`.
 
@@ -29,7 +28,7 @@
 
 ## Маршрут по типу задачи
 
-- Старт проекта → `llms.txt`, `LAYER-1/workflow.md` (этап 0), `LAYER-1/agent-rules.md`
+- Старт проекта → см. `llms.txt`; этап 0 процесса — `LAYER-1/workflow.md`
 - Стиль → `dialog-style.md`, `glossary.md`
 - Планирование → `LAYER-2/specs/planning.md`, `roadmap.md`
 - Архитектура продукта → `LAYER-2/specs/architecture.md`, `stack-presets.md`

@@ -123,10 +123,42 @@
 | LAYER-1/state-transitions.md | CANONICAL_POLICY | PRIMARY | ACTIVE | owner | — |
 | LAYER-1/event-dictionary.md | CANONICAL_POLICY | PRIMARY | ACTIVE | owner | — |
 | LAYER-1/audit.md | CANONICAL_POLICY | PRIMARY | ACTIVE | owner | — |
+| LAYER-1/audit-quick.md | CANONICAL_POLICY | SECONDARY | ACTIVE | owner | Краткий ежедневный чеклист; полный протокол — audit.md |
 | LAYER-1/document-governance.md | CANONICAL_POLICY | PRIMARY | ACTIVE | owner | — |
+| LAYER-1/MEDICAL-SAFETY.md | CANONICAL_POLICY | PRIMARY | ACTIVE | owner | Границы продукта и ИИ в медицинском домене |
+| LAYER-1/UX-CHECKLIST-MEDICAL.md | CANONICAL_POLICY | SECONDARY | ACTIVE | both | Клинические экраны и сценарии поверх базового UX |
+| LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md | CANONICAL_POLICY | SECONDARY | ACTIVE | both | RBAC и интерфейсы прав в клиническом UI |
+| LAYER-1/MEDICAL-DASHBOARDS.md | CANONICAL_POLICY | SECONDARY | ACTIVE | both | Обзоры состояния, KPI и очередей без лишней сложности |
 | CLAUDE.md | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Adapter only |
 | .cursor/rules/* | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Adapter only |
 | AGENTS.md | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Adapter only |
+| GEMINI.md | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Gemini CLI native adapter |
+| .windsurfrules | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Windsurf repository convention |
+| .aider.conf.yml | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Aider repository convention |
+| .github/copilot-instructions.md | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Adapter only |
+| SYSTEM_PROMPT.md | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Pointer to LAYER-1/system-prompt.md; bootstrap — llms.txt |
+| .claude/agents/*.md | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Sub-agent stubs; deprecated names in frontmatter |
+| shared/README.md | NAVIGATION | TERTIARY | ACTIVE | owner | Claude Code / stages hub; не подменяет llms.txt для repo agents |
+| shared/agent-contract.md | CANONICAL_POLICY | TERTIARY | ACTIVE | owner | Сжатая выжимка; канон agent-rules.md |
+| shared/priority-order.md | CANONICAL_POLICY | TERTIARY | ACTIVE | owner | Приоритеты в потоке stages; не repo-wide без llms.txt |
+| shared/task-protocol.md | CANONICAL_POLICY | TERTIARY | ACTIVE | owner | Сжатая выжимка; канон LAYER-1/task-protocol.md |
+| shared/ai-failure-modes.md | CANONICAL_POLICY | TERTIARY | ACTIVE | owner | LLM-сбои; см. LAYER-1/error-handling.md |
+| shared/scope-guard.md | CANONICAL_POLICY | TERTIARY | ACTIVE | owner | Сжатая выжимка; канон LAYER-1/scope-guard.md |
+| shared/workflow.md | CANONICAL_POLICY | TERTIARY | ACTIVE | owner | Сжатая выжимка; канон LAYER-1/workflow.md |
+| tasks/README.md | REFERENCE | TERTIARY | ACTIVE | owner | Описание папки задач |
+| tasks/TASK-000-EXAMPLE.md | REFERENCE | TERTIARY | ACTIVE | owner | Пример задачи |
+| tasks/TASK-001-CONFIRMATION-INTERVIEW.md | REFERENCE | TERTIARY | ACTIVE | owner | Шаблон/задача; STATE — канон активной задачи |
+| tasks/RELEASE-CHECKLIST.md | CANONICAL_POLICY | TERTIARY | ACTIVE | owner | Чеклист релиза продукта (не state layer) |
+| stages/*/BOOT.md | NAVIGATION | TERTIARY | ACTIVE | owner | Этапные маршруты Claude Code |
+| stages/01-interview/interview-system.md | NAVIGATION | TERTIARY | ACTIVE | owner | Маршрут → LAYER-1 |
+| stages/02-ux/ux-checklist-core.md | NAVIGATION | TERTIARY | ACTIVE | owner | Маршрут → LAYER-1 |
+| stages/03-dev/testing-guide.md | NAVIGATION | TERTIARY | ACTIVE | owner | Маршрут → LAYER-1 |
+| stages/03-dev/stack-presets.md | NAVIGATION | TERTIARY | ACTIVE | owner | Маршрут → LAYER-1 |
+| stages/03-dev/anti-patterns.md | NAVIGATION | TERTIARY | ACTIVE | owner | Маршрут → LAYER-1 |
+| stages/04-deploy/security.md | NAVIGATION | TERTIARY | ACTIVE | owner | Маршрут → LAYER-1 |
+| stages/04-deploy/deploy-guide.md | NAVIGATION | TERTIARY | ACTIVE | owner | Маршрут → LAYER-1 |
+| memory-bank/project-status.md | NARRATIVE_CONTEXT | TERTIARY | ACTIVE | agent | Совместимый путь; канон STATE / LAYER-3/project-status |
+| incidents/incident-template.md | REFERENCE | TERTIARY | ACTIVE | owner | Шаблон инцидента |
 | LAYER-3/session-log.md | REFERENCE | SECONDARY | ACTIVE | agent | Append only |
 | CHANGELOG.md | REFERENCE | NON-AUTHORITY | LIMITED | both | Historical record |
 | LAYER-1/deprecated/* | DEPRECATED | NON-AUTHORITY | DEPRECATED | manual-only | Replaced by: см. шапку каждого файла |

@@ -1,22 +1,13 @@
----
-# GEMINI.md — Agent Entry Point
+<!-- ROLE: ADAPTER ENTRYPOINT -->
+<!-- NOT A POLICY SOURCE -->
+<!-- Canonical bootstrap order: llms.txt -->
+<!-- Agent rules: LAYER-1/agent-rules.md -->
+<!-- AUTHORITY: NON-AUTHORITY -->
+<!-- STATUS: ACTIVE -->
+<!-- UPDATED_BY: owner -->
+<!-- SOURCE_OF_TRUTH: no -->
+<!-- MUST_NOT_CONTAIN: policy, competing read-order lists, runtime state -->
 
-## Bootstrap (strict order)
-1. Read LAYER-3/STATE.md
-2. Read LAYER-3/project-status.md
-3. Read LAYER-1/agent-rules.md
-4. Follow LAYER-1/state-transitions.md
+# GEMINI.md — Gemini CLI Entry Point
 
-## Canonical sources
-- Logic:         LAYER-1/
-- State:         LAYER-3/STATE.md
-- Architecture:  ARCHITECTURE.md
-- Handoff:       HANDOFF.md
-- Navigation:    llms.txt
-
-## Rule
-Project logic → LAYER-1/
-IDE-specific config → this file only
-
-> This file contains only pointers. No project logic here.
----
+Навигация при старте — только в [`llms.txt`](./llms.txt). Поведение после загрузки контекста — в [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md).

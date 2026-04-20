@@ -2,7 +2,7 @@
 <!-- AUTHORITY: NON-AUTHORITY -->
 <!-- STATUS: DEPRECATED -->
 <!-- TYPE: ARCHIVAL / NON-RUNTIME -->
-<!-- REPLACED_BY: LAYER-1/agent-rules.md (# BOOTSTRAP PROTOCOL, state-first) -->
+<!-- REPLACED_BY: llms.txt (read order); LAYER-1/agent-rules.md (# SESSION LOAD) -->
 <!-- DO NOT USE FOR: bootstrap, runtime decisions, state transitions -->
 <!-- Archived: 2026-04 -->
 

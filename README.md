@@ -30,22 +30,18 @@
 
 ## 🚀 Quick Start · Быстрый старт
 
----
-
-> → **[START.md](./START.md)** — одна точка входа для всех
+→ Начни с [START.md](./START.md)
 
 ---
 
-<div align="center">
-
-[![❓ FAQ](https://img.shields.io/badge/❓_FAQ-6e40c9?style=for-the-badge&logoColor=white)](./FAQ.md)
-
-<br/>
-
-[![⭐ Use this template · Использовать шаблон](https://img.shields.io/badge/⭐_Use_this_template_·_Использовать_шаблон-238636?style=for-the-badge&logo=github&logoColor=white)](https://github.com/NMF13579/Vibe-coding-docs/generate)
-[![📋 Docs Map · Карта документов](https://img.shields.io/badge/📋_Docs_Map_·_Карта_документов-0366d6?style=for-the-badge&logo=readthedocs&logoColor=white)](./LAYER-1/tools/template-sync-index.md)
-
-</div>
+> ⚠️ **Медицинский домен**
+> Проект может использоваться в медицинских сценариях, но:
+> — не является медицинским изделием
+> — не заменяет врача и не даёт клинических назначений
+> — требует human oversight для клинических решений
+> — работа с данными пациентов требует отдельной legal/security проверки
+>
+> Подробнее: [LAYER-1/MEDICAL-SAFETY.md](./LAYER-1/MEDICAL-SAFETY.md)
 
 ---
 
@@ -70,10 +66,10 @@
 ### GUI-поток запуска (без терминала)
 
 1. Открой папку проекта в Cursor/Claude Code.
-2. Опционально открой в корне [`START.md`](./START.md) — единая точка входа шаблона.
-3. Нажми `Cmd/Ctrl + K`.
-4. Вставь шаблон из [`QUICK-START.md`](./QUICK-START.md) (там сначала `START.md`, затем `llms.txt`).
-5. Нажми **Run** и подтверди предложенный следующий шаг.
+2. Открой в корне [`START.md`](./START.md) и выбери в таблице строку под свою роль.
+3. Перейди по ссылке «Куда идти» — дальнейшие шаги описаны в том документе.
+4. Если ты уже пользователь IDE и нужен готовый текст для агента — открой [`QUICK-START.md`](./QUICK-START.md), шаг 2 (шаблон промпта).
+5. Нажми **Run** (где применимо) и подтверди предложенный следующий шаг.
 
 Для продвинутой кастомизации (LLM, `.cursor/`, `.claude/`, MCP, CLI):  
 [`ADVANCED-SETUP.md`](./ADVANCED-SETUP.md)
@@ -98,13 +94,13 @@
 
 | | Role / Роль | Path / Путь |
 |:---:|:---|:---|
-| [![](https://img.shields.io/badge/🔰_First_time_·_Первый_раз-2ea44f?style=flat-square)](./QUICK-START-NOVICE.md) | No coding or agent experience / Нет опыта с кодом | [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) — 3 steps, no terminal |
-| [![](https://img.shields.io/badge/🩺_Doctor_·_Врач-e05c00?style=flat-square)](./QUICK-START-NOVICE.md) | Automate clinical routine or build medical service / Медицинский сервис | [NOVICE](./QUICK-START-NOVICE.md) → [ux-checklist-core.md](./LAYER-1/ux-checklist-core.md) (медицина: раздел `# UX-CHECKLIST-MEDICAL.md`) |
-| [![](https://img.shields.io/badge/🎨_Designer_·_Дизайнер-8b44ac?style=flat-square)](./QUICK-START-NOVICE.md) | Product idea, want prototype without code / Прототип без кода | [NOVICE](./QUICK-START-NOVICE.md) → [interview-system.md](./LAYER-1/interview-system.md) |
-| [![](https://img.shields.io/badge/📋_Manager_·_Менеджер-d4ac0d?style=flat-square)](./QUICK-START-NOVICE.md) | Validate idea and reach MVP fast / Идея → MVP быстро | [NOVICE](./QUICK-START-NOVICE.md) → [PROJECT.md](./project/PROJECT.md) |
-| [![](https://img.shields.io/badge/🔁_Lost_context_·_Потерял_контекст-c0392b?style=flat-square)](./HANDOFF.md) | Project exists but something went wrong / Что-то пошло не так | [HANDOFF.md](./HANDOFF.md) → [context-recovery.md](./LAYER-1/context-recovery.md) |
-| [![](https://img.shields.io/badge/🛠️_Developer_·_Разработчик-0366d6?style=flat-square)](./QUICK-START.md) | Know the basics, want to customize the agent / Настроить агента | [QUICK-START.md](./QUICK-START.md) → [CLAUDE.md](./CLAUDE.md) |
-| [![](https://img.shields.io/badge/🤖_Claude_Code-1a1a2e?style=flat-square)](./CLAUDE-CODE-FLOW.md) | Run project in stages: interview → UX → deploy / По этапам | [CLAUDE-CODE-FLOW.md](./CLAUDE-CODE-FLOW.md) → [BOOT.md](./stages/01-interview/BOOT.md) |
+| [![](https://img.shields.io/badge/🔰_First_time_·_Первый_раз-2ea44f?style=flat-square)](./START.md) | No coding or agent experience / Нет опыта с кодом | [START.md](./START.md) → [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) |
+| [![](https://img.shields.io/badge/🩺_Doctor_·_Врач-e05c00?style=flat-square)](./START.md) | Automate clinical routine or build medical service / Медицинский сервис | [START.md](./START.md) → [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) → [MEDICAL-SAFETY.md](./LAYER-1/MEDICAL-SAFETY.md) |
+| [![](https://img.shields.io/badge/🎨_Designer_·_Дизайнер-8b44ac?style=flat-square)](./START.md) | Product idea, want prototype without code / Прототип без кода | [START.md](./START.md) → [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) → [interview-system.md](./LAYER-1/interview-system.md) |
+| [![](https://img.shields.io/badge/📋_Manager_·_Менеджер-d4ac0d?style=flat-square)](./START.md) | Validate idea and reach MVP fast / Идея → MVP быстро | [START.md](./START.md) → [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) → [PROJECT.md](./project/PROJECT.md) |
+| [![](https://img.shields.io/badge/🔁_Lost_context_·_Потерял_контекст-c0392b?style=flat-square)](./START.md) | Project exists but something went wrong / Что-то пошло не так | [START.md](./START.md) → [STATE.md](./LAYER-3/STATE.md) → [HANDOFF.md](./HANDOFF.md) |
+| [![](https://img.shields.io/badge/🛠️_Developer_·_Разработчик-0366d6?style=flat-square)](./START.md) | Know the basics, want to customize the agent / Настроить агента | [START.md](./START.md) → [QUICK-START.md](./QUICK-START.md) |
+| [![](https://img.shields.io/badge/🤖_Claude_Code-1a1a2e?style=flat-square)](./START.md) | Run project in stages: interview → UX → deploy / По этапам | [START.md](./START.md) → [CLAUDE-CODE-FLOW.md](./CLAUDE-CODE-FLOW.md) → [BOOT.md](./stages/01-interview/BOOT.md) |
 
 </div>
 
@@ -112,12 +108,14 @@
 
 ## ⚡ Installation · Установка
 
+Installation uses stable **main** branch. **dev** branch is for development.
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/install.sh | bash
 ```
 
-> Or click **[Use this template](https://github.com/NMF13579/Vibe-coding-docs/generate)** above — no terminal needed.  
-> *Или нажми Use this template выше — без терминала.*
+> Or click **[Use this template](https://github.com/NMF13579/Vibe-coding-docs/generate)** — no terminal needed.  
+> *Или нажми Use this template — без терминала.*
 
 ---
 
@@ -127,7 +125,7 @@ curl -fsSL https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/inst
 
 | Command / Команда | Action / Действие |
 |:---:|:---|
-| [![](https://img.shields.io/badge/Start_·_Начнём-2ea44f?style=flat-square)](./QUICK-START-NOVICE.md) | Launch a new project / Запустить новый проект |
+| [![](https://img.shields.io/badge/Start_·_Начнём-2ea44f?style=flat-square)](./START.md) | Launch a new project / Запустить новый проект |
 | [![](https://img.shields.io/badge/Restore_context_·_Восстанови_контекст-0366d6?style=flat-square)](./HANDOFF.md) | Resume an existing project session / Начать сессию по существующему проекту |
 | [![](https://img.shields.io/badge/Save_context_·_Сохрани_контекст-5c6bc0?style=flat-square)](./HANDOFF.md) | End session without losing progress / Закончить сессию без потерь |
 | [![](https://img.shields.io/badge/Everything_broke_·_Всё_сломалось-c0392b?style=flat-square)](./LAYER-1/error-handling.md) | Roll back changes when something went wrong / Откатить изменения |
@@ -143,13 +141,14 @@ curl -fsSL https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/inst
 
 | Situation / Ситуация | Document / Документ |
 |:---|:---:|
-| Brand new? / Совсем новый? | [![](https://img.shields.io/badge/QUICK--START--NOVICE-2ea44f?style=flat-square)](./QUICK-START-NOVICE.md) |
-| Developer setup / Технический старт | [![](https://img.shields.io/badge/QUICK--START-0366d6?style=flat-square)](./QUICK-START.md) [![](https://img.shields.io/badge/ADVANCED--SETUP-555?style=flat-square)](./ADVANCED-SETUP.md) |
+| Brand new? / Совсем новый? | [START.md](./START.md) → [![](https://img.shields.io/badge/QUICK--START--NOVICE-2ea44f?style=flat-square)](./QUICK-START-NOVICE.md) |
+| Developer setup / Технический старт | [START.md](./START.md) → [![](https://img.shields.io/badge/QUICK--START-0366d6?style=flat-square)](./QUICK-START.md) · [![](https://img.shields.io/badge/ADVANCED--SETUP-555?style=flat-square)](./ADVANCED-SETUP.md) |
 | Agent entry point / Точка входа агента | [![](https://img.shields.io/badge/llms.txt-555?style=flat-square)](./llms.txt) [![](https://img.shields.io/badge/HANDOFF-0366d6?style=flat-square)](./HANDOFF.md) |
 | Claude Code stage flow / Флоу по этапам | [![](https://img.shields.io/badge/CLAUDE--CODE--FLOW-1a1a2e?style=flat-square)](./CLAUDE-CODE-FLOW.md) [![](https://img.shields.io/badge/BOOT.md-555?style=flat-square)](./stages/01-interview/BOOT.md) |
 | Where did we stop? / Где остановились? | [![](https://img.shields.io/badge/HANDOFF-0366d6?style=flat-square)](./HANDOFF.md) [![](https://img.shields.io/badge/project--status-555?style=flat-square)](./LAYER-3/project-status.md) |
 | Scope is creeping / Задача расползается | [![](https://img.shields.io/badge/scope--guard-e67e22?style=flat-square)](./LAYER-1/scope-guard.md) |
 | Onboarding для новичков | [![](https://img.shields.io/badge/ONBOARDING--WIZARD-2ea44f?style=flat-square)](./ONBOARDING-WIZARD.md) |
+| Medical / границы ИИ | [![](https://img.shields.io/badge/MEDICAL--SAFETY-e05c00?style=flat-square)](./LAYER-1/MEDICAL-SAFETY.md) |
 | 152-ФЗ и мед-комплаенс | [![](https://img.shields.io/badge/LEGAL--152FZ-e05c00?style=flat-square)](./LAYER-1/LEGAL-152FZ.md) |
 | Prompt injection безопасность | [![](https://img.shields.io/badge/security_·_prompts-c0392b?style=flat-square)](./LAYER-1/security.md) |
 | Learning loop по инцидентам | [![](https://img.shields.io/badge/LEARNING--LOOP-5c6bc0?style=flat-square)](./LEARNING-LOOP.md) |

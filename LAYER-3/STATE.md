@@ -19,8 +19,9 @@
 
 ## Project
 state: MAINTENANCE
+current_milestone: stabilization-hardening
 last_event: ITERATION_3_COMPLETED
-last_updated: 2026-04-19
+last_updated: 2026-04-20
 
 ## Session
 state: HANDOFF
@@ -50,3 +51,4 @@ blockers:
 ## Transition Log
 <!-- Формат: YYYY-MM-DD | Domain | Event | From → To -->
 - 2026-04-19 | Project | ITERATION_3_COMPLETED | DEVELOPMENT → MAINTENANCE
+- 2026-04-20 | Project | MILESTONE_SET | MAINTENANCE → MAINTENANCE (current_milestone: stabilization-hardening)

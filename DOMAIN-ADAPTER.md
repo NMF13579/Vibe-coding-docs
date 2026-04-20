@@ -4,7 +4,7 @@
 
 ## Шаг 1: Замени специфичные чек-листы
 
-- Все ссылки на медицинский блок в `LAYER-1/ux-checklist-core.md (# UX-CHECKLIST-MEDICAL.md)` заменены на `LAYER-1/ux-checklist-medical.md`
+- Медицинский контур: `LAYER-1/MEDICAL-SAFETY.md`, `LAYER-1/UX-CHECKLIST-MEDICAL.md`, `LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md`, `LAYER-1/MEDICAL-DASHBOARDS.md`.
 - Сохрани структуру: риски, обязательные проверки, ролевой UX, правила применения
 - Оставь одинаковую систему риск-тегов для корректного аудита
 

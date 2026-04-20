@@ -2,6 +2,9 @@
 
 > Практический модуль для продукта, который обрабатывает медицинские персональные данные.
 
+**Связь с ИИ:** **autonomous clinical use** (когда система/LLM подменяет врача по итоговому диагнозу, назначению или финальному клиническому решению без обязательного human review) **запрещена** в рамках этого шаблона — см. [`MEDICAL-SAFETY.md`](./MEDICAL-SAFETY.md).  
+**ПДн в LLM:** реальные персональные и медицинские данные пациентов в промтах и внешние LLM — **только** в **разрешённом контуре** (юридическое основание, договор с оператором/обработчиком, локализация, политика; иначе не передавать). Детали процедур — в [`security.md`](./security.md).
+
 ---
 
 ## Чек-лист обязательных мер
@@ -88,5 +91,8 @@
 
 ## Связанные документы
 
-- Медицинский UX: [`LAYER-1/ux-checklist-medical.md`](./LAYER-1/ux-checklist-medical.md)
+- Границы медицинского продукта и ИИ: [`MEDICAL-SAFETY.md`](./MEDICAL-SAFETY.md)
+- Медицинский UX (экраны): [`UX-CHECKLIST-MEDICAL.md`](./UX-CHECKLIST-MEDICAL.md)
+- Роли и доступы: [`MEDICAL-ROLES-AND-PERMISSIONS.md`](./MEDICAL-ROLES-AND-PERMISSIONS.md)
+- Дашборды: [`MEDICAL-DASHBOARDS.md`](./MEDICAL-DASHBOARDS.md)
 - Техническая безопасность: [`security.md`](./security.md)

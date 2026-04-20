@@ -4,6 +4,10 @@
 > Needs-approval: no
 > Next: LAYER-1/tools/template-sync-index.md
 
+<!-- ROLE: POLICY / ROLES DOCUMENT -->
+<!-- Root AGENTS.md (корень) — только adapter entrypoint. -->
+<!-- Этот файл определяет роли агентов в проекте. -->
+
 # AGENTS — карта ролей агентов
 
 > Для многоагентной работы. При одиночной — агент совмещает все роли.
@@ -12,9 +16,7 @@
 
 ## Общие правила
 
-1. Порядок чтения и приоритет источников — см. `shared/priority-order.md`.
-   Обязательный порядок старта: CLAUDE.md → project/PROJECT.md →
-   HANDOFF.md → llms.txt → LAYER-2/specs/architecture.md → LAYER-1/security.md
+1. Старт сессии: перечень файлов и порядок чтения — только в `llms.txt` (корень репозитория). При конфликте инструкций — иерархия источников в `shared/priority-order.md`.
 2. Не изменять архитектуру без явного запроса
 3. Не писать код до подтверждения плана
 4. После выполнения — обновлять LAYER-3/
@@ -79,7 +81,7 @@
 
 **Medical Reviewer** *(медицинский домен)* — compliance-проверка после каждой фичи с персональными данными
 > Запускается после Developer если фича затрагивает: данные пациентов, диагнозы, назначения, интеграции с МИС
-> Чеклист: `LAYER-1/ux-checklist-medical.md`
+> Чеклисты: `LAYER-1/MEDICAL-SAFETY.md`, `LAYER-1/UX-CHECKLIST-MEDICAL.md`, при необходимости `LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md`, `LAYER-1/MEDICAL-DASHBOARDS.md`
 > НЕЛЬЗЯ: вносить правки в код — только статус ✅/⚠️/🔴 и комментарий
 > При 🔴 — блокирует деплой наравне с Reviewer
 

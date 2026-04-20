@@ -37,7 +37,14 @@ text
 
 ## История
 
+## [docs-medical-ux-canonical-file] — 2026-04-19
+### Изменено
+- Канон медицинского UX-чеклиста: [`LAYER-1/UX-CHECKLIST-MEDICAL.md`](./LAYER-1/UX-CHECKLIST-MEDICAL.md). Содержимое прежнего `ux-checklist-medical.md` перенесено и разведено по `UX-CHECKLIST-MEDICAL.md`, `MEDICAL-ROLES-AND-PERMISSIONS.md`, `MEDICAL-DASHBOARDS.md`. Отдельный одноимённый redirect-файл `ux-checklist-medical.md` на дисках **без** учёта регистра имён с `UX-CHECKLIST-MEDICAL.md` не развести — используйте только каноническое имя в ссылках (*исторические записи changelog с `ux-checklist-medical.md` — прежнее имя в git*).
+- Согласованы перекрёстные ссылки (`START.md`, `template-sync-index.md`, LAYER-2 UX, `DOMAIN-ADAPTER.md` и др.).
+
 ## [migration-phases-2-4-state-governance] — 2026-04-19
+> [replaced by: bootstrap order только в `llms.txt`; `# SESSION LOAD` в `agent-rules.md` — см. стабилизация 2026-04]
+
 ### Добавлено
 - `LAYER-1/document-governance.md` — роли, authority, lifecycle, metadata, registry, 7 governance rules.
 - `LAYER-1/deprecated/legacy-bootstrap.md` — архив второго bootstrap + checklist-bootstrap.
@@ -46,7 +53,7 @@ text
 ### Изменено
 - `LAYER-3/STATE.md`, `HANDOFF.md`, `LAYER-3/project-status.md`: ROLE/AUTHORITY шапки; governance в STATE; HANDOFF без canonical state-полей; project-status — нарратив без датированной летописи.
 - `LAYER-3/session-log.md`: append-миграция Session History и «Последнее действие» из project-status.
-- `LAYER-1/agent-rules.md`: один `# BOOTSTRAP PROTOCOL`, удалён дубликат STATE/HANDOFF между таблицами и телом; шаг HANDOFF в bootstrap; metadata; §3 anti-recidivism.
+- `LAYER-1/agent-rules.md`: один `# BOOTSTRAP PROTOCOL` *(позже [replaced by: `# SESSION LOAD` + порядок чтения в `llms.txt`])*; удалён дубликат STATE/HANDOFF между таблицами и телом; шаг HANDOFF в bootstrap; metadata; §3 anti-recidivism.
 - `LAYER-1/agent-bootstrap.md`: DEPRECATED stub с REPLACED_BY.
 - `llms.txt`, `START.md`, `read-order-and-triggers.md`, `ARCHITECTURE.md`, `memory-bank/project-status.md`, `LAYER-1/context-recovery.md` — порядок STATE → HANDOFF → narrative; маршрут governance.
 
@@ -112,8 +119,8 @@ text
 
 ## [1.1.1] - 2026-04-17
 ### Изменено
-- Чеклист аудита объединён с протоколом AUDIT-FULL: раздел «Чеклист аудита» в `LAYER-1/audit.md`; файл `LAYER-1/audit-checklist.md` удалён; маршруты (`llms.txt`, README, правила IDE и др.) обновлены.
-- UX-чеклисты объединены в `LAYER-1/ux-checklist-core.md`; удалены `LAYER-1/ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md`; `stages/02-ux/` — указатель на канон; обновлены `llms.txt`, `install.sh`, карта шаблона и перекрёстные ссылки.
+- Чеклист аудита объединён с протоколом AUDIT-FULL: раздел «Чеклист аудита» в `LAYER-1/audit.md`; файл `LAYER-1/audit-checklist.md` **[deprecated — удалён]**; маршруты (`llms.txt`, README, правила IDE и др.) обновлены.
+- UX-чеклисты объединены в `LAYER-1/ux-checklist-core.md`; удалены `LAYER-1/ux-checklist-accessibility.md`, **`ux-checklist-medical.md` (исторически)**, `ux-checklist-interactions.md`; *примечание 2026-04: медицинский UX снова вынесен в отдельные файлы — `LAYER-1/ux-checklist-medical.md`, `MEDICAL-SAFETY.md` и др.*; `stages/02-ux/` — указатель на канон; обновлены `llms.txt`, `install.sh`, карта шаблона и перекрёстные ссылки.
 
 ## [1.1.0] - 2026-04-16
 ### 🔴 Критические исправления
@@ -235,7 +242,7 @@ text
 **Iteration 1** (2026-04-17):
 
 - В [`LAYER-1/error-handling.md`](./LAYER-1/error-handling.md) добавлена цепочка реагирования: self-verification → error-handling → протокол отката (тот же файл, раздел «Процедура отката»).
-- Создан [`HANDOFF-SHORT.md`](./HANDOFF-SHORT.md) — быстрый блок контекста для вставки в чат.
+- Создан HANDOFF-SHORT.md [removed] — быстрый блок контекста для вставки в чат.
 - [`SYSTEM_PROMPT.md`](./SYSTEM_PROMPT.md) заменён на алиас → канон [`LAYER-1/system-prompt.md`](./LAYER-1/system-prompt.md), таблица куда вставлять промпт.
 - [`llms.txt`](./llms.txt): дата шапки 2026-04-17; маршруты v1.1.0 (LEGAL-152FZ, prompt injection → `security.md`, откат → `error-handling`, ARCHITECTURE, GLOSSARY корня, DOMAIN-ADAPTER, HANDOFF-SHORT).
 - В [`LAYER-1/self-verification.md`](./LAYER-1/self-verification.md) — user-facing фразы для некорректного поведения агента.
@@ -259,7 +266,7 @@ text
 
 Патч **«Этап 3 — медицинская доменная специализация»**:
 
-- Обновлён медицинский блок UX (ныне раздел `# UX-CHECKLIST-MEDICAL.md` в [`LAYER-1/ux-checklist-core.md`](./LAYER-1/ux-checklist-core.md)): убраны дубли с core, усилена клиническая специфика, добавлена секция `⚕️ Клинические сценарии`, усилены ссылки на `LEGAL-152FZ.md`.
+- Обновлён медицинский блок UX (раздел `# UX-CHECKLIST-MEDICAL.md` в [`LAYER-1/ux-checklist-core.md`](./LAYER-1/ux-checklist-core.md); *[replaced by: отдельный файл `LAYER-1/ux-checklist-medical.md` + `MEDICAL-SAFETY.md`]*): убраны дубли с core, усилена клиническая специфика, добавлена секция `⚕️ Клинические сценарии`, усилены ссылки на `LEGAL-152FZ.md`.
 - Обновлён `LAYER-1/interview-system.md`: добавлен медицинский блок интервью (тип данных, МИС/ЕГИСЗ, клинрекомендации, ответственное лицо) и авто-правило ` [РИСК: HIGH] + 152-ФЗ`.
 - Обновлён `LAYER-1/anti-patterns.md`: добавлена секция процессуальных/коммуникационных анти-паттернов для vibe-coding с последствиями и привязкой к протоколам.
 - Обновлён `LAYER-1/decision-guide.md`: добавлены встроенные определения терминов, матрица решений, развёрнутые медицинские сценарии и fallback-блок `🆘 Если не уверен`.
@@ -307,19 +314,19 @@ text
 Этап 5 закрыт для **исходного шаблона**: выполнена финальная валидация каркаса, синхронизация маршрутов и подготовка релизного комплекта `v1.1.0`.
 Пустые product-record файлы (`LAYER-2/*`, `LAYER-3/*`, `project/PROJECT.md`) в исходнике считаются нормой до копирования в конкретный проект.
 
-2026-04-17 — **FIX-PLAN и сверка этапов:** создан [`FIX-PLAN.md`](./FIX-PLAN.md) (журнал исправлений по аудиту 2026-04); сверка `stages/` и [`.cursor/rules/40-stage-routing.mdc`](./.cursor/rules/40-stage-routing.mdc) — расхождения зафиксированы, правки маршрутизации без подтверждения владельца не вносились.
+2026-04-17 — **FIX-PLAN и сверка этапов:** создан FIX-PLAN.md [removed] (журнал исправлений по аудиту 2026-04); сверка `stages/` и [`.cursor/rules/40-stage-routing.mdc`](./.cursor/rules/40-stage-routing.mdc) — расхождения зафиксированы, правки маршрутизации без подтверждения владельца не вносились.
 
 2026-04-17 — **Онбординг README и риски:** в [`README.md`](./README.md) — таблица «Не знаешь с чего начать?» под Quick Start и таблица IDE под Supported AI Tools; в [`CLAUDE.md`](./CLAUDE.md) ограничение по скоупу ведёт на [`LAYER-1/scope-guard.md`](./LAYER-1/scope-guard.md); в [`LAYER-1/anti-patterns.md`](./LAYER-1/anti-patterns.md) — блок AI-специфичных анти-паттернов.
 
-2026-04-17 — **Слияние веток:** разрешены конфликты в [`HANDOFF-SHORT.md`](./HANDOFF-SHORT.md) и [`SYSTEM_PROMPT.md`](./SYSTEM_PROMPT.md) — единый шаблон восстановления контекста, таблица команд агента, блок Lovable/Bolt с шагом `START.md`, исправлена опечатка в тексте алиаса.
+2026-04-17 — **Слияние веток:** разрешены конфликты в HANDOFF-SHORT.md [removed] и [`SYSTEM_PROMPT.md`](./SYSTEM_PROMPT.md) — единый шаблон восстановления контекста, таблица команд агента, блок Lovable/Bolt с шагом `START.md`, исправлена опечатка в тексте алиаса.
 
-2026-04-17 — **Правила Cursor:** удалены дублирующие `.mdc` (`31-stage-routing`, `32-document-priority`, `33-scope-guard`); в [`.cursor/rules/00-core.mdc`](./.cursor/rules/00-core.mdc) зафиксированы единственные источники: `40-stage-routing.mdc`, `50-doc-priority.mdc`, `60-scope-guard.mdc`. Ссылка в [`AUDIT-REPORT-DEV.md`](./AUDIT-REPORT-DEV.md) ведёт на `50-doc-priority.mdc`.
+2026-04-17 — **Правила Cursor:** удалены дублирующие `.mdc` (`31-stage-routing`, `32-document-priority`, `33-scope-guard`); в [`.cursor/rules/00-core.mdc`](./.cursor/rules/00-core.mdc) зафиксированы единственные источники: `40-stage-routing.mdc`, `50-doc-priority.mdc`, `60-scope-guard.mdc`. Ссылка в AUDIT-REPORT-DEV.md [removed] ведёт на `50-doc-priority.mdc`.
 
 2026-04-16 — Исправлены внутренние ссылки по репозиторию (автопроверка markdown: **0** битых целей). Добавлен корневой [`GEMINI.md`](./GEMINI.md). Выровнены относительные пути в адаптерах интервью, деплой-файлах в `LAYER-1/tools/deploy/`, [`LAYER-1/interview-system.md`](./LAYER-1/interview-system.md), [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md), примерах в `tasks/`.
 
 2026-04-16 — Проверка на остаточные **конфликты инструкций**: уточнён блок «что читать» в [`START.md`](./START.md); выровнен порядок чтения в [`.cursor/rules/00-core.mdc`](./.cursor/rules/00-core.mdc) и точка входа в [`.cursor/rules/10-communication.mdc`](./.cursor/rules/10-communication.mdc) с `START.md` + `llms.txt`; приоритет в [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) явно отсылает к [`shared/priority-order.md`](./shared/priority-order.md).
 
-2026-04-16 — **Минимальная стабилизация шаблона:** закреплён [`AUDIT-REPORT-DEV.md`](./AUDIT-REPORT-DEV.md); выровнен [`.cursor/rules/50-doc-priority.mdc`](./.cursor/rules/50-doc-priority.mdc) с [`shared/priority-order.md`](./shared/priority-order.md); поля `Next` и отсылки в ключевых файлах `LAYER-2/` приведены к реальным путям; в [`llms.txt`](./llms.txt) добавлен маршрут на отчёт dev.
+2026-04-16 — **Минимальная стабилизация шаблона:** закреплён AUDIT-REPORT-DEV.md [removed]; выровнен [`.cursor/rules/50-doc-priority.mdc`](./.cursor/rules/50-doc-priority.mdc) с [`shared/priority-order.md`](./shared/priority-order.md); поля `Next` и отсылки в ключевых файлах `LAYER-2/` приведены к реальным путям; в [`llms.txt`](./llms.txt) добавлен маршрут на отчёт dev.
 
 2026-04-16 — **Уборка остаточного шума:** [`.cursor/rules/50-doc-priority.mdc`](./.cursor/rules/50-doc-priority.mdc) приведён к канону [`shared/priority-order.md`](./shared/priority-order.md); устаревшие имена файлов вычищены в [`LAYER-1/system-prompt.md`](./LAYER-1/system-prompt.md), [`LAYER-1/interview-system.md`](./LAYER-1/interview-system.md), [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md), точечно в [`LAYER-1/workflow.md`](./LAYER-1/workflow.md), [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md), [`LAYER-1/dialog-style.md`](./LAYER-1/dialog-style.md); сжаты пересечения в чеклисте [`LAYER-1/audit.md`](./LAYER-1/audit.md); обновлена шапка и пример поиска в [`llms.txt`](./llms.txt).
 

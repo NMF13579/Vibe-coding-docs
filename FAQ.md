@@ -8,7 +8,8 @@
 ## Контекст потерян между сессиями
 
 → Напиши: «Восстанови контекст»  
-→ Агент читает `llms.txt` → `HANDOFF.md` → `LAYER-3/session-log.md`
+→ Агент читает `llms.txt` → `LAYER-3/STATE.md` → `HANDOFF.md` → `LAYER-3/project-status.md`  
+→ Если открываешь файлы сам: [`llms.txt`](./llms.txt) → [`LAYER-3/STATE.md`](./LAYER-3/STATE.md) → [`HANDOFF.md`](./HANDOFF.md) → [`LAYER-3/project-status.md`](./LAYER-3/project-status.md)
 
 ## Что-то пошло не так, нужен откат
 

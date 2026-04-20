@@ -6,26 +6,23 @@
 <!-- MUST_NOT_CONTAIN: duplicate governance model (см. document-governance.md), runtime narrative -->
 
 ---
-# BOOTSTRAP PROTOCOL
-<!-- Выполняется строго до любых других действий в любой сессии -->
-<!-- События из event-dictionary.md, переходы из state-transitions.md -->
+# SESSION LOAD — действия после чтения файлов из llms.txt
 
-## Шаги (порядок строгий):
-1. Прочитать LAYER-3/STATE.md
-   → определить Project / Session / Task state
-   → проверить forbidden и next_allowed_actions
-2. Прочитать HANDOFF.md (контракт сессии; не источник формального state)
-3. Прочитать LAYER-3/project-status.md (нарратив)
-4. Прочитать LAYER-3/roadmap.md (активные задачи)
-5. Прочитать LAYER-3/session-log.md
-6. Если active_task не пустой → прочитать описание задачи
-7. Сообщить пользователю:
+Перечень путей и **порядок чтения** при старте сессии задаётся **только** в [`llms.txt`](../llms.txt) в корне репозитория.  
+Здесь — **поведение после** этого чтения (интерпретация state, отчёт, переход), без дублирования списка файлов.
+
+## После чтения контекста
+
+1. По содержимому `LAYER-3/STATE.md` — определить Project / Session / Task state; проверить `forbidden` и `next_allowed_actions`.
+2. Сообщить пользователю:
    - Project state / Session state / Task state
    - Active task (если есть)
    - Next allowed actions
    - Blockers (если есть)
-8. Выполнить переход Session: BOOTSTRAP → CONTEXT_LOADED (событие: CONTEXT_RESTORED)
-9. [BOOTSTRAP COMPLETE] — только теперь начинать работу
+3. Выполнить переход Session: BOOTSTRAP → CONTEXT_LOADED (событие: CONTEXT_RESTORED)
+4. `[BOOTSTRAP COMPLETE]` — только теперь начинать работу по задаче.
+
+События — `event-dictionary.md`; переходы — `state-transitions.md`.
 
 ## Если STATE.md не существует:
 → Сообщить: "STATE.md не найден. Требуется инициализация state layer."
@@ -53,11 +50,9 @@
 
 > Исторический checklist-bootstrap архивирован в
 > `LAYER-1/deprecated/legacy-bootstrap.md`.
-> Для текущей работы использовать только state-first протокол выше.
+> Для текущей работы: порядок чтения — `llms.txt`; действия после загрузки — раздел `# SESSION LOAD` выше.
 
-> **Правило против рецидива:** в этом файле допускается **ровно один**
-> заголовок `# BOOTSTRAP PROTOCOL` (state-first). Любой второй вариант
-> переносится в `LAYER-1/deprecated/` и не используется в runtime.
+> **Правило против рецидива:** полные альтернативные списки путей для старта сессии не добавлять в runtime-документы — только в `llms.txt`. Исторические варианты — в `LAYER-1/deprecated/`.
 
 ---
 <!-- конец добавленного блока — ниже существующее содержимое agent-rules.md -->
@@ -72,15 +67,15 @@
 
 # AGENT-RULES — инициализация, контракт и границы агента
 
-Документ покрывает **диагностику и bootstrap** (как войти в контекст). Локальная точка входа для контракта: `LAYER-1/agent-contract.md` (канонический source of truth пока в `shared/agent-contract.md`). Детали этапов — в `LAYER-2/`, `LAYER-1/workflow.md`, `stages/*/BOOT.md`.
+Документ покрывает **поведение после загрузки контекста** и контракт агента. Порядок чтения файлов при старте — в [`llms.txt`](../llms.txt). Локальная точка входа для контракта: `LAYER-1/agent-contract.md` (канонический source of truth пока в `shared/agent-contract.md`). Детали этапов — в `LAYER-2/`, `LAYER-1/workflow.md`, `stages/*/BOOT.md`.
 
 ---
 
 ## 1. Bootstrap
 
-> Актуальный протокол — в начале этого файла (`# BOOTSTRAP PROTOCOL`).
-> Архивный checklist-bootstrap: `LAYER-1/deprecated/legacy-bootstrap.md`
-> (не использовать в runtime).
+> Перечень файлов при старте — только [`llms.txt`](../llms.txt).  
+> Действия после чтения — в разделе `# SESSION LOAD` в начале этого файла.  
+> Архивный checklist-bootstrap: `LAYER-1/deprecated/legacy-bootstrap.md` (не использовать в runtime).
 
 ---
 
@@ -160,12 +155,12 @@
 |--|-------------------------|-------------------------|
 | **Когда** | Первая задача в проекте, новая сессия, симптомы потери контекста, уровень 0 при сбое | Уже в работе над задачей по согласованному плану |
 | **Цель** | Загрузить факты о проекте, выровнять источники, вывести `[BOOTSTRAP COMPLETE]` | Выполнять фазы: решение → self-check → явный апрув → исполнение → отчёт |
-| **Фокус** | State-first шаги из `# BOOTSTRAP PROTOCOL` в начале файла; при потере контекста — `LAYER-1/context-recovery.md` | Модули пайплайна, scope-guard, приоритет `shared/priority-order.md` |
+| **Фокус** | Файлы из `llms.txt` + действия из `# SESSION LOAD` в начале файла; при потере контекста — `LAYER-1/context-recovery.md` | Модули пайплайна, scope-guard, приоритет `shared/priority-order.md` |
 | **Триггер «стоп»** | Нет: bootstrap не заменяет явное подтверждение плана на задачу | Несоответствие контракту / расширение скоупа → пауза и вопрос владельцу |
 
-Кратко: **bootstrap** отвечает на «где мы и что читать»; **контракт** — на «как вести задачу и когда остановиться».
+Кратко: **что читать при старте** задаёт только `llms.txt`; **что делать после загрузки и как вести задачу** — `# SESSION LOAD` в этом файле и разделы контракта ниже.
 
 > **Правило против рецидива:** в runtime-документах не допускается
-> сосуществование канонического bootstrap/protocol и альтернативной версии.
+> сосуществование канонического перечня путей старта (только `llms.txt`) и альтернативной полной версии.
 > Исторические или экспериментальные варианты выносятся в `LAYER-1/deprecated/`
 > с явной пометкой non-runtime.

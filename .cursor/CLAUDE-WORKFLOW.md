@@ -1,11 +1,8 @@
 ---
 # CLAUDE-WORKFLOW.md — Agent Entry Point
 
-## Bootstrap (strict order)
-1. Read LAYER-3/STATE.md
-2. Read LAYER-3/project-status.md
-3. Read LAYER-1/agent-rules.md
-4. Follow LAYER-1/state-transitions.md
+## Bootstrap
+Read `llms.txt` at the repository root and follow the numbered list there. For behaviour after load, use `LAYER-1/agent-rules.md` (see `LAYER-1/state-transitions.md` when applying state transitions).
 
 ## Canonical sources
 - Logic:         LAYER-1/

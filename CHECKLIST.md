@@ -51,3 +51,17 @@
 - [ ] Адаптер под другие домены работает
 - [ ] Правила для IDE (`.cursor/rules/`) созданы
 - [ ] Глоссарий и архитектура добавлены
+
+---
+
+## Merge Gate — критерии готовности к merge в main
+
+- [ ] bootstrap order задан только в `llms.txt`
+- [ ] FAQ соответствует state-модели (STATE.md → HANDOFF.md)
+- [ ] `START.md` — единственная точка входа для человека
+- [ ] `MEDICAL-SAFETY.md` существует и содержит три зоны (можно/ограничено/нельзя)
+- [ ] adapter-entry файлы содержат self-documenting metadata
+- [ ] `AGENTS.md` и `LAYER-1/agents.md` явно разведены по роли
+- [ ] ключевые ссылки проверены (README, START, FAQ, llms.txt, medical docs)
+- [ ] `CHANGELOG.md` не содержит ссылок на удалённые файлы
+- [ ] слепой проход (этап 5) выполнен

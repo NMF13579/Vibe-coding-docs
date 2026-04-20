@@ -30,10 +30,10 @@
 
 ## Эквивалент Claude Code `audit-agent`
 
-Перенесено из `.claude/agents/audit-agent.md` — порядок чтения для узкого аудит-прохода (сверяйся с шагами AUDIT-FULL выше, без дублирования протокола):
+Перенесено из `.claude/agents/audit-agent.md` — последовательность файлов для узкого аудит-прохода (сверяйся с шагами AUDIT-FULL выше, без дублирования протокола):
 
 1. `README.md`
-2. `CLAUDE.md` (entry point)
+2. `llms.txt` (навигация агента; не подменяет этот аудит-перечень)
 3. `HANDOFF.md`
 4. `LAYER-1/audit.md` (этот файл — протокол и «Чеклист аудита»)
 5. `LAYER-1/task-protocol.md`
@@ -293,8 +293,8 @@
 - `STATE.md` — единственный source of truth для формального state
 - `HANDOFF.md` не содержит `Project state:` / `Session state:` / `Task state:` / `Next allowed actions:` как **канонический** дубль (допустимы только reference / явное указание читать STATE)
 - `project-status.md` не содержит state как канон и не содержит датированной летописи `YYYY-MM-DD — ...`
-- [`llms.txt`](../llms.txt): continuation → **`LAYER-3/STATE.md` первым**, затем `HANDOFF.md`
-- [`agent-rules.md`](./agent-rules.md): ровно **один** заголовок `# BOOTSTRAP PROTOCOL`
+- [`llms.txt`](../llms.txt): **полный** канонический перечень файлов при старте (раздел Bootstrap order)
+- [`agent-rules.md`](./agent-rules.md): ровно **один** заголовок `# SESSION LOAD` (действия после чтения списка из `llms.txt`); нет второго полноценного списка путей старта в runtime-секции
 
 Активный конфликт → **STATE BROKEN**. Слабая несогласованность → **STATE WARNING**.
 
@@ -338,8 +338,8 @@
 - [ ] STATE.md — единственный source of truth
 - [ ] HANDOFF.md не содержит state как canonical
 - [ ] project-status.md не содержит state / датированной летописи
-- [ ] llms.txt → STATE.md first (continuation)
-- [ ] agent-rules.md → один `# BOOTSTRAP PROTOCOL`
+- [ ] llms.txt → полный bootstrap order в одном месте
+- [ ] agent-rules.md → один `# SESSION LOAD`, без дублирующего списка путей старта
 
 #### Side effects
 - [ ] HANDOFF.md актуален

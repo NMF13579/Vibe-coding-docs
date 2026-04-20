@@ -341,7 +341,7 @@ node setup.js
 - `SCREEN-MAP.md` — карта экранов и переходов.
 - `PAGES.md`, `ATOMS.md`, `MOLECULES.md`, `ORGANISMS.md`, `TEMPLATES.md` — реестр UI.
 - `UX-FLOWS-*.md` — пользовательские сценарии.
-- UX-чеклисты (instruction) — в одном файле `LAYER-1/ux-checklist-core.md` (внутри — разделы `# UX-CHECKLIST-…`, оглавление `# UX-CHECKLIST-INDEX.md`); не заполняются данными проекта как ТЗ.
+- UX-чеклисты (instruction) — базово `LAYER-1/ux-checklist-core.md` (разделы `# UX-CHECKLIST-…`, оглавление `# UX-CHECKLIST-INDEX.md`); медицинские экраны/роли/дашборды — отдельные `LAYER-1/UX-CHECKLIST-MEDICAL.md`, `MEDICAL-ROLES-AND-PERMISSIONS.md`, `MEDICAL-DASHBOARDS.md` (на case-insensitive FS отдельный файл `ux-checklist-medical.md` с тем же именем в другом регистре недоступен — канон одно: `UX-CHECKLIST-MEDICAL.md`); границы ИИ — `LAYER-1/MEDICAL-SAFETY.md`. Не заполняются данными проекта как ТЗ.
 
 **Правило:**
 - Сначала `PAGES.md` и `SCREEN-MAP.md`, затем детализация по атомам/модулям.
@@ -407,7 +407,8 @@ node setup.js
 
 | Файл | Тип | Когда читать |
 |------|-----|-------------|
-| `LAYER-1/agent-rules.md` | instruction | При старте новой сессии или потере контекста — **читать первым** |
+| `llms.txt` (корень) | instruction | Старт сессии — **канонический порядок чтения файлов** |
+| `LAYER-1/agent-rules.md` | instruction | После файлов из `llms.txt` — поведение, фазы, границы агента |
 | `LAYER-1/agent-contract.md` | instruction | Локальный entrypoint контракта; source of truth пока в `shared/agent-contract.md` |
 | `LAYER-1/context-recovery.md` | instruction | При симптомах потери контекста агентом |
 | `LAYER-1/anti-patterns.md` | instruction | При сомнении в выборе подхода — чего не делать |
@@ -487,12 +488,16 @@ node setup.js
 
 ## UX-стандарты и чеклисты
 
-> Библиотека готовых чеклистов — `LAYER-1/ux-checklist-core.md` (оглавление: раздел `# UX-CHECKLIST-INDEX.md` внутри файла).  
+> Библиотека готовых чеклистов — `LAYER-1/ux-checklist-core.md` (оглавление: раздел `# UX-CHECKLIST-INDEX.md` внутри файла) + медицинский пакет в отдельных файлах.  
 > Агент использует при команде «Проверить UX».
 
 | Файл | Когда использовать |
 |------|-------------------|
-| `LAYER-1/ux-checklist-core.md` | Все UX-чеклисты: базовые стандарты, легенда, fallback, MINIMAL; доступность и мобильный; медицина, роли, дашборды; уведомления, таблицы, поиск, история, микротекст; INDEX и STARTER-FLOW |
+| `LAYER-1/ux-checklist-core.md` | Базовые UX-чеклисты: стандарты, легенда, fallback, MINIMAL; доступность и мобильный; уведомления, таблицы, поиск, история, микротекст; INDEX и STARTER-FLOW |
+| `LAYER-1/MEDICAL-SAFETY.md` | Границы медицинского продукта и ИИ (можно / с review / нельзя) |
+| `LAYER-1/UX-CHECKLIST-MEDICAL.md` | Медицинские экраны и клинические UX-сценарии |
+| `LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md` | Роли, права и доступы в UI |
+| `LAYER-1/MEDICAL-DASHBOARDS.md` | Дашборды, KPI, визуализация |
 
 ---
 
@@ -570,7 +575,7 @@ node setup.js
 | `deploy/RELEASE-NOTES.md` | 2 | project-record | Содержание версии для людей |
 | `deploy/RUNBOOK.md` | 2 | project-record | Эксплуатация и типовые сбои |
 | `LAYER-2/qa/post-launch-review.md` | 2 | project-record | Разбор после запуска и фактов использования |
-| `LAYER-1/agent-rules.md` | 0 | instruction | Диагностика и старт агента — читать первым |
+| `LAYER-1/agent-rules.md` | 0 | instruction | Поведение агента после загрузки по `llms.txt` |
 | `LAYER-1/agent-contract.md` | 0 | instruction | Локальный entrypoint контракта; source of truth пока в `shared/agent-contract.md` |
 | `LAYER-1/context-recovery.md` | 0 | instruction | Восстановление после потери контекста |
 | `LAYER-1/anti-patterns.md` | 0 | instruction | Чего не делать при выборе решений |

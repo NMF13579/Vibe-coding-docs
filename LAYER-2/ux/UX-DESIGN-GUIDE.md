@@ -8,7 +8,7 @@
 
 > Этот файл — постоянная инструкция агенту. Не зависит от конкретного проекта.
 > Конкретные цвета, шрифты и размеры — в разделе «Проектные решения» ниже.
-> Медицинская специфика — в `LAYER-1/ux-checklist-core.md` (раздел `# UX-CHECKLIST-MEDICAL.md`).
+> Медицинская специфика — в `LAYER-1/UX-CHECKLIST-MEDICAL.md` (и базовый слой — `LAYER-1/ux-checklist-core.md`); границы ИИ — `LAYER-1/MEDICAL-SAFETY.md`.
 > Состояния компонентов — в `LAYER-2/specs/component-states.md`.
 
 ---
@@ -152,7 +152,7 @@
 
 | Тема | Файл |
 |------|------|
-| Медицинская специфика UX | `LAYER-1/ux-checklist-core.md` → `# UX-CHECKLIST-MEDICAL.md` |
+| Медицинская специфика UX | `LAYER-1/UX-CHECKLIST-MEDICAL.md`, `LAYER-1/MEDICAL-SAFETY.md` |
 | Состояния конкретных компонентов | `LAYER-2/specs/component-states.md` |
 | Проверка применения правил | `LAYER-2/ux/UI-CHECKLIST.md` |
 | Пробелы и несоответствия | `LAYER-2/ux/UX-GAP-REPORT.md` |

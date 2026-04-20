@@ -15,7 +15,7 @@
 ---
 > Trigger: UX core context
 > Read-time: ~5 min
-> Next: ux-checklist-medical.md
+> Next: UX-CHECKLIST-MEDICAL.md, MEDICAL-SAFETY.md
 
 ---
 > Trigger: UX medical context

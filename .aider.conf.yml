@@ -1,0 +1,5 @@
+# Aider Entry Point — adapter only, not a policy source
+# Canonical read order: llms.txt — then LAYER-1/agent-rules.md for behaviour
+read:
+  - llms.txt
+  - LAYER-1/agent-rules.md

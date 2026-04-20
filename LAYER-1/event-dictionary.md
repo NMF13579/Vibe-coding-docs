@@ -32,6 +32,14 @@
 | ERROR_DETECTED | Ошибка в ходе выполнения | агент |
 | ROLLBACK_COMPLETED | Откат выполнен | агент |
 
+## Milestone marker (поле `current_milestone` в STATE.md)
+
+Фазовый маркер **не** меняет доменные `state` Project / Session / Task. Запись в Transition Log — опционально, для трассировки.
+
+| Event | Триггер | Инициатор |
+|---|---|---|
+| MILESTONE_SET | Обновлено поле `current_milestone` в `LAYER-3/STATE.md` | агент / owner |
+
 ## Task Domain
 
 | Event | Триггер | Инициатор |
