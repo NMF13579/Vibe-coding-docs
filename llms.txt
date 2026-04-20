@@ -1,8 +1,8 @@
 <!-- ROLE: NAVIGATION -->
-<!-- AUTHORITY: SECONDARY -->
+<!-- AUTHORITY: PRIMARY -->
 <!-- STATUS: ACTIVE -->
 <!-- UPDATED_BY: owner -->
-<!-- SOURCE_OF_TRUTH: no -->
+<!-- SOURCE_OF_TRUTH: yes -->
 <!-- MUST_NOT_CONTAIN: policy вместо маршрутов, дублирование LAYER-1 logic -->
 
 > This is the canonical agent bootstrap order.

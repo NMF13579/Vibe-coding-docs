@@ -33,6 +33,30 @@ The registry:
   template: `LAYER-1/templates/adapter-template.md`
   notes: Production adapter. Uses standard template.
 
+- id: `claude`
+  platform: Claude Code
+  path: `CLAUDE.md`
+  status: `active`
+  version: `v1`
+  template: `LAYER-1/templates/adapter-template.md`
+  notes: Root adapter entrypoint. Redirects to llms.txt.
+
+- id: `gemini`
+  platform: Gemini CLI
+  path: `GEMINI.md`
+  status: `active`
+  version: `v1`
+  template: `LAYER-1/templates/adapter-template.md`
+  notes: Root adapter entrypoint. Redirects to llms.txt.
+
+- id: `agents`
+  platform: Generic agents (Codex, OpenCode и др.)
+  path: `AGENTS.md`
+  status: `active`
+  version: `v1`
+  template: `LAYER-1/templates/adapter-template.md`
+  notes: Root adapter entrypoint. Redirects to llms.txt.
+
 ---
 
 ## Discovery rules
