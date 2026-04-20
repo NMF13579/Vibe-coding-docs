@@ -17,6 +17,28 @@
 
 ---
 
+### Сессия — Blind walkthrough + Hardening Pass (2026-04-20)
+
+**Намерение:** Hardening Pass документационного фреймворка; blind walkthrough по четырём сценариям; фиксация маршрутов.
+
+**Изменённые файлы:** `HANDOFF.md`, `SYSTEM_PROMPT.md`, `.github/copilot-instructions.md`, `.claude/agents/*.md`, `.cursor/rules/*.mdc`, `LAYER-1/document-governance.md`, `LAYER-1/event-dictionary.md`, `LAYER-1/state-transitions.md`, `LAYER-1/audit-quick.md` (новый), `LAYER-3/STATE.md`, `llms.txt`, `memory-bank/project-status.md`, `LAYER-3/session-log.md` (эта запись).
+
+**Blind walkthrough (фактические пути):**
+
+1. **Новичок:** `START.md` → ссылка `./QUICK-START-NOVICE.md` → `QUICK-START-NOVICE.md` → ссылка `./START.md` обратно для следующего шага. Конфликтующих entrypoints для агента нет. Маршрут корректен.
+
+2. **Врач:** `START.md` → `./QUICK-START-NOVICE.md` → `QUICK-START-NOVICE.md` → `./LAYER-1/MEDICAL-SAFETY.md` → `LAYER-1/MEDICAL-SAFETY.md` (шапка с `ROLE: POLICY`; в `document-governance.md` этот файл пока не в registry — **остаточный governance gap**). Далее из MEDICAL-SAFETY → `./LEGAL-152FZ.md`, `./UX-CHECKLIST-MEDICAL.md`. Маршрут по ссылкам работает.
+
+3. **Потеря контекста:** `START.md` → `./LAYER-3/STATE.md` → `LAYER-3/STATE.md` → `./HANDOFF.md` или прямой `HANDOFF.md` → ссылка на `llms.txt` / `LAYER-3/STATE.md` в snapshot. Маршрут корректен.
+
+4. **Агент:** `START.md` (строка: прочитать `` `llms.txt` ``) → файл `llms.txt` в корне → пункт 1 `LAYER-3/STATE.md` → … → пункт 7 `LAYER-1/agent-rules.md`. `.cursor/rules/00-core.mdc` → только `llms.txt` + `agent-rules.md` (pointer-only). Маршрут корректен; альтернативный bootstrap в адаптерах не остался.
+
+**Принятые решения:** `current_milestone: stabilization-hardening` в STATE; событие `MILESTONE_SET` в event-dictionary + строка в state-transitions для легального Transition Log; короткий аудит вынесен в `LAYER-1/audit-quick.md` без правок `audit.md`.
+
+**Следующий шаг:** по команде владельца; при полном аудите — `LAYER-1/audit.md`. Опционально — добавить `LAYER-1/MEDICAL-SAFETY.md` (и связанные medical) в registry для закрытия gap.
+
+---
+
 ## Migrated from HANDOFF.md — Session History (append, preserve order)
 
 Источник: `HANDOFF.md` до разделения ролей. Записи перенесены без дедупликации.

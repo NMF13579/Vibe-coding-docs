@@ -8,11 +8,6 @@ alwaysApply: true
 <!-- STATUS: ACTIVE -->
 <!-- UPDATED_BY: owner -->
 <!-- SOURCE_OF_TRUTH: no -->
-<!-- NOT A POLICY SOURCE — роли: LAYER-1/agents.md -->
-<!-- Canonical bootstrap order: llms.txt -->
-<!-- Agent rules: LAYER-1/agent-rules.md -->
 <!-- MUST_NOT_CONTAIN: policy, competing read-order lists, runtime state -->
-
-# Cursor Rules — Entry Point
 
 Read `llms.txt` and follow it. For behaviour after load, use `LAYER-1/agent-rules.md`.

@@ -23,6 +23,7 @@ INIT → DISCOVERY → PLANNING → DEVELOPMENT → REVIEW → RELEASE_READY →
 | REVIEW | AUDIT_PASSED | нет блокеров в audit.md | RELEASE_READY | Обновить HANDOFF.md |
 | RELEASE_READY | DEPLOY_CONFIRMED | явное USER_APPROVED | MAINTENANCE | Обновить project-status.md |
 | MAINTENANCE | NEW_TASK_ACCEPTED | задача в roadmap | DEVELOPMENT | Обновить Task в STATE.md |
+| MAINTENANCE | MILESTONE_SET | обновлён `current_milestone` в STATE.md | MAINTENANCE | При необходимости строка в Transition Log (фаза, не смена state) |
 | любая | ERROR_DETECTED | ошибка классифицирована | ERROR | Открыть incidents/ |
 | ERROR | ROLLBACK_COMPLETED | причина зафиксирована | предыдущая | Дописать в incidents/ |
 

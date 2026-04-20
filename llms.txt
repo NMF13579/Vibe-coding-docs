@@ -38,7 +38,8 @@
 | Конфликт инструкций | LAYER-1/agent-contract.md |
 | Деплой | LAYER-1/deploy-guide.md |
 | Откат после деплоя | LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md |
-| Аудит | LAYER-1/audit.md |
+| Аудит (полный) | LAYER-1/audit.md |
+| Аудит (короткий, ежедневный) | LAYER-1/audit-quick.md |
 | Управление документами (роли, lifecycle) | LAYER-1/document-governance.md |
 | UX и экраны | LAYER-1/ux-checklist-core.md |
 | Медицина / границы ИИ | LAYER-1/MEDICAL-SAFETY.md |
