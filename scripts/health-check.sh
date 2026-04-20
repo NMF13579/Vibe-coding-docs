@@ -171,12 +171,43 @@ fi
 echo "[D] Bootstrap size"
 
 if [[ -f llms.txt ]]; then
-  boot_count=$(grep -cE '^[0-9]+\.' llms.txt || true)
-  if [[ "$boot_count" -le 7 ]]; then
+  in_req=0
+  found_heading=0
+  boot_count=0
+  while IFS= read -r line || [[ -n "$line" ]]; do
+    if [[ $in_req -eq 0 ]]; then
+      if [[ "$line" == "### Required at every start" ]]; then
+        in_req=1
+        found_heading=1
+      fi
+      continue
+    fi
+    trimmed="${line#"${line%%[![:space:]]*}"}"
+    trimmed="${trimmed%"${trimmed##*[![:space:]]}"}"
+    if [[ -z "$trimmed" ]]; then
+      continue
+    fi
+    if [[ "$trimmed" =~ ^###[[:space:]] ]] || [[ "$trimmed" == "###" ]]; then
+      break
+    fi
+    if [[ "${trimmed:0:2}" == "- " ]]; then
+      boot_count=$((boot_count + 1))
+      continue
+    fi
+    break
+  done < llms.txt
+
+  if [[ $found_heading -eq 0 ]]; then
+    echo "  ❌ bootstrap size — FAIL (### Required at every start not found)"
+    add_fail "❌ [D] bootstrap — Required section not found in llms.txt"
+  elif [[ "$boot_count" -eq 0 ]]; then
+    echo "  ❌ bootstrap size — FAIL (0 required bootstrap items)"
+    add_fail "❌ [D] bootstrap size — zero items in Required section"
+  elif [[ "$boot_count" -le 7 ]]; then
     echo "  ✅ bootstrap size — OK (${boot_count}/7)"
   else
-    echo "  ❌ bootstrap size — FAIL (${boot_count} numbered lines, max 7)"
-    add_fail "❌ [D] bootstrap size — too many numbered lines (${boot_count})"
+    echo "  ❌ bootstrap size — FAIL (${boot_count} required items, max 7)"
+    add_fail "❌ [D] bootstrap size — too many required items (${boot_count})"
   fi
 else
   echo "  ❌ bootstrap size — SKIP (llms.txt missing)"
