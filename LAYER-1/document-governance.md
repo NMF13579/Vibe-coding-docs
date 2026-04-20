@@ -162,6 +162,9 @@
 | LAYER-3/session-log.md | REFERENCE | SECONDARY | ACTIVE | agent | Append only |
 | CHANGELOG.md | REFERENCE | NON-AUTHORITY | LIMITED | both | Historical record |
 | LAYER-1/deprecated/* | DEPRECATED | NON-AUTHORITY | DEPRECATED | manual-only | Replaced by: см. шапку каждого файла |
+| LAYER-3/DECISIONS.md | REFERENCE | SECONDARY | ACTIVE | owner | Память архитектурных решений |
+| LAYER-3/INTENT.md | NARRATIVE_CONTEXT | TERTIARY | ACTIVE | owner | Намерение системы и Non-goals |
+| LAYER-1/system-constraints.md | CANONICAL_POLICY | SECONDARY | ACTIVE | owner | Жёсткие лимиты системы |
 
 ---
 
@@ -174,3 +177,4 @@
 5. Новый документ получает metadata до начала использования.
 6. Дублирующий authority → downgrade, deprecated или merge.
 7. При downgrade или deprecation — все ссылки на документ в navigation-файлах (`llms.txt`, `ARCHITECTURE.md` и др.) обновляются в той же операции.
+8. Governance соблюдается также через автоматические integrity checks (tools/doc-tests/).

@@ -55,7 +55,14 @@
 > **Правило против рецидива:** полные альтернативные списки путей для старта сессии не добавлять в runtime-документы — только в `llms.txt`. Исторические варианты — в `LAYER-1/deprecated/`.
 
 ---
-<!-- конец добавленного блока — ниже существующее содержимое agent-rules.md -->
+
+# AGENT-RULES — инициализация, контракт и границы агента
+
+## 1. Bootstrap
+
+> Перечень файлов при старте — только [`llms.txt`](../llms.txt).  
+> Действия после чтения — в разделе `# SESSION LOAD` в начале этого файла.  
+> Архивный checklist-bootstrap: `LAYER-1/deprecated/legacy-bootstrap.md` (не использовать в runtime).
 
 Канон вынесен из adapter-файлов: [`session-lifecycle.md`](./session-lifecycle.md), [`plan-and-scope-gate.md`](./plan-and-scope-gate.md), [`stage-routing.md`](./stage-routing.md), [`instruction-priority.md`](./instruction-priority.md), [`read-order-and-triggers.md`](./read-order-and-triggers.md), [`cursor-auto-actions.md`](./cursor-auto-actions.md); переходы — [`state-transitions.md`](./state-transitions.md).
 
@@ -65,17 +72,7 @@
 > Needs-approval: no
 > Next: LAYER-1/workflow.md, LAYER-1/audit.md
 
-# AGENT-RULES — инициализация, контракт и границы агента
-
 Документ покрывает **поведение после загрузки контекста** и контракт агента. Порядок чтения файлов при старте — в [`llms.txt`](../llms.txt). Локальная точка входа для контракта: `LAYER-1/agent-contract.md` (канонический source of truth пока в `shared/agent-contract.md`). Детали этапов — в `LAYER-2/`, `LAYER-1/workflow.md`, `stages/*/BOOT.md`.
-
----
-
-## 1. Bootstrap
-
-> Перечень файлов при старте — только [`llms.txt`](../llms.txt).  
-> Действия после чтения — в разделе `# SESSION LOAD` в начале этого файла.  
-> Архивный checklist-bootstrap: `LAYER-1/deprecated/legacy-bootstrap.md` (не использовать в runtime).
 
 ---
 

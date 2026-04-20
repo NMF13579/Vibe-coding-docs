@@ -572,3 +572,30 @@
 - [ ] Документация понятна не-техническому специалисту
 - [ ] Юридические требования (152-ФЗ) покрыты
 - [ ] Механизмы безопасности и отката документированы ([`security.md`](./security.md), [`error-handling.md`](./error-handling.md))
+
+## Автоматические integrity checks
+
+Система поддерживается набором автоматических проверок, которые валидируют:
+- canonical bootstrap order задан только в llms.txt
+- внутренние markdown-ссылки указывают на существующие файлы
+- metadata (ROLE, AUTHORITY, STATUS) соответствует governance vocabulary
+- adapter-entry файлы не содержат policy или competing bootstrap
+
+Эти проверки выполняются автоматически в CI и не должны нарушаться.
+Запуск вручную: node tools/doc-tests/run-doc-tests.js
+
+## Drift signals (признаки деградации)
+
+Наблюдать при каждом аудите:
+- появляются новые entrypoints помимо llms.txt
+- bootstrap order превышает 7 документов
+- адаптеры начинают содержать логику или правила
+- появляются дубли state-файлов
+- registry используется как routing
+- файлы превышают лимиты из LAYER-1/system-constraints.md
+
+## Handling
+При обнаружении любого сигнала:
+→ зафиксировать в audit или session log
+→ если требуется изменение правила или архитектурное исключение —
+  оформить решение в LAYER-3/DECISIONS.md

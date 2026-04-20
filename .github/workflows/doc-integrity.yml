@@ -1,0 +1,20 @@
+name: Doc Integrity
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run doc integrity tests
+        run: node tools/doc-tests/run-doc-tests.js

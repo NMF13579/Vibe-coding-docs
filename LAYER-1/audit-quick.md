@@ -18,3 +18,9 @@
 7. **Next step** — понятен ли следующий шаг для агента или владельца после проверки?
 
 Если любой пункт «нет» или «неясно» — для глубины используй [`LAYER-1/audit.md`](./audit.md) и правила [`LAYER-1/document-governance.md`](./document-governance.md).
+
+## Integrity quick checks
+- links ok?
+- metadata ok?
+- bootstrap unique?
+- adapters pure?

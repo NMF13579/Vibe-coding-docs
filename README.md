@@ -195,6 +195,7 @@ curl -fsSL https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/inst
 - 📄 **Documents get filled in**, not left as empty templates · *Документы заполняются, не остаются пустыми шаблонами*
 - 🛡️ `roadmap.md` **protects against scope creep** · *Защищает от расползания проекта*
 - 🔒 `decisions.md` **stops re-discussing settled decisions** · *Останавливает повторное обсуждение*
+- CI (doc-integrity) должен проходить перед merge. Bypass допустим только по явному решению владельца репозитория.
 
 ---
 
