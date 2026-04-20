@@ -162,6 +162,9 @@
 | LAYER-3/session-log.md | REFERENCE | SECONDARY | ACTIVE | agent | Append only |
 | CHANGELOG.md | REFERENCE | NON-AUTHORITY | LIMITED | both | Historical record |
 | LAYER-1/deprecated/* | DEPRECATED | NON-AUTHORITY | DEPRECATED | manual-only | Replaced by: см. шапку каждого файла |
+| LAYER-3/DECISIONS.md | REFERENCE | SECONDARY | ACTIVE | owner | Память архитектурных решений |
+| LAYER-3/INTENT.md | NARRATIVE_CONTEXT | TERTIARY | ACTIVE | owner | Намерение системы и Non-goals |
+| LAYER-1/system-constraints.md | CANONICAL_POLICY | SECONDARY | ACTIVE | owner | Жёсткие лимиты системы |
 
 ---
 
