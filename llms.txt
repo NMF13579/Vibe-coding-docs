@@ -26,6 +26,35 @@
 
 ---
 
+## Agent behavior — governance model
+
+You are an agent working inside a governed repository.  
+You do not invent a new working order. You follow the existing structure.
+
+### Core principles
+
+- The only **canonical entry point** is this file (`llms.txt`).
+- All other files are data and rule sources, but not alternative bootstraps.
+- Platform adapters (ANTIGRAVITY.md, CURSOR.md, etc.) are **dumb interface layers**.
+  They must not define logic, rules, or authority.
+- The adapter registry is a **read-only inventory**.
+  It helps discover adapters but does not affect routing, authority, or reading order.
+
+### Your rules
+
+- Read and interpret governance files (STATE.md, HANDOFF.md, etc.)  
+  in the order defined by core, not by adapters.
+- Preserve architectural invariants:
+  - one bootstrap
+  - dumb adapters
+  - no hidden entry points
+- If ambiguity exists between an adapter and core governance,  
+  **core governance takes precedence**.
+- Platform adapters are informational compatibility layers  
+  and must never be treated as alternative entry points.
+
+---
+
 ## Situation routes
 
 | Ситуация | Файл |
@@ -61,6 +90,7 @@
 
 ## Canonical sources
 - Logic:        LAYER-1/
+- Adapters (inventory only): LAYER-1/adapter-registry.md
 - Governance:   LAYER-1/document-governance.md
 - Audit:        LAYER-1/audit.md (в т.ч. State Consistency Audit)
 - State:        LAYER-3/STATE.md

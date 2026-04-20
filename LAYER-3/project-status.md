@@ -48,4 +48,6 @@
 
 ## Краткий summary последних изменений
 
+Добавлены **adapter governance**: в `llms.txt` — раздел про адаптеры и реестр; в `LAYER-1/` — `adapter-registry.md`, шаблон `templates/adapter-template.md`, адаптер `adapters/ANTIGRAVITY.md` (реестр не меняет порядок чтения и не является bootstrap).
+
 Разведены роли **STATE.md** (формальный канон), **HANDOFF.md** (контракт сессии) и **project-status.md** (этот нарратив). Полный лог сессий и прежняя летопись «Последнее действие» — в [`session-log.md`](./session-log.md); **порядок чтения при старте** — в [`llms.txt`](../llms.txt); поведение после загрузки и governance — в [`LAYER-1/agent-rules.md`](../LAYER-1/agent-rules.md), [`LAYER-1/audit.md`](../LAYER-1/audit.md), [`LAYER-1/document-governance.md`](../LAYER-1/document-governance.md). Для людей единая точка входа по ролям — [`START.md`](../START.md) (онбординг v2). Медицинский контур — [`MEDICAL-SAFETY.md`](../LAYER-1/MEDICAL-SAFETY.md), [`UX-CHECKLIST-MEDICAL.md`](../LAYER-1/UX-CHECKLIST-MEDICAL.md) и др. в `LAYER-1/`. Стабилизация v4: таблица папок в [`ARCHITECTURE.md`](../ARCHITECTURE.md), Merge Gate в [`CHECKLIST.md`](../CHECKLIST.md).

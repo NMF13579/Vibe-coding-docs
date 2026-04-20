@@ -20,7 +20,7 @@
 
 ## Что сделано в последней сессии
 
-- Hardening Pass: очищен HANDOFF до контракта сессии; sweep shadow-entrypoints; сверка registry с `shared/`, `tasks/`, `stages/`, `memory-bank/`, `incidents/`; в `STATE.md` добавлен `current_milestone`; создан `LAYER-1/audit-quick.md`; зафиксирован blind walkthrough в `LAYER-3/session-log.md`.
+- Добавлена governance-модель для платформенных адаптеров в `llms.txt` (один bootstrap, «тупые» адаптеры, реестр только для discovery). Созданы `LAYER-1/adapter-registry.md`, `LAYER-1/templates/adapter-template.md`, `LAYER-1/adapters/ANTIGRAVITY.md`.
 
 ---
 
