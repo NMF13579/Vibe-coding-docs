@@ -4,7 +4,7 @@
 > Needs-approval: no
 > Next: [UX-CHECKLIST-MEDICAL.md](./UX-CHECKLIST-MEDICAL.md), LAYER-2/ux/
 
-<!-- ROLE: INSTRUCTION -->
+<!-- ROLE: CANONICAL_POLICY -->
 <!-- AUTHORITY: SECONDARY -->
 <!-- STATUS: ACTIVE -->
 <!-- UPDATED_BY: owner / agent -->

@@ -4,7 +4,7 @@
 > Needs-approval: no
 > Next: LAYER-2/ux/, [MEDICAL-SAFETY.md](./MEDICAL-SAFETY.md)
 
-<!-- ROLE: INSTRUCTION -->
+<!-- ROLE: CANONICAL_POLICY -->
 <!-- AUTHORITY: SECONDARY (усиление поверх ux-checklist-core.md) -->
 <!-- STATUS: ACTIVE -->
 <!-- UPDATED_BY: owner / agent -->

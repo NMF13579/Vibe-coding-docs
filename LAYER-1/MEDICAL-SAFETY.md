@@ -1,4 +1,4 @@
-<!-- ROLE: POLICY -->
+<!-- ROLE: CANONICAL_POLICY -->
 <!-- AUTHORITY: PRIMARY для медицинских сценариев -->
 <!-- SOURCE_OF_TRUTH: yes -->
 <!-- UPDATED_BY: owner -->
