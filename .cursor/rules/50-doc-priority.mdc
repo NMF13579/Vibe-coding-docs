@@ -1,8 +1,0 @@
----
-description: Cursor rules adapter pointer
-alwaysApply: true
----
-
-Read `llms.txt` and follow it. For behaviour after load, use `LAYER-1/agent-rules.md`.
-
-> Adapter only.
