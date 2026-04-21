@@ -35,7 +35,7 @@
 
 ## Persistent Context
 
-Тип проекта: документационный фреймворк для AI-агентов (vibe coding)  
+Тип проекта: AgentOS — agent control system, governed workspace for AI-agent-driven development.  
 Стек: Markdown, GitHub, агентные среды (Cursor, Claude Code, OpenCode)  
 Ключевые решения: `LAYER-3/atomic-decisions.md`  
 Архитектура: `ARCHITECTURE.md`  

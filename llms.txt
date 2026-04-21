@@ -9,7 +9,8 @@
 > No other file defines read order.
 > Agent rules (behaviour) are in LAYER-1/agent-rules.md — separate role.
 
-# Vibe-coding-docs
+# AgentOS
+> Agent Operating System — governed workspace for AI-agent-driven development.
 > Navigation index. Not a policy source.
 > Логика: LAYER-1/ | Состояние: LAYER-3/ | Архитектура: ARCHITECTURE.md | Governance: LAYER-1/document-governance.md
 
