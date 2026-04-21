@@ -157,7 +157,8 @@
 | stages/03-dev/anti-patterns.md | NAVIGATION | TERTIARY | ACTIVE | owner | Маршрут → LAYER-1 |
 | stages/04-deploy/security.md | NAVIGATION | TERTIARY | ACTIVE | owner | Маршрут → LAYER-1 |
 | stages/04-deploy/deploy-guide.md | NAVIGATION | TERTIARY | ACTIVE | owner | Маршрут → LAYER-1 |
-| memory-bank/project-status.md | NARRATIVE_CONTEXT | TERTIARY | ACTIVE | agent | Совместимый путь; канон STATE / LAYER-3/project-status |
+| memory-bank/README.md | REFERENCE | TERTIARY | ACTIVE | owner | Определяет роль каталога `memory-bank/` как legacy compatibility, не вторая память |
+| memory-bank/project-status.md | NARRATIVE_CONTEXT | TERTIARY | ACTIVE | agent | Legacy compatibility; канон: `LAYER-3/STATE.md`, нарратив `LAYER-3/project-status.md`, сессия `HANDOFF.md` |
 | incidents/incident-template.md | REFERENCE | TERTIARY | ACTIVE | owner | Шаблон инцидента |
 | LAYER-3/session-log.md | REFERENCE | SECONDARY | ACTIVE | agent | Append only |
 | CHANGELOG.md | REFERENCE | NON-AUTHORITY | LIMITED | both | Historical record |
