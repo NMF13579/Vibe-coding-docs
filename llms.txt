@@ -44,7 +44,7 @@ You do not invent a new working order. You follow the existing structure.
 
 - The only **canonical entry point** is this file (`llms.txt`).
 - All other files are data and rule sources, but not alternative bootstraps.
-- Platform adapters (ANTIGRAVITY.md, CURSOR.md, etc.) are **dumb interface layers**.
+- Platform adapters (см. инвентарь `LAYER-1/adapter-registry.md`; примеры: `LAYER-1/adapters/ANTIGRAVITY.md`, `.cursor/rules/governed-repo.mdc`) — **dumb interface layers**.
   They must not define logic, rules, or authority.
 - The adapter registry is a **read-only inventory**.
   It helps discover adapters but does not affect routing, authority, or reading order.
@@ -95,6 +95,7 @@ Support files (DECISIONS.md, INTENT.md, system-constraints.md и аналоги)
 
 | Ситуация | Файл |
 |---|---|
+| Antigravity / IDE Antigravity | LAYER-1/adapters/ANTIGRAVITY.md |
 | Первый запуск | LAYER-1/interview-system.md |
 | Продолжение работы | LAYER-3/STATE.md → HANDOFF.md |
 | Ошибка / откат | LAYER-1/error-handling.md |
