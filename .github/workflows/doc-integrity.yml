@@ -3,13 +3,16 @@ name: Doc Integrity
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, dev]
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Identity drift (legacy name in key files)
+        run: bash scripts/check-identity-drift.sh
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
