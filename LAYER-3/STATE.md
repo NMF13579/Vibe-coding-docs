@@ -21,15 +21,15 @@
 state: MAINTENANCE
 current_milestone: stabilization-hardening
 last_event: ITERATION_3_COMPLETED
-last_updated: 2026-04-20
+last_updated: 2026-04-21
 
 ## Session
 state: HANDOFF
-last_event: ""
+last_event: SESSION_ENDED
 
 ## Task
-active_task: TASK-001 State Layer Migration
-state: PLANNED
+active_task: ""
+state: ""
 risk: ""
 
 ## Guards
@@ -43,6 +43,7 @@ forbidden:
 next_allowed_actions:
   - read_HANDOFF.md
   - read_project_status
+  - read_roadmap_for_next_task
   - start_new_task_from_roadmap
 
 blockers:
@@ -52,3 +53,7 @@ blockers:
 <!-- Формат: YYYY-MM-DD | Domain | Event | From → To -->
 - 2026-04-19 | Project | ITERATION_3_COMPLETED | DEVELOPMENT → MAINTENANCE
 - 2026-04-20 | Project | MILESTONE_SET | MAINTENANCE → MAINTENANCE (current_milestone: stabilization-hardening)
+- 2026-04-21 | Session | SESSION_ENDED | HANDOFF → HANDOFF
+- 2026-04-21 | Task | USER_APPROVED | PLANNED → IN_PROGRESS (TASK-001)
+- 2026-04-21 | Task | TASK_IMPLEMENTED | IN_PROGRESS → REVIEW (TASK-001)
+- 2026-04-21 | Task | REVIEW_PASSED | REVIEW → DONE (TASK-001)
