@@ -3,13 +3,16 @@ name: Doc Integrity
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, dev]
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Bootstrap graph files (llms.txt)
+        run: bash scripts/check-llms-graph-files.sh
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
