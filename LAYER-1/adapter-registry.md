@@ -31,7 +31,10 @@ The registry:
   status: `active`
   version: `v1`
   template: `LAYER-1/templates/adapter-template.md`
-  notes: Production adapter. Uses standard template.
+  notes: |
+    type: platform navigation
+    contains_logic: no
+    warning: "Common references" section names `STATE.md` / `HANDOFF.md` for orientation only — not read order or policy. Not in `scripts/validate-adapters.sh` required path set.
 
 - id: `claude`
   platform: Claude Code
@@ -39,7 +42,9 @@ The registry:
   status: `active`
   version: `v1`
   template: `LAYER-1/templates/adapter-template.md`
-  notes: Root adapter entrypoint. Redirects to llms.txt.
+  notes: |
+    type: redirect
+    contains_logic: no
 
 - id: `gemini`
   platform: Gemini CLI
@@ -47,7 +52,9 @@ The registry:
   status: `active`
   version: `v1`
   template: `LAYER-1/templates/adapter-template.md`
-  notes: Root adapter entrypoint. Redirects to llms.txt.
+  notes: |
+    type: redirect
+    contains_logic: no
 
 - id: `agents`
   platform: Generic agents (Codex, OpenCode и др.)
@@ -55,7 +62,49 @@ The registry:
   status: `active`
   version: `v1`
   template: `LAYER-1/templates/adapter-template.md`
-  notes: Root adapter entrypoint. Redirects to llms.txt.
+  notes: |
+    type: redirect
+    contains_logic: no
+
+- id: `copilot`
+  platform: GitHub Copilot
+  path: `.github/copilot-instructions.md`
+  status: `active`
+  version: `v1`
+  template: `LAYER-1/templates/adapter-template.md`
+  notes: |
+    type: redirect
+    contains_logic: no
+
+- id: `zed-rules`
+  platform: Zed / compatible
+  path: `.rules`
+  status: `active`
+  version: `v1`
+  template: `LAYER-1/templates/adapter-template.md`
+  notes: |
+    type: redirect
+    contains_logic: no
+
+- id: `system-prompt-pointer`
+  platform: External paste / IDE
+  path: `SYSTEM_PROMPT.md`
+  status: `active`
+  version: `v1`
+  template: `LAYER-1/templates/adapter-template.md`
+  notes: |
+    type: pointer
+    contains_logic: no
+
+- id: `cursor-governed-repo`
+  platform: Cursor
+  path: `.cursor/rules/governed-repo.mdc`
+  status: `active`
+  version: `v1`
+  template: `LAYER-1/templates/adapter-template.md`
+  notes: |
+    type: redirect (+ adapter validation hints)
+    contains_logic: no
 
 - id: `cursor-00-core`
   platform: Cursor
@@ -84,7 +133,7 @@ The registry:
   version: `v1`
   template: `LAYER-1/templates/adapter-template.md`
   notes: |
-    type: redirect
+    type: bootstrap pointers
     contains_logic: no
 
 - id: `windsurf`
@@ -93,7 +142,9 @@ The registry:
   status: `active`
   version: `v1`
   template: `LAYER-1/templates/adapter-template.md`
-  notes: NOT FOUND
+  notes: |
+    type: stub pointer
+    contains_logic: no
 
 - id: `aider`
   platform: Aider
@@ -104,6 +155,27 @@ The registry:
   notes: |
     type: config
     contains_logic: no
+
+---
+
+## Workflow helpers (not root adapters)
+
+IDE-specific interview self-check snippets; not bootstrap entrypoints and not in `scripts/validate-adapters.sh` required set:
+
+- `LAYER-1/tools/adapters/README.md`
+- `LAYER-1/tools/adapters/CURSOR-INTERVIEW-CONTROL.md`
+- `LAYER-1/tools/adapters/COPILOT-INTERVIEW-CONTROL.md`
+- `LAYER-1/tools/adapters/CLAUDE-INTERVIEW-CONTROL.md`
+- `LAYER-1/tools/adapters/GEMINI-INTERVIEW-CONTROL.md`
+- `LAYER-1/tools/adapters/OPENCODE-INTERVIEW-CONTROL.md`
+
+---
+
+## Intentionally excluded (artifacts, not primary adapters)
+
+| Path | Notes |
+|------|------|
+| `.claude/agents/*.md` | Deprecated stubs (see `LAYER-1/document-governance.md`); redirect-only, not listed as root adapters above. |
 
 ---
 

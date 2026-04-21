@@ -1,28 +1,28 @@
 <!-- 
   🔍 SEARCH TAGS / ПОИСКОВЫЕ ТЕГИ
-  EN: vibe coding, AI agent documentation, no-code, LLM workflow, Claude Code, Cursor IDE,
-      medical IT, MVP template, AI-assisted development, prompt engineering, context management,
-      agent orchestration, AI tools, project template, documentation framework
-  RU: вайб-кодинг, документация для AI-агентов, без кода, шаблон проекта, управление контекстом,
-      медицинские IT, MVP шаблон, разработка с ИИ, агентная разработка, Клод Код, Курсор
+  EN: AgentOS, agent operating system, governed workspace, AI agent documentation, LLM workflow,
+      Claude Code, Cursor IDE, medical IT, MVP template, AI-assisted development, context management
+  RU: AgentOS, управляемое рабочее место для агентов, документация для AI-агентов, шаблон проекта,
+      медицинские IT, MVP, разработка с ИИ, агентная разработка
+  Historical discovery (not current product name): Vibe-coding-docs
 -->
 
 <div align="center">
 
-<img src="https://img.shields.io/badge/-%F0%9F%A7%A0%20Vibe--coding--docs-1a1a2e?style=for-the-badge&logoColor=white" height="50" alt="Vibe-coding-docs"/>
+<img src="https://img.shields.io/badge/AgentOS-1a1a2e?style=for-the-badge&logoColor=white" height="50" alt="AgentOS"/>
 
-**AI-agent documentation template · from idea to MVP without chaos**  
-*Шаблон документации для AI-агентов · от идеи до MVP без хаоса*
+**Agent Operating System — governed workspace for AI-agent-driven delivery**  
+*AgentOS — управляемое рабочее место для разработки с участием ИИ-агентов*
 
 *For doctors, designers, managers — anyone building with AI, no deep coding required*  
 *Для врачей, дизайнеров, менеджеров — всех, кто строит с ИИ без погружения в код*
 
 <br/>
 
-[![Stars](https://img.shields.io/github/stars/NMF13579/Vibe-coding-docs?style=flat-square&logo=github&label=stars)](https://github.com/NMF13579/Vibe-coding-docs/stargazers)
-[![Forks](https://img.shields.io/github/forks/NMF13579/Vibe-coding-docs?style=flat-square&logo=github&label=forks)](https://github.com/NMF13579/Vibe-coding-docs/network)
+[![Stars](https://img.shields.io/github/stars/NMF13579/AgentOS?style=flat-square&logo=github&label=stars)](https://github.com/NMF13579/AgentOS/stargazers)
+[![Forks](https://img.shields.io/github/forks/NMF13579/AgentOS?style=flat-square&logo=github&label=forks)](https://github.com/NMF13579/AgentOS/network)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
-[![Topics](https://img.shields.io/badge/topics-vibe--coding_·_AI_·_no--code_·_LLM-555?style=flat-square)](#)
+[![Topics](https://img.shields.io/badge/topics-AgentOS_·_AI_·_governance_·_agents-555?style=flat-square)](#)
 
 </div>
 
@@ -30,7 +30,8 @@
 
 ## 🚀 Quick Start · Быстрый старт
 
-→ Начни с [START.md](./START.md)
+- **Люди (IDE, без «системного» порядка чтения):** открой [START.md](./START.md) и выбери маршрут по роли.
+- **ИИ-агенты в этом репозитории:** единственная каноничная точка входа — [llms.txt](./llms.txt) (порядок чтения и маршруты описаны там; адаптеры IDE не заменяют этот файл).
 
 ---
 
@@ -111,10 +112,10 @@
 Installation uses stable **main** branch. **dev** branch is for development.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/NMF13579/AgentOS/main/install.sh | bash
 ```
 
-> Or click **[Use this template](https://github.com/NMF13579/Vibe-coding-docs/generate)** — no terminal needed.  
+> Or click **[Use this template](https://github.com/NMF13579/AgentOS/generate)** — no terminal needed.  
 > *Или нажми Use this template — без терминала.*
 
 ---
@@ -201,10 +202,10 @@ curl -fsSL https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/inst
 
 <div align="center">
 
-Made with ❤️ for vibe-coders · *Сделано для вайб-кодеров*
+AgentOS · governed workspace for AI-assisted delivery · *AgentOS — управляемая среда для работы с ИИ*
 
-[![Issues](https://img.shields.io/badge/Issues-c0392b?style=flat-square&logo=github&logoColor=white)](https://github.com/NMF13579/Vibe-coding-docs/issues)
-[![Discussions](https://img.shields.io/badge/Discussions-0366d6?style=flat-square&logo=github&logoColor=white)](https://github.com/NMF13579/Vibe-coding-docs/discussions)
-[![Use Template](https://img.shields.io/badge/Use_this_template-238636?style=flat-square&logo=github&logoColor=white)](https://github.com/NMF13579/Vibe-coding-docs/generate)
+[![Issues](https://img.shields.io/badge/Issues-c0392b?style=flat-square&logo=github&logoColor=white)](https://github.com/NMF13579/AgentOS/issues)
+[![Discussions](https://img.shields.io/badge/Discussions-0366d6?style=flat-square&logo=github&logoColor=white)](https://github.com/NMF13579/AgentOS/discussions)
+[![Use Template](https://img.shields.io/badge/Use_this_template-238636?style=flat-square&logo=github&logoColor=white)](https://github.com/NMF13579/AgentOS/generate)
 
 </div>

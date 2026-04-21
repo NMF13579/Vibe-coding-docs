@@ -21,18 +21,18 @@ Description: краткое описание задачи
 
 ## Backlog
 
-### TASK-001: State Layer Migration
-State: PLANNED
-Priority: HIGH
-Added: 2026-04-19
-Started: ""
-Completed: ""
-Blocker: ""
-Description: Внедрить STATE.md, state-transitions.md, event-dictionary.md,
-обновить HANDOFF.md, agent-rules.md, ARCHITECTURE.md, минимизировать adapter files
+(пусто — следующая задача добавляется владельцем)
 
 ---
 
 ## Done
 
-(пусто — задачи переносятся сюда после завершения)
+### TASK-001: State Layer Migration
+State: DONE
+Priority: HIGH
+Added: 2026-04-19
+Started: 2026-04-21
+Completed: 2026-04-21
+Blocker: ""
+Description: Внедрить STATE.md, state-transitions.md, event-dictionary.md,
+обновить HANDOFF.md, agent-rules.md, ARCHITECTURE.md, минимизировать adapter files

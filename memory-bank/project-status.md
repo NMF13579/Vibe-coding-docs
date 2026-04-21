@@ -1,6 +1,6 @@
 # memory-bank/project-status.md
 
-> Совместимый путь для старых потоков.
+> **Каталог `memory-bank/`** — только **legacy compatibility** (см. [`README.md`](./README.md) в этой папке). Не использовать как основной источник памяти.
 > Формальный канон состояния: `LAYER-3/STATE.md` (primary).
 > Нарратив проекта: `LAYER-3/project-status.md` (tertiary).
 

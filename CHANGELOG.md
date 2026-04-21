@@ -37,6 +37,10 @@ text
 
 ## История
 
+## [governance-baseline-post-fix-pass] — 2026-04-21
+### Добавлено
+- Точка восстановления в [`HANDOFF.md`](./HANDOFF.md) — секция **Recovery baseline (2026-04-21)**: identity drift CI, выравнивание ADR, adapter registry / ADAPTER-SPEC, исправление lifecycle TASK-001 в STATE, проверка файлов графа `llms.txt` в CI, определение роли `memory-bank/` (по мере мержа соответствующих PR в `dev`).
+
 ## [docs-medical-ux-canonical-file] — 2026-04-19
 ### Изменено
 - Канон медицинского UX-чеклиста: [`LAYER-1/UX-CHECKLIST-MEDICAL.md`](./LAYER-1/UX-CHECKLIST-MEDICAL.md). Содержимое прежнего `ux-checklist-medical.md` перенесено и разведено по `UX-CHECKLIST-MEDICAL.md`, `MEDICAL-ROLES-AND-PERMISSIONS.md`, `MEDICAL-DASHBOARDS.md`. Отдельный одноимённый redirect-файл `ux-checklist-medical.md` на дисках **без** учёта регистра имён с `UX-CHECKLIST-MEDICAL.md` не развести — используйте только каноническое имя в ссылках (*исторические записи changelog с `ux-checklist-medical.md` — прежнее имя в git*).

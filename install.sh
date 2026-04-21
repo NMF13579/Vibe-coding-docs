@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Vibe-coding-docs — установка в текущую папку проекта.
-# Источник: https://github.com/NMF13579/Vibe-coding-docs
+# AgentOS — установка в текущую папку проекта.
+# Источник: https://github.com/NMF13579/AgentOS
 
 set -euo pipefail
 
-readonly REPO_URL="https://github.com/NMF13579/Vibe-coding-docs.git"
-readonly TMP_ROOT="/tmp/vibe-docs-install"
+readonly REPO_URL="https://github.com/NMF13579/AgentOS.git"
+readonly TMP_ROOT="/tmp/agentos-install"
 
 # ANSI colors
 readonly C_GREEN='\033[0;32m'
@@ -178,7 +178,7 @@ inject_handoff_project_name() {
 
 # --- main ---
 
-printf '%b%s%b\n' "$C_GREEN" "Добро пожаловать в установщик Vibe-coding-docs." "$C_RESET"
+printf '%b%s%b\n' "$C_GREEN" "Добро пожаловать в установщик AgentOS." "$C_RESET"
 printf '%s\n' "Файлы будут скопированы в: $(pwd)"
 echo ""
 
@@ -246,9 +246,9 @@ rm -rf "$TMP_ROOT"
 
 N=${#COPIED_LIST[@]}
 echo ""
-info_green "✅ Vibe-coding-docs установлен"
+info_green "✅ AgentOS установлен"
 printf '%s\n' "📁 Скопировано файлов: ${N}"
-info_green "👉 Следующий шаг: открой CLAUDE.md и скажи агенту «Начнём»"
+info_green "👉 Следующий шаг: открой START.md (онбординг) или llms.txt (каноничный порядок для агента в этом репозитории)"
 echo ""
 printf '%b%s%b\n' "$C_GREEN" "Список скопированных файлов:" "$C_RESET"
 if [[ "$N" -eq 0 ]]; then
