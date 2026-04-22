@@ -13,18 +13,23 @@
 > Agent Operating System — governed workspace for AI-agent-driven development.
 > Navigation index. Not a policy source.
 > Логика: LAYER-1/ | Состояние: LAYER-3/ | Архитектура: ARCHITECTURE.md | Governance: LAYER-1/document-governance.md
+> Routing spine hub (stub phase): ROUTES-REGISTRY.md (legacy sources remain active until migration is complete).
 
 ---
 
 ## Bootstrap order (read in this sequence)
 
 ### Required at every start
-- LAYER-3/STATE.md
-- HANDOFF.md (корень репозитория, не LAYER-3/)
-- LAYER-1/agent-rules.md — поведение и контракт после загрузки контекста
+- ROUTES-REGISTRY.md — primary routing hub
+- core-rules/MAIN.md — canonical rules entry
+- state/MAIN.md — canonical state entry (with links to formal legacy state authority)
+- architecture/MAIN.md — canonical architecture entry
+- workflow/MAIN.md — canonical execution entry
 - файл описания задачи (например `tasks/TASK-XXX.md`) — **только если** в `STATE.md` непустой `active_task`
 
 ### Read only if needed
+- LAYER-3/STATE.md — formal state authority (через `state/MAIN.md`)
+- HANDOFF.md — session snapshot (через `state/MAIN.md`)
 - LAYER-3/project-status.md — при неясном контексте проекта
 - LAYER-3/session-log.md — при recovery, ambiguity или реконструкции истории
 - LAYER-3/roadmap.md — при работе с задачами из roadmap

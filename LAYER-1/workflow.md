@@ -8,6 +8,10 @@
 
 # WORKFLOW — конвейер задач
 
+> ⚠️ Deprecated as a primary route.
+> Canonical successor: `workflow/MAIN.md`.
+> This document remains available as legacy/reference material during transition.
+
 ---
 
 ## Базовый порядок (модульный)

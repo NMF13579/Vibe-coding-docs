@@ -6,6 +6,10 @@
 
 # TESTING-GUIDE — как проверять что код работает
 
+> ⚠️ Deprecated as a primary route.
+> Canonical successor: `quality/MAIN.md`.
+> This document remains available as legacy/reference material during transition.
+
 > Агент читает этот файл ПЕРЕД объявлением задачи выполненной.
 > Владелец читает этот файл когда нужно сообщить об ошибке.
 

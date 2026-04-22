@@ -2,7 +2,9 @@
 <!-- AUTHORITY: NON-AUTHORITY -->
 <!-- SOURCE_OF_TRUTH: no -->
 
-Read `llms.txt` first. Follow it exactly. For behavior after load, use `LAYER-1/agent-rules.md`.
+Read `llms.txt` first. Follow it exactly.
+Primary route after bootstrap: `ROUTES-REGISTRY.md` → core modules.
+For behavior after load, use `LAYER-1/agent-rules.md`.
 Do not browse files independently.
 Do not invent structure or rules.
 If the task is clear — do it.

@@ -6,6 +6,10 @@
 
 # SECURITY POLICY — политика безопасности
 
+> ⚠️ Deprecated as a primary route.
+> Canonical successor: `security/MAIN.md`.
+> This document remains available as legacy/reference material during transition.
+
 > Читать при любых изменениях auth, данных пользователей, API, БД.
 
 **Медицинский домен:** продуктовые границы и human oversight — [`MEDICAL-SAFETY.md`](./MEDICAL-SAFETY.md).  
