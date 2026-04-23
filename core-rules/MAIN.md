@@ -1,7 +1,7 @@
 ---
 type: canonical
 module: core-rules
-status: draft
+status: transitional
 authority: canonical
 when_to_read: always
 owner: unassigned
@@ -11,36 +11,59 @@ owner: unassigned
 
 ## Purpose
 Canonical entry for governance and behavior rules in the new module structure.
-Rule content remains distributed across legacy rule documents during migration.
+This module surfaces the operational rule backbone while deeper detail remains in approved legacy sources during migration.
 
 ## Rule backbone (current)
-- Single bootstrap entry for agents remains `llms.txt`.
+- Single bootstrap entry for agents remains `llms.txt`; do not invent alternate startup paths.
 - Behavior after bootstrap is governed by `LAYER-1/agent-rules.md`.
-- Instruction priority/conflict handling follows canonical priority model in shared governance docs.
-- State authority follows `LAYER-3/STATE.md` as formal control plane.
+- Instruction priority/conflict handling follows the canonical priority model in shared governance docs.
+- State authority stays in `LAYER-3/STATE.md`; this module does not duplicate state ownership.
+- This module is the canonical rule entry, but not yet the sole deep source.
+
+## Governance rules
+- Start from `llms.txt` only; runtime docs must not introduce competing bootstrap paths.
+- Work one question at a time; do not expand scope or make critical decisions without owner confirmation.
+- Each next module or broader step needs explicit owner confirmation; autonomous critical actions are forbidden.
+- Document roles and authority are classified with `ROLE` and `AUTHORITY`; keep the lifecycle metadata valid before use.
+- `ACTIVE` docs may run in runtime; `LIMITED` docs are support only; `DEPRECATED` and `ARCHIVED` do not participate in runtime.
+- When a document is downgraded or deprecated, update the navigation links in the same operation.
+- If authority conflicts, downgrade, deprecate, or merge rather than letting duplicate authority stand.
+- Governance is enforced by integrity checks; do not bypass them.
 
 ## Adapters and authority
 - Adapters are compatibility layers and are not source of truth.
-- Adapter registry is inventory-only and does not control routing/authority.
-- Canonical routing/rules stay in bootstrap + core governance documents.
+- Adapter registry is inventory-only and does not control routing or authority.
+- Canonical routing and rules stay in bootstrap plus core governance documents.
+- Adapter files must not define policy or become alternate entry points.
 
 ## Safety and boundaries
 - Work only after explicit plan confirmation.
 - Respect scope guard and do not expand task without owner confirmation.
-- Use self-verification and error-handling routes when risk or failure appears.
+- Use self-verification before execution or commit when risk, novelty, or uncertainty appears.
+- If work starts to fail, route through error-handling instead of improvising a wider rewrite.
+- Do not silently weaken prohibitive rules into soft advice.
 
-## Active legacy sources (transition phase)
-- `llms.txt`
-- `LAYER-1/agent-rules.md`
-- `LAYER-1/document-governance.md`
-- `LAYER-1/scope-guard.md`, `LAYER-1/error-handling.md`, `LAYER-1/self-verification.md`
-- `LAYER-1/adapter-registry.md` (inventory only)
+## Scope and self-verification
+- Classify new requests against the active task before changing anything: in scope, scope expansion, or out of scope.
+- Stop immediately on scope expansion or out-of-scope requests and ask the owner whether to continue, defer, or update backlog.
+- Keep the current task focused; unrelated improvements belong in backlog, not in the live change.
+- Run self-verification before execution: correctness, edge cases, safety, consistency with project context, and honest uncertainty.
+- If something is uncertain, say so explicitly instead of guessing.
+
+## Error handling route
+- Process error: an обязательный step was skipped, so return to the missed step and do it now.
+- Logic error: the approach is wrong or does not solve the task, so retry with a different approach up to two times.
+- Context error: the project state or prior decision is unclear, so restore context before continuing.
+- Scope error: the task expanded, so stop and route through `scope-guard.md`.
+- Repeated failure, safety risk, or blocked work: use `error-handling.md` rollback procedure.
 
 ## Migration boundary
-- This module defines the core-rule entry and routing backbone.
-- Full consolidation of all policy detail will happen in later PRs.
+- This module partially surfaces approved legacy rule content from `LAYER-1/agent-rules.md`, `LAYER-1/document-governance.md`, `LAYER-1/scope-guard.md`, `LAYER-1/error-handling.md`, and `LAYER-1/self-verification.md`.
+- The listed legacy sources still require direct read for full detail, examples, and procedure depth.
+- `core-rules/MAIN.md` is canonical for rule entry and routing backbone, but not yet the only deep source.
+- Do not use this module to duplicate state authority from `state/MAIN.md`, adapter compatibility from `adapters/MAIN.md`, or execution sequencing from `workflow/MAIN.md`.
 
 ## Routing
 - Read this module always after bootstrap routing.
 - Continue to `state/MAIN.md` and `workflow/MAIN.md`.
-- Open deep rule docs only when specific trigger/risk requires it.
+- Open direct legacy sources only when trigger, risk, or detail depth requires them.
