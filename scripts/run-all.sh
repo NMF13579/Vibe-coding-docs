@@ -1,36 +1,54 @@
 #!/usr/bin/env bash
-# run-all.sh — Full pipeline: validate → fix → re-validate
-# Usage: ./run-all.sh [repo_root]
+# AgentOS Canonical Orchestration Entrypoint
+# STATUS: canonical
+# This is the single command that represents: "is the system healthy?"
+# Runs canonical checks first. Legacy checks are informational and non-blocking.
 
 set -euo pipefail
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PASS=0
+FAIL=0
 
-REPO="${1:-.}"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-FINAL_EXIT=0
-
-echo "╔═══════════════════════════════════════╗"
-echo "║   Adapter Pipeline v1.2.1             ║"
-echo "╚═══════════════════════════════════════╝"
+echo "=== AgentOS run-all.sh ==="
 echo ""
 
-echo "── Step 1: Validate ─────────────────────"
-"$SCRIPT_DIR/validate-adapters.sh" "$REPO" --json > "$REPO/report.json" || true
-"$SCRIPT_DIR/validate-adapters.sh" "$REPO" || true
-echo ""
+run() {
+  local label="$1"; shift
+  if "$@" > /dev/null 2>&1; then
+    echo "  OK  $label"
+    PASS=$((PASS + 1))
+  else
+    echo "  FAIL  $label"
+    FAIL=$((FAIL + 1))
+  fi
+}
 
-echo "── Step 2: Auto-fix ─────────────────────"
-"$SCRIPT_DIR/fix-adapters.sh" "$REPO/report.json" "$REPO"
-echo ""
-
-echo "── Step 3: Re-validate ──────────────────"
-"$SCRIPT_DIR/validate-adapters.sh" "$REPO" --json > "$REPO/report-final.json" || true
-"$SCRIPT_DIR/validate-adapters.sh" "$REPO" || FINAL_EXIT=$?
+echo "--- Canonical checks (blocking) ---"
+run "health-check"          bash "$REPO_ROOT/scripts/health-check.sh"
+run "validate-architecture" bash "$REPO_ROOT/scripts/validate-architecture.sh"
+run "validate-route"        python3 "$REPO_ROOT/scripts/validate-route.py"
+run "validate-docs"         python3 "$REPO_ROOT/scripts/validate-docs.py"
 
 echo ""
-if [[ "$FINAL_EXIT" -eq 0 ]]; then
-  echo "✅ Pipeline complete. All hard errors resolved."
+echo "--- Legacy compatibility (informational, non-blocking) ---"
+if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
+  bash "$REPO_ROOT/scripts/validate-adapters.sh" . > /dev/null 2>&1 \
+    && echo "  OK  validate-adapters (legacy)" \
+    || echo "  WARN  validate-adapters (legacy) — issues found, non-blocking"
 else
-  echo "❌ Hard errors remain — manual fix required."
-  echo "   See: report-final.json"
+  echo "  SKIP  validate-adapters (legacy) — requires bash>=4"
+fi
+
+bash "$REPO_ROOT/scripts/legacy-health-check.sh" > /dev/null 2>&1 \
+  && echo "  OK  legacy-health-check (informational)" \
+  || echo "  WARN  legacy-health-check (informational) — non-blocking"
+
+echo ""
+echo "=== Result: $PASS passed, $FAIL failed ==="
+if [[ $FAIL -eq 0 ]]; then
+  echo "STATUS: PASS"
+  exit 0
+else
+  echo "STATUS: FAIL"
   exit 1
 fi
