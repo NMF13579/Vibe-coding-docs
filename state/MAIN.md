@@ -1,7 +1,7 @@
 ---
 type: canonical
 module: state
-status: draft
+status: transitional
 authority: canonical
 when_to_read: always
 owner: unassigned
@@ -11,34 +11,44 @@ owner: unassigned
 
 ## Purpose
 Control-plane entry for runtime state usage in the new module model.
-Formal state authority is still anchored in legacy state documents during migration.
+This module surfaces the operational state backbone while formal depth still lives in approved legacy sources during migration.
 
-## Formal state model (current)
-- `LAYER-3/STATE.md` is the formal source of truth for Project / Session / Task state.
-- It also defines guards, blockers, and next allowed actions.
-- On conflict with handoff or narrative docs, formal state wins.
+## State authority and roles
+- `LAYER-3/STATE.md` remains the formal source of truth for Project / Session / Task state, guards, blockers, and next allowed actions.
+- `HANDOFF.md` is a secondary session-transfer snapshot; use it for continuity and recovery, not as authority.
+- `LAYER-3/project-status.md` is a tertiary project narrative and risk summary; use it for broad context, not live state.
+- `LAYER-3/session-log.md` is a structural session journal with history and transition records; use it to reconstruct sequence, not to define current state.
+- If documents conflict, `LAYER-3/STATE.md` wins.
+- Do not infer a richer state schema than the sources explicitly define.
+- `state/MAIN.md` is canonical for state entry and routing, but not yet the sole deep source.
 
-## How this differs from HANDOFF and narrative docs
-- `HANDOFF.md` is a session context snapshot (secondary), not formal state authority.
-- `LAYER-3/project-status.md` and `LAYER-3/session-log.md` are narrative/history context.
-- This module does not replace those files yet; it routes to them by purpose.
+## Active task and continuity
+- Start from `llms.txt`, then load `state/MAIN.md` and the formal state source in `LAYER-3/STATE.md`.
+- If `active_task` is empty or the session is in handoff, use `HANDOFF.md` to recover transfer context.
+- Use `LAYER-3/project-status.md` when project stage, risk, or broad direction is unclear.
+- Use `LAYER-3/session-log.md` when the task sequence, prior changes, or transition order must be reconstructed.
+- Resume active work by restoring project/session/task from `LAYER-3/STATE.md`, then confirm the transfer context in `HANDOFF.md`.
+- Exact field-by-field detail stays direct-read in the formal legacy files.
+
+## Recovery and ambiguity route
+- If `HANDOFF.md` and `LAYER-3/STATE.md` disagree, follow `LAYER-3/STATE.md` and reconcile the supporting docs after that.
+- If context is stale or incomplete, open `LAYER-3/project-status.md` for project narrative and `LAYER-3/session-log.md` for timeline.
+- If the active task, blocker, or transition still cannot be recovered, stop and ask for owner input or direct-read the formal source again.
+- Do not guess the current state from partial history.
 
 ## Runtime usage for agent
 1. Start from `llms.txt`, then load context per `LAYER-1/agent-rules.md`.
-2. Read `LAYER-3/STATE.md` first for current formal state and guards.
-3. Read `HANDOFF.md` for session transfer context.
-4. Use narrative docs only when task/context requires deeper history.
-
-## Active legacy sources (transition phase)
-- `LAYER-3/STATE.md` (formal state)
-- `HANDOFF.md` (session context)
-- `LAYER-3/project-status.md` and `LAYER-3/session-log.md` (narrative/history)
+2. Read `LAYER-3/STATE.md` first for current formal state, guards, blockers, and next allowed actions.
+3. Read `HANDOFF.md` for session transfer context when the session is not already fully active.
+4. Use `project-status.md` and `session-log.md` only when the task needs recovery, history, or ambiguity resolution.
 
 ## Migration boundary
-- This module is now the canonical entry for state routing.
+- This module partially surfaces approved legacy state content from `LAYER-3/STATE.md`, `HANDOFF.md`, `LAYER-3/project-status.md`, and `LAYER-3/session-log.md`.
+- Those legacy sources still require direct read for exact state fields, guards, blockers, full transition history, and narrative detail.
+- Do not treat the supporting docs as alternate state authority.
 - Full relocation of state content is not complete yet and will continue in later PRs.
 
 ## Routing
-- Read this module always in core route.
+- Read this module always in the core route.
 - Continue to `workflow/MAIN.md` for execution protocol tied to state transitions.
 - Use `ROUTES-REGISTRY.md` for optional-module triggers.
