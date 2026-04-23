@@ -23,23 +23,29 @@ Used when implementation, release, or risk level requires explicit validation.
 - Smoke checks after deploy.
 - Audit and quick-audit control checks.
 
-## Active legacy quality sources
+## Canonical role
+`quality/MAIN.md` is the canonical routing entry for verification and quality decisions, but deep quality content is still distributed across legacy-backed sources.
+
+## Transitional sources
 - `LAYER-1/testing-guide.md`
 - `CHECKLIST.md`
 - `LAYER-2/qa/verification-criteria.md`
 - `LAYER-2/qa/test-scenarios.md`
-- `LAYER-1/audit.md` and `LAYER-1/audit-quick.md`
+- `LAYER-1/audit.md`
+- `LAYER-1/audit-quick.md`
 
-## Relation to workflow and done
-- Workflow defines execution order; quality validates result.
-- Done requires completed checks relevant to risk/scope.
-- If checks are incomplete, task remains not done.
+## Canonical vs legacy boundary
+- Canonical routing lives here.
+- Deep quality logic is still partially legacy-backed.
+- Legacy sources must not become an alternate bootstrap.
 
-## Known gaps
-- Quality rules are still split across several legacy files.
-- Unified deep quality playbook migration is pending.
+## Migration exit criteria
+- Canonical quality map is complete.
+- Deep checks are classified.
+- Release, audit, and verification roles are clearly separated.
+- Legacy sources are referenced as supporting material, not hidden authority.
 
-## Routing
-- Read this module when verification trigger matches.
-- Start from `LAYER-1/testing-guide.md`; add release checks via `CHECKLIST.md`.
-- For full health check, route to `LAYER-1/audit.md`.
+## Current operational rule
+- Start from `quality/MAIN.md`.
+- Open only the deep sources needed by trigger.
+- Use workflow to execute checks and this module to decide which checks matter.
