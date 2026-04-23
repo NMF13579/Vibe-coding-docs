@@ -1,5 +1,6 @@
 name: "Canonical Architecture Validation (primary)"
 # STATUS: canonical — this is the primary CI truth
+# Validates modular structural integrity as part of primary CI truth.
 
 on:
   pull_request:

@@ -1,5 +1,6 @@
 name: "Health Check"
 # STATUS: canonical — runs primary health-check.sh
+# Canonical health for the current architecture.
 
 on:
   push:

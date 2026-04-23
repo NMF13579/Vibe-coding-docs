@@ -1,5 +1,6 @@
 name: "Legacy Adapter Check (compatibility only, not canonical)"
 # STATUS: legacy-compatibility
+# Compatibility-only workflow; not global system health.
 on:
   push:
     branches: [dev, main]
