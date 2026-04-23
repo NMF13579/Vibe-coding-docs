@@ -1,4 +1,5 @@
-name: Health Check
+name: "Legacy Health Check (compatibility only, not canonical)"
+# STATUS: legacy-compatibility
 
 on:
   push:

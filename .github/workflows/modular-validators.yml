@@ -1,4 +1,5 @@
-name: Modular Validators
+name: "Canonical Architecture Validation (primary)"
+# STATUS: canonical — this is the primary CI truth
 
 on:
   pull_request:
