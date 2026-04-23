@@ -101,25 +101,25 @@ Support files (DECISIONS.md, INTENT.md, system-constraints.md и аналоги)
 | Ситуация | Файл |
 |---|---|
 | Antigravity / IDE Antigravity | LAYER-1/adapters/ANTIGRAVITY.md |
-| Первый запуск | LAYER-1/interview-system.md |
-| Продолжение работы | LAYER-3/STATE.md → HANDOFF.md |
-| Ошибка / откат | LAYER-1/error-handling.md |
-| Задача расползается | LAYER-1/scope-guard.md |
-| Потеря контекста | LAYER-1/context-recovery.md |
-| Конфликт инструкций | LAYER-1/agent-contract.md |
-| Деплой | LAYER-1/deploy-guide.md |
-| Откат после деплоя | LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md |
-| Аудит (полный) | LAYER-1/audit.md |
-| Аудит (короткий, ежедневный) | LAYER-1/audit-quick.md |
-| Управление документами (роли, lifecycle) | LAYER-1/document-governance.md |
-| UX и экраны | LAYER-1/ux-checklist-core.md |
-| Медицина / границы ИИ | LAYER-1/MEDICAL-SAFETY.md |
-| Безопасность | LAYER-1/security.md |
-| Тестирование | LAYER-1/testing-guide.md |
-| Workflow и этапы MVP | LAYER-1/workflow.md |
-| Антипаттерны | LAYER-1/anti-patterns.md |
-| Принятие решений | LAYER-1/decision-guide.md |
-| Роли агентов | LAYER-1/agents.md |
+| Первый запуск | workflow/MAIN.md → LAYER-1/interview-system.md |
+| Продолжение работы | state/MAIN.md → LAYER-3/STATE.md → HANDOFF.md |
+| Ошибка / откат | incidents/MAIN.md → LAYER-1/error-handling.md |
+| Задача расползается | workflow/MAIN.md → LAYER-1/scope-guard.md |
+| Потеря контекста | doctor/MAIN.md → LAYER-1/context-recovery.md |
+| Конфликт инструкций | core-rules/MAIN.md → LAYER-1/agent-contract.md |
+| Деплой | workflow/MAIN.md → LAYER-1/deploy-guide.md |
+| Откат после деплоя | incidents/MAIN.md → LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md |
+| Аудит (полный) | quality/MAIN.md → LAYER-1/audit.md |
+| Аудит (короткий, ежедневный) | quality/MAIN.md → LAYER-1/audit-quick.md |
+| Управление документами (роли, lifecycle) | core-rules/MAIN.md → LAYER-1/document-governance.md |
+| UX и экраны | workflow/MAIN.md → LAYER-1/ux-checklist-core.md |
+| Медицина / границы ИИ | medical/MAIN.md → LAYER-1/MEDICAL-SAFETY.md |
+| Безопасность | security/MAIN.md |
+| Тестирование | quality/MAIN.md |
+| Workflow и этапы MVP | workflow/MAIN.md |
+| Антипаттерны | core-rules/MAIN.md → LAYER-1/anti-patterns.md |
+| Принятие решений | architecture/MAIN.md → LAYER-1/decision-guide.md |
+| Роли агентов | core-rules/MAIN.md → LAYER-1/agents.md |
 
 ---
 
