@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
+# STATUS: legacy-compatibility
+# Requires bash >= 4 (macOS ships bash 3.2 by default)
+# On macOS: brew install bash, then use /opt/homebrew/bin/bash
+if [[ "${BASH_VERSINFO[0]}" -lt 4 ]]; then
+  echo "ERROR: validate-adapters.sh requires bash >= 4"
+  echo "Your bash: ${BASH_VERSION}"
+  echo "Fix: brew install bash"
+  echo "Then: /opt/homebrew/bin/bash scripts/validate-adapters.sh ."
+  echo ""
+  echo "STATUS: SKIPPED (incompatible environment)"
+  exit 2
+fi
 # validate-adapters.sh — Adapter Validator v1.2.1
 # Usage: ./validate-adapters.sh [repo_root] [--json]
 # Default repo_root: current directory
