@@ -26,14 +26,19 @@ The following are transitional compatibility layers, NOT primary architecture:
   - scripts/validate-docs.py
   - tools/doc-tests/*
   - scripts/run-all.sh
+  - scripts/health-check.sh
 
 ## Legacy Validators (must NOT represent global system health)
   - scripts/legacy-health-check.sh
   - scripts/validate-adapters.sh
+  - scripts/check-identity-drift.sh
 
 ## CI Canon
-canonical workflow: .github/workflows/modular-validators.yml
-legacy workflows (not primary truth):
+canonical workflows:
   - .github/workflows/health.yml
+  - .github/workflows/modular-validators.yml
+compatibility/transitional workflow:
   - .github/workflows/adapter-check.yml
+
+Note: `adapter-check.yml` is transitional compatibility workflow and must not redefine global architecture truth.
 ---
