@@ -13,7 +13,7 @@ Statuses reflect migration maturity, not document quality. `legacy-backed` means
 | Module | Path | Role | When to read | Status | Current source | Notes |
 |---|---|---|---|---|---|---|
 | core-rules | `core-rules/MAIN.md` | Core rules module entry | always | transitional | `LAYER-1/agent-rules.md`, `LAYER-1/document-governance.md`, `LAYER-1/scope-guard.md`, `LAYER-1/error-handling.md`, `LAYER-1/self-verification.md` | Core entry now surfaces the rule backbone and key policy rules; legacy sources remain direct-read for full detail |
-| state | `state/MAIN.md` | Control-plane module entry | always | transitional | `LAYER-3/STATE.md`, `HANDOFF.md` | Core entry migrated; formal state authority remains legacy |
+| state | `state/MAIN.md` | Control-plane module entry | always | transitional | `LAYER-3/STATE.md`, `HANDOFF.md`, `LAYER-3/project-status.md`, `LAYER-3/session-log.md` | State entry and key continuity/control-plane rules are surfaced in `state/MAIN.md`; legacy sources remain direct-read for full detail |
 | architecture | `architecture/MAIN.md` | Architecture module entry | always | transitional | `ARCHITECTURE.md` | Core entry migrated; detailed architecture still legacy |
 | workflow | `workflow/MAIN.md` | Operational workflow entry | always | transitional | `LAYER-1/workflow.md` and related legacy docs | Core execution entry migrated; detailed procedures pending |
 | adapters | `adapters/MAIN.md` | Adapter routing entry | conditional | legacy-backed | Existing adapter docs (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `DOMAIN-ADAPTER.md`) | Compatibility layer only; no alternate bootstrap |
