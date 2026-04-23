@@ -41,4 +41,12 @@ compatibility/transitional workflow:
   - .github/workflows/adapter-check.yml
 
 Note: `adapter-check.yml` is transitional compatibility workflow and must not redefine global architecture truth.
+
+## Transitional Layer Policy
+- LAYER-1 = deep logic and governance sources still active during migration.
+- LAYER-2 = supporting/reference/QA material during migration.
+- LAYER-3 = formal state/history/session authority where migration is incomplete.
+- LAYER-* are not primary onboarding.
+- LAYER-* are not alternate bootstrap.
+- canonical routing remains START.md / llms.txt / ROUTES-REGISTRY.md / */MAIN.md.
 ---
