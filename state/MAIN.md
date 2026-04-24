@@ -52,6 +52,10 @@ This module surfaces the operational state backbone while formal depth still liv
 - If `project-status.md` is empty or missing, ask what currently works and what is in progress.
 - If there is no reliable project history, recover from the formal state first and do not guess from partial history.
 - If the active task, blocker, or transition still cannot be recovered, stop and ask for owner input instead of improvising.
+- If the same task still looks unfinished across multiple sessions, warn the owner and ask whether to split it or continue.
+- After a task is completed, update `HANDOFF.md`, `LAYER-3/STATE.md`, and `project-status.md`.
+- If `HANDOFF.md` has not been updated after 10+ file changes or 3+ steps, remind to save context.
+- If about 30 minutes of active work pass without updating `HANDOFF.md`, remind to save context.
 - After recovery, continue only once the restored context is confirmed.
 - Do not guess the current state from partial history.
 
