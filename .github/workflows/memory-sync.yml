@@ -3,7 +3,7 @@ name: Memory Bank Sync Check
 on:
   push:
     paths:
-      - 'LAYER-3/**'
+      - 'memory-bank/**'
       - 'HANDOFF.md'
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
           echo "💾 Memory bank updated at $(date '+%Y-%m-%d %H:%M UTC')"
           echo ""
           echo "Files changed:"
-          git diff --name-only HEAD~1 HEAD -- 'LAYER-3/' 'HANDOFF.md' || echo "(first commit)"
+          git diff --name-only HEAD~1 HEAD -- 'memory-bank/' 'HANDOFF.md' || echo "(first commit)"
 
       - name: Check HANDOFF.md freshness
         run: |

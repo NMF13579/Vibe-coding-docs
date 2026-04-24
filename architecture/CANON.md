@@ -42,5 +42,5 @@ canonical workflows:
   - .github/workflows/health.yml
   - .github/workflows/modular-validators.yml
 
-Adapter checks may validate wrappers, but they must not redefine architecture truth.
+Wrapper checks may validate entry files, but they must not redefine architecture truth.
 ---

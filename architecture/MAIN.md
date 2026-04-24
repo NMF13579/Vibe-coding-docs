@@ -21,17 +21,17 @@ This module routes architecture reading and points to the actual architecture tr
 ## Architecture authority
 - `architecture/CANON.md` is the canonical architecture truth source.
 - `architecture/MAIN.md` is the operational architecture entry and routing layer.
-- `ARCHITECTURE.md` remains deep legacy architecture detail while transition still needs it.
+- `ARCHITECTURE.md` is supporting architecture detail.
 - If this module and `architecture/CANON.md` conflict, `architecture/CANON.md` wins.
 
 ## Current deep sources
-- `ARCHITECTURE.md` is the remaining deep architecture detail source.
+- `ARCHITECTURE.md` is the deep architecture detail source.
 - Read it only when the route or canon summary is not enough.
 
 ## Migration boundary
 - This module surfaces the architecture entry and routing split.
 - The truth lives in `architecture/CANON.md`.
-- Detailed architecture stays in `ARCHITECTURE.md` until it is no longer needed.
+- Detailed architecture stays in `ARCHITECTURE.md`.
 - Do not treat this module as a second canon.
 
 ## Routing

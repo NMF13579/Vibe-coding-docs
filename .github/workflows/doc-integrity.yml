@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Identity drift (legacy name in key files)
+      - name: Identity drift (key files)
         run: bash scripts/check-identity-drift.sh
 
       - name: Bootstrap graph files (llms.txt)

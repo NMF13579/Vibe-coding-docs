@@ -17,10 +17,6 @@ FORBIDDEN_ROUTE_TERMS = [
     "direct" + "-read",
     "trans" + "itional",
     "architecture/MAIN.md",
-    "adapters/MAIN.md",
-    "medical/MAIN.md",
-    "incidents/MAIN.md",
-    "doctor/MAIN.md",
 ]
 
 
