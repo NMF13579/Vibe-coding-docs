@@ -42,8 +42,11 @@ This module surfaces the operational quality backbone while deeper detail still 
 - Do not promote one checklist item into a universal project rule unless the source clearly does that.
 
 ## Audit depth and escalation
-- `LAYER-1/audit-quick.md` is for a short daily-style check: state, handoff, links, adapters, blockers, session log, next step.
-- `LAYER-1/audit.md` is for the full audit path: it starts with one question, then walks through state, structure, audit checks, health scoring, and owner-facing summary.
+- The quick audit is a short daily-style check: state, handoff, links, adapters, blockers, session log, next step.
+- Treat the quick route as a 5–7 point check for basic health, not as a replacement for the full audit path.
+- If any point is no or unclear, stop the quick route and follow the full audit route instead.
+- Quick integrity checks: links ok, metadata ok, bootstrap unique, adapters pure.
+- The full audit is a structured audit path with state checks, structure validation, health scoring, and summary.
 - Use the quick route when the question is "is the system still basically healthy?"
 - Use the full route when the question is "are we safe to release or hand off?"
 - If a red flag appears, stop and follow the audit route rather than turning it into ordinary workflow.
