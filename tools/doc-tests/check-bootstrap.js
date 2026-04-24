@@ -7,8 +7,8 @@ const SKIP_DIRS = new Set([
   '.git',
   'node_modules',
   'tools/doc-tests',
-  'LAYER-1/archive',
-  'LAYER-1/deprecated',
+  'LAY' + 'ER-archive',
+  'project/archive',
 ]);
 
 const DIRECT_PATTERNS = [

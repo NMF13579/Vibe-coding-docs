@@ -1,21 +1,11 @@
-# scope-guard — защита от расползания (shared)
+# Scope Guard Note
 
-> Полная версия: [`../LAYER-1/scope-guard.md`](../LAYER-1/scope-guard.md)
+Canonical scope control is in `../workflow/MAIN.md`.
 
-## Суть
+Use this short rule:
 
-Scope creep — когда задача «сделай кнопку» превращается в переписывание половины приложения или серию несогласованных добавок.
+- In scope: continue.
+- Scope expansion: ask the owner whether to continue, defer, or split.
+- Out of scope: stop and keep it separate.
 
-## Правило одной задачи
-
-Агент **закрывает только то**, на что согласовали в текущем запросе. Всё остальное — в бэклог или отдельная задача.
-
-## Если в середине работы пришла новая идея
-
-1. Остановиться, не смешивать в одной правке.  
-2. Назвать тип: **OUT OF SCOPE** / **SCOPE EXPANSION** / **BUGFIX**.  
-3. Предложить: закончить текущее **или** зафиксировать новую задачу и порядок.
-
-## Связь с `PROJECT.md`
-
-Не раздувай секции вне текущего этапа: пиши только в разрешённую секцию (см. `stages/*/BOOT.md`). Для новых больших инициатив — сначала план и подтверждение.
+Do not silently add extra work to the active task.

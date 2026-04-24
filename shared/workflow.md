@@ -1,24 +1,12 @@
-# workflow — жизненный цикл (shared)
+# Workflow Note
 
-> Полный конвейер MVP, этапы, таблицы: [`../LAYER-1/workflow.md`](../LAYER-1/workflow.md)
+Canonical workflow is in `../workflow/MAIN.md`.
 
-## Сжатая последовательность
+Short form:
 
-1. Получить задачу или этап (`stages/*/BOOT.md`).  
-2. Прочитать `project/PROJECT.md` (релевантные секции по BOOT).  
-3. Составить **короткий план** на русском.  
-4. Показать владельцу и дождаться подтверждения.  
-5. Выполнить; при необходимости обновить **DECISIONS** и метаданные YAML в `PROJECT.md` (`version`, `updated`, `stage`).
-
-## Этапы в этом репозитории
-
-| Этап | Старт |
-|------|--------|
-| Интервью / Discovery | `stages/01-interview/BOOT.md` |
-| UX | `stages/02-ux/BOOT.md` |
-| Разработка / Specs | `stages/03-dev/BOOT.md` |
-| Деплой | `stages/04-deploy/BOOT.md` |
-
-## UX перед кодом экрана
-
-Если задача трогает новый экран или заметный UI — сначала согласованная UX-документация (детали в полном `LAYER-1/workflow.md`, раздел «Перед реализацией экрана»).
+1. Confirm the task.
+2. Define scope.
+3. Present or confirm the plan.
+4. Execute inside scope.
+5. Verify through `../quality/MAIN.md`.
+6. Report result and remaining risk.

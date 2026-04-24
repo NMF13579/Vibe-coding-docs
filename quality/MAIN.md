@@ -1,105 +1,69 @@
 ---
 type: canonical
 module: quality
-status: transitional
+status: canonical
 authority: canonical
-when_to_read: conditional
+when_to_read: always
 owner: unassigned
 ---
 
 # Quality
 
 ## Purpose
-Canonical entry for verification, testing, release-readiness, and audit routing.
-This module surfaces the operational quality backbone while deeper detail still lives in approved legacy sources during migration.
 
-## When to read
-- Before declaring task done.
-- Before merge or release checks.
+Canonical module for verification, smoke checks, release blockers, and audit output.
+Quality decides what proof is required; workflow executes the checks.
+
+## When To Use
+
+- Before declaring a task done.
+- Before merge or release readiness.
 - When the owner asks for verification, audit, or risk review.
-- When a change needs explicit proof, not just a claim.
-- When checks are likely to branch into deeper audit or incident follow-up.
+- When a change needs concrete proof instead of a claim.
+- When a red flag could affect core behavior, safety, or user-critical flow.
 
-## Verification scope (current)
-- Routine checks cover manual verification, smoke checks, and evidence-backed readiness checks.
-- Audit depth is chosen by trigger: quick audit for a short pass, full audit when risk or scope is broader.
-- Use the smallest check set that can prove the change, then escalate only if something is unclear.
-- Quality decides which checks matter; workflow executes the checks.
+## Verification
 
-## Quality routing and triggers
-- Enter quality when the task is about proof, readiness, release safety, or audit.
-- Use `LAYER-1/testing-guide.md` for the basic "how to verify" flow and error reporting.
-- Use `LAYER-1/audit-quick.md` for a short health check when you only need a quick pass.
-- Use `LAYER-1/audit.md` when the review is broader, owner-facing, or release-critical.
-- If the trigger is unclear, stay on the quality route and open the smallest legacy source that answers the question.
+- Verification must be evidence-based.
+- Evidence can be command output, observed behavior, test result, or clearly described manual check.
+- Use the smallest check set that proves the task.
+- If automatic proof is not possible, mark the result as manual verification.
+- A task is verified only when acceptance criteria are supported by proof.
+- Do not claim completion when checks were skipped or could not run.
 
-## Verification and readiness
-- `CHECKLIST.md` holds release-oriented readiness items and should be treated as a checkpoint, not as new governance.
-- Verification criteria define the evidence expected when a task claims it is verified.
-- Test scenarios provide smoke-level proof that route and context flow still work.
-- Use concrete evidence: observed result, command output, browser behavior, or clearly described manual check.
-- If automatic proof is not possible, mark it as manual verification instead of pretending it is complete.
-- Verification must be evidence-based, not claim-based.
-- A task is verified only when acceptance criteria are supported by concrete proof.
-- Do not promote one checklist item into a universal project rule unless the source clearly does that.
+## Smoke Checks
 
-## Release blockers and post-launch signals
-- Release must be blocked when data safety, security, or the core user path is not working.
-- Release must be blocked when unresolved blockers affect core functionality, safety, or user-critical flows.
-- Post-launch review is required once there is real user usage to inspect.
-- Post-launch review should capture whether key functionality is actually used.
-- Post-launch review should capture where users drop out of the flow.
-- Post-launch review should capture unexpected usage patterns.
+- Smoke checks confirm that the main route still opens, the core action still works, and no obvious failure blocks the user.
+- For documentation-only work, smoke checks confirm that required routes point to the intended canonical module.
+- For script or validator work, smoke checks confirm that the relevant command exits successfully.
+- If a smoke check fails or is unclear, stop and report the failure before declaring readiness.
 
-## Audit depth and escalation
-- The quick audit is a short daily-style check: state, handoff, links, adapters, blockers, session log, next step.
-- Treat the quick route as a 5–7 point check for basic health, not as a replacement for the full audit path.
-- If any point is no or unclear, stop the quick route and follow the full audit route instead.
-- Quick integrity checks: links ok, metadata ok, bootstrap unique, adapters pure.
-- The full audit is a structured audit path with state checks, structure validation, health scoring, and summary.
-- Use the quick route when the question is "is the system still basically healthy?"
-- Use the full route when the question is "are we safe to release or hand off?"
-- If a red flag appears, stop and follow the audit route rather than turning it into ordinary workflow.
+## Release Blockers
 
-## Full audit stop conditions and output
-- Missing critical file → stop and ask the owner whether to create it or continue.
-- Broken state layer in early checks → stop, do not continue deeper.
-- Red flags after scoring → ask whether to fix now or show the full report first.
-- Final output must be plain-language: working, missing, risks, removable items, top 3 next steps.
-- Saving audit results requires explicit owner approval.
+Block release when any of these are true:
 
-## Canonical role
-`quality/MAIN.md` is the canonical routing entry for verification and quality decisions, but deep quality content is still partially legacy-backed.
-It is canonical for deciding what to verify and when, not for replacing the detailed legacy proof material yet.
+- Data safety is unclear or broken.
+- Security checks fail or were not performed for sensitive work.
+- A core user path is broken.
+- Required state, route, or verification proof is missing.
+- A blocker affects core functionality, safety, or user-critical flows.
 
-## Transitional sources
-- `LAYER-1/testing-guide.md`
-- `CHECKLIST.md`
-- `LAYER-2/qa/verification-criteria.md`
-- `LAYER-2/qa/test-scenarios.md`
-- `LAYER-1/audit.md`
-- `LAYER-1/audit-quick.md`
+## Audit Output
 
-## Canonical vs legacy boundary
-- Canonical routing lives here.
-- Deep quality logic is still partially legacy-backed.
-- Legacy sources must not become an alternate bootstrap.
-- Audit detail, test examples, and release-readiness proof remain direct-read sources.
+Audit reports must be plain-language and evidence-backed:
 
-## Migration exit criteria
-- Canonical quality map is complete.
-- Deep checks are classified.
-- Release, audit, and verification roles are clearly separated.
-- Legacy sources are referenced as supporting material, not hidden authority.
+- what works;
+- what is missing;
+- runtime risks;
+- critical blockers;
+- secondary blockers;
+- top next steps.
 
-## Current operational rule
-- Start from `quality/MAIN.md`.
-- Open only the deep sources needed by trigger.
-- Use workflow to execute checks and this module to decide which checks matter.
-- If the exact proof or checklist detail is unclear, open the legacy source directly instead of inventing it.
+Saving an audit result as a file requires explicit owner approval.
 
-## Migration boundary
-- This module partially surfaces approved legacy quality content from `LAYER-1/testing-guide.md`, `CHECKLIST.md`, `LAYER-2/qa/verification-criteria.md`, `LAYER-2/qa/test-scenarios.md`, `LAYER-1/audit.md`, and `LAYER-1/audit-quick.md`.
-- Those legacy sources still require direct read for full procedures, scenario detail, and audit step depth.
-- `quality/MAIN.md` is canonical for quality entry and routing guidance, but not yet the sole deep source.
-- Do not use this module to duplicate governance authority from `core-rules/MAIN.md`, execution sequencing from `workflow/MAIN.md`, state authority from `state/MAIN.md`, or incident recovery detail from `incidents/MAIN.md`.
+## Boundaries
+
+- Do not define governance authority here; use `core-rules/MAIN.md`.
+- Do not define execution sequence here; use `workflow/MAIN.md`.
+- Do not define state transitions here; use `state/MAIN.md`.
+- Do not define security policy here; use `security/MAIN.md`.

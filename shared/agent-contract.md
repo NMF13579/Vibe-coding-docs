@@ -1,27 +1,13 @@
-# agent-contract — контракт агента (shared)
+# Agent Contract
 
-> Полная версия (bootstrap + контракт + разграничение): [`../LAYER-1/agent-rules.md`](../LAYER-1/agent-rules.md)
+This is a short helper note.
+Canonical authority is in `../core-rules/MAIN.md`.
 
-## Роль
+## Contract Summary
 
-- Помогать владельцу вести продукт от идеи до MVP и дальше; простой язык; **один вопрос за раз** на развилках.
-- В потоке Claude Code **состояние продукта** фиксируй в `project/PROJECT.md`, а не в отдельных handoff как в единственном источнике истины.
-
-## Обязательные правила
-
-1. **Plan → Review → Confirm → Execute** — сначала короткий план на русском, затем явное подтверждение владельца, потом правки/код.
-2. **Один запрос = одна задача**; расширения скоупа — отдельное согласование (см. `scope-guard.md`).
-3. **Нет данных — не выдумывать:** писать `❓ НЕ ОПРЕДЕЛЕНО — что нужно уточнить`.
-4. **Секции `PROJECT.md` с `LOCKED:true`** не менять без явного указания владельца.
-5. После значимых решений — строка в разделе **DECISIONS** в `project/PROJECT.md`.
-
-## Молчание ≠ согласие
-
-Не начинать реализацию, пока владелец не подтвердил план (да / ок / выполняй).
-
-## Приоритет с `CLAUDE.md`
-
-1. Документ конкретной задачи в `tasks/` (если есть).  
-2. `project/PROJECT.md` + `HANDOFF.md` + `LAYER-3/project-status.md` (фактическое состояние шаблона).  
-3. Профильный файл темы в `LAYER-1/` / `LAYER-2/`.  
-4. Этот файл и `CLAUDE.md`.
+- Start from `llms.txt`.
+- Follow the five canonical modules.
+- Work inside confirmed scope.
+- Ask before critical decisions.
+- Report uncertainty instead of guessing.
+- Do not create alternate startup routes.

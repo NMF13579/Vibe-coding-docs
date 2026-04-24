@@ -1,21 +1,14 @@
-# task-protocol — задачи и ревью (shared)
+# Task Protocol Note
 
-> Полный шаблон задач, PASS/FAIL, чеклисты: [`../LAYER-1/task-protocol.md`](../LAYER-1/task-protocol.md)
+Canonical execution flow is in `../workflow/MAIN.md`.
+Canonical verification flow is in `../quality/MAIN.md`.
 
-## Минимальный цикл задачи
+Minimum task shape:
 
-1. Сформулировать **одну** атомарную цель.  
-2. План на русском → подтверждение.  
-3. Выполнить; свериться с ожидаемым результатом.  
-4. Зафиксировать в `project/PROJECT.md` (SPECS / DECISIONS), если менялись стек, архитектура или важные компромиссы.  
-5. Для шаблона репозитория при необходимости обновить `HANDOFF.md` и `LAYER-3/project-status.md` (см. `CLAUDE.md`).
+- task goal;
+- accepted scope;
+- expected result;
+- verification evidence;
+- remaining risk.
 
-## Задачи в файлах
-
-Копируй шаблон из `LAYER-1/task-protocol.md` в `tasks/TASK-XXX.md`, когда ведёшь работу через файлы задач.
-
-## Ревью перед «готово»
-
-- Соответствует ли результат согласованному плану?  
-- Нет ли скрытых предположений вместо `❓ НЕ ОПРЕДЕЛЕНО`?  
-- Нужна ли запись в **DECISIONS**?
+A task is not complete until verification evidence is available or the missing proof is clearly reported.

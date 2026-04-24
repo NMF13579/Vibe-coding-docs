@@ -1,11 +1,7 @@
-> Status: not-started
-> Filled-by: —
-> Approved-by: —
+# Archived: access-rules
 
-# ACCESS-RULES — кто что видит и что может
+Archived source; not runtime.
+Do not route agents to this file.
 
-Роли из жизни продукта — `LAYER-1/workflow.md`.
-
-| Роль | Экран / действие | Видит | Может выполнить | Ограничения |
-|------|------------------|-------|-----------------|-------------|
-| | | | | |
+This file is kept only as a historical placeholder for previous access-rule material.
+Current runtime routing must go through `security/MAIN.md` for access boundaries and `workflow/MAIN.md` for task execution.

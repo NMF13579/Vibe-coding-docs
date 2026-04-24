@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # AgentOS Canonical Orchestration Entrypoint
 # STATUS: canonical
-# This is the single command that represents: "is the system healthy?"
-# Runs canonical checks first. Legacy checks are informational and non-blocking.
 
 set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -23,25 +21,12 @@ run() {
   fi
 }
 
-echo "--- Canonical checks (blocking) ---"
+echo "--- Canonical checks ---"
 run "health-check"          bash "$REPO_ROOT/scripts/health-check.sh"
 run "validate-architecture" bash "$REPO_ROOT/scripts/validate-architecture.sh"
 run "validate-route"        python3 "$REPO_ROOT/scripts/validate-route.py"
 run "validate-docs"         python3 "$REPO_ROOT/scripts/validate-docs.py"
-
-echo ""
-echo "--- Legacy compatibility (informational, non-blocking) ---"
-if [[ "${BASH_VERSINFO[0]}" -ge 4 ]]; then
-  bash "$REPO_ROOT/scripts/validate-adapters.sh" . > /dev/null 2>&1 \
-    && echo "  OK  validate-adapters (legacy)" \
-    || echo "  WARN  validate-adapters (legacy) — issues found, non-blocking"
-else
-  echo "  SKIP  validate-adapters (legacy) — requires bash>=4"
-fi
-
-bash "$REPO_ROOT/scripts/legacy-health-check.sh" > /dev/null 2>&1 \
-  && echo "  OK  legacy-health-check (informational)" \
-  || echo "  WARN  legacy-health-check (informational) — non-blocking"
+run "check-links"           python3 "$REPO_ROOT/scripts/check-links.py"
 
 echo ""
 echo "=== Result: $PASS passed, $FAIL failed ==="

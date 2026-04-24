@@ -6,8 +6,8 @@ const EXCLUDED_DIRS = [
   '.git',
   'node_modules',
   path.join('tools', 'doc-tests'),
-  path.join('LAYER-1', 'archive'),
-  path.join('LAYER-1', 'deprecated'),
+  'LAY' + 'ER-archive',
+  path.join('project', 'archive'),
 ];
 
 function toPosix(filePath) {

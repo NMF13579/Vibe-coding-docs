@@ -1,27 +1,24 @@
 # START — с чего начать
 
-> Primary human route: `ROUTES-REGISTRY.md` → core modules (`core-rules/`, `state/`, `architecture/`, `workflow/`).
-> Legacy `LAYER-*` материалы остаются как reference/history layer.
+Primary human route: `ROUTES-REGISTRY.md` -> canonical modules.
 
-## 👤 Ты человек — выбери кто ты:
+## Ты человек — выбери маршрут
 
 | Кто ты | Куда идти | Что пропустить на первом шаге |
-|--------|-----------|--------------------------------|
-| Новичок без опыта | [ROUTES-REGISTRY.md](./ROUTES-REGISTRY.md) → [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) | legacy `LAYER-*` как primary route |
-| Врач / менеджер / эксперт | [ROUTES-REGISTRY.md](./ROUTES-REGISTRY.md) → [medical/MAIN.md](./medical/MAIN.md) | legacy medical docs как primary route |
-| Потерял контекст | [state/MAIN.md](./state/MAIN.md) → `LAYER-3/STATE.md` / `HANDOFF.md` (по маршруту) | — |
-| IDE user / разработчик | [QUICK-START.md](./QUICK-START.md) | [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) |
-| AI-agent | `llms.txt` | всё остальное |
+|---|---|---|
+| Новичок без опыта | `ROUTES-REGISTRY.md` -> `workflow/MAIN.md` | Детальные заметки и архивы |
+| Врач / менеджер / эксперт | `ROUTES-REGISTRY.md` -> `security/MAIN.md` -> `quality/MAIN.md` | Нерелевантные доменные заметки |
+| Потерял контекст | `state/MAIN.md` -> `workflow/MAIN.md` | Новые задачи до восстановления состояния |
+| IDE user / разработчик | `llms.txt` -> `ROUTES-REGISTRY.md` | Самостоятельный обход файлов |
+| AI-agent | `llms.txt` | Всё, что не указано маршрутом |
 
-*Дальше по продукту: UX — [`LAYER-1/UX-CHECKLIST-MEDICAL.md`](./LAYER-1/UX-CHECKLIST-MEDICAL.md), роли — [`LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md`](./LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md), дашборды — [`LAYER-1/MEDICAL-DASHBOARDS.md`](./LAYER-1/MEDICAL-DASHBOARDS.md) (ссылки также в MEDICAL-SAFETY).*
+## AI-агент
 
-## 🤖 Ты AI-агент (Claude Code, Cursor и др.):
-
-AI-agent: прочитай `llms.txt` и следуй только ему.
-Routing spine (stub): `ROUTES-REGISTRY.md`.
-Правила поведения — в `LAYER-1/agent-rules.md`.
+Прочитай `llms.txt` и следуй только ему.
+Для уточнения владельца правила используй `ROUTES-REGISTRY.md`.
+Поведение задают пять canonical modules: `core-rules/MAIN.md`, `state/MAIN.md`, `workflow/MAIN.md`, `quality/MAIN.md`, `security/MAIN.md`.
 
 ## Обязательное правило
 
-Plan -> Confirm -> Execute.  
-Без подтверждения владельца изменения не вносятся.
+Plan -> Confirm -> Execute.
+Без подтверждения владельца изменения не вносятся, если задача требует согласования.

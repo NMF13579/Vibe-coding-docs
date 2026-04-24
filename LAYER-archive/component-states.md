@@ -1,9 +1,7 @@
-> Status: not-started
-> Filled-by: —
-> Approved-by: —
+# Archived: component-states
 
-# COMPONENT-STATES — состояния интерфейса
+Archived source; not runtime.
+Do not route agents to this file.
 
-| Экран / блок | Состояние | Что видит пользователь | Что можно сделать |
-|--------------|-----------|------------------------|-------------------|
-| | | | |
+This file is kept only as a historical placeholder for previous component-state material.
+Current runtime routing must go through `workflow/MAIN.md` and `quality/MAIN.md`.

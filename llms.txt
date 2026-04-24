@@ -1,141 +1,36 @@
 <!-- ROLE: NAVIGATION -->
 <!-- AUTHORITY: PRIMARY -->
 <!-- STATUS: ACTIVE -->
-<!-- UPDATED_BY: owner -->
 <!-- SOURCE_OF_TRUTH: yes -->
-<!-- MUST_NOT_CONTAIN: policy вместо маршрутов, дублирование LAYER-1 logic -->
-
-> This is the canonical agent bootstrap order.
-> No other file defines read order.
-> Agent rules (behaviour) are in core-rules/MAIN.md and workflow/MAIN.md — separate role.
 
 # AgentOS
-> Agent Operating System — governed workspace for AI-agent-driven development.
-> Navigation index. Not a policy source.
-> Logic: core-rules/MAIN.md, workflow/MAIN.md | State / status / session continuity: state/MAIN.md | Architecture: architecture/CANON.md (entry: architecture/MAIN.md) | Governance / instruction conflicts: core-rules/MAIN.md
-> Routing spine hub (stub phase): ROUTES-REGISTRY.md (legacy sources remain active until migration is complete).
 
----
+Canonical agent bootstrap order.
+This file defines the only required startup route for agents.
 
-## Bootstrap order (read in this sequence)
+## Bootstrap Order
 
-### Required at every start
-- ROUTES-REGISTRY.md — primary routing hub
-- core-rules/MAIN.md — canonical rules entry
-- state/MAIN.md — canonical state entry (with links to formal legacy state authority)
-- architecture/MAIN.md — canonical architecture entry
-- workflow/MAIN.md — canonical execution entry
-- файл описания задачи (например `tasks/TASK-XXX.md`) — **только если** в `STATE.md` непустой `active_task`
+Read in this sequence:
 
-### Read only if needed
-- state/MAIN.md — formal state / status / session continuity
-- HANDOFF.md — session snapshot (через `state/MAIN.md`)
-- state/MAIN.md — when project status or session continuity is unclear
-- state/MAIN.md — when recovering session continuity, ambiguity, or history
-- workflow/MAIN.md — when working with roadmap tasks
-- architecture/MAIN.md — when architecture decisions are needed
-- core-rules/MAIN.md — when governance or instruction conflict needs resolution
-- core-rules/MAIN.md and security/MAIN.md — when audit, hardening, or structural changes need control
-- профильные reference/policy docs — по ситуации (см. Situation routes and canonical modules)
+1. `core-rules/MAIN.md`
+2. `state/MAIN.md`
+3. `workflow/MAIN.md`
+4. `quality/MAIN.md`
+5. `security/MAIN.md`
 
----
+## Runtime Rule
 
-## Agent behavior — governance model
+- Do not create an alternate startup route.
+- Do not use support, adapter, archive, or product notes as startup authority.
+- If a task needs more detail, use the five canonical modules above to choose the next step.
+- If a module does not cover the situation, stop and ask the owner for direction.
 
-You are an agent working inside a governed repository.  
-You do not invent a new working order. You follow the existing structure.
+## Module Roles
 
-### Core principles
-
-- The only **canonical entry point** is this file (`llms.txt`).
-- All other files are data and rule sources, but not alternative bootstraps.
-- Platform adapters (см. инвентарь `adapters/MAIN.md`; примеры: `adapters/ANTIGRAVITY.md`, `.cursor/rules/governed-repo.mdc`) — **dumb interface layers**.
-  They must not define logic, rules, or authority.
-- The adapter registry is a **read-only inventory**.
-  It helps discover adapters but does not affect routing, authority, or reading order.
-
-### Your role
-You are not:
-- a decision maker
-- a product owner
-- an initiator of structural changes
-
-You are:
-- an executor within a governed system
-- a constraint-aware agent
-
-When in doubt:
-- prefer stability over novelty
-- prefer existing patterns over new ones
-- check `architecture/MAIN.md` before proposing architectural changes
-
-## Do not optimize without explicit request
-- do not reduce number of files at cost of clarity
-- do not merge layers
-- do not simplify governance definitions
-- do not propose structural improvements unless explicitly requested by owner
-
-### Your rules
-
-- Read and interpret governance files (STATE.md, HANDOFF.md, etc.)  
-  in the order defined by core, not by adapters.
-- Preserve architectural invariants:
-  - one bootstrap
-  - dumb adapters
-  - no hidden entry points
-- If ambiguity exists between an adapter and core governance,  
-  **core governance takes precedence**.
-- Platform adapters are informational compatibility layers  
-  and must never be treated as alternative entry points.
-
-## Bootstrap rule
-Support files (DECISIONS.md, INTENT.md, system-constraints.md и аналоги)
-не входят в обязательный startup по умолчанию.
-Каждый новый support-файл должен явно указывать условие чтения
-в секции Read only if needed.
-
----
-
-## Situation routes
-
-| Ситуация | Файл |
+| Module | Runtime role |
 |---|---|
-| Antigravity / IDE Antigravity | adapters/MAIN.md |
-| Первый запуск | workflow/MAIN.md |
-| Продолжение работы | state/MAIN.md → HANDOFF.md |
-| Ошибка / откат | incidents/MAIN.md |
-| Задача расползается | workflow/MAIN.md |
-| Потеря контекста | state/MAIN.md or doctor/MAIN.md |
-| Конфликт инструкций | core-rules/MAIN.md |
-| Деплой | workflow/MAIN.md |
-| Откат после деплоя | incidents/MAIN.md |
-| Аудит (полный) | quality/MAIN.md |
-| Аудит (короткий, ежедневный) | quality/MAIN.md |
-| Управление документами (роли, lifecycle) | core-rules/MAIN.md |
-| UX и экраны | workflow/MAIN.md |
-| Медицина / границы ИИ | medical/MAIN.md |
-| Безопасность | security/MAIN.md |
-| Тестирование | quality/MAIN.md |
-| Workflow и этапы MVP | workflow/MAIN.md |
-| Антипаттерны | core-rules/MAIN.md |
-| Принятие решений | architecture/MAIN.md |
-| Роли агентов | core-rules/MAIN.md |
-
----
-
-## Если маршрут не найден
-
-Поищи по ключевому слову в canonical modules или спроси владельца проекта.
-Не угадывай и не действуй без ориентира.
-
----
-
-## Canonical sources
-- Logic:        core-rules/MAIN.md, workflow/MAIN.md
-- Adapters (inventory only): adapters/MAIN.md
-- Governance:   core-rules/MAIN.md
-- Audit:        quality/MAIN.md
-- State:        state/MAIN.md
-- Status:       state/MAIN.md
-- Architecture: architecture/CANON.md
-- Handoff:      HANDOFF.md
+| `core-rules/MAIN.md` | Priority, authority, governance, agent boundaries |
+| `state/MAIN.md` | State lifecycle, events, recovery, transitions |
+| `workflow/MAIN.md` | Plan gate, scope control, execution boundaries, one-task rule |
+| `quality/MAIN.md` | Verification, smoke checks, release blockers, audit output |
+| `security/MAIN.md` | Sensitive data, least privilege, compliance, security stop conditions |

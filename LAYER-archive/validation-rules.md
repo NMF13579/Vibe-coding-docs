@@ -1,24 +1,7 @@
-> Status: not-started
-> Filled-by: —
-> Trigger: правила полей, валидация формы, сообщения об ошибках, validation rules
-> Approved-by: —
+# Archived: validation-rules
 
-Связанные файлы: [LAYER-2/specs/validation.md](./validation.md) — протокол проверки результата задачи
+Archived source; not runtime.
+Do not route agents to this file.
 
-# VALIDATION-RULES — проверка ввода и сообщения
-
-Правила для полей и действий. В [`LAYER-2/specs/spec.md`](./spec.md) достаточно отсылки на этот файл.
-
-| Поле / действие | Экран | Правило | Сообщение для человека (пример) |
-|-----------------|-------|---------|----------------------------------|
-| | | | |
-
----
-
-## Создание новой сущности через интерфейс (если применимо)
-
-| Поле | Правило | Сообщение (пример) |
-|------|---------|-------------------|
-| | | |
-
-Доменные исключения (например отложенное заполнение реквизита) — фиксируйте здесь по согласованию с владельцем, без привязки к конкретной отрасли в шаблоне.
+This file is kept only as a historical placeholder for previous validation-rule material.
+Current runtime routing must go through `quality/MAIN.md`.

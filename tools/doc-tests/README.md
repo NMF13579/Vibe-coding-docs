@@ -1,26 +1,11 @@
-# Doc Integrity Tests
+# Doc Tests
 
-## Запуск
+Document tests verify the canonical runtime route.
 
-node tools/doc-tests/run-doc-tests.js
+Checks:
 
-## Проверки
+- `check-bootstrap.js` finds competing startup instructions.
+- `check-links.js` finds broken local links.
+- `check-metadata.js` validates the five canonical module headers.
 
-- check-links    — внутренние ссылки ведут на существующие файлы
-- check-metadata — ROLE / AUTHORITY / STATUS соответствуют governance vocabulary
-- check-bootstrap — canonical bootstrap задан только в llms.txt
-
-## FAIL (блокирует merge)
-
-- битые внутренние markdown-ссылки
-- невалидные значения metadata
-- competing canonical bootstrap вне llms.txt
-
-## WARNING (не блокирует CI)
-
-- мягкие несоответствия, фиксируются осознанно
-
-## Обновление допустимых значений
-
-При изменении ROLE / AUTHORITY / STATUS в LAYER-1/document-governance.md
-обновить списки ALLOWED_* в check-metadata.js вручную.
+Run through `scripts/run-all.sh` for the normal health check.

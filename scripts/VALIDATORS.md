@@ -1,25 +1,12 @@
-# AgentOS Validators Registry
+# Validators
 
-## Canonical Validators
-These validate the current primary (modular) architecture.
-PASS from these = system is healthy.
+Canonical checks used by `scripts/run-all.sh`.
 
-| Script | Purpose |
+| Script | Role |
 |---|---|
-| validate-architecture.sh | Checks modular control plane structure |
-| validate-route.py | Validates ROUTES-REGISTRY.md routing logic |
-| validate-docs.py | Checks doc integrity against modular spec |
-| tools/doc-tests/* | Doc-level contract tests |
-| run-all.sh | Orchestration entrypoint — canonical checks only |
-
-## Legacy / Compatibility Validators
-PASS from these does NOT mean the current architecture is healthy.
-
-| Script | Status | Notes |
-|---|---|---|
-| legacy-health-check.sh | legacy-compatibility | Checks old identity and LAYER-1 topology |
-| validate-adapters.sh | legacy-compatibility | Requires bash>=4, checks legacy adapter paths |
-| check-identity-drift.sh | legacy-compatibility | May reference old identity (Vibe-coding-docs) |
-
-## Deprecated
-(none yet)
+| `health-check.sh` | Overall canonical health check |
+| `validate-architecture.sh` | Runs document, route, and link validation |
+| `validate-route.py` | Confirms startup and registry routes use only canonical modules |
+| `validate-docs.py` | Confirms required canonical module metadata |
+| `check-links.py` | Confirms selected runtime links resolve |
+| `check-llms-graph-files.sh` | Confirms module paths named in `llms.txt` exist |

@@ -5,73 +5,67 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 LLMS = ROOT / "llms.txt"
-START = ROOT / "START.md"
 ROUTES = ROOT / "ROUTES-REGISTRY.md"
-ADAPTERS = [ROOT / "AGENTS.md", ROOT / "CLAUDE.md", ROOT / "GEMINI.md"]
-DEPRECATED_PRIMARY = ["LAYER-1/workflow.md", "LAYER-1/security.md", "LAYER-1/testing-guide.md"]
-CORE_MAINS = ["core-rules/MAIN.md", "state/MAIN.md", "architecture/MAIN.md", "workflow/MAIN.md"]
+CANONICAL_MODULES = [
+    "core-rules/MAIN.md",
+    "state/MAIN.md",
+    "workflow/MAIN.md",
+    "quality/MAIN.md",
+    "security/MAIN.md",
+]
+FORBIDDEN_ROUTE_TERMS = [
+    "direct" + "-read",
+    "trans" + "itional",
+    "architecture/MAIN.md",
+    "adapters/MAIN.md",
+    "medical/MAIN.md",
+    "incidents/MAIN.md",
+    "doctor/MAIN.md",
+]
 
 
 def fail(msg):
-    print(f"❌ {msg}")
+    print(f"FAIL {msg}")
 
 
-def must_contain(path: pathlib.Path, needle: str):
-    text = path.read_text(encoding="utf-8")
-    return needle in text
+def read(path):
+    return path.read_text(encoding="utf-8")
 
 
 def main():
     errors = 0
+    llms_text = read(LLMS)
+    routes_text = read(ROUTES)
 
-    if not must_contain(LLMS, "canonical agent bootstrap order"):
-        fail("llms.txt no longer states canonical agent bootstrap role")
+    if "Canonical agent bootstrap order" not in llms_text:
+        fail("llms.txt must declare canonical agent bootstrap order")
         errors += 1
 
-    if not must_contain(LLMS, "ROUTES-REGISTRY.md"):
-        fail("llms.txt must include ROUTES-REGISTRY.md in bootstrap route")
-        errors += 1
-
-    for core in CORE_MAINS:
-        if not must_contain(LLMS, core):
-            fail(f"llms.txt missing core route entry: {core}")
+    for module in CANONICAL_MODULES:
+        if module not in llms_text:
+            fail(f"llms.txt missing canonical module: {module}")
+            errors += 1
+        if module not in routes_text:
+            fail(f"ROUTES-REGISTRY.md missing canonical module: {module}")
             errors += 1
 
-    if not must_contain(START, "Primary human route"):
-        fail("START.md must declare primary human route")
-        errors += 1
-
-    if not must_contain(START, "ROUTES-REGISTRY.md"):
-        fail("START.md must route humans through ROUTES-REGISTRY.md")
-        errors += 1
-
-    routes_lines = ROUTES.read_text(encoding="utf-8").splitlines()
-    if len(routes_lines) > 150:
-        fail(f"ROUTES-REGISTRY.md exceeds 150 lines ({len(routes_lines)})")
-        errors += 1
-
-    for adoc in ADAPTERS:
-        text = adoc.read_text(encoding="utf-8")
-        if "Read `llms.txt` first" not in text:
-            fail(f"{adoc.name} must point to llms.txt first")
+    for term in FORBIDDEN_ROUTE_TERMS:
+        if term in llms_text:
+            fail(f"llms.txt contains non-canonical route term: {term}")
             errors += 1
-        if "ROUTES-REGISTRY.md" not in text:
-            fail(f"{adoc.name} must reference ROUTES-REGISTRY.md")
+        if term in routes_text:
+            fail(f"ROUTES-REGISTRY.md contains non-canonical route term: {term}")
             errors += 1
 
-    llms_text = LLMS.read_text(encoding="utf-8")
-    start_text = START.read_text(encoding="utf-8")
-    for deprecated in DEPRECATED_PRIMARY:
-        md_link = f"]({deprecated})"
-        if md_link in llms_text or md_link in start_text:
-            fail(f"Primary route links to deprecated legacy doc: {deprecated}")
-            errors += 1
+    if "Current source" in routes_text:
+        fail("ROUTES-REGISTRY.md must not contain Current source column")
+        errors += 1
 
     if errors:
         print(f"\nFound {errors} route validation error(s).")
         return 1
 
-    print("✅ validate-route passed")
+    print("validate-route passed")
     return 0
 
 

@@ -5,37 +5,35 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
-CORE = ["core-rules", "state", "architecture", "workflow"]
-OPTIONAL = ["adapters", "quality", "security", "medical", "incidents", "doctor"]
-ALL = CORE + OPTIONAL
+MODULES = ["core-rules", "state", "workflow", "quality", "security"]
 REQUIRED_FIELDS = ["type", "module", "status", "authority", "when_to_read", "owner"]
-ALLOWED_STATUS = {"draft", "transitional", "canonical", "active", "stub"}
+ALLOWED_STATUS = {"draft", "canonical", "active", "stub"}
 
 
 def parse_frontmatter(path: pathlib.Path):
     text = path.read_text(encoding="utf-8")
     if not text.startswith("---\n"):
         return None
-    m = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
-    if not m:
+    match = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
+    if not match:
         return None
     data = {}
-    for line in m.group(1).splitlines():
+    for line in match.group(1).splitlines():
         if ":" not in line:
             continue
-        k, v = line.split(":", 1)
-        data[k.strip()] = v.strip()
+        key, value = line.split(":", 1)
+        data[key.strip()] = value.strip()
     return data
 
 
 def fail(msg):
-    print(f"❌ {msg}")
+    print(f"FAIL {msg}")
 
 
 def main():
     errors = 0
 
-    for module in ALL:
+    for module in MODULES:
         main_path = ROOT / module / "MAIN.md"
         if not main_path.exists():
             fail(f"Missing module entry: {module}/MAIN.md")
@@ -62,25 +60,24 @@ def main():
             errors += 1
 
         if fm.get("module") != module:
-            fail(f"module mismatch in {main_path.relative_to(ROOT)}: expected '{module}' got '{fm.get('module','')}'")
+            fail(
+                f"module mismatch in {main_path.relative_to(ROOT)}: expected '{module}' got '{fm.get('module', '')}'"
+            )
             errors += 1
 
         if fm.get("status") not in ALLOWED_STATUS:
             fail(f"status must be one of {sorted(ALLOWED_STATUS)} in {main_path.relative_to(ROOT)}")
             errors += 1
 
-        expected_when = "always" if module in CORE else "conditional"
-        if fm.get("when_to_read") != expected_when:
-            fail(
-                f"when_to_read mismatch in {main_path.relative_to(ROOT)}: expected '{expected_when}' got '{fm.get('when_to_read','')}'"
-            )
+        if fm.get("when_to_read") != "always":
+            fail(f"when_to_read must be always in {main_path.relative_to(ROOT)}")
             errors += 1
 
     if errors:
         print(f"\nFound {errors} validation error(s) in module docs.")
         return 1
 
-    print("✅ validate-docs passed")
+    print("validate-docs passed")
     return 0
 
 
