@@ -37,6 +37,14 @@ This module surfaces the operational state backbone while formal depth still liv
 - Resume active work by restoring project/session/task from `LAYER-3/STATE.md`, then confirm the transfer context in `HANDOFF.md`.
 - Exact field-by-field detail stays direct-read in the formal legacy files.
 
+## State events
+- `CONTEXT_RESTORED` marks the bootstrap-to-loaded session transition.
+- `USER_APPROVED` marks explicit owner confirmation.
+- `TASK_IMPLEMENTED` marks implementation completion.
+- `VERIFICATION_PASSED` marks that self-verification succeeded.
+- `BLOCKER_FOUND` marks a blocked task state.
+- `SESSION_ENDED` marks the end of a session.
+
 ## Recovery and ambiguity route
 - If `HANDOFF.md` and `LAYER-3/STATE.md` disagree, follow `LAYER-3/STATE.md` and reconcile the supporting docs after that.
 - If context is stale or incomplete, open `LAYER-3/project-status.md` for project narrative and `LAYER-3/session-log.md` for timeline.
