@@ -62,6 +62,40 @@ This module surfaces the operational rule backbone while deeper detail remains i
 - Scope error: the task expanded, so stop and route through `scope-guard.md`.
 - Repeated failure, safety risk, or blocked work: use `error-handling.md` rollback procedure.
 
+## Anti-patterns and stop signals
+
+### Process violations
+- Do NOT do several things in one prompt.
+- Do NOT change working code opportunistically.
+- Do NOT work without measurable acceptance criteria.
+- Do NOT mix roles in one message; keep customer, architect, and agent responsibilities separate.
+
+### Engineering violations
+- Do NOT hardcode values that may change.
+- Do NOT copy secrets into code.
+- Do NOT delete data without checking.
+- Do NOT change database schema manually.
+- Do NOT do everything in one file.
+- Do NOT build for the future instead of the present.
+- Do NOT change the stack in the middle of the project.
+- Do NOT ignore mobile support from the start.
+- Do NOT ignore access rights at the start.
+
+### Communication violations
+- Do NOT use jargon without explanation.
+- Do NOT ask several questions at once.
+- Do NOT offer options without a recommendation.
+- Do NOT say “this is hard” without explaining why.
+
+### Stop signals
+- Do NOT let a task stay open for more than three sessions without reassessment.
+- Do NOT keep going if fixing one bug breaks three others.
+- Do NOT continue when testing is unclear.
+- Do NOT proceed if the next step would require rewriting the previous one.
+- Do NOT ignore Silent Failure Mode.
+- Do NOT ignore Epistemic Debt.
+- Do NOT ignore Over-reliance on Tests.
+
 ## Migration boundary
 - This module partially surfaces approved legacy rule content from `LAYER-1/agent-rules.md`, `LAYER-1/document-governance.md`, `LAYER-1/scope-guard.md`, `LAYER-1/error-handling.md`, and `LAYER-1/self-verification.md`.
 - The listed legacy sources still require direct read for full detail, examples, and procedure depth.
