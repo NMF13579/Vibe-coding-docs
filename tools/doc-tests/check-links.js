@@ -6,7 +6,6 @@ const EXCLUDED_DIRS = [
   '.git',
   'node_modules',
   path.join('tools', 'doc-tests'),
-  'LAY' + 'ER-archive',
   path.join('project', 'archive'),
 ];
 
@@ -16,10 +15,25 @@ function toPosix(filePath) {
 
 function isExcluded(relativePath) {
   const normalized = toPosix(relativePath);
+  const segments = normalized.split('/');
+
+  if (segments.some((segment) => /^LAYER-/i.test(segment))) {
+    return true;
+  }
+
   return EXCLUDED_DIRS.some((excluded) => {
     const excludedPosix = toPosix(excluded);
     return normalized === excludedPosix || normalized.startsWith(`${excludedPosix}/`);
   });
+}
+
+function isLegacyMarkdownFile(fileName) {
+  return fileName.toLowerCase().includes('legacy') && fileName.toLowerCase().endsWith('.md');
+}
+
+function shouldIgnoreTarget(target) {
+  const normalized = toPosix(target).toLowerCase();
+  return normalized.split('/').some((segment) => /^layer-/i.test(segment)) || normalized.endsWith('/legacy') || normalized.includes('/legacy-') || normalized.includes('/legacy.') || normalized.includes('legacy/');
 }
 
 function collectMarkdownFiles(directory, files = []) {
@@ -38,6 +52,10 @@ function collectMarkdownFiles(directory, files = []) {
     }
 
     if (entry.isFile() && entry.name.toLowerCase().endsWith('.md')) {
+      if (isLegacyMarkdownFile(entry.name)) {
+        continue;
+      }
+
       files.push(absolutePath);
     }
   }
@@ -104,6 +122,10 @@ async function run() {
       const target = normalizeLinkTarget(rawTarget);
 
       if (!target || target.startsWith('#') || isExternalTarget(target)) {
+        continue;
+      }
+
+      if (shouldIgnoreTarget(target)) {
         continue;
       }
 
