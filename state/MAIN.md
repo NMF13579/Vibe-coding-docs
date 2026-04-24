@@ -37,6 +37,14 @@ This module surfaces the operational state backbone while formal depth still liv
 - Resume active work by restoring project/session/task from `LAYER-3/STATE.md`, then confirm the transfer context in `HANDOFF.md`.
 - Exact field-by-field detail stays direct-read in the formal legacy files.
 
+## Transition boundaries
+- Every transition must be guard-checked before it is allowed.
+- If a guard fails, stop the transition and report the reason.
+- Execution cannot skip the loaded-context stage or jump straight into action.
+- A blocked or failed transition must not be treated as normal continuation.
+- Illegal transitions must not be executed unless explicitly revalidated and approved by the owner.
+- Error and recovery transitions are exceptional, not ordinary flow.
+
 ## State events
 - `CONTEXT_RESTORED` marks the bootstrap-to-loaded session transition.
 - `USER_APPROVED` marks explicit owner confirmation.
