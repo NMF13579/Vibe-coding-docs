@@ -23,7 +23,14 @@ This module surfaces the operational state backbone while formal depth still liv
 - `state/MAIN.md` is canonical for state entry and routing, but not yet the sole deep source.
 
 ## Active task and continuity
-- Start from `llms.txt`, then load `state/MAIN.md` and the formal state source in `LAYER-3/STATE.md`.
+- Start from `llms.txt`, then follow canonical core rules for session loading.
+- After reading context, determine Project / Session / Task state from `LAYER-3/STATE.md`.
+- Check `forbidden` and `next_allowed_actions`.
+- Report to the user: Project state / Session state / Task state, Active task, Next allowed actions, Blockers.
+- Execute the session transition BOOTSTRAP → CONTEXT_LOADED (event: CONTEXT_RESTORED).
+- `[BOOTSTRAP COMPLETE]` — only then begin work on the task.
+- If `STATE.md` does not exist: "STATE.md not found. State layer initialization required."
+- Do not start work until `STATE.md` is created.
 - If `active_task` is empty or the session is in handoff, use `HANDOFF.md` to recover transfer context.
 - Use `LAYER-3/project-status.md` when project stage, risk, or broad direction is unclear.
 - Use `LAYER-3/session-log.md` when the task sequence, prior changes, or transition order must be reconstructed.
