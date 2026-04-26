@@ -10,14 +10,24 @@ Check whether this AgentOS template is structurally sound and release-ready.
 
 ## AgentOS Flow
 
-No /spec is required.
+1. No `/spec` is required.
+2. No task contract is required.
+3. Run validation commands only.
+4. Review reports and failures.
+5. Create follow-up tasks only if needed.
 
 ## Expected Artifacts
 
+- `reports/task-health.md` if task-health is run separately
+- `reports/negative-fixtures-smoke.md`
+- `reports/guard-failures-smoke.md`
+- `reports/audit.md`
 - `reports/audit-smoke.md`
 
 ## Human Approval Points
 
+- approval before creating follow-up implementation tasks
+- approval before modifying `tasks/active-task.md`
 - approval before treating an audit result as a release decision
 
 ## Validation Commands
