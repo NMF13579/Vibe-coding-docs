@@ -187,3 +187,25 @@ Practical documentation scenarios are available in:
 - `examples/scenario-04-validation-only.md`
 
 These examples are not executable fixtures. They illustrate expected AgentOS workflows and safety boundaries.
+
+## Prompt packs
+
+Ready-to-use prompt packs are available in:
+
+- `prompt-packs/README.md`
+- `prompt-packs/cursor.md`
+- `prompt-packs/claude-code.md`
+- `prompt-packs/codex-cli.md`
+- `prompt-packs/chatgpt.md`
+
+Prompt packs help AI coding tools follow AgentOS safety boundaries, read the right context, and run the right validation commands.
+
+## Release checklist
+
+Release readiness checklist:
+
+- `RELEASE-CHECKLIST.md`
+- `tools/release/RELEASE-CHECKLIST.md`
+- `reports/release-checklist.md`
+
+Release approval is manual. AgentOS does not approve release automatically.

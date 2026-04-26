@@ -578,3 +578,113 @@ Generated at: 2026-04-24 21:31:45
   - Validation Commands
   - What Must Not Happen Automatically
   - Notes
+### prompt-packs/README.md
+- type: markdown
+- size_bytes: 0
+- headings:
+  - AgentOS Prompt Packs
+  - Purpose
+  - Available prompt packs
+  - Core safety rule
+  - Recommended validation
+  - Related docs
+### prompt-packs/cursor.md
+- type: markdown
+- size_bytes: 0
+- headings:
+  - AgentOS Prompt Pack — Cursor
+  - Purpose
+  - Agent Role
+  - Authoritative Context
+  - Required Reading Order
+  - Execution Boundary
+  - Validation Commands
+  - Human Approval Rules
+  - Forbidden Actions
+  - Final Report Format
+  - Notes
+### prompt-packs/claude-code.md
+- type: markdown
+- size_bytes: 0
+- headings:
+  - AgentOS Prompt Pack — Claude Code
+  - Purpose
+  - Agent Role
+  - Authoritative Context
+  - Required Reading Order
+  - Execution Boundary
+  - Validation Commands
+  - Human Approval Rules
+  - Forbidden Actions
+  - Final Report Format
+  - Notes
+### prompt-packs/codex-cli.md
+- type: markdown
+- size_bytes: 0
+- headings:
+  - AgentOS Prompt Pack — Codex / CLI Agent
+  - Purpose
+  - Agent Role
+  - Authoritative Context
+  - Required Reading Order
+  - Execution Boundary
+  - Validation Commands
+  - Human Approval Rules
+  - Forbidden Actions
+  - Final Report Format
+  - Notes
+### prompt-packs/chatgpt.md
+- type: markdown
+- size_bytes: 0
+- headings:
+  - AgentOS Prompt Pack — Generic ChatGPT
+  - Purpose
+  - Agent Role
+  - Authoritative Context
+  - Required Reading Order
+  - Execution Boundary
+  - Validation Commands
+  - Human Approval Rules
+  - Forbidden Actions
+  - Final Report Format
+  - Notes
+### RELEASE-CHECKLIST.md
+- type: markdown
+- size_bytes: 0
+- headings:
+  - AgentOS Release Checklist
+  - Purpose
+  - Release scope
+  - Required manual checks
+  - Validation commands
+  - Documentation readiness
+  - Safety boundaries
+  - Example scenarios
+  - Prompt packs
+  - Audit status
+  - Known limitations
+  - Release decision
+  - Non-goals
+### tools/release/RELEASE-CHECKLIST.md
+- type: markdown
+- size_bytes: 0
+- headings:
+  - Release Checklist Tooling
+  - Purpose
+  - Files
+  - How to use
+  - Required evidence
+  - Human approval
+  - Non-goals
+### reports/release-checklist.md
+- type: markdown
+- size_bytes: 0
+- headings:
+  - AgentOS Release Checklist Report
+  - Review status
+  - Reason
+  - Evidence
+  - Audit smoke status
+  - Manual checklist
+  - Decision
+  - Notes
