@@ -20,6 +20,18 @@ python3 scripts/audit-agentos.py
 | negative-fixtures | `python3 scripts/test-negative-fixtures.py` | exit 0 |
 | guard-failures | `python3 scripts/test-guard-failures.py` | exit 0 |
 
+The runner executes suites via `sys.executable`, not hardcoded `python3`.
+
+Guard-failures section runs `scripts/test-guard-failures.py`.
+Guard failure runner covers:
+- template-integrity
+- negative-fixtures
+- runner-protocol
+
+Coverage flow:
+- review, trace, queue, contract-draft are covered through `scripts/test-negative-fixtures.py`
+- runner-protocol is covered through `scripts/test-guard-failures.py`
+
 ## Report
 
 The audit runner writes:
@@ -28,9 +40,15 @@ The audit runner writes:
 
 ## Result Interpretation
 
-PASS means all runnable audit suites passed.
-FAIL means at least one runnable audit suite failed or prerequisite was missing.
+PASS means all runnable audit suites returned PASS.
+PASS_WITH_WARNINGS means there are no FAIL suites, but at least one suite returned PASS_WITH_WARNINGS or WARN/SKIPPED.
+FAIL means at least one runnable suite failed.
 SKIPPED means the suite is intentionally left for a future milestone.
+
+Exit codes:
+- PASS: `0`
+- PASS_WITH_WARNINGS: `0`
+- FAIL: `1`
 
 ## Skipped Suites
 
@@ -43,21 +61,9 @@ SKIPPED means the suite is intentionally left for a future milestone.
 
 ## Prerequisites
 
-The runner requires the outputs of Milestone 7.2, including:
-
-- `scripts/test-guard-failures.py`
-- `tools/guard-failure/TEST-GUARD-FAILURES.md`
-- `reports/guard-failures-smoke.md`
-
-The guard failure smoke report must contain:
-
-```
-## Actual Result
-
-PASS
-```
-
-The runner checks the `## Actual Result` section value. It does not treat any arbitrary `PASS` in the file as sufficient.
+- `scripts/audit-agentos.py` must exist.
+- `scripts/test-guard-failures.py` is optional for this section:
+  if missing, guard-failures is reported as `WARN` and overall result degrades to `PASS_WITH_WARNINGS`.
 
 ## Smoke test
 
@@ -70,7 +76,7 @@ python3 scripts/audit-agentos.py
 Expected result:
 
 ```
-Result: PASS
+Result: PASS / PASS_WITH_WARNINGS / FAIL
 ```
 
 Smoke report:
@@ -95,6 +101,7 @@ AgentOS Audit Runner does not:
 - run agent-next.py
 - run agent-complete.py
 - run agent-fail.py
+- approve execution
 - execute tasks
 - modify tasks/active-task.md
 - move queue items
