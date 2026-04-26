@@ -100,6 +100,26 @@ FORBIDDEN_FILES = [
     "scripts/agent-runner.py",
 ]
 
+WARNING_SECTIONS = [
+    (
+        "Optional fixtures",
+        [],
+        [
+            "tests/fixtures/task-brief/",
+            "tests/fixtures/contract-generation/",
+            "tests/fixtures/agent-runner/",
+            "tests/fixtures/task-health/",
+        ],
+    ),
+    (
+        "Reports",
+        [
+            "reports/task-health.md",
+        ],
+        [],
+    ),
+]
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -113,7 +133,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--strict",
         action="store_true",
-        help="Reserved for 7.0.2; accepted but does not change behavior.",
+        help="Treat warnings as blocking for exit code purposes.",
     )
     return parser.parse_args()
 
@@ -153,10 +173,10 @@ def check_forbidden_files(root: Path) -> List[str]:
     return errors
 
 
-def print_section(name: str, errors: Sequence[str]) -> None:
-    if errors:
-        print("{0}: FAIL".format(name))
-        for error in errors:
+def print_section(name: str, status: str, messages: Sequence[str]) -> None:
+    if messages:
+        print("{0}: {1} - {2}".format(name, status, messages[0]))
+        for error in messages[1:]:
             print("- {0}".format(error))
     else:
         print("{0}: PASS".format(name))
@@ -178,26 +198,40 @@ def main() -> int:
         return 1
 
     has_errors = False
+    has_warnings = False
 
     for name, files, dirs in SECTIONS:
         errors = check_section(root, files, dirs)
-        print_section(name, errors)
+        print_section(name, "FAIL", errors)
         if errors:
             has_errors = True
 
     runtime_errors = check_gitignore(root)
-    print_section("Runtime artifacts", runtime_errors)
+    print_section("Runtime artifacts", "FAIL", runtime_errors)
     if runtime_errors:
         has_errors = True
 
     forbidden_errors = check_forbidden_files(root)
-    print_section("Forbidden files", forbidden_errors)
+    print_section("Forbidden files", "FAIL", forbidden_errors)
     if forbidden_errors:
         has_errors = True
+
+    for name, files, dirs in WARNING_SECTIONS:
+        warnings = check_section(root, files, dirs)
+        print_section(name, "WARNING", warnings)
+        if warnings:
+            has_warnings = True
 
     if has_errors:
         print("Result: FAIL")
         return 1
+
+    if has_warnings:
+        print("Result: PASS_WITH_WARNINGS")
+        if args.strict:
+            print("Strict mode: FAIL_ON_WARNINGS")
+            return 1
+        return 0
 
     print("Result: PASS")
     return 0

@@ -2,7 +2,7 @@
 
 Template Integrity Checker checks whether the AgentOS template still has the required file and directory structure for release readiness.
 
-It is a read-only checker. Read-only means it only reads files and folders, prints a report, and exits with `PASS` or `FAIL`.
+It is a read-only checker. Read-only means it only reads files and folders, prints a report, and exits with `PASS`, `PASS_WITH_WARNINGS`, or `FAIL`.
 
 ## How to run
 
@@ -22,9 +22,15 @@ python3 scripts/check-template-integrity.py --root tests/fixtures/template-integ
 
 ## Strict mode
 
-`--strict` is accepted by the command line interface but does not change behavior in 7.0.1.
+Use strict mode for CI/release gates:
 
-Strict mode is reserved for 7.0.2.
+```bash
+python3 scripts/check-template-integrity.py --strict
+```
+
+Strict mode treats warnings as blocking for exit code purposes, but the printed result remains `PASS_WITH_WARNINGS`.
+
+When result is `FAIL`, `--strict` has no additional effect.
 
 ## What it checks
 
@@ -39,21 +45,55 @@ The checker verifies required AgentOS template areas:
 - runner dry-run protocol files;
 - task health metrics files;
 - `.gitignore` runtime artifact rule;
-- forbidden auto-runner file paths.
+- forbidden auto-runner file paths;
+- optional fixture directories;
+- task health report presence.
 
-## PASS
+## Result states
+
+PASS:
+
+- no errors
+- no warnings
+
+PASS_WITH_WARNINGS:
+
+- no errors
+- at least one warning
+- normal mode exit code: 0
+- strict mode exit code: 1
+
+FAIL:
+
+- at least one error
+- exit code: 1 regardless of `--strict`
+- warnings may still be printed, but result remains FAIL
 
 `PASS` means every required file and directory exists, `.gitignore` contains `tasks/drafts/`, and no forbidden file path exists.
 
 The command exits with code `0`.
 
-## FAIL
+`PASS_WITH_WARNINGS` means the template structure is not broken, but release-readiness is incomplete.
 
 `FAIL` means at least one required file or directory is missing, `.gitignore` is missing or does not contain `tasks/drafts/`, the root path is invalid, or a forbidden file path exists.
 
 The command exits with code `1`.
 
-The checker collects all section errors before printing the final result.
+The checker collects all section errors and warnings before printing the final result.
+
+## Warning-level checks
+
+Warnings indicate incomplete release-readiness, not broken template structure.
+
+All warning checks are evaluated relative to `--root`.
+
+Current warning-level checks:
+
+- missing `tests/fixtures/task-brief/`
+- missing `tests/fixtures/contract-generation/`
+- missing `tests/fixtures/agent-runner/`
+- missing `tests/fixtures/task-health/`
+- missing `reports/task-health.md`
 
 ## Forbidden auto-runner files
 
