@@ -38,6 +38,33 @@ Cases pending future validator: review, trace, queue, runner.
 
 Commands are documented only. No scripts were executed in this task.
 
+## Automated Negative Fixture Test Runner
+
+Runnable in Task 7.1.4:
+
+- task-brief fixtures via `scripts/validate-task-brief.py`
+- contract-generation fixtures via `scripts/generate-task-contract.py`
+- template-integrity fixtures via `scripts/check-template-integrity.py`
+
+Skipped until future validators exist:
+
+- review
+- trace
+- queue
+- runner
+
+Run:
+
+```bash
+python3 scripts/test-negative-fixtures.py
+```
+
+Interpretation:
+
+- invalid fixture rejected by validator/checker/generator -> PASS
+- invalid fixture accepted by validator/checker/generator -> FAIL
+- skipped groups do not affect exit code
+
 ## Non-goals
 
 This inventory does not:
