@@ -121,6 +121,7 @@ Generated at: 2026-04-24 21:31:45
   - Canonical Runtime Modules
   - Common Situations
   - Working Rule
+  - Example scenarios
 ### ROUTES-REGISTRY.md
 - type: markdown
 - size_bytes: 963
