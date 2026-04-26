@@ -65,6 +65,19 @@ Interpretation:
 - invalid fixture accepted by validator/checker/generator -> FAIL
 - skipped groups do not affect exit code
 
+## Negative Fixture Runner Documentation
+
+Detailed usage documentation:
+
+- `tools/negative-fixtures/TEST-NEGATIVE-FIXTURES.md`
+
+Summary:
+
+- Runnable categories: task-brief, contract-generation, template-integrity
+- Skipped categories: review, trace, queue, runner
+- Negative PASS means the invalid fixture was correctly rejected
+- Skipped categories do not affect exit code
+
 ## Non-goals
 
 This inventory does not:
