@@ -17,10 +17,28 @@ class CaseResult(NamedTuple):
 
 
 SKIPPED_GROUPS = [
-    ("review", "future validator"),
-    ("trace", "future validator"),
     ("queue", "future validator"),
     ("runner", "future guard test"),
+]
+
+REQUIRED_REVIEW_FIXTURES = [
+    "missing-review-status.md",
+    "missing-execution-allowed.md",
+    "ready-but-execution-false.md",
+    "blocked-but-execution-true.md",
+    "unknown-review-status.md",
+]
+
+REQUIRED_TRACE_FIXTURES = [
+    "missing-task-id.md",
+    "missing-source-summary.md",
+    "missing-decision-rationale.md",
+    "empty-task-id.md",
+    "execution-approved.md",
+    "replaces-task.md",
+    "replaces-review.md",
+    "active-task-updated.md",
+    "malformed-frontmatter.md",
 ]
 
 
@@ -42,6 +60,9 @@ def required_paths(root: Path) -> List[Path]:
         root / "scripts/validate-task-brief.py",
         root / "scripts/generate-task-contract.py",
         root / "scripts/check-template-integrity.py",
+        root / "scripts/validate-review.py",
+        root / "scripts/validate-trace.py",
+        root / "tests/fixtures/negative/trace",
         root / "tests/fixtures/negative/task-brief/missing-metadata/TASK.md",
         root / "tests/fixtures/negative/task-brief/executable-true/TASK.md",
         root / "tests/fixtures/negative/task-brief/missing-acceptance-criteria/TASK.md",
@@ -131,6 +152,52 @@ def template_integrity_cases(root: Path) -> List[Case]:
     ]
 
 
+def review_cases(root: Path) -> List[Case]:
+    tool = root / "scripts/validate-review.py"
+    base = root / "tests/fixtures/negative/review"
+    return [
+        Case("missing-review-status", [str(tool), str(base / "missing-review-status.md")]),
+        Case(
+            "missing-execution-allowed",
+            [str(tool), str(base / "missing-execution-allowed.md")],
+        ),
+        Case(
+            "ready-but-execution-false",
+            [str(tool), str(base / "ready-but-execution-false.md")],
+        ),
+        Case(
+            "blocked-but-execution-true",
+            [str(tool), str(base / "blocked-but-execution-true.md")],
+        ),
+        Case(
+            "unknown-review-status",
+            [str(tool), str(base / "unknown-review-status.md")],
+        ),
+    ]
+
+
+def trace_cases(root: Path) -> List[Case]:
+    tool = root / "scripts/validate-trace.py"
+    base = root / "tests/fixtures/negative/trace"
+    return [
+        Case("missing-task-id", [str(tool), str(base / "missing-task-id.md")]),
+        Case("missing-source-summary", [str(tool), str(base / "missing-source-summary.md")]),
+        Case(
+            "missing-decision-rationale",
+            [str(tool), str(base / "missing-decision-rationale.md")],
+        ),
+        Case("empty-task-id", [str(tool), str(base / "empty-task-id.md")]),
+        Case("execution-approved", [str(tool), str(base / "execution-approved.md")]),
+        Case("replaces-task", [str(tool), str(base / "replaces-task.md")]),
+        Case("replaces-review", [str(tool), str(base / "replaces-review.md")]),
+        Case("active-task-updated", [str(tool), str(base / "active-task-updated.md")]),
+        Case(
+            "malformed-frontmatter",
+            [str(tool), str(base / "malformed-frontmatter.md")],
+        ),
+    ]
+
+
 def excerpt(text: str) -> Optional[str]:
     stripped = text.strip()
     if not stripped:
@@ -202,6 +269,20 @@ def main() -> int:
     task_results = [run_case(root, case) for case in task_brief_cases(root)]
     contract_results = [run_case(root, case) for case in contract_generation_cases(root)]
     template_results = [run_case(root, case) for case in template_integrity_cases(root)]
+    review_base = root / "tests/fixtures/negative/review"
+    review_has_any = review_base.exists() and any(review_base.glob("*.md"))
+    missing_review_fixtures = [
+        name for name in REQUIRED_REVIEW_FIXTURES if not (review_base / name).is_file()
+    ]
+    review_results = [run_case(root, case) for case in review_cases(root)] if review_has_any else []
+    trace_base = root / "tests/fixtures/negative/trace"
+    trace_md_files = sorted(path.name for path in trace_base.glob("*.md")) if trace_base.exists() else []
+    trace_has_any = len(trace_md_files) > 0
+    missing_trace_fixtures = [
+        name for name in REQUIRED_TRACE_FIXTURES if not (trace_base / name).is_file()
+    ]
+    extra_trace_fixtures = sorted(set(trace_md_files) - set(REQUIRED_TRACE_FIXTURES))
+    trace_results = [run_case(root, case) for case in trace_cases(root)] if trace_has_any else []
 
     after_drafts = draft_file_set(root)
 
@@ -215,6 +296,45 @@ def main() -> int:
         print("Contract Generation: root tasks/drafts protection: FAIL - root-level tasks/drafts/ changed during negative fixture tests")
     if not print_group("Template Integrity", template_results):
         ok = False
+    if not review_has_any:
+        ok = False
+        print("review: FAIL — review fixtures not found")
+    else:
+        if not print_group("review", review_results):
+            ok = False
+        if missing_review_fixtures:
+            ok = False
+            for fixture_name in missing_review_fixtures:
+                print(
+                    "  {0}: FAIL - fixture not found: {1}".format(
+                        Path(fixture_name).stem,
+                        rel(review_base / fixture_name, root),
+                    )
+                )
+    if not trace_has_any:
+        ok = False
+        print("trace: FAIL — trace fixtures not found")
+    else:
+        if not print_group("trace", trace_results):
+            ok = False
+        if missing_trace_fixtures:
+            ok = False
+            for fixture_name in missing_trace_fixtures:
+                print(
+                    "  {0}: FAIL - fixture not found: {1}".format(
+                        Path(fixture_name).stem,
+                        rel(trace_base / fixture_name, root),
+                    )
+                )
+        if extra_trace_fixtures:
+            ok = False
+            for fixture_name in extra_trace_fixtures:
+                print(
+                    "  {0}: FAIL - unexpected fixture: {1}".format(
+                        Path(fixture_name).stem,
+                        rel(trace_base / fixture_name, root),
+                    )
+                )
 
     print("Skipped:")
     for name, reason in SKIPPED_GROUPS:

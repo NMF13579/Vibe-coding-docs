@@ -30,6 +30,8 @@ The MVP runner automatically checks only categories that already have tools:
 | task-brief | 4 | scripts/validate-task-brief.py |
 | contract-generation | 4 | scripts/generate-task-contract.py |
 | template-integrity | 3 | scripts/check-template-integrity.py |
+| review | 5 | scripts/validate-review.py |
+| trace | 9 | scripts/validate-trace.py |
 
 Template-integrity negative fixtures are located in:
 
@@ -51,8 +53,6 @@ These categories are documented but not automated yet:
 
 | Category | Status | Reason |
 |---|---|---|
-| review | SKIPPED | future review validator / guard test runner |
-| trace | SKIPPED | future trace validator / guard test runner |
 | queue | SKIPPED | future queue validator / guard test runner |
 | runner | SKIPPED | future runner guard test |
 
@@ -74,6 +74,16 @@ Task Brief:
 ```
 
 This means `scripts/validate-task-brief.py` rejected a Task Brief with `executable: true`.
+
+For review fixtures, `scripts/validate-review.py` is used:
+
+- invalid `REVIEW.md` rejected -> PASS
+- invalid `REVIEW.md` accepted -> FAIL
+
+For trace fixtures, `scripts/validate-trace.py` is used:
+
+- invalid `TRACE.md` rejected -> PASS
+- invalid `TRACE.md` accepted -> FAIL
 
 ## Exit codes
 
@@ -122,7 +132,7 @@ Reason: contract generation negative tests must not leak runtime artifacts into 
 
 Task 7.1.4 provides a narrow MVP runner for runnable negative fixtures.
 
-Future milestones may add validators for review, trace, queue, and runner categories.
+Future milestones may add validators for queue and runner categories.
 
 Milestone 7.2 may introduce a broader Guard Failure Test Runner.
 
