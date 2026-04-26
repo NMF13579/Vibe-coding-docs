@@ -45,3 +45,15 @@ The current architecture is canonical-module driven: agents and owners navigate 
 - Keep runtime behavior inside the five canonical modules.
 - Do not treat archive, adapter, support, or notes files as runtime authority.
 - If the current module does not answer the situation, stop and ask the owner instead of guessing.
+
+## Example scenarios
+
+Practical documentation scenarios are available in:
+
+- `examples/README.md`
+- `examples/scenario-01-new-feature.md`
+- `examples/scenario-02-bugfix.md`
+- `examples/scenario-03-refactor.md`
+- `examples/scenario-04-validation-only.md`
+
+These examples are not executable fixtures. They illustrate expected AgentOS workflows and safety boundaries.
