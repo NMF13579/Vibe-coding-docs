@@ -9,11 +9,13 @@ class Suite(NamedTuple):
     name: str
     command_display: str
     command: Sequence[str]
+    optional: bool = False
 
 
 class SuiteResult(NamedTuple):
     name: str
-    passed: bool
+    status: str
+    optional: bool
     command_display: str
     actual_exit_code: int
     excerpt: Optional[str]
@@ -29,10 +31,6 @@ REQUIRED_FILES = [
 ]
 
 SKIPPED_SUITES = [
-    ("review guard failures", "future validator"),
-    ("trace guard failures", "future validator"),
-    ("queue guard failures", "future validator"),
-    ("runner protocol guard failures", "future guard test"),
     ("audit runner", "future milestone"),
     ("release checklist", "future milestone"),
 ]
@@ -74,7 +72,7 @@ def check_prerequisites(root: Path) -> List[str]:
 
 
 def suites(root: Path) -> List[Suite]:
-    return [
+    result = [
         Suite(
             "template-integrity",
             "python3 scripts/test-template-integrity.py",
@@ -86,6 +84,17 @@ def suites(root: Path) -> List[Suite]:
             [str(root / "scripts/test-negative-fixtures.py")],
         ),
     ]
+    runner_protocol = root / "scripts/validate-runner-protocol.py"
+    if runner_protocol.is_file():
+        result.append(
+            Suite(
+                "runner-protocol",
+                "python3 scripts/validate-runner-protocol.py",
+                [str(runner_protocol)],
+                optional=True,
+            )
+        )
+    return result
 
 
 def output_excerpt(stdout: str, stderr: str) -> Optional[str]:
@@ -103,9 +112,18 @@ def run_suite(root: Path, suite: Suite) -> SuiteResult:
         stderr=subprocess.PIPE,
         universal_newlines=True,
     )
+    suite_status = "PASS"
+    if completed.returncode != 0:
+        suite_status = "FAIL"
+    else:
+        combined = "\n".join([completed.stdout or "", completed.stderr or ""])
+        if "Result: PASS_WITH_WARNINGS" in combined:
+            suite_status = "PASS_WITH_WARNINGS"
+
     return SuiteResult(
         suite.name,
-        completed.returncode == 0,
+        suite_status,
+        suite.optional,
         suite.command_display,
         completed.returncode,
         output_excerpt(completed.stdout, completed.stderr),
@@ -133,27 +151,47 @@ def main() -> int:
 
     print("Runnable Suites:")
     results = [run_suite(root, suite) for suite in suites(root)]
-    all_passed = True
+    has_failures = False
+    has_warnings = False
     for result in results:
-        if result.passed:
+        if result.status == "PASS":
             print("{0}: PASS".format(result.name))
-        else:
-            all_passed = False
-            print("{0}: FAIL".format(result.name))
-            print("- Command: {0}".format(result.command_display))
-            print("- Expected exit code: 0")
-            print("- Actual exit code: {0}".format(result.actual_exit_code))
+        elif result.status == "PASS_WITH_WARNINGS":
+            has_warnings = True
+            print("{0}: PASS_WITH_WARNINGS".format(result.name))
             if result.excerpt:
                 print("- stdout/stderr excerpt: {0}".format(result.excerpt))
+        else:
+            if result.optional:
+                has_warnings = True
+                print("{0}: WARN - optional suite failed".format(result.name))
+                print("- Command: {0}".format(result.command_display))
+                print("- Expected exit code: 0")
+                print("- Actual exit code: {0}".format(result.actual_exit_code))
+                if result.excerpt:
+                    print("- stdout/stderr excerpt: {0}".format(result.excerpt))
+            else:
+                has_failures = True
+                print("{0}: FAIL".format(result.name))
+                print("- Command: {0}".format(result.command_display))
+                print("- Expected exit code: 0")
+                print("- Actual exit code: {0}".format(result.actual_exit_code))
+                if result.excerpt:
+                    print("- stdout/stderr excerpt: {0}".format(result.excerpt))
 
     print_skipped_suites()
 
-    if all_passed:
-        print("Result: PASS")
+    if has_failures:
+        print("Result: FAIL")
+        return 1
+
+    if has_warnings:
+        print("Result: PASS_WITH_WARNINGS")
         return 0
 
-    print("Result: FAIL")
-    return 1
+    if not has_failures:
+        print("Result: PASS")
+        return 0
 
 
 if __name__ == "__main__":

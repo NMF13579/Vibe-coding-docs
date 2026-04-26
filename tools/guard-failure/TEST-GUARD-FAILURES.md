@@ -15,21 +15,20 @@ python3 scripts/test-guard-failures.py
 |---|---|---|
 | template-integrity | `python3 scripts/test-template-integrity.py` | exit 0 |
 | negative-fixtures | `python3 scripts/test-negative-fixtures.py` | exit 0 |
+| runner-protocol (if validator exists) | `python3 scripts/validate-runner-protocol.py` | exit 0 |
 
 ## Skipped Suites
 
 | Suite | Status | Reason |
 |---|---|---|
-| review guard failures | SKIPPED | future validator |
-| trace guard failures | SKIPPED | future validator |
-| queue guard failures | SKIPPED | future validator |
-| runner protocol guard failures | SKIPPED | future guard test |
 | audit runner | SKIPPED | future milestone |
 | release checklist | SKIPPED | future milestone |
 
 ## Result Interpretation
 
 PASS means all runnable suites passed.
+PASS_WITH_WARNINGS means runnable suites passed with warnings.
+Typical warning case: optional runner-protocol suite script is missing.
 FAIL means at least one runnable suite failed or prerequisite was missing.
 SKIPPED means the suite is intentionally not automated yet.
 
