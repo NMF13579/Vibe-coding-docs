@@ -64,6 +64,55 @@ Generated at: 2026-04-24 21:31:45
 - type: markdown
 - size_bytes: 624
 - headings: []
+### docs/GETTING-STARTED.md
+- type: markdown
+- size_bytes: 3487
+- headings:
+  - Getting Started with AgentOS
+  - What AgentOS Is
+  - Recommended First Commands
+  - Understanding the Task Flow
+  - Key Boundaries
+  - Understanding Validation
+  - Human Approval Boundaries
+  - Where to Go Next
+### docs/VALIDATION.md
+- type: markdown
+- size_bytes: 5643
+- headings:
+  - AgentOS Validation
+  - Validation Layers
+  - Template Integrity
+  - Template Integrity Self-Tests
+  - Negative Fixtures
+  - Guard Failure Runner
+  - Audit Runner
+  - Expected Command Order
+  - Interpreting Results
+  - Interpreting Negative Fixtures
+  - Running All Validation
+  - Validation Reports
+  - Next Steps
+### docs/SAFETY-BOUNDARIES.md
+- type: markdown
+- size_bytes: 5291
+- headings:
+  - AgentOS Safety Boundaries
+  - Execution Boundary
+  - Task Contract Boundary
+  - Queue Boundary
+  - Runner Boundary
+  - Audit Boundary
+  - Human Checkpoints
+  - Safety-Enforced Behaviors
+  - Non-Goals
+  - Validation is Not Approval
+  - Data and Access Boundaries
+  - Enforcement Mechanisms
+  - Verification
+  - Incident Response
+  - Questions About Boundaries
+  - Related Documentation
 ### FAQ.md
 - type: markdown
 - size_bytes: 1297
@@ -237,6 +286,25 @@ Generated at: 2026-04-24 21:31:45
   - Release Blockers
   - Audit Output
   - Boundaries
+### reports/audit.md
+- type: markdown
+- size_bytes: 0
+- headings: []
+### reports/audit-smoke.md
+- type: markdown
+- size_bytes: 1342
+- headings:
+  - AgentOS Audit Runner Smoke Test
+  - Command
+  - Expected Result
+  - Actual Result
+  - Exit Code
+  - Runnable Suites
+  - Skipped Suites
+  - Output Summary
+  - Audit Report
+  - Failure Details
+  - Safety Notes
 ### reports/templates/verification-report.md
 - type: markdown
 - size_bytes: 554
@@ -274,6 +342,10 @@ Generated at: 2026-04-24 21:31:45
 - type: python
 - size_bytes: 1787
 - headings: []
+### scripts/audit-agentos.py
+- type: python
+- size_bytes: 6931
+- headings: []
 ### scripts/check-llms-graph-files.sh
 - type: shell
 - size_bytes: 572
@@ -297,6 +369,10 @@ Generated at: 2026-04-24 21:31:45
 ### scripts/run-all.sh
 - type: shell
 - size_bytes: 503
+- headings: []
+### scripts/test-guard-failures.py
+- type: python
+- size_bytes: 4540
 - headings: []
 ### scripts/validate-architecture.sh
 - type: shell
@@ -398,11 +474,36 @@ Generated at: 2026-04-24 21:31:45
 - type: markdown
 - size_bytes: 172
 - headings: []
+### tools/audit/AUDIT-AGENTOS.md
+- type: markdown
+- size_bytes: 1979
+- headings:
+  - AgentOS Audit Runner
+  - Purpose
+  - Command
+  - Runnable Suites
+  - Report
+  - Result Interpretation
+  - Skipped Suites
+  - Prerequisites
+  - Non-Goals
 ### tools/doc-tests/README.md
 - type: markdown
 - size_bytes: 310
 - headings:
   - Doc Tests
+### tools/guard-failure/TEST-GUARD-FAILURES.md
+- type: markdown
+- size_bytes: 1922
+- headings:
+  - Guard Failure Test Runner
+  - Purpose
+  - Command
+  - Runnable Suites
+  - Skipped Suites
+  - Result Interpretation
+  - Prerequisites
+  - Non-Goals
 ### workflow/MAIN.md
 - type: markdown
 - size_bytes: 2983
@@ -416,3 +517,64 @@ Generated at: 2026-04-24 21:31:45
   - One-Task Rule
   - Failure Route
   - Runtime Usage
+### examples/README.md
+- type: markdown
+- size_bytes: 0
+- headings:
+  - AgentOS Example Scenarios
+  - Purpose
+  - Scenarios
+  - Safety Notes
+  - Recommended Reading
+### examples/scenario-01-new-feature.md
+- type: markdown
+- size_bytes: 0
+- headings:
+  - Scenario 01 — New Feature
+  - Situation
+  - User Input
+  - AgentOS Flow
+  - Expected Artifacts
+  - Human Approval Points
+  - Validation Commands
+  - What Must Not Happen Automatically
+  - Notes
+### examples/scenario-02-bugfix.md
+- type: markdown
+- size_bytes: 0
+- headings:
+  - Scenario 02 — Bugfix
+  - Situation
+  - User Input
+  - AgentOS Flow
+  - Expected Artifacts
+  - Human Approval Points
+  - Validation Commands
+  - What Must Not Happen Automatically
+  - Notes
+### examples/scenario-03-refactor.md
+- type: markdown
+- size_bytes: 0
+- headings:
+  - Scenario 03 — Refactor
+  - Situation
+  - User Input
+  - AgentOS Flow
+  - Expected Artifacts
+  - Human Approval Points
+  - Validation Commands
+  - What Must Not Happen Automatically
+  - Notes
+### examples/scenario-04-validation-only.md
+- type: markdown
+- size_bytes: 0
+- headings:
+  - Scenario 04 — Validation Only
+  - Situation
+  - User Input
+  - AgentOS Flow
+  - Expected Artifacts
+  - Human Approval Points
+  - Validation Commands
+  - What Must Not Happen Automatically
+  - Notes

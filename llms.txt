@@ -8,21 +8,55 @@
 Canonical agent bootstrap order.
 This file defines the only required startup route for agents.
 
+**IMPORTANT: AgentOS is not an autonomous agent. Do not treat it as such.**
+
+## Critical AgentOS Principles
+
+1. **AgentOS is a Markdown-first guardrail framework**, not an autonomous agent
+2. **Do not bypass human approval boundaries**
+3. **tasks/active-task.md is the ONLY executable task contract** (TASK.md is not executable)
+4. **Use validation/audit tools before execution**, never assume readiness
+5. **Draft contracts are not active contracts** — promotion requires human approval
+6. **Queue items are not moved autonomously** by validation tools
+7. **Never execute without explicit human checkpoint** in tasks/active-task.md
+
+## When to Use AgentOS Tools
+
+- **Before task execution:** Run `python3 scripts/audit-agentos.py`
+- **To validate template:** Run `python3 scripts/check-template-integrity.py --strict`
+- **To check project readiness:** Run `python3 scripts/audit-agentos.py` and review `reports/audit.md`
+
+## What AgentOS Does NOT Do
+
+- ❌ Execute tasks autonomously
+- ❌ Replace tasks/active-task.md without human approval
+- ❌ Move queue items automatically
+- ❌ Act as release checklist
+- ❌ Approve execution
+- ❌ Bypass human checkpoints
+
 ## Bootstrap Order
 
 Read in this sequence:
 
-1. `core-rules/MAIN.md`
-2. `state/MAIN.md`
-3. `workflow/MAIN.md`
-4. `quality/MAIN.md`
-5. `security/MAIN.md`
+1. **This file (llms.txt)** – Understand AgentOS principles
+2. `core-rules/MAIN.md` – Priority and authority model
+3. `state/MAIN.md` – Current state and recovery
+4. `workflow/MAIN.md` – Execution boundaries and approval gates
+5. `quality/MAIN.md` – Validation and verification strategy
+6. `security/MAIN.md` – Security boundaries and compliance
+
+For user-facing documentation:
+- `docs/GETTING-STARTED.md` – Getting started guide
+- `docs/VALIDATION.md` – Validation reference
+- `docs/SAFETY-BOUNDARIES.md` – Safety boundaries and execution rules
 
 ## Runtime Rule
 
 - Do not create an alternate startup route.
 - Do not use support, adapter, archive, or product notes as startup authority.
-- If a task needs more detail, use the five canonical modules above to choose the next step.
+- Do not bypass the human approval checkpoints listed in workflow/MAIN.md
+- If a task needs more detail, use the five canonical modules to choose next step.
 - If a module does not cover the situation, stop and ask the owner for direction.
 
 ## Module Roles
@@ -34,3 +68,23 @@ Read in this sequence:
 | `workflow/MAIN.md` | Plan gate, scope control, execution boundaries, one-task rule |
 | `quality/MAIN.md` | Verification, smoke checks, release blockers, audit output |
 | `security/MAIN.md` | Sensitive data, least privilege, compliance, security stop conditions |
+
+## Validation Before Execution
+
+Always run validation before any execution attempt:
+
+```bash
+python3 scripts/audit-agentos.py
+```
+
+If audit returns FAIL, do not proceed without understanding the failure.
+
+## Safety Checkpoints
+
+These operations **require explicit human approval:**
+- Replacing `tasks/active-task.md`
+- Promoting draft contracts to active
+- Marking task completion
+- Moving queue items
+
+These operations **cannot be overridden** by automation tools.
