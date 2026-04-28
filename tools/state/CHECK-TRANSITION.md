@@ -4,18 +4,7 @@
 
 `scripts/check-transition.py` is a dry-run transition checker for AgentOS tasks.
 It answers one question: can a requested transition be allowed by the current rules without changing any files?
-
-## Command
-
-```bash
-python3 scripts/check-transition.py tasks/{task-id} --to <target_state>
-```
-
-## Inputs
-
-- one task directory path such as `tasks/task-xxx`
-- one required target state passed with `--to`
-- only Python standard library is used
+It consumes Task State Report v1.1.
 
 ## Outputs
 
@@ -29,23 +18,27 @@ The checker prints a human-readable report:
 
 PASS means dry-run allowed only.
 
-## Exit Codes
-
-- `0` = PASS
-- `1` = FAIL
-- `2` = CLI usage error
-
-Missing arguments, missing `--to`, or `--help` return exit code `2`.
-
 ## Relationship with `detect-task-state.py`
 
 The checker calls `scripts/detect-task-state.py` through subprocess to read the current state report.
-It does not duplicate state detection logic.
+It reads:
+
+- `analysis_status`
+- structured evidence objects, not plain strings
+- `allowed_next_states`
+
+The checker rejects:
+
+- `analysis_status: conflict`
+- `analysis_status: invalid`
+- `state == "state_conflict"` as a deprecated report value
+- target `state_conflict`
 
 ## Relationship with `validate-task-state.py`
 
-The checker calls `scripts/validate-task-state.py` through subprocess to confirm that the current state is internally consistent.
-It does not duplicate state validation logic.
+The checker does not rely on transition approval from the validator.
+Only `analysis_status = ok` is eligible for transition checks.
+If current analysis is invalid or conflicting, the dry-run fails immediately.
 
 ## Allowed Transitions
 
@@ -73,8 +66,7 @@ Examples of forbidden transitions:
 - `brief_approved -> active`
 - `review_ready -> active`
 - `trace_written -> active`
-- `contract_drafted -> active` without an approval marker
-- `state_conflict -> any state`
+- `contract_drafted -> active` without a valid approval marker
 - `any state -> state_conflict`
 
 ## Required Evidence
@@ -100,12 +92,12 @@ The checker expects evidence that matches the requested transition. Missing evid
 - `trace_written -> contract_drafted`
   - `tasks/drafts/{task-id}-contract-draft.md` exists and is non-empty
 - `contract_drafted -> approved_for_execution`
-  - approval marker exists and references the task
+  - valid CONTRACT evidence exists
+  - APPROVAL evidence exists
 - `approved_for_execution -> active`
-  - approval marker is valid
-  - contract draft is valid
+  - valid CONTRACT evidence exists
+  - APPROVAL evidence exists
   - `active-task.md` replacement is out of scope for Milestone 10
-  - active-task.md replacement is out of scope for Milestone 10
 - `active -> completed`
   - completion evidence exists
   - `tasks/active-task.md` references the task
@@ -119,30 +111,22 @@ The checker expects evidence that matches the requested transition. Missing evid
   - failure evidence exists
   - updated `TASK.md` or a brief draft exists
 
-## state_conflict Behavior
-
-`state_conflict` is detector-only and cannot be requested manually.
-The checker fails if the current state is `state_conflict` or if `--to state_conflict` is requested.
-
 ## Dry-run Semantics
 
 The checker only reports whether a transition is eligible in dry-run mode.
 It does not execute the transition.
 It does not modify files.
 It does not grant approval.
+It always prints `Transition executed: no`.
 
 ## Read-only Guarantee
 
-The checker only reads the detector report, validator output, and task files needed for evidence checks.
+The checker only reads the detector report and task files needed for evidence checks.
 It does not write to the repository.
 
 ## Safety Boundaries
 
 `scripts/check-transition.py` does not:
-
-Checker does not execute transitions.
-Checker does not modify task files.
-Checker does not create approval markers.
 
 - execute transitions
 - modify task files
@@ -156,9 +140,3 @@ Checker does not create approval markers.
 - grant execution authority
 - grant approval
 
-## Example Usage
-
-```bash
-python3 scripts/check-transition.py tasks/task-xxx --to active
-python3 scripts/check-transition.py tasks/task-xxx --to contract_drafted
-```

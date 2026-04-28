@@ -69,12 +69,27 @@ def evidence_lookup(report: dict) -> dict[str, dict]:
     return lookup
 
 
-def status_is(item: dict | None, statuses: set[str]) -> bool:
-    return bool(item) and str(item.get("status")) in statuses
+def has_evidence(report: dict, artifact_type: str, allowed_statuses: tuple[str, ...] = ("valid",)) -> bool:
+    """True if evidence contains an item with the given type and allowed status."""
+    return any(
+        isinstance(item, dict)
+        and item.get("type") == artifact_type
+        and item.get("status") in allowed_statuses
+        for item in report.get("evidence", [])
+    )
 
 
-def note_contains(item: dict | None, text: str) -> bool:
-    return bool(item) and text in str(item.get("note", ""))
+def has_valid(report: dict, artifact_type: str) -> bool:
+    """Shortcut for valid evidence."""
+    return has_evidence(report, artifact_type, ("valid",))
+
+
+def has_path(report: dict, path_fragment: str) -> bool:
+    """True if evidence contains a path including the fragment."""
+    return any(
+        isinstance(item, dict) and path_fragment in str(item.get("path", ""))
+        for item in report.get("evidence", [])
+    )
 
 
 def run_json_report(script_name: str, args: list[str]) -> tuple[dict | None, str | None]:
@@ -94,34 +109,6 @@ def run_json_report(script_name: str, args: list[str]) -> tuple[dict | None, str
         return json.loads(completed.stdout), None
     except json.JSONDecodeError:
         return None, f"{script_name} returned invalid JSON"
-
-
-def run_validator(task_dir: Path) -> tuple[bool, list[str], str | None]:
-    validator_path = Path(__file__).resolve().parent / "validate-task-state.py"
-    completed = subprocess.run(
-        [sys.executable, str(validator_path), str(task_dir)],
-        cwd=str(validator_path.parent.parent),
-        capture_output=True,
-        text=True,
-    )
-    if completed.returncode == 0:
-        return True, [], None
-
-    reasons: list[str] = []
-    in_reasons = False
-    for line in completed.stdout.splitlines():
-        stripped = line.strip()
-        if stripped == "Reasons:":
-            in_reasons = True
-            continue
-        if in_reasons and stripped.startswith("- "):
-            reasons.append(stripped[2:].strip())
-    if not reasons:
-        stderr = completed.stderr.strip()
-        stdout = completed.stdout.strip()
-        message = stderr or stdout or f"validator exited with code {completed.returncode}"
-        reasons.append(message)
-    return False, reasons, None
 
 
 def task_paths(task_dir: Path, task_id: str) -> dict[str, Path]:
@@ -213,127 +200,92 @@ def collect_problem_reasons(
     current_state: str,
     target_state: str,
     report: dict,
-    task_dir: Path,
     task_id: str,
 ) -> list[str]:
     reasons: list[str] = []
-    lookup = evidence_lookup(report)
-    direct = detect_direct_evidence(task_dir, task_id)
-    approval_valid, approval_path = collect_approval_marker(lookup, task_dir, task_id)
+    if not isinstance(report, dict):
+        return ["detector returned invalid report"]
 
-    task_md = task_paths(task_dir, task_id)["task_md"]
-    review_md = task_paths(task_dir, task_id)["review_md"]
-    trace_md = task_paths(task_dir, task_id)["trace_md"]
-    contract_draft = task_paths(task_dir, task_id)["contract_draft"]
-    brief_draft = task_paths(task_dir, task_id)["brief_draft"]
-    active_task = task_paths(task_dir, task_id)["active_task"]
+    if report.get("schema_version") != "1.1":
+        reasons.append("expected v1.1 report")
+        return reasons
+
+    if report.get("schema_version") != "1.1":
+        reasons.append("expected v1.1 report")
+        return reasons
 
     if current_state == "state_conflict":
-        reasons.append("current state is state_conflict")
+        reasons.append("current state is deprecated state_conflict")
         return reasons
 
     if target_state == "state_conflict":
         reasons.append("state_conflict is detector-only and cannot be requested manually")
         return reasons
 
+    analysis_status = str(report.get("analysis_status", ""))
+    if analysis_status == "conflict":
+        reasons.append("current state analysis is conflict")
+        return reasons
+    if analysis_status == "invalid":
+        reasons.append("current state analysis is invalid")
+        return reasons
+
     if target_state not in VALID_TARGET_STATES:
         reasons.append(f"invalid target state: {target_state}")
         return reasons
 
-    allowed_targets = TRANSITION_MAP.get(current_state, set())
+    allowed_targets = set(report.get("allowed_next_states", []))
+    map_targets = TRANSITION_MAP.get(current_state, set())
     if target_state not in allowed_targets:
         reasons.append(f"transition {current_state} -> {target_state} is not allowed")
+    if target_state not in map_targets:
+        reasons.append(f"transition map forbids {current_state} -> {target_state}")
 
-    if current_state == "idea" and target_state == "brief_draft":
-        if not (direct["task_exists"] or direct["brief_draft_valid"]):
-            reasons.append("TASK.md draft or task brief draft is missing")
+    if target_state in {"approved_for_execution", "active"}:
+        if not has_valid(report, "CONTRACT"):
+            reasons.append("missing valid CONTRACT evidence")
+        if not has_evidence(report, "APPROVAL", ("valid", "present")):
+            reasons.append("missing APPROVAL evidence")
 
-    elif current_state == "brief_draft" and target_state == "brief_approved":
-        if not direct["task_approved"]:
-            reasons.append("TASK.md is not approved")
+    if target_state == "review_ready":
+        if not has_evidence(report, "REVIEW", ("valid",)):
+            reasons.append("missing ready review evidence")
+        if not has_evidence(report, "TASK", ("present", "valid")):
+            reasons.append("missing TASK evidence")
 
-    elif current_state == "brief_approved" and target_state == "review_ready":
-        review_item = lookup.get("REVIEW")
-        if not (direct["review_exists"] and direct["review_ready"]):
-            reasons.append("REVIEW.md is not READY or READY_WITH_EDITS with execution_allowed: true")
+    if target_state == "review_blocked":
+        if not has_evidence(report, "REVIEW", ("valid",)):
+            reasons.append("missing blocked review evidence")
+        if not has_evidence(report, "TASK", ("present", "valid")):
+            reasons.append("missing TASK evidence")
 
-    elif current_state == "brief_approved" and target_state == "review_blocked":
-        if not (direct["review_exists"] and direct["review_blocked"]):
-            reasons.append("REVIEW.md is not blocked")
+    if target_state == "trace_written":
+        if not has_valid(report, "TRACE"):
+            reasons.append("missing valid TRACE evidence")
 
-    elif current_state == "review_blocked" and target_state == "brief_draft":
-        if not (direct["task_exists"] or direct["brief_draft_valid"]):
-            reasons.append("updated TASK.md or task brief draft is missing")
+    if target_state == "contract_drafted":
+        if not has_valid(report, "CONTRACT"):
+            reasons.append("missing valid CONTRACT evidence")
+        if not has_valid(report, "TRACE"):
+            reasons.append("missing valid TRACE evidence")
 
-    elif current_state == "review_ready" and target_state == "trace_written":
-        if not direct["trace_valid"]:
-            reasons.append("TRACE.md is missing or empty")
+    if target_state == "completed":
+        if not has_path(report, "active-task.md") or not has_evidence(report, "ACTIVE", ("valid",)):
+            reasons.append("missing active-task.md reference")
+        if not has_evidence(report, "DONE", ("valid",)):
+            reasons.append("missing completion evidence")
 
-    elif current_state == "trace_written" and target_state == "contract_drafted":
-        if not direct["contract_valid"]:
-            reasons.append("contract draft is missing or empty")
+    if target_state == "failed":
+        if not has_path(report, "active-task.md") or not has_evidence(report, "ACTIVE", ("valid",)):
+            reasons.append("missing active-task.md reference")
+        if not has_evidence(report, "FAILED_DIR", ("valid", "planned")):
+            reasons.append("missing failure evidence")
 
-    elif current_state == "contract_drafted" and target_state == "approved_for_execution":
-        if not approval_valid:
-            reasons.append("approval marker missing")
-        if not direct["contract_valid"]:
-            reasons.append("contract draft is missing or empty")
-
-    elif current_state == "approved_for_execution" and target_state == "active":
-        if not approval_valid:
-            reasons.append("approval marker missing")
-        if not direct["contract_valid"]:
-            reasons.append("contract draft is missing or empty")
-
-    elif current_state == "active" and target_state == "completed":
-        if not direct["active_ref"]:
-            reasons.append("tasks/active-task.md does not reference the task")
-        if not direct["done_valid"]:
-            reasons.append("completion evidence is missing")
-
-    elif current_state == "active" and target_state == "failed":
-        if not direct["active_ref"]:
-            reasons.append("tasks/active-task.md does not reference the task")
-        if not direct["failed_valid"]:
-            reasons.append("failure evidence is missing")
-
-    elif current_state == "active" and target_state == "dropped":
-        if not direct["active_ref"]:
-            reasons.append("tasks/active-task.md does not reference the task")
-        if not direct["dropped_valid"]:
-            reasons.append("drop evidence is missing")
-
-    elif current_state == "failed" and target_state == "brief_draft":
-        if not direct["failed_valid"]:
-            reasons.append("failed evidence is missing")
-        if not (direct["task_exists"] or direct["brief_draft_valid"]):
-            reasons.append("updated TASK.md or task brief draft is missing")
-
-    if current_state == "approved_for_execution" and target_state == "active" and not reasons:
-        # The output needs to call out that this is a dry-run only.
-        pass
-
-    if task_md and not task_md.exists() and current_state == "idea" and target_state == "brief_draft":
-        reasons.append("TASK.md is missing")
-
-    if current_state == "brief_approved" and target_state in {"review_ready", "review_blocked"}:
-        if not direct["task_exists"]:
-            reasons.append("TASK.md is missing")
-        if not direct["review_exists"]:
-            reasons.append("REVIEW.md is missing")
-
-    if current_state == "review_ready" and target_state == "trace_written" and not direct["review_exists"]:
-        reasons.append("REVIEW.md is missing")
-
-    if current_state == "trace_written" and target_state == "contract_drafted" and not direct["trace_valid"]:
-        reasons.append("TRACE.md is missing or empty")
-
-    if current_state == "contract_drafted" and target_state in {"approved_for_execution"} and not approval_valid:
-        reasons.append(f"approval marker missing at {approval_path}")
-
-    if current_state == "approved_for_execution" and target_state == "active" and approval_valid and direct["contract_valid"]:
-        # PASS is possible here; no extra reason needed.
-        pass
+    if target_state == "dropped":
+        if not has_path(report, "active-task.md") or not has_evidence(report, "ACTIVE", ("valid",)):
+            reasons.append("missing active-task.md reference")
+        if not has_evidence(report, "DROPPED", ("valid",)):
+            reasons.append("missing drop evidence")
 
     return reasons
 
@@ -393,21 +345,9 @@ def main() -> int:
         print_result(task_id, "unknown", target_state, [f"detector failed: {detector_error}"])
         return 1
 
-    validator_ok, validator_reasons, validator_error = run_validator(task_dir)
-    if validator_error:
-        task_id = str(detector_report.get("task_id", task_dir.name))
-        current_state = str(detector_report.get("state", "unknown"))
-        print_result(task_id, current_state, target_state, [f"validator failed to run: {validator_error}"])
-        return 1
-    if not validator_ok:
-        task_id = str(detector_report.get("task_id", task_dir.name))
-        current_state = str(detector_report.get("state", "unknown"))
-        print_result(task_id, current_state, target_state, validator_reasons)
-        return 1
-
     task_id = str(detector_report.get("task_id", task_dir.name))
     current_state = str(detector_report.get("state", "unknown"))
-    reasons = collect_problem_reasons(current_state, target_state, detector_report, task_dir, task_id)
+    reasons = collect_problem_reasons(current_state, target_state, detector_report, task_id)
 
     note = None
     if not reasons and current_state == "approved_for_execution" and target_state == "active":

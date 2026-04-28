@@ -16,6 +16,7 @@ python3 scripts/agentos-validate.py guard
 python3 scripts/agentos-validate.py audit
 python3 scripts/agentos-validate.py queue
 python3 scripts/agentos-validate.py runner
+python3 scripts/agentos-validate.py state-fixtures
 python3 scripts/agentos-validate.py all
 ```
 
@@ -29,11 +30,57 @@ python3 scripts/agentos-validate.py all
 | `audit` | `scripts/audit-agentos.py` |
 | `queue` | `scripts/validate-queue.py` |
 | `runner` | `scripts/validate-runner-protocol.py` |
+| `state-fixtures` | `scripts/test-state-fixtures.py` |
 | `all` | `template`, `negative`, `guard`, `audit`, `queue`, `runner` |
 
 The wrapper uses `sys.executable` to launch each script.
 Primary usage is `python3 scripts/agentos-validate.py all`.
 Focused commands remain available for debugging specific validators.
+
+## state-fixtures
+
+`state-fixtures` runs the v1.1-compatible negative state-machine fixture suite.
+
+```bash
+python3 scripts/agentos-validate.py state-fixtures
+```
+
+What it runs:
+
+- `scripts/test-state-fixtures.py`
+
+Exit code passthrough:
+
+- child exit `0` -> wrapper exit `0`
+- child exit `1` -> wrapper exit `1`
+- child exit `2` -> wrapper exit `2`
+
+JSON mode status:
+
+- not added in this MVP
+
+Included in `all`:
+
+- no
+
+Safety boundaries:
+
+- `state-fixtures` does not execute transitions
+- `state-fixtures` does not modify task files
+- `state-fixtures` does not create approval markers
+- `state-fixtures` does not replace `tasks/active-task.md`
+- `state-fixtures` does not move queue entries
+- `state-fixtures` does not create `tasks/failed/`
+- `state-fixtures` does not create task-level state operation commands
+- `state-fixtures` keeps the suite-wrapper boundary intact
+- `state-fixtures` consumes `scripts/test-state-fixtures.py` only
+
+Suite-wrapper boundary:
+
+- `state-fixtures` is only another suite in the wrapper
+- it is not a task manager CLI
+- task-level state/transition commands are intentionally not added in Milestone 10.8.1
+- no task-level state commands were added for the v1.1 compatibility update
 
 ## Result Semantics
 
