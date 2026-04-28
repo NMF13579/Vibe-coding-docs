@@ -2,48 +2,64 @@
 
 ## Timestamp
 
-- 2026-04-28 16:22:34 +05
+- 2026-04-28 21:28:41 +05
 
 ## Status
 
-Milestone 10.19 (Pre-M11 Script Fixes) is completed and pushed to `origin/dev`.
-Full audit was re-run after push.
+Milestone 11 is completed.
+All Milestone 11 artifacts were committed and pushed to `origin/dev`.
 
 ## Completed Work
 
-- Fixed `scripts/agent-next.py`:
-  - Uses `status` as primary queue field.
-  - Keeps fallback to `queue_status` for compatibility.
-- Fixed `scripts/agent-complete.py`:
-  - Normalizes quoted scalar values (including `task_id`) when reading frontmatter.
-- Fixed `scripts/agent-fail.py`:
-  - Normalizes quoted scalar values (including `task_id`) when reading frontmatter.
-- Fixed `scripts/validate-queue.py`:
-  - Excludes `QUEUE.md` from queue entry validation.
+- Added safe transition specification:
+  - `docs/SAFE-TRANSITION-EXECUTION.md`
+- Added explicit approved mode contract:
+  - `docs/APPROVED-MODE-CONTRACT.md`
+- Added activation command MVP:
+  - `scripts/activate-task.py`
+- Added activation command documentation:
+  - `tools/state/ACTIVATE-TASK.md`
+- Added active task format specification:
+  - `docs/ACTIVE-TASK-FORMAT.md`
+- Added activation negative fixtures and runner:
+  - `tests/fixtures/negative/activation/`
+  - `scripts/test-activation-fixtures.py`
+  - `tools/state/TEST-ACTIVATION-FIXTURES.md`
+- Added positive smoke report:
+  - `reports/activation-positive-smoke.md`
+- Integrated activation fixtures into unified validation CLI:
+  - `scripts/agentos-validate.py` (`activation-fixtures`)
+  - `tools/validation/AGENTOS-VALIDATE.md`
+- Added activation audit report:
+  - `reports/activation-audit-report.md`
+- Added manual recovery rules:
+  - `docs/ACTIVATION-RECOVERY.md`
+- Added milestone completion review:
+  - `reports/milestone-11-completion-review.md`
 
 ## Commit
 
 - Branch: `dev`
-- Commit: `84558a7`
-- Subject: `fix(m10.19): pre-m11 script fixes for queue/status parsing`
+- Commit: `1cb95ce`
+- Subject: `feat(m11): add safe activation layer, fixtures, and recovery docs`
 - Push: `origin/dev` updated successfully
 
 ## Verification Snapshot
 
-- `python3 scripts/agent-next.py --dry-run`: PASS
-- `python3 scripts/agent-complete.py --dry-run --task-id 20260428-queue-schema-check`: PASS
-- `python3 scripts/agent-fail.py --dry-run --task-id 20260428-queue-schema-check`: PASS
-- `python3 scripts/agentos-validate.py all`: FAIL (known unrelated `runner` suite only)
-- `queue` suite no longer fails on `tasks/queue/QUEUE.md`: PASS
+- `python3 scripts/activate-task.py --help`: PASS
+- `python3 scripts/test-activation-fixtures.py`: PASS
+- `python3 scripts/agentos-validate.py activation-fixtures`: PASS
+- `git diff -- tasks/active-task.md`: no diff
+- `reports/activation-positive-smoke.md`: Result PASS
+- `reports/activation-audit-report.md`: Result PASS
+- `reports/milestone-11-completion-review.md`: Result PASS
 
 ## Current Workspace State
 
-- Working tree has one local uncommitted file:
-  - `reports/milestone-10-final-hardening-review.md`
+- Branch is synced with remote after push (`origin/dev`).
+- Milestone 11 documentation and reports are recorded in repository.
 
 ## Next
 
-Proceed to Milestone 11 work.
-The remaining blocker for fully green `agentos-validate.py all` is `runner` markers in:
-- `scripts/agent-complete.py`
-- `scripts/agent-fail.py`
+Milestone 11 is closed.
+Next stage: Milestone 12 planning and scope confirmation (without autopilot assumptions).
