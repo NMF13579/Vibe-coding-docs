@@ -17,6 +17,7 @@ python3 scripts/agentos-validate.py audit
 python3 scripts/agentos-validate.py queue
 python3 scripts/agentos-validate.py runner
 python3 scripts/agentos-validate.py state-fixtures
+python3 scripts/agentos-validate.py approval-fixtures
 python3 scripts/agentos-validate.py all
 ```
 
@@ -31,6 +32,7 @@ python3 scripts/agentos-validate.py all
 | `queue` | `scripts/validate-queue.py` |
 | `runner` | `scripts/validate-runner-protocol.py` |
 | `state-fixtures` | `scripts/test-state-fixtures.py` |
+| `approval-fixtures` | `scripts/test-approval-marker-fixtures.py` |
 | `all` | `template`, `negative`, `guard`, `audit`, `queue`, `runner` |
 
 The wrapper uses `sys.executable` to launch each script.
@@ -54,6 +56,12 @@ Exit code passthrough:
 - child exit `0` -> wrapper exit `0`
 - child exit `1` -> wrapper exit `1`
 - child exit `2` -> wrapper exit `2`
+
+Exit codes:
+
+- `0` - all expected fixture rejections happened
+- `1` - at least one invalid marker was accepted, or fixture failed unexpectedly, or runner not found
+- `2` - usage error passed through from child runner: fixture dir missing, `fixture.json` unreadable, or `scripts/validate-approval-marker.py` not found
 
 JSON mode status:
 
@@ -81,6 +89,53 @@ Suite-wrapper boundary:
 - it is not a task manager CLI
 - task-level state/transition commands are intentionally not added in Milestone 10.8.1
 - no task-level state commands were added for the v1.1 compatibility update
+
+## approval-fixtures
+
+`approval-fixtures` runs the approval marker negative fixture suite.
+
+```bash
+python3 scripts/agentos-validate.py approval-fixtures
+```
+
+What it runs:
+
+- `scripts/test-approval-marker-fixtures.py`
+
+Exit code passthrough:
+
+- child exit `0` -> wrapper exit `0`
+- child exit `1` -> wrapper exit `1`
+- child exit `2` -> wrapper exit `2`
+
+JSON mode status:
+
+- not added in this MVP
+
+Included in `all`:
+
+- no
+
+Safety boundaries:
+
+- `approval-fixtures` does not execute transitions
+- `approval-fixtures` does not create approval markers
+- `approval-fixtures` does not grant approval
+- `approval-fixtures` does not replace `tasks/active-task.md`
+- `approval-fixtures` does not move queue entries
+- `approval-fixtures` does not create or modify production `approvals/`
+- `approval-fixtures` does not modify production task files
+- `approval-fixtures` does not enable approved mode
+- `approval-fixtures` does not add task-level approval commands
+- `approval-fixtures` keeps the suite-wrapper boundary intact
+- `approval-fixtures` consumes `scripts/test-approval-marker-fixtures.py` only
+
+Suite-wrapper boundary:
+
+- `approval-fixtures` is only another suite in the wrapper
+- it is not a task manager CLI
+- task-level approval validation remains in `scripts/validate-approval-marker.py`
+- no task-level approval commands were added in Milestone 10.17.1
 
 ## Result Semantics
 

@@ -20,6 +20,8 @@ SUITES = {
     "audit": ["scripts/audit-agentos.py"],
     "queue": ["scripts/validate-queue.py"],
     "runner": ["scripts/validate-runner-protocol.py"],
+    "state-fixtures": ["scripts/test-state-fixtures.py"],
+    "approval-fixtures": ["scripts/test-approval-marker-fixtures.py"],
 }
 
 ORDER = ["template", "negative", "guard", "audit", "queue", "runner"]
@@ -93,7 +95,7 @@ def print_text_suite_result(suite_result: dict) -> None:
 def main() -> int:
     repo_root = Path(__file__).resolve().parent.parent
     if len(sys.argv) != 2:
-        print("Usage: python3 scripts/agentos-validate.py <template|negative|guard|audit|queue|runner|all>", file=sys.stderr)
+        print("Usage: python3 scripts/agentos-validate.py <template|negative|guard|audit|queue|runner|state-fixtures|approval-fixtures|all>", file=sys.stderr)
         return 2
 
     target = sys.argv[1]
