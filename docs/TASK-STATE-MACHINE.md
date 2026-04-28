@@ -8,23 +8,22 @@ Milestone 10 adds state awareness only.
 It documents allowed states, evidence used to infer state, allowed transitions, forbidden transitions, and human approval requirements.
 Milestone 10 does not execute transitions.
 
-## Separation: state vs analysis_status
+## Analysis Status
 
-In the task state report, two concepts may coexist:
+Allowed values:
 
-| Field | Type | Meaning |
-|---|---|---|
-| `state` | allowed task state | Task state inferred from evidence. It may be `state_conflict`. |
-| `analysis_status` | ok / invalid / conflict | Optional diagnostic status of the analysis operation. |
+- `ok`
+- `invalid`
+- `conflict`
 
-Important:
+Meaning:
 
-- `state` is a required field.
-- `analysis_status` is useful diagnostic information, but in the Milestone 10 MVP it should not break compatibility.
-- If `analysis_status` is added to the schema, the detector must emit it.
-- If the detector does not yet emit `analysis_status`, the schema must not require it.
-- `state_conflict` remains a valid value of `state`.
-- `analysis_status = conflict` may be used as an additional explanation, but it does not replace `state_conflict`.
+- `ok` - state is consistent with current evidence
+- `invalid` - state was detected, but required path/evidence has gaps
+- `conflict` - mutually exclusive evidence exists
+
+`state_conflict` is deprecated and must not be used as task state.
+Conflict is represented as `analysis_status: conflict`.
 
 ## Evidence Model
 
@@ -49,6 +48,40 @@ The absence of `tasks/failed/` must not block Milestone 10.
 Do not create `tasks/failed/` in Milestone 10 unless it already exists in the repository design.
 Future milestones may define the concrete failed evidence path.
 The `failed` state is still part of the model even if `tasks/failed/` does not yet exist.
+
+## Detector Priority
+
+Order:
+
+1. Terminal evidence
+   - `completed`
+   - `dropped`
+   - `failed`, if concrete failed evidence exists
+2. Runtime evidence
+   - `active`
+3. Approval / execution preparation evidence
+   - `approved_for_execution`
+   - `contract_drafted`
+   - `trace_written`
+4. Review evidence
+   - `review_ready`
+   - `review_blocked`
+5. Brief evidence
+   - `brief_approved`
+   - `brief_draft`
+6. Fallback
+   - `idea`
+
+Conflicts do not replace task state.
+Conflicts set `analysis_status: conflict`.
+When conflict exists, the detector still chooses the strongest state by priority.
+
+Examples:
+
+- `completed` + `tasks/active-task.md` reference -> `state: completed`, `analysis_status: conflict`
+- `dropped` + `tasks/active-task.md` reference -> `state: dropped`, `analysis_status: conflict`
+- `TRACE.md` exists but `REVIEW.md` missing -> `state: trace_written`, `analysis_status: invalid`
+- contract draft exists but `TRACE.md` missing -> `state: contract_drafted`, `analysis_status: invalid`
 
 ## State Model
 
@@ -366,42 +399,6 @@ Forbidden transitions:
 Human approval required:
 - yes
 
-### state_conflict
-
-Meaning:
-- Conflicting evidence exists.
-- The task cannot be assigned a stable state until the conflict is resolved.
-
-Required evidence:
-- Conflicting evidence across task files.
-
-Missing evidence means:
-- If there is no conflict, the task should remain in its best matching state.
-
-Allowed next states:
-- none until resolved
-
-Forbidden transitions:
-- `state_conflict -> any state` without manual resolution and human approval
-
-Human approval required:
-- yes
-
-state_conflict is set only by the detector - it is not a manual transition target.
-
-No transition TO state_conflict is allowed manually.
-
-No transition FROM state_conflict is allowed without:
-
-- manual human review
-- explicit resolution of conflicting evidence
-- human approval
-
-`state_conflict -> any state` is forbidden without manual resolution and human approval.
-
-`any state -> state_conflict` is not a manual transition.
-It is set only by the detector when conflicting evidence is found.
-
 ## Allowed Transitions
 
 - `idea -> brief_draft`
@@ -431,8 +428,6 @@ It is set only by the detector when conflicting evidence is found.
 - `dropped -> active`
 - `completed -> dropped`
 - `dropped -> completed`
-- `state_conflict -> any state` without manual resolution and human approval
-
 ## Human Approval Rules
 
 - Human approval is required before any state-changing action.

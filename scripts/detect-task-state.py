@@ -10,22 +10,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-ALLOWED_STATES = [
-    "idea",
-    "brief_draft",
-    "brief_approved",
-    "review_ready",
-    "review_blocked",
-    "trace_written",
-    "contract_drafted",
-    "approved_for_execution",
-    "active",
-    "completed",
-    "failed",
-    "dropped",
-    "state_conflict",
-]
-
 ALLOWED_REVIEW_BLOCKED = {
     "NEEDS_CLARIFICATION",
     "TOO_BROAD",
@@ -35,6 +19,21 @@ ALLOWED_REVIEW_BLOCKED = {
 }
 
 ALLOWED_REVIEW_READY = {"READY", "READY_WITH_EDITS"}
+
+STATE_ALLOWED_NEXT = {
+    "idea": ["brief_draft"],
+    "brief_draft": ["brief_approved"],
+    "brief_approved": ["review_ready", "review_blocked"],
+    "review_ready": ["trace_written"],
+    "review_blocked": ["brief_draft"],
+    "trace_written": ["contract_drafted"],
+    "contract_drafted": ["approved_for_execution"],
+    "approved_for_execution": ["active"],
+    "active": ["completed", "failed", "dropped"],
+    "completed": [],
+    "failed": ["brief_draft"],
+    "dropped": [],
+}
 
 
 def usage() -> None:
@@ -111,77 +110,68 @@ def make_evidence_item(item_type: str, path: str, status: str, note: str) -> dic
     }
 
 
-def determine_task_id(task_dir: Path, task_text: str, warnings: list[str]) -> tuple[str, bool]:
+def determine_task_id(task_dir: Path, task_text: str, warnings: list[str]) -> str:
     dir_task_id = task_dir.name
     parsed_task_id = extract_task_id_from_task_md(task_text)
     if parsed_task_id and parsed_task_id != dir_task_id:
-        return dir_task_id, True
+        warnings.append("task_id in TASK.md conflicts with directory name")
+        return dir_task_id
     if parsed_task_id:
-        return parsed_task_id, False
-    if not dir_task_id:
-        warnings.append("task id fallback used from task directory name")
-    return dir_task_id, False
+        return parsed_task_id
+    return dir_task_id
 
 
 def detect_state(task_dir: Path) -> dict:
     warnings: list[str] = []
     evidence: list[dict] = []
     missing_evidence: list[str] = []
-    conflict_reasons: list[str] = []
-    invalid_reasons: list[str] = []
 
     task_md = task_dir / "TASK.md"
     review_md = task_dir / "REVIEW.md"
     trace_md = task_dir / "TRACE.md"
-    approvals_dir = task_dir / "approvals"
     active_task_path = task_dir.parent / "active-task.md"
     done_dir = task_dir.parent / "done"
     failed_dir = task_dir.parent / "failed"
     dropped_dir = task_dir.parent / "dropped"
     draft_path = task_dir.parent / "drafts" / f"{task_dir.name}-contract-draft.md"
+    task_approvals_dir = task_dir / "approvals"
+    root_approvals_dir = task_dir.parent.parent / "approvals"
 
     task_text = read_text(task_md) if task_md.is_file() else ""
-    task_id, task_id_conflict = determine_task_id(task_dir, task_text, warnings)
-
-    if task_id_conflict:
-        conflict_reasons.append("task_id in TASK.md conflicts with directory name")
+    task_id = determine_task_id(task_dir, task_text, warnings)
 
     task_exists = task_md.is_file()
     task_approved = task_exists and task_is_approved(task_text)
-    if task_exists:
-        evidence.append(
-            make_evidence_item(
-                "TASK",
-                str(task_md),
-                "valid" if task_approved else "present",
-                "TASK.md exists and is approved" if task_approved else "TASK.md exists",
-            )
+    evidence.append(
+        make_evidence_item(
+            "TASK",
+            str(task_md),
+            "valid" if task_approved else ("present" if task_exists else "missing"),
+            "TASK.md exists and is approved" if task_approved else ("TASK.md exists" if task_exists else "TASK.md missing"),
         )
-    else:
-        evidence.append(make_evidence_item("TASK", str(task_md), "missing", "TASK.md missing"))
+    )
+    if not task_exists:
         missing_evidence.append(str(task_md))
 
     review_exists = review_md.is_file()
     review_text = read_text(review_md) if review_exists else ""
     review_status = extract_review_status(review_text) if review_exists else None
     execution_allowed = extract_execution_allowed(review_text) if review_exists else None
-    review_ready = review_status in ALLOWED_REVIEW_READY
-    review_blocked = review_status in ALLOWED_REVIEW_BLOCKED
-
-    if review_exists:
-        note = f"review_status={review_status or 'unknown'}"
-        if execution_allowed is not None:
-            note += f", execution_allowed={str(execution_allowed).lower()}"
-        evidence.append(
-            make_evidence_item(
-                "REVIEW",
-                str(review_md),
-                "valid" if (review_ready or review_blocked) else "present",
-                note,
-            )
+    review_ready_valid = review_exists and review_status in ALLOWED_REVIEW_READY and execution_allowed is True
+    review_blocked_valid = review_exists and review_status in ALLOWED_REVIEW_BLOCKED and execution_allowed is not True
+    evidence.append(
+        make_evidence_item(
+            "REVIEW",
+            str(review_md),
+            "valid" if (review_ready_valid or review_blocked_valid) else ("invalid" if review_exists else "missing"),
+            (
+                f"review_status={review_status or 'unknown'}, execution_allowed={str(execution_allowed).lower()}"
+                if review_exists
+                else "REVIEW.md missing"
+            ),
         )
-    else:
-        evidence.append(make_evidence_item("REVIEW", str(review_md), "missing", "REVIEW.md missing"))
+    )
+    if not review_exists:
         missing_evidence.append(str(review_md))
 
     trace_exists = trace_md.is_file()
@@ -214,34 +204,27 @@ def detect_state(task_dir: Path) -> dict:
     if not draft_exists:
         missing_evidence.append(str(draft_path))
 
-    approval_valid = False
-    approval_path = approvals_dir
-    if approvals_dir.is_dir():
-        for md_path in approvals_dir.rglob("*.md"):
-            if task_id in md_path.name or task_id in read_text(md_path):
-                approval_valid = True
-                approval_path = md_path
-                break
-        evidence.append(
-            make_evidence_item(
-                "APPROVAL",
-                str(approval_path),
-                "valid" if approval_valid else "missing",
-                "approval marker contains task_id" if approval_valid else "approval marker missing",
-            )
+    approval_marker = None
+    for approvals_dir in (task_approvals_dir, root_approvals_dir):
+        if approvals_dir.is_dir():
+            for md_path in approvals_dir.rglob("*.md"):
+                if task_id in md_path.name or task_id in read_text(md_path):
+                    approval_marker = md_path
+                    break
+        if approval_marker:
+            break
+    approval_valid = approval_marker is not None
+    approval_path = str(approval_marker) if approval_marker else str(root_approvals_dir)
+    evidence.append(
+        make_evidence_item(
+            "APPROVAL",
+            approval_path,
+            "valid" if approval_valid else "missing",
+            "approval marker contains task_id" if approval_valid else "approval marker missing",
         )
-        if not approval_valid:
-            missing_evidence.append(str(approval_path))
-    else:
-        evidence.append(
-            make_evidence_item(
-                "APPROVAL",
-                str(approval_path),
-                "missing",
-                "approvals/ directory missing",
-            )
-        )
-        missing_evidence.append(str(approval_path))
+    )
+    if not approval_valid:
+        missing_evidence.append(approval_path)
 
     active_ref = active_task_path.is_file() and task_id in read_text(active_task_path)
     evidence.append(
@@ -305,46 +288,57 @@ def detect_state(task_dir: Path) -> dict:
     if not dropped_present:
         missing_evidence.append(str(dropped_dir))
 
-    if active_ref and any([completed_present, failed_present, dropped_present]):
-        conflict_reasons.append("active evidence conflicts with terminal evidence")
-    if completed_present and any([failed_present, dropped_present]):
-        conflict_reasons.append("completed evidence conflicts with failed/dropped evidence")
-    if failed_present and dropped_present:
-        conflict_reasons.append("failed evidence conflicts with dropped evidence")
-    if approval_valid and completed_present:
-        conflict_reasons.append("approval marker exists but task is already completed")
-    if task_id_conflict:
-        conflict_reasons.append("task_id conflict between directory name and TASK.md")
-    if approval_valid and not draft_valid:
-        invalid_reasons.append("approval marker exists without contract draft")
-    if draft_valid and not trace_valid:
-        invalid_reasons.append("contract_drafted without trace_written")
-    if trace_valid and not review_exists:
-        invalid_reasons.append("trace_written without REVIEW.md")
-    if review_ready and not task_exists:
-        invalid_reasons.append("review_ready evidence exists without TASK.md")
-    if review_blocked and not task_exists:
-        invalid_reasons.append("review_blocked evidence exists without TASK.md")
+    conflict_reasons: list[str] = []
+    conflicting_types: set[str] = set()
+    if active_ref and completed_present:
+        conflict_reasons.append("task is completed but still referenced as active")
+        conflicting_types.update({"ACTIVE", "DONE"})
+    if active_ref and dropped_present:
+        conflict_reasons.append("task is dropped but still referenced as active")
+        conflicting_types.update({"ACTIVE", "DROPPED"})
+    if active_ref and failed_present:
+        conflict_reasons.append("task is failed but still referenced as active")
+        conflicting_types.update({"ACTIVE", "FAILED_DIR"})
+    if completed_present and dropped_present:
+        conflict_reasons.append("completed and dropped evidence both exist")
+        conflicting_types.update({"DONE", "DROPPED"})
+    if completed_present and failed_present:
+        conflict_reasons.append("completed and failed evidence both exist")
+        conflicting_types.update({"DONE", "FAILED_DIR"})
+    if dropped_present and failed_present:
+        conflict_reasons.append("dropped and failed evidence both exist")
+        conflicting_types.update({"DROPPED", "FAILED_DIR"})
 
-    if conflict_reasons:
-        state = "state_conflict"
-    elif active_ref:
-        state = "active"
-    elif completed_present:
+    if conflicting_types:
+        for item in evidence:
+            if item["type"] in conflicting_types and item["status"] in {"valid", "present"}:
+                item["status"] = "conflicting"
+                if item["type"] == "ACTIVE":
+                    item["note"] = "tasks/active-task.md references task but conflicts with terminal evidence"
+                elif item["type"] == "DONE":
+                    item["note"] = "task found in tasks/done/ but conflicts with active evidence"
+                elif item["type"] == "DROPPED":
+                    item["note"] = "task found in tasks/dropped/ but conflicts with active evidence"
+                elif item["type"] == "FAILED_DIR":
+                    item["note"] = "task found in tasks/failed/ but conflicts with active evidence"
+
+    if completed_present:
         state = "completed"
-    elif failed_present and failed_dir.is_dir():
-        state = "failed"
     elif dropped_present:
         state = "dropped"
+    elif failed_present:
+        state = "failed"
+    elif active_ref:
+        state = "active"
     elif approval_valid:
         state = "approved_for_execution"
     elif draft_valid:
         state = "contract_drafted"
     elif trace_valid:
         state = "trace_written"
-    elif review_ready:
+    elif review_ready_valid:
         state = "review_ready"
-    elif review_blocked:
+    elif review_blocked_valid:
         state = "review_blocked"
     elif task_approved:
         state = "brief_approved"
@@ -353,87 +347,66 @@ def detect_state(task_dir: Path) -> dict:
     else:
         state = "idea"
 
-    if state == "brief_draft" and task_approved:
-        invalid_reasons.append("brief_draft evidence is already approved")
-    if state == "brief_approved" and not task_approved:
-        invalid_reasons.append("brief_approved evidence is not approved")
-    if state == "review_ready":
-        if not review_exists:
-            invalid_reasons.append("review_ready evidence exists without REVIEW.md")
-        review_note = review_text
-        if review_status not in ALLOWED_REVIEW_READY:
-            invalid_reasons.append("review_ready evidence is not READY or READY_WITH_EDITS")
-        if execution_allowed is not True:
-            invalid_reasons.append("review_ready evidence requires execution_allowed=true")
+    invalid_reasons: list[str] = []
+    if state == "brief_draft":
+        if not task_exists:
+            invalid_reasons.append("TASK.md is missing")
+    elif state == "brief_approved":
+        if not task_approved:
+            invalid_reasons.append("TASK.md is not approved")
+    elif state == "review_ready":
+        if not review_ready_valid:
+            invalid_reasons.append("review_ready evidence is not READY or READY_WITH_EDITS with execution_allowed=true")
         if not task_exists:
             invalid_reasons.append("review_ready evidence exists without TASK.md")
-    if state == "review_blocked":
-        review_note = review_text
-        if review_status not in ALLOWED_REVIEW_BLOCKED:
+    elif state == "review_blocked":
+        if not review_blocked_valid:
             invalid_reasons.append("review_blocked evidence is not blocked")
-        if execution_allowed is True:
-            invalid_reasons.append("review_blocked evidence has execution_allowed=true")
         if not task_exists:
             invalid_reasons.append("review_blocked evidence exists without TASK.md")
-    if state == "trace_written":
-        if not review_exists:
-            invalid_reasons.append("trace_written without REVIEW.md")
+    elif state == "trace_written":
         if not trace_valid:
             invalid_reasons.append("trace_written evidence is missing or invalid")
-    if state == "contract_drafted":
-        if not trace_valid:
-            invalid_reasons.append("contract_drafted without TRACE.md")
+        if not review_exists:
+            invalid_reasons.append("trace_written without REVIEW.md")
+    elif state == "contract_drafted":
         if not draft_valid:
             invalid_reasons.append("contract_drafted evidence is missing or invalid")
-    if state == "approved_for_execution":
-        if not draft_valid:
-            invalid_reasons.append("approved_for_execution without contract draft")
+        if not trace_valid:
+            invalid_reasons.append("contract_drafted without TRACE.md")
+    elif state == "approved_for_execution":
         if not approval_valid:
             invalid_reasons.append("approved_for_execution without approval marker")
-    if state == "active":
+        if not draft_valid:
+            invalid_reasons.append("approved_for_execution without contract draft")
+    elif state == "active":
         if not active_ref:
             invalid_reasons.append("active evidence is missing")
         if not approval_valid:
             invalid_reasons.append("active without approval marker")
-    if state == "completed":
+    elif state == "completed":
         if not completed_present:
             invalid_reasons.append("completed evidence is missing")
-    if state == "failed":
+    elif state == "failed":
         if not failed_dir.is_dir():
             invalid_reasons.append("failed state is reserved until tasks/failed/ exists")
-        if not failed_present and failed_dir.is_dir():
+        elif not failed_present:
             invalid_reasons.append("failed evidence is missing")
-    if state == "dropped":
+    elif state == "dropped":
         if not dropped_present:
             invalid_reasons.append("dropped evidence is missing")
 
-    allowed_next_states = {
-        "idea": ["brief_draft"],
-        "brief_draft": ["brief_approved"],
-        "brief_approved": ["review_ready", "review_blocked"],
-        "review_ready": ["trace_written"],
-        "review_blocked": ["brief_draft"],
-        "trace_written": ["contract_drafted"],
-        "contract_drafted": ["approved_for_execution"],
-        "approved_for_execution": ["active"],
-        "active": ["completed", "failed", "dropped"],
-        "completed": [],
-        "failed": ["brief_draft"],
-        "dropped": [],
-        "state_conflict": [],
-    }[state]
-
     if conflict_reasons:
         analysis_status = "conflict"
-        state = "state_conflict"
         blocked_reason = "; ".join(conflict_reasons)
-        allowed_next_states = []
     elif invalid_reasons:
         analysis_status = "invalid"
         blocked_reason = "; ".join(invalid_reasons)
     else:
         analysis_status = "ok"
         blocked_reason = ""
+
+    allowed_next_states = STATE_ALLOWED_NEXT[state]
 
     return {
         "schema_version": "1.1",

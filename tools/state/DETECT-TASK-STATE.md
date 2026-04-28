@@ -6,20 +6,6 @@
 It inspects task evidence and returns a JSON report for the current task state.
 It does not validate transitions and does not execute transitions.
 
-## Command
-
-```bash
-python3 scripts/detect-task-state.py tasks/{task-id}
-```
-
-## Inputs
-
-The detector accepts one positional argument:
-
-- path to a task directory
-
-If the argument is missing or `--help` is requested, the detector prints usage and exits with code `2`.
-
 ## Output Format
 
 The detector prints Task State Report v1.1 as JSON.
@@ -40,16 +26,45 @@ Required fields:
 `schema_version` is always `"1.1"`.
 `generated_at` is a UTC ISO 8601 timestamp.
 
-## analysis_status
+## Analysis Status
 
 | analysis_status | Meaning |
 |---|---|
-| `ok` | Evidence is consistent and the state was detected cleanly. |
-| `invalid` | Evidence is present, but the current state is not fully consistent. |
-| `conflict` | Mutually exclusive evidence was found. |
+| `ok` | state is consistent with current evidence |
+| `invalid` | state was detected, but required path/evidence has gaps |
+| `conflict` | mutually exclusive evidence exists |
 
-If mutually exclusive evidence is found, the detector returns `state_conflict` and `analysis_status: conflict`.
-If evidence is incomplete or inconsistent, the detector keeps the detected state and returns `analysis_status: invalid`.
+`state_conflict` is deprecated and must not be emitted as a task state.
+Conflicts are represented as `analysis_status: conflict`.
+The detector still emits the strongest task state by priority.
+
+## Detector Priority
+
+1. Terminal evidence
+   - `completed`
+   - `dropped`
+   - `failed`, if concrete failed evidence exists
+2. Runtime evidence
+   - `active`
+3. Approval / execution preparation evidence
+   - `approved_for_execution`
+   - `contract_drafted`
+   - `trace_written`
+4. Review evidence
+   - `review_ready`
+   - `review_blocked`
+5. Brief evidence
+   - `brief_approved`
+   - `brief_draft`
+6. Fallback
+   - `idea`
+
+Examples:
+
+- `completed` + `tasks/active-task.md` reference -> `state: completed`, `analysis_status: conflict`
+- `dropped` + `tasks/active-task.md` reference -> `state: dropped`, `analysis_status: conflict`
+- `TRACE.md` exists but `REVIEW.md` missing -> `state: trace_written`, `analysis_status: invalid`
+- contract draft exists but `TRACE.md` missing -> `state: contract_drafted`, `analysis_status: invalid`
 
 ## Evidence
 
@@ -84,7 +99,7 @@ It does not move queue entries.
 
 ## Exit Codes
 
-- `0` - JSON report successfully produced, including `state_conflict`
+- `0` - JSON report successfully produced
 - `1` - runtime or fatal error, such as an unreadable filesystem or unexpected exception
 - `2` - CLI usage error or `--help`
 
@@ -101,9 +116,3 @@ The detector does not:
 - move queue entries
 - grant execution authority
 
-## Example Usage
-
-```bash
-python3 scripts/detect-task-state.py tasks/task-123
-python3 scripts/detect-task-state.py tasks/nonexistent-task
-```

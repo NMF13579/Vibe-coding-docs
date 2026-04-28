@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "task-state.schema.json",
-  "$comment": "This schema validates task state reports only. It does not execute transitions. It does not grant approval. It does not modify task files. It does not replace human review.",
+  "$comment": "This schema validates reports only. It does not execute transitions. It does not grant approval. It does not modify task files.",
   "title": "Task State Report",
   "description": "Task State Report v1.1 for read-only task state analysis.",
   "type": "object",
@@ -48,10 +48,9 @@
         "active",
         "completed",
         "failed",
-        "dropped",
-        "state_conflict"
+        "dropped"
       ],
-      "description": "Detected task state. state_conflict is detector-only."
+      "description": "Detected task state."
     },
     "analysis_status": {
       "type": "string",
@@ -68,8 +67,19 @@
         "properties": {
           "type": {
             "type": "string",
-            "minLength": 1,
-            "description": "Evidence type or artifact category."
+            "enum": [
+              "TASK",
+              "REVIEW",
+              "TRACE",
+              "CONTRACT",
+              "APPROVAL",
+              "ACTIVE",
+              "DONE",
+              "FAILED",
+              "FAILED_DIR",
+              "DROPPED",
+              "UNKNOWN"
+            ]
           },
           "path": {
             "type": "string",
@@ -97,7 +107,7 @@
     },
     "allowed_next_states": {
       "type": "array",
-      "description": "Allowed next states from the detected state. state_conflict is excluded because it is detector-only.",
+      "description": "Allowed next states from the detected state.",
       "items": {
         "type": "string",
         "enum": [
