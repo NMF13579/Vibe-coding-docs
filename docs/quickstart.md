@@ -26,8 +26,19 @@ bash /path/to/AgentOS/install.sh --full
 ## Validate installation
 
 ```bash
-pip install -r requirements.txt
-bash scripts/run-all.sh
+python3 scripts/agentos-validate.py all
+python3 scripts/agentos-validate.py all --json
+```
+
+Focused validation commands stay available for debugging:
+
+```bash
+python3 scripts/agentos-validate.py template
+python3 scripts/agentos-validate.py negative
+python3 scripts/agentos-validate.py guard
+python3 scripts/agentos-validate.py audit
+python3 scripts/agentos-validate.py queue
+python3 scripts/agentos-validate.py runner
 ```
 
 ## Verify installer

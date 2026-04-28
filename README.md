@@ -37,6 +37,7 @@ AgentOS is a **Markdown-first guardrail framework** designed for AI-assisted cod
 - Queue lifecycle scaffolding
 - Runner dry-run protocol
 - Task health metrics
+- Unified validation wrapper for official validation entrypoint
 - **Template integrity checker** – validates required project structure
 - **Negative fixture runner** – ensures invalid inputs are rejected
 - **Guard failure runner** – aggregates guard and failure checks
@@ -47,25 +48,22 @@ AgentOS is a **Markdown-first guardrail framework** designed for AI-assisted cod
 Run validation checks in order:
 
 ```bash
-# Strict template integrity check
-python3 scripts/check-template-integrity.py --strict
+# Official full validation entrypoint
+python3 scripts/agentos-validate.py all
 
-# Template integrity self-tests (verify checker is working correctly)
-python3 scripts/test-template-integrity.py
-
-# Negative fixture tests (verify invalid inputs are rejected)
-python3 scripts/test-negative-fixtures.py
-
-# Guard failure runner (aggregate guard/failure checks)
-python3 scripts/test-guard-failures.py
-
-# Audit runner (release-readiness overview)
-python3 scripts/audit-agentos.py
+# Official machine-readable validation entrypoint
+python3 scripts/agentos-validate.py all --json
 ```
 
-**For a complete release-readiness overview, run:**
+Focused validation commands remain available for debugging specific checks:
+
 ```bash
-python3 scripts/audit-agentos.py
+python3 scripts/agentos-validate.py template
+python3 scripts/agentos-validate.py negative
+python3 scripts/agentos-validate.py guard
+python3 scripts/agentos-validate.py audit
+python3 scripts/agentos-validate.py queue
+python3 scripts/agentos-validate.py runner
 ```
 
 See [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md) for detailed getting started guide.
@@ -76,11 +74,10 @@ AgentOS provides validation at multiple layers:
 
 | Level | Tool | Purpose |
 |---|---|---|
-| **Template Integrity** | `scripts/check-template-integrity.py --strict` | Validates required project structure |
-| **Integrity Tests** | `scripts/test-template-integrity.py` | Verifies the checker itself works correctly |
-| **Negative Fixtures** | `scripts/test-negative-fixtures.py` | Ensures invalid inputs are rejected |
-| **Guard Failures** | `scripts/test-guard-failures.py` | Aggregates guard and failure checks |
-| **Audit** | `scripts/audit-agentos.py` | Release-readiness style aggregation |
+| **Unified Validation** | `scripts/agentos-validate.py all` | Official human-readable full validation |
+| **Unified Validation JSON** | `scripts/agentos-validate.py all --json` | Official machine-readable validation |
+| **Focused Validation** | `scripts/agentos-validate.py template`, `negative`, `guard`, `audit`, `queue`, `runner` | Debugging focused checks |
+| **Underlying Validators** | `scripts/check-template-integrity.py --strict`, `scripts/test-negative-fixtures.py`, `scripts/test-guard-failures.py`, `scripts/audit-agentos.py`, `scripts/validate-queue.py`, `scripts/validate-runner-protocol.py` | Advanced validator-specific reference |
 
 For detailed information, see [docs/VALIDATION.md](docs/VALIDATION.md).
 

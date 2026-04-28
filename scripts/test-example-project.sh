@@ -37,9 +37,9 @@ do
   fi
 done
 
-python3 -m venv .venv
+python3 -m venv --system-site-packages .venv
 . .venv/bin/activate
-python3 -m pip install --upgrade pip
+python3 -m pip --version
 python3 -m pip install -r requirements.txt
 
 bash run-example.sh

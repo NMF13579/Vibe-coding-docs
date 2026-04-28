@@ -12,6 +12,26 @@
 2. При необходимости запускать дополнительные guardrails
 3. Обновлять дополнительные служебные файлы только по задаче
 
+## Unified validation entrypoint
+
+Основной способ запуска валидации:
+
+```bash
+python3 scripts/agentos-validate.py all
+python3 scripts/agentos-validate.py all --json
+```
+
+Точечные команды для отладки отдельных проверок:
+
+```bash
+python3 scripts/agentos-validate.py template
+python3 scripts/agentos-validate.py negative
+python3 scripts/agentos-validate.py guard
+python3 scripts/agentos-validate.py audit
+python3 scripts/agentos-validate.py queue
+python3 scripts/agentos-validate.py runner
+```
+
 ## Common commands
 
 ```bash
@@ -21,6 +41,8 @@ bash scripts/run-all.sh
 bash scripts/test-install.sh
 bash scripts/test-example-project.sh
 ```
+
+For validation-specific workflows, prefer `scripts/agentos-validate.py` over the scattered validator commands above.
 
 Для full template также доступны:
 
