@@ -1,0 +1,10 @@
+{
+  "case": "path-boundary-scripts-old",
+  "target": "scope",
+  "command": "scripts/ must not match scripts-old/",
+  "expected_result": "PARTIAL",
+  "expected_exit_code": 2,
+  "must_not_create_session": true,
+  "must_not_modify_fixture_inputs": true,
+  "notes": "scripts/ must not match scripts-old/"
+}

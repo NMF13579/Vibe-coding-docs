@@ -1,0 +1,10 @@
+{
+  "case": "changed-file-parent-traversal-scope",
+  "target": "scope",
+  "command": "changed_files parent traversal must fail",
+  "expected_result": "FAIL",
+  "expected_exit_code": 1,
+  "must_not_create_session": true,
+  "must_not_modify_fixture_inputs": true,
+  "notes": "changed_files parent traversal must fail"
+}

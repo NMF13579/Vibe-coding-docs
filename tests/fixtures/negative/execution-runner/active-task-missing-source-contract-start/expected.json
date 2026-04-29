@@ -1,0 +1,10 @@
+{
+  "case": "active-task-missing-source-contract-start",
+  "target": "start",
+  "command": "active-task missing source_contract must be rejected",
+  "expected_result": "START_NOT_RUN",
+  "expected_exit_code": 2,
+  "must_not_create_session": true,
+  "must_not_modify_fixture_inputs": true,
+  "notes": "active-task missing source_contract must be rejected"
+}

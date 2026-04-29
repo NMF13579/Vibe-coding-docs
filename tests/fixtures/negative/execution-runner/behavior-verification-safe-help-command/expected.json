@@ -1,0 +1,10 @@
+{
+  "case": "behavior-verification-safe-help-command",
+  "target": "verification",
+  "command": "behavior coverage: safe --help command should pass",
+  "expected_result": "PASS",
+  "expected_exit_code": 0,
+  "must_not_create_session": true,
+  "must_not_modify_fixture_inputs": true,
+  "notes": "behavior coverage: safe --help command should pass"
+}
