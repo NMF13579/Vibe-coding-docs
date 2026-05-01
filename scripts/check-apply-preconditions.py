@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -61,6 +62,16 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         "--json",
         action="store_true",
         help="Output result as JSON.",
+    )
+    parser.add_argument(
+        "--approval",
+        default="",
+        help="Approval record markdown file path.",
+    )
+    parser.add_argument(
+        "--policy",
+        default="",
+        help="Policy case markdown file path.",
     )
     return parser.parse_args(argv)
 
@@ -221,6 +232,76 @@ def check_preconditions(repo_root: Path, transition_path: Path, active_task_path
     }
 
 
+def run_policy_validator(repo_root: Path, policy_file: str) -> tuple[bool, dict[str, str]]:
+    validator = repo_root / "scripts" / "validate-policy.py"
+    if not validator.is_file():
+        return False, {}
+
+    policy_path = resolve_path(repo_root, policy_file)
+    proc = subprocess.run(
+        [sys.executable, str(validator), str(policy_path)],
+        capture_output=True,
+        text=True,
+    )
+
+    parsed: dict[str, str] = {}
+    for line in proc.stdout.splitlines():
+        if ":" not in line:
+            continue
+        key, value = line.split(":", 1)
+        k = key.strip()
+        if k in {"POLICY_RESULT", "POLICY_DECISION", "VALIDATION"}:
+            parsed[k] = value.strip()
+
+    required = {"POLICY_RESULT", "POLICY_DECISION", "VALIDATION"}
+    if proc.returncode != 0:
+        return False, parsed
+    if not required.issubset(set(parsed.keys())):
+        return False, parsed
+    if parsed.get("VALIDATION") != "PASS":
+        return False, parsed
+    return True, parsed
+
+
+def run_approval_validator(repo_root: Path, approval_file: str) -> tuple[bool, str]:
+    validator = repo_root / "scripts" / "validate-human-approval.py"
+    if not validator.is_file():
+        return False, "validator_missing"
+
+    approval_path = resolve_path(repo_root, approval_file)
+    proc = subprocess.run(
+        [sys.executable, str(validator), str(approval_path)],
+        capture_output=True,
+        text=True,
+    )
+    return proc.returncode == 0, proc.stdout.strip()
+
+
+def print_policy_blocked_only() -> None:
+    print("POLICY_VALIDATION: BLOCKED")
+    print("PRECONDITIONS_RESULT: BLOCKED")
+
+
+def print_policy_report(
+    policy_result: str,
+    policy_decision: str,
+    policy_validation: str,
+    approval_required_by_policy: bool,
+    approval_present: bool | None = None,
+    approval_valid: bool | None = None,
+    preconditions_result: str = BLOCKED,
+) -> None:
+    print(f"POLICY_RESULT: {policy_result}")
+    print(f"POLICY_DECISION: {policy_decision}")
+    print(f"POLICY_VALIDATION: {policy_validation}")
+    print(f"APPROVAL_REQUIRED_BY_POLICY: {'true' if approval_required_by_policy else 'false'}")
+    if approval_present is not None:
+        print(f"APPROVAL_PRESENT: {'true' if approval_present else 'false'}")
+    if approval_valid is not None:
+        print(f"APPROVAL_VALID: {'true' if approval_valid else 'false'}")
+    print(f"PRECONDITIONS_RESULT: {preconditions_result}")
+
+
 def print_text_report(report: dict[str, object]) -> None:
     print("Apply Preconditions Check")
     print()
@@ -243,14 +324,93 @@ def main(argv: list[str]) -> int:
     transition_path = resolve_path(repo_root, args.transition)
     active_task_path = resolve_path(repo_root, args.active_task)
 
+    # No-policy path must remain backward-compatible and print no POLICY_* lines.
+    if not args.policy:
+        report = check_preconditions(repo_root, transition_path, active_task_path)
+
+        # Existing approval behavior: when explicit --approval is provided, validate it.
+        if args.approval:
+            approval_ok, _approval_stdout = run_approval_validator(repo_root, args.approval)
+            if not approval_ok:
+                report["result"] = BLOCKED
+
+        if args.json:
+            print(json.dumps(report, ensure_ascii=True, indent=2, sort_keys=False))
+        else:
+            print_text_report(report)
+
+        if report["result"] == PASS:
+            return 0
+        return 1
+
+    policy_ok, parsed = run_policy_validator(repo_root, args.policy)
+    if not policy_ok:
+        print_policy_blocked_only()
+        return 1
+
+    policy_result = parsed["POLICY_RESULT"]
+    policy_decision = parsed["POLICY_DECISION"]
+    supported_policy_results = {
+        "APPROVAL_NOT_REQUIRED",
+        "APPROVAL_REQUIRED",
+        "APPROVAL_NOT_APPLICABLE",
+        "BLOCKED_UNSUPPORTED",
+        "BLOCKED_FORBIDDEN",
+    }
+    if policy_result not in supported_policy_results:
+        print_policy_blocked_only()
+        return 1
+
+    if policy_decision == "BLOCKED":
+        print_policy_report(
+            policy_result=policy_result,
+            policy_decision=policy_decision,
+            policy_validation="PASS",
+            approval_required_by_policy=False,
+            preconditions_result=BLOCKED,
+        )
+        return 1
+
+    approval_required_by_policy = policy_result == "APPROVAL_REQUIRED" and policy_decision == "PASS"
+    if approval_required_by_policy and not args.approval:
+        print_policy_report(
+            policy_result=policy_result,
+            policy_decision=policy_decision,
+            policy_validation="PASS",
+            approval_required_by_policy=True,
+            approval_present=False,
+            preconditions_result=BLOCKED,
+        )
+        return 1
+
+    if args.approval:
+        approval_ok, _approval_stdout = run_approval_validator(repo_root, args.approval)
+        if not approval_ok:
+            print_policy_report(
+                policy_result=policy_result,
+                policy_decision=policy_decision,
+                policy_validation="PASS",
+                approval_required_by_policy=approval_required_by_policy,
+                approval_present=True,
+                approval_valid=False,
+                preconditions_result=BLOCKED,
+            )
+            return 1
+
     report = check_preconditions(repo_root, transition_path, active_task_path)
+    preconditions_result = report["result"]
 
-    if args.json:
-        print(json.dumps(report, ensure_ascii=True, indent=2, sort_keys=False))
-    else:
-        print_text_report(report)
+    print_policy_report(
+        policy_result=policy_result,
+        policy_decision=policy_decision,
+        policy_validation="PASS",
+        approval_required_by_policy=approval_required_by_policy,
+        approval_present=(True if args.approval else None),
+        approval_valid=(True if args.approval else None),
+        preconditions_result=preconditions_result,
+    )
 
-    if report["result"] == PASS:
+    if preconditions_result == PASS:
         return 0
     return 1
 

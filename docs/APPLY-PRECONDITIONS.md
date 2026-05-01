@@ -195,3 +195,39 @@ If a transition requires approval, missing approval must block execution.
 If approval is provided but invalid approval is detected, the result must be BLOCKED.
 Approval is never inferred from chat, logs, or command success.
 Approval is never created by the precondition checker.
+
+## 10. Policy-Aware Preconditions (M18)
+
+Optional policy input:
+
+```bash
+python3 scripts/check-apply-preconditions.py --policy <policy-case-file> --transition <prepared-transition-file>
+```
+
+Policy is evaluated before approval validation.
+Policy classification happens before approval validation.
+Policy validation decides whether approval is required for this operation.
+
+When `--policy` is provided, the checker runs `scripts/validate-policy.py` first.
+If policy validation blocks, preconditions return `PRECONDITIONS_RESULT: BLOCKED`.
+
+Policy-driven approval rule:
+
+- `APPROVAL_REQUIRED` -> `APPROVAL_REQUIRED_BY_POLICY: true`
+- `APPROVAL_NOT_REQUIRED` or `APPROVAL_NOT_APPLICABLE` -> `APPROVAL_REQUIRED_BY_POLICY: false`
+- blocked policy results -> `APPROVAL_REQUIRED_BY_POLICY: false`
+
+If policy requires approval and `--approval` is missing, result is BLOCKED.
+If `--approval` is provided, `validate-human-approval` is used and invalid approval blocks.
+
+Boundary rules:
+
+- policy does not create approval evidence
+- policy does not mutate lifecycle state
+- policy does not replace existing apply preconditions
+- valid approval cannot override `BLOCKED_UNSUPPORTED`
+- valid approval cannot override `BLOCKED_FORBIDDEN`
+- valid approval cannot authorize unsupported target states
+- valid approval cannot bypass validation, preconditions, or audit
+
+Without `--policy`, existing M17 behavior is preserved and no `POLICY_*` lines are printed.
