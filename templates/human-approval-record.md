@@ -1,0 +1,16 @@
+---
+approval_id: ""
+approval_status: "active"
+related_task_id: ""
+related_transition_id: ""
+approved_by: ""
+approved_at: ""
+approval_scope: ""
+approval_statement: ""
+approval_source: ""
+allowed_operation: ""
+allowed_target_state: ""
+expires_at: ""
+supersedes: ""
+notes: ""
+---

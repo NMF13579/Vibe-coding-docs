@@ -203,6 +203,12 @@ Human approval cannot be inferred from:
 
 Approval must be explicit if required by lifecycle rules.
 
+Approval gate interface note:
+- `--approval` may be used to provide an approval record file.
+- `validate-human-approval` is the validation command for that record.
+- if approval is required but missing, expected error text includes: `approval is required but no approval record`
+- if approval validation fails, expected error text includes: `approval validation failed`
+
 ## 11. Audit Requirements
 Future audit tooling must be able to inspect:
 - supported command modes are documented

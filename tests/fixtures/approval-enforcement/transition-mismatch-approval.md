@@ -1,0 +1,16 @@
+---
+approval_id: "approval-20260430-task-fixture-approval-enforcement-complete-active"
+approval_status: "active"
+related_task_id: "task-fixture-approval-enforcement"
+related_transition_id: "transition-fixture-approval-enforcement-other"
+approved_by: "human reviewer"
+approved_at: "2026-04-30T10:00:00Z"
+approval_scope: "Authorize controlled complete-active lifecycle mutation for fixture task only."
+approval_statement: "I approve controlled complete-active lifecycle mutation for task task-fixture-approval-enforcement to target state completed using transition transition-fixture-approval-enforcement-other."
+approval_source: "written-statement"
+allowed_operation: "complete-active"
+allowed_target_state: "completed"
+expires_at: ""
+supersedes: ""
+notes: "Fixture-only approval."
+---

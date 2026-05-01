@@ -1,0 +1,16 @@
+---
+approval_id: "approval-20260430-task-fixture-approval-enforcement-failed"
+approval_status: "active"
+related_task_id: "task-fixture-approval-enforcement"
+related_transition_id: "transition-fixture-approval-enforcement"
+approved_by: "human reviewer"
+approved_at: "2026-04-30T10:00:00Z"
+approval_scope: "Authorize unsupported operation for negative fixture."
+approval_statement: "I approve failed lifecycle mutation for task task-fixture-approval-enforcement using transition transition-fixture-approval-enforcement."
+approval_source: "written-statement"
+allowed_operation: "failed"
+allowed_target_state: "completed"
+expires_at: ""
+supersedes: ""
+notes: "Fixture-only approval."
+---

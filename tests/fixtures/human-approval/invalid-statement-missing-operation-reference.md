@@ -1,0 +1,16 @@
+---
+approval_id: "approval-20260430-task-17-3-1-complete-active"
+approval_status: "active"
+related_task_id: "task-17-3-1"
+related_transition_id: "transition-task-17-3-1-completed"
+approved_by: "human-reviewer"
+approved_at: "2026-04-30T10:00:00Z"
+approval_scope: "Authorize controlled complete-active lifecycle mutation only for task-17-3-1."
+approval_statement: "I approve lifecycle mutation for task task-17-3-1 to target state completed using transition transition-task-17-3-1-completed."
+approval_source: "chat-session"
+allowed_operation: "complete-active"
+allowed_target_state: "completed"
+expires_at: ""
+supersedes: ""
+notes: ""
+---

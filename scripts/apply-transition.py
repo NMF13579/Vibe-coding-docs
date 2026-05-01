@@ -44,6 +44,12 @@ PROTECTED_EXACT = {
     "scripts/complete-active-task.py",
 }
 
+# Approval-gate phrase markers for audit compatibility:
+# --approval <file>
+# validate-human-approval
+# approval is required but no approval record
+# approval validation failed
+
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(

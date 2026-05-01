@@ -185,3 +185,13 @@ This model does not:
 - create applied transition records
 - redefine readiness, preparation, or lifecycle mutation semantics
 - require new lifecycle directories
+
+## 9. Approval-Aware Notes
+
+The checker interface may include `--approval` for an explicit approval record path.
+When `--approval` is provided, `validate-human-approval` is the validation command for that file.
+Approval does not bypass existing preconditions and does not bypass evidence checks.
+If a transition requires approval, missing approval must block execution.
+If approval is provided but invalid approval is detected, the result must be BLOCKED.
+Approval is never inferred from chat, logs, or command success.
+Approval is never created by the precondition checker.

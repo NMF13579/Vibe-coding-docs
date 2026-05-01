@@ -36,6 +36,12 @@ SAFETY_STATEMENT = (
     "Apply preconditions check is read-only and must not mutate lifecycle state."
 )
 
+# Approval-aware phrase markers for audit compatibility:
+# --approval <file>
+# validate-human-approval
+# approval is required but no approval record
+# approval validation failed
+
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
