@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["verification"],
+  "properties": {
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_id",
+        "gate_1",
+        "gate_2",
+        "gate_3",
+        "gate_4",
+        "gate_5"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "gate_1": {
+          "$ref": "#/definitions/gate"
+        },
+        "gate_2": {
+          "$ref": "#/definitions/gate"
+        },
+        "gate_3": {
+          "$ref": "#/definitions/gate"
+        },
+        "gate_4": {
+          "$ref": "#/definitions/gate"
+        },
+        "gate_5": {
+          "$ref": "#/definitions/gate"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "gate": {
+      "type": "object",
+      "required": ["name", "status", "proof", "skipped_reason"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": ["PASS", "FAIL", "SKIPPED", "TODO"]
+        },
+        "proof": {
+          "type": "string"
+        },
+        "skipped_reason": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": ["PASS", "FAIL"]
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "proof": {
+                "type": "string",
+                "minLength": 1,
+                "not": {
+                  "const": "TODO"
+                }
+              }
+            },
+            "required": ["proof"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "SKIPPED"
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "skipped_reason": {
+                "type": "string",
+                "minLength": 1,
+                "not": {
+                  "const": "TODO"
+                }
+              }
+            },
+            "required": ["skipped_reason"]
+          }
+        }
+      ]
+    }
+  }
+}

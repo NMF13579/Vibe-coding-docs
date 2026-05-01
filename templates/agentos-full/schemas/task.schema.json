@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task"],
+  "properties": {
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "goal",
+        "expected_result",
+        "in_scope",
+        "out_of_scope",
+        "files_or_areas",
+        "risk_level",
+        "risk_reason",
+        "requires_owner_approval",
+        "rollback_plan",
+        "acceptance_criteria",
+        "verification_plan"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "goal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected_result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "in_scope": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "out_of_scope": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "files_or_areas": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "risk_level": {
+          "type": "string",
+          "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+        },
+        "risk_reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requires_owner_approval": {
+          "type": "boolean"
+        },
+        "owner_approval_proof": {
+          "type": "string"
+        },
+        "rollback_plan": {
+          "type": "string",
+          "minLength": 1
+        },
+        "acceptance_criteria": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "verification_plan": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "if": {
+    "properties": {
+      "task": {
+        "properties": {
+          "risk_level": {
+            "enum": ["HIGH", "CRITICAL"]
+          }
+        },
+        "required": ["risk_level"]
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "task": {
+        "properties": {
+          "requires_owner_approval": {
+            "const": true
+          }
+        },
+        "required": ["requires_owner_approval"]
+      }
+    }
+  }
+}

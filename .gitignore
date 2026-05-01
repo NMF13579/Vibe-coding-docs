@@ -1,1 +1,7 @@
 .DS_Store
+MIGRATION-PROMPT.md
+tasks/drafts/
+scripts/lib/__pycache__/
+scripts/lib/*.pyc
+**/__pycache__/
+**/*.pyc

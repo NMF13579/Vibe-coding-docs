@@ -1,0 +1,10 @@
+{
+  "fixture_id": "invalid-transition-scope",
+  "description": "CLI transition mapping conflicts with marker scope",
+  "marker": "approval.md",
+  "task": "task-001",
+  "scope": "approve_contract",
+  "transition": "approved_for_execution:active",
+  "expected_exit": 1,
+  "expected_result": "FAIL"
+}

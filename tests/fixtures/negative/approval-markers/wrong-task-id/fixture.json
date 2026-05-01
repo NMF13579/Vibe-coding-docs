@@ -1,0 +1,10 @@
+{
+  "fixture_id": "wrong-task-id",
+  "description": "Marker task_id does not match requested task",
+  "marker": "approval.md",
+  "task": "task-001",
+  "scope": "activate_task",
+  "transition": "approved_for_execution:active",
+  "expected_exit": 1,
+  "expected_result": "FAIL"
+}

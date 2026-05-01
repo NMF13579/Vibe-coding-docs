@@ -1,0 +1,10 @@
+{
+  "fixture_id": "superseded-marker",
+  "description": "Marker is superseded",
+  "marker": "approval.md",
+  "task": "task-001",
+  "scope": "activate_task",
+  "transition": "approved_for_execution:active",
+  "expected_exit": 1,
+  "expected_result": "FAIL"
+}

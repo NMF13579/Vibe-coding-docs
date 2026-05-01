@@ -1,0 +1,3 @@
+expected_exit: nonzero
+active_task: absent
+contains: exactly one of --dry-run or --approved is required

@@ -1,23 +1,13 @@
-> Trigger: Конфликт инструкций, неясный приоритет
-> Read-time: ~3 min
-> Filled-by: agent
-> Needs-approval: no
+# Priority Order
 
-# PRIORITY-ORDER — единый порядок приоритетов источников
+Canonical authority is in `../core-rules/MAIN.md`.
 
-> Этот файл — канонический источник истины об иерархии.
-> Все остальные документы, упоминающие приоритет, ссылаются сюда.
+Short form:
 
-При конфликте инструкций агент следует этому порядку (1 = высший):
+1. System and owner instructions.
+2. `llms.txt`.
+3. The five canonical modules.
+4. Task-specific owner-approved scope.
+5. Supporting notes.
 
-1. Документ задачи в `tasks/TASK-XXX.md`, если открыта активная задача
-2. `project/PROJECT.md` (единое ТЗ) + `HANDOFF.md` + `LAYER-3/project-status.md`
-3. Активный `stages/*/BOOT.md` (поле `priority` во frontmatter)
-4. `shared/scope-guard.md` → `shared/agent-contract.md` → локальный документ этапа → `shared/workflow.md`
-5. Профильный файл `LAYER-1/` или `LAYER-2/` для текущей темы
-6. `CLAUDE.md` и `LAYER-1/system-prompt.md`
-
-> Если два источника одного уровня противоречат друг другу —
-> агент **не принимает решение молча**: пишет владельцу:
-> «⚠️ Конфликт инструкций между [файл A] и [файл B].
-> Который из них главнее для этой ситуации?»
+If there is a conflict, stop and report it.

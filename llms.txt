@@ -1,136 +1,90 @@
 <!-- ROLE: NAVIGATION -->
 <!-- AUTHORITY: PRIMARY -->
 <!-- STATUS: ACTIVE -->
-<!-- UPDATED_BY: owner -->
 <!-- SOURCE_OF_TRUTH: yes -->
-<!-- MUST_NOT_CONTAIN: policy вместо маршрутов, дублирование LAYER-1 logic -->
-
-> This is the canonical agent bootstrap order.
-> No other file defines read order.
-> Agent rules (behaviour) are in LAYER-1/agent-rules.md — separate role.
 
 # AgentOS
-> Agent Operating System — governed workspace for AI-agent-driven development.
-> Navigation index. Not a policy source.
-> Логика: LAYER-1/ | Состояние: LAYER-3/ | Архитектура: ARCHITECTURE.md | Governance: LAYER-1/document-governance.md
 
----
+Canonical agent bootstrap order.
+This file defines the only required startup route for agents.
 
-## Bootstrap order (read in this sequence)
+**IMPORTANT: AgentOS is not an autonomous agent. Do not treat it as such.**
 
-### Required at every start
-- LAYER-3/STATE.md
-- HANDOFF.md (корень репозитория, не LAYER-3/)
-- LAYER-1/agent-rules.md — поведение и контракт после загрузки контекста
-- файл описания задачи (например `tasks/TASK-XXX.md`) — **только если** в `STATE.md` непустой `active_task`
+## Critical AgentOS Principles
 
-### Read only if needed
-- LAYER-3/project-status.md — при неясном контексте проекта
-- LAYER-3/session-log.md — при recovery, ambiguity или реконструкции истории
-- LAYER-3/roadmap.md — при работе с задачами из roadmap
-- LAYER-3/DECISIONS.md — при архитектурных или governance изменениях
-- LAYER-3/INTENT.md — при стратегической неопределённости или риске drift
-- LAYER-1/system-constraints.md — при audit, hardening, structural changes
-- профильные reference/policy docs — по ситуации (см. Situation routes и LAYER-1/)
+1. **AgentOS is a Markdown-first guardrail framework**, not an autonomous agent
+2. **Do not bypass human approval boundaries**
+3. **tasks/active-task.md is the ONLY executable task contract** (TASK.md is not executable)
+4. **Use validation/audit tools before execution**, never assume readiness
+5. **Draft contracts are not active contracts** — promotion requires human approval
+6. **Queue items are not moved autonomously** by validation tools
+7. **Never execute without explicit human checkpoint** in tasks/active-task.md
 
----
+## When to Use AgentOS Tools
 
-## Agent behavior — governance model
+- **Before task execution:** Run `python3 scripts/audit-agentos.py`
+- **To validate template:** Run `python3 scripts/check-template-integrity.py --strict`
+- **To check project readiness:** Run `python3 scripts/audit-agentos.py` and review `reports/audit.md`
 
-You are an agent working inside a governed repository.  
-You do not invent a new working order. You follow the existing structure.
+## What AgentOS Does NOT Do
 
-### Core principles
+- ❌ Execute tasks autonomously
+- ❌ Replace tasks/active-task.md without human approval
+- ❌ Move queue items automatically
+- ❌ Act as release checklist
+- ❌ Approve execution
+- ❌ Bypass human checkpoints
 
-- The only **canonical entry point** is this file (`llms.txt`).
-- All other files are data and rule sources, but not alternative bootstraps.
-- Platform adapters (см. инвентарь `LAYER-1/adapter-registry.md`; примеры: `LAYER-1/adapters/ANTIGRAVITY.md`, `.cursor/rules/governed-repo.mdc`) — **dumb interface layers**.
-  They must not define logic, rules, or authority.
-- The adapter registry is a **read-only inventory**.
-  It helps discover adapters but does not affect routing, authority, or reading order.
+## Bootstrap Order
 
-### Your role
-You are not:
-- a decision maker
-- a product owner
-- an initiator of structural changes
+Read in this sequence:
 
-You are:
-- an executor within a governed system
-- a constraint-aware agent
+1. **This file (llms.txt)** – Understand AgentOS principles
+2. `core-rules/MAIN.md` – Priority and authority model
+3. `state/MAIN.md` – Current state and recovery
+4. `workflow/MAIN.md` – Execution boundaries and approval gates
+5. `quality/MAIN.md` – Validation and verification strategy
+6. `security/MAIN.md` – Security boundaries and compliance
 
-When in doubt:
-- prefer stability over novelty
-- prefer existing patterns over new ones
-- check LAYER-3/DECISIONS.md before proposing architectural changes
+For user-facing documentation:
+- `docs/GETTING-STARTED.md` – Getting started guide
+- `docs/VALIDATION.md` – Validation reference
+- `docs/SAFETY-BOUNDARIES.md` – Safety boundaries and execution rules
 
-## Do not optimize without explicit request
-- do not reduce number of files at cost of clarity
-- do not merge layers
-- do not simplify governance definitions
-- do not propose structural improvements unless explicitly requested by owner
+## Runtime Rule
 
-### Your rules
+- Do not create an alternate startup route.
+- Do not use support, adapter, archive, or product notes as startup authority.
+- Do not bypass the human approval checkpoints listed in workflow/MAIN.md
+- If a task needs more detail, use the five canonical modules to choose next step.
+- If a module does not cover the situation, stop and ask the owner for direction.
 
-- Read and interpret governance files (STATE.md, HANDOFF.md, etc.)  
-  in the order defined by core, not by adapters.
-- Preserve architectural invariants:
-  - one bootstrap
-  - dumb adapters
-  - no hidden entry points
-- If ambiguity exists between an adapter and core governance,  
-  **core governance takes precedence**.
-- Platform adapters are informational compatibility layers  
-  and must never be treated as alternative entry points.
+## Module Roles
 
-## Bootstrap rule
-Support files (DECISIONS.md, INTENT.md, system-constraints.md и аналоги)
-не входят в обязательный startup по умолчанию.
-Каждый новый support-файл должен явно указывать условие чтения
-в секции Read only if needed.
-
----
-
-## Situation routes
-
-| Ситуация | Файл |
+| Module | Runtime role |
 |---|---|
-| Antigravity / IDE Antigravity | LAYER-1/adapters/ANTIGRAVITY.md |
-| Первый запуск | LAYER-1/interview-system.md |
-| Продолжение работы | LAYER-3/STATE.md → HANDOFF.md |
-| Ошибка / откат | LAYER-1/error-handling.md |
-| Задача расползается | LAYER-1/scope-guard.md |
-| Потеря контекста | LAYER-1/context-recovery.md |
-| Конфликт инструкций | LAYER-1/agent-contract.md |
-| Деплой | LAYER-1/deploy-guide.md |
-| Откат после деплоя | LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md |
-| Аудит (полный) | LAYER-1/audit.md |
-| Аудит (короткий, ежедневный) | LAYER-1/audit-quick.md |
-| Управление документами (роли, lifecycle) | LAYER-1/document-governance.md |
-| UX и экраны | LAYER-1/ux-checklist-core.md |
-| Медицина / границы ИИ | LAYER-1/MEDICAL-SAFETY.md |
-| Безопасность | LAYER-1/security.md |
-| Тестирование | LAYER-1/testing-guide.md |
-| Workflow и этапы MVP | LAYER-1/workflow.md |
-| Антипаттерны | LAYER-1/anti-patterns.md |
-| Принятие решений | LAYER-1/decision-guide.md |
-| Роли агентов | LAYER-1/agents.md |
+| `core-rules/MAIN.md` | Priority, authority, governance, agent boundaries |
+| `state/MAIN.md` | State lifecycle, events, recovery, transitions |
+| `workflow/MAIN.md` | Plan gate, scope control, execution boundaries, one-task rule |
+| `quality/MAIN.md` | Verification, smoke checks, release blockers, audit output |
+| `security/MAIN.md` | Sensitive data, least privilege, compliance, security stop conditions |
 
----
+## Validation Before Execution
 
-## Если маршрут не найден
+Always run validation before any execution attempt:
 
-Поищи по ключевому слову в LAYER-1/ или спроси владельца проекта.
-Не угадывай и не действуй без ориентира.
+```bash
+python3 scripts/audit-agentos.py
+```
 
----
+If audit returns FAIL, do not proceed without understanding the failure.
 
-## Canonical sources
-- Logic:        LAYER-1/
-- Adapters (inventory only): LAYER-1/adapter-registry.md
-- Governance:   LAYER-1/document-governance.md
-- Audit:        LAYER-1/audit.md (в т.ч. State Consistency Audit)
-- State:        LAYER-3/STATE.md
-- Status:       LAYER-3/project-status.md
-- Architecture: ARCHITECTURE.md
-- Handoff:      HANDOFF.md
+## Safety Checkpoints
+
+These operations **require explicit human approval:**
+- Replacing `tasks/active-task.md`
+- Promoting draft contracts to active
+- Marking task completion
+- Moving queue items
+
+These operations **cannot be overridden** by automation tools.

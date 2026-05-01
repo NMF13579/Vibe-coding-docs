@@ -1,211 +1,208 @@
-<!-- 
-  🔍 SEARCH TAGS / ПОИСКОВЫЕ ТЕГИ
-  EN: AgentOS, agent operating system, governed workspace, AI agent documentation, LLM workflow,
-      Claude Code, Cursor IDE, medical IT, MVP template, AI-assisted development, context management
-  RU: AgentOS, управляемое рабочее место для агентов, документация для AI-агентов, шаблон проекта,
-      медицинские IT, MVP, разработка с ИИ, агентная разработка
-  Historical discovery (not current product name): Vibe-coding-docs
--->
+# AgentOS
 
-<div align="center">
+AgentOS is a Markdown-first guardrail framework for AI-assisted coding workflows.
+It helps structure project context, task briefs, review gates, traces, contract drafts, queues, runner protocols, validation, negative tests, guard failure tests, and audit reports.
 
-<img src="https://img.shields.io/badge/AgentOS-1a1a2e?style=for-the-badge&logoColor=white" height="50" alt="AgentOS"/>
+AgentOS is governed documentation framework for AI-assisted development.
+The current architecture is canonical-module driven: agents and owners navigate through a small set of runtime modules instead of scattered rule files.
 
-**Agent Operating System — governed workspace for AI-agent-driven delivery**  
-*AgentOS — управляемое рабочее место для разработки с участием ИИ-агентов*
+## What is AgentOS?
 
-*For doctors, designers, managers — anyone building with AI, no deep coding required*  
-*Для врачей, дизайнеров, менеджеров — всех, кто строит с ИИ без погружения в код*
+AgentOS is a **Markdown-first guardrail framework** designed for AI-assisted coding workflows. It provides a structured approach to managing project context, task briefs, validation, and execution boundaries.
 
-<br/>
+**Important clarifications:**
+- AgentOS is **not** an autonomous agent
+- AgentOS is **not** a backend service  
+- AgentOS is **not** a RAG platform
+- AgentOS is **not** a general orchestration platform
 
-[![Stars](https://img.shields.io/github/stars/NMF13579/AgentOS?style=flat-square&logo=github&label=stars)](https://github.com/NMF13579/AgentOS/stargazers)
-[![Forks](https://img.shields.io/github/forks/NMF13579/AgentOS?style=flat-square&logo=github&label=forks)](https://github.com/NMF13579/AgentOS/network)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
-[![Topics](https://img.shields.io/badge/topics-AgentOS_·_AI_·_governance_·_agents-555?style=flat-square)](#)
+## Core Principles
 
-</div>
+- **Markdown-first:** All configuration, contracts, and reports are human-readable Markdown files
+- **Human-approved execution boundaries:** Execution requires explicit human approval at defined checkpoints
+- **Explicit task contracts:** Task contracts are explicit and human-readable
+- **Single executable contract:** `tasks/active-task.md` is the only executable task contract
+- **Non-executable briefs:** Task Briefs (TASK.md) are not executable; they require validation and approval first
+- **Automation follows validation:** Automation only proceeds after manual validation and human approval
+- **Read-only checks by default:** Checkers and runners are read-only unless explicitly documented otherwise
+- **No autonomous execution:** No part of AgentOS executes tasks without human checkpoints
 
----
+## Current Capabilities
 
-## 🚀 Quick Start · Быстрый старт
+- Project initialization and discovery layer
+- Spec wizard and task brief flow
+- Task brief validation
+- Review and trace artifacts
+- Contract draft generation
+- Queue lifecycle scaffolding
+- Runner dry-run protocol
+- Task health metrics
+- Unified validation wrapper for official validation entrypoint
+- **Template integrity checker** – validates required project structure
+- **Negative fixture runner** – ensures invalid inputs are rejected
+- **Guard failure runner** – aggregates guard and failure checks
+- **Audit runner** – aggregates release-readiness validation
 
-- **Люди (IDE, без «системного» порядка чтения):** открой [START.md](./START.md) и выбери маршрут по роли.
-- **ИИ-агенты в этом репозитории:** единственная каноничная точка входа — [llms.txt](./llms.txt) (порядок чтения и маршруты описаны там; адаптеры IDE не заменяют этот файл).
+## Quick Start
 
----
-
-> ⚠️ **Медицинский домен**
-> Проект может использоваться в медицинских сценариях, но:
-> — не является медицинским изделием
-> — не заменяет врача и не даёт клинических назначений
-> — требует human oversight для клинических решений
-> — работа с данными пациентов требует отдельной legal/security проверки
->
-> Подробнее: [LAYER-1/MEDICAL-SAFETY.md](./LAYER-1/MEDICAL-SAFETY.md)
-
----
-
-## Статус проекта
-
-`✅ Стабильная версия: v1.1.0 (готов к использованию)`
-
-### 🔄 Что нового в v1.1.0
-
-- GUI-онбординг для новичков: [`ONBOARDING-WIZARD.md`](./ONBOARDING-WIZARD.md)
-- Юридический и security-контур: [`LEGAL-152FZ.md`](./LAYER-1/LEGAL-152FZ.md), prompt injection: [`security.md`](./LAYER-1/security.md), откат: [`error-handling.md`](./LAYER-1/error-handling.md) («Процедура отката»)
-- Learning loop и инциденты: [`LEARNING-LOOP.md`](./LEARNING-LOOP.md), [`incidents/incident-template.md`](./incidents/incident-template.md)
-- Архитектура и глоссарий: [`ARCHITECTURE.md`](./ARCHITECTURE.md), [`GLOSSARY.md`](./GLOSSARY.md)
-
----
-
-### Ключевые материалы
-
-- Архитектура фреймворка: [`ARCHITECTURE.md`](./ARCHITECTURE.md)
-- Глоссарий для не-технических ролей: [`GLOSSARY.md`](./GLOSSARY.md)
-
-### GUI-поток запуска (без терминала)
-
-1. Открой папку проекта в Cursor/Claude Code.
-2. Открой в корне [`START.md`](./START.md) и выбери в таблице строку под свою роль.
-3. Перейди по ссылке «Куда идти» — дальнейшие шаги описаны в том документе.
-4. Если ты уже пользователь IDE и нужен готовый текст для агента — открой [`QUICK-START.md`](./QUICK-START.md), шаг 2 (шаблон промпта).
-5. Нажми **Run** (где применимо) и подтверди предложенный следующий шаг.
-
-Для продвинутой кастомизации (LLM, `.cursor/`, `.claude/`, MCP, CLI):  
-[`ADVANCED-SETUP.md`](./ADVANCED-SETUP.md)
-
----
-
-## 📚 Навигация по документации
-
-- Быстрый онбординг: [`ONBOARDING-WIZARD.md`](./ONBOARDING-WIZARD.md)
-- Базовый GUI-старт: [`QUICK-START.md`](./QUICK-START.md)
-- Продвинутая настройка: [`ADVANCED-SETUP.md`](./ADVANCED-SETUP.md)
-- Релизный чеклист: [`CHECKLIST.md`](./CHECKLIST.md)
-- Цикл обучения на инцидентах: [`LEARNING-LOOP.md`](./LEARNING-LOOP.md)
-- Шаблон записи инцидента: [`incidents/incident-template.md`](./incidents/incident-template.md)
-- Адаптация под другой домен: [`DOMAIN-ADAPTER.md`](./DOMAIN-ADAPTER.md)
-- Архитектурная схема: [`ARCHITECTURE.md`](./ARCHITECTURE.md)
-- Глоссарий терминов: [`GLOSSARY.md`](./GLOSSARY.md)
-
-## 👤 Choose your role · Выбери свою роль
-
-<div align="center">
-
-| | Role / Роль | Path / Путь |
-|:---:|:---|:---|
-| [![](https://img.shields.io/badge/🔰_First_time_·_Первый_раз-2ea44f?style=flat-square)](./START.md) | No coding or agent experience / Нет опыта с кодом | [START.md](./START.md) → [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) |
-| [![](https://img.shields.io/badge/🩺_Doctor_·_Врач-e05c00?style=flat-square)](./START.md) | Automate clinical routine or build medical service / Медицинский сервис | [START.md](./START.md) → [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) → [MEDICAL-SAFETY.md](./LAYER-1/MEDICAL-SAFETY.md) |
-| [![](https://img.shields.io/badge/🎨_Designer_·_Дизайнер-8b44ac?style=flat-square)](./START.md) | Product idea, want prototype without code / Прототип без кода | [START.md](./START.md) → [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) → [interview-system.md](./LAYER-1/interview-system.md) |
-| [![](https://img.shields.io/badge/📋_Manager_·_Менеджер-d4ac0d?style=flat-square)](./START.md) | Validate idea and reach MVP fast / Идея → MVP быстро | [START.md](./START.md) → [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) → [PROJECT.md](./project/PROJECT.md) |
-| [![](https://img.shields.io/badge/🔁_Lost_context_·_Потерял_контекст-c0392b?style=flat-square)](./START.md) | Project exists but something went wrong / Что-то пошло не так | [START.md](./START.md) → [STATE.md](./LAYER-3/STATE.md) → [HANDOFF.md](./HANDOFF.md) |
-| [![](https://img.shields.io/badge/🛠️_Developer_·_Разработчик-0366d6?style=flat-square)](./START.md) | Know the basics, want to customize the agent / Настроить агента | [START.md](./START.md) → [QUICK-START.md](./QUICK-START.md) |
-| [![](https://img.shields.io/badge/🤖_Claude_Code-1a1a2e?style=flat-square)](./START.md) | Run project in stages: interview → UX → deploy / По этапам | [START.md](./START.md) → [CLAUDE-CODE-FLOW.md](./CLAUDE-CODE-FLOW.md) → [BOOT.md](./stages/01-interview/BOOT.md) |
-
-</div>
-
----
-
-## ⚡ Installation · Установка
-
-Installation uses stable **main** branch. **dev** branch is for development.
+Run validation checks in order:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/NMF13579/AgentOS/main/install.sh | bash
+# Official full validation entrypoint
+python3 scripts/agentos-validate.py all
+
+# Official machine-readable validation entrypoint
+python3 scripts/agentos-validate.py all --json
 ```
 
-> Or click **[Use this template](https://github.com/NMF13579/AgentOS/generate)** — no terminal needed.  
-> *Или нажми Use this template — без терминала.*
+Focused validation commands remain available for debugging specific checks:
 
----
+```bash
+python3 scripts/agentos-validate.py template
+python3 scripts/agentos-validate.py negative
+python3 scripts/agentos-validate.py guard
+python3 scripts/agentos-validate.py audit
+python3 scripts/agentos-validate.py queue
+python3 scripts/agentos-validate.py runner
+```
 
-## 💬 Agent Commands · Команды агента
+See [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md) for detailed getting started guide.
 
-<div align="center">
+## Validation and Audit
 
-| Command / Команда | Action / Действие |
-|:---:|:---|
-| [![](https://img.shields.io/badge/Start_·_Начнём-2ea44f?style=flat-square)](./START.md) | Launch a new project / Запустить новый проект |
-| [![](https://img.shields.io/badge/Restore_context_·_Восстанови_контекст-0366d6?style=flat-square)](./HANDOFF.md) | Resume an existing project session / Начать сессию по существующему проекту |
-| [![](https://img.shields.io/badge/Save_context_·_Сохрани_контекст-5c6bc0?style=flat-square)](./HANDOFF.md) | End session without losing progress / Закончить сессию без потерь |
-| [![](https://img.shields.io/badge/Everything_broke_·_Всё_сломалось-c0392b?style=flat-square)](./LAYER-1/error-handling.md) | Roll back changes when something went wrong / Откатить изменения |
-| [![](https://img.shields.io/badge/Check_release_readiness_·_Проверь_готовность-e67e22?style=flat-square)](./LAYER-1/audit.md) | Final check before deploy / Финальная проверка перед деплоем |
+AgentOS provides validation at multiple layers:
 
-</div>
-
----
-
-## 🗂️ Docs Map · Карта документов
-
-<div align="center">
-
-| Situation / Ситуация | Document / Документ |
-|:---|:---:|
-| Brand new? / Совсем новый? | [START.md](./START.md) → [![](https://img.shields.io/badge/QUICK--START--NOVICE-2ea44f?style=flat-square)](./QUICK-START-NOVICE.md) |
-| Developer setup / Технический старт | [START.md](./START.md) → [![](https://img.shields.io/badge/QUICK--START-0366d6?style=flat-square)](./QUICK-START.md) · [![](https://img.shields.io/badge/ADVANCED--SETUP-555?style=flat-square)](./ADVANCED-SETUP.md) |
-| Agent entry point / Точка входа агента | [![](https://img.shields.io/badge/llms.txt-555?style=flat-square)](./llms.txt) [![](https://img.shields.io/badge/HANDOFF-0366d6?style=flat-square)](./HANDOFF.md) |
-| Claude Code stage flow / Флоу по этапам | [![](https://img.shields.io/badge/CLAUDE--CODE--FLOW-1a1a2e?style=flat-square)](./CLAUDE-CODE-FLOW.md) [![](https://img.shields.io/badge/BOOT.md-555?style=flat-square)](./stages/01-interview/BOOT.md) |
-| Where did we stop? / Где остановились? | [![](https://img.shields.io/badge/HANDOFF-0366d6?style=flat-square)](./HANDOFF.md) [![](https://img.shields.io/badge/project--status-555?style=flat-square)](./LAYER-3/project-status.md) |
-| Scope is creeping / Задача расползается | [![](https://img.shields.io/badge/scope--guard-e67e22?style=flat-square)](./LAYER-1/scope-guard.md) |
-| Onboarding для новичков | [![](https://img.shields.io/badge/ONBOARDING--WIZARD-2ea44f?style=flat-square)](./ONBOARDING-WIZARD.md) |
-| Medical / границы ИИ | [![](https://img.shields.io/badge/MEDICAL--SAFETY-e05c00?style=flat-square)](./LAYER-1/MEDICAL-SAFETY.md) |
-| 152-ФЗ и мед-комплаенс | [![](https://img.shields.io/badge/LEGAL--152FZ-e05c00?style=flat-square)](./LAYER-1/LEGAL-152FZ.md) |
-| Prompt injection безопасность | [![](https://img.shields.io/badge/security_·_prompts-c0392b?style=flat-square)](./LAYER-1/security.md) |
-| Learning loop по инцидентам | [![](https://img.shields.io/badge/LEARNING--LOOP-5c6bc0?style=flat-square)](./LEARNING-LOOP.md) |
-| Domain adapter | [![](https://img.shields.io/badge/DOMAIN--ADAPTER-8b44ac?style=flat-square)](./DOMAIN-ADAPTER.md) |
-| Архитектура фреймворка | [![](https://img.shields.io/badge/ARCHITECTURE-0366d6?style=flat-square)](./ARCHITECTURE.md) |
-| Глоссарий терминов | [![](https://img.shields.io/badge/GLOSSARY-555?style=flat-square)](./GLOSSARY.md) |
-| Everything confused / Всё перепуталось | [![](https://img.shields.io/badge/context--recovery-c0392b?style=flat-square)](./LAYER-1/context-recovery.md) |
-| Roll back changes / Откатить изменения | [![](https://img.shields.io/badge/error--handling-c0392b?style=flat-square)](./LAYER-1/error-handling.md) |
-| Roadmap & planning / Дорожная карта | [![](https://img.shields.io/badge/roadmap-8b44ac?style=flat-square)](./LAYER-2/specs/roadmap.md) |
-| Changelog / История изменений | [![](https://img.shields.io/badge/CHANGELOG-555?style=flat-square)](./CHANGELOG.md) |
-| Project audit / Аудит проекта | [![](https://img.shields.io/badge/audit-e05c00?style=flat-square)](./LAYER-1/audit.md) [![](https://img.shields.io/badge/audit--checklist-e05c00?style=flat-square)](./LAYER-1/audit.md) |
-
-</div>
-
----
-
-## 🤖 Supported AI Tools · Поддерживаемые среды
-
-<div align="center">
-
-[![Claude Code](https://img.shields.io/badge/Claude_Code-1a1a2e?style=for-the-badge&logo=anthropic&logoColor=white)](./CLAUDE.md)
-[![Cursor](https://img.shields.io/badge/Cursor-0366d6?style=for-the-badge&logoColor=white)](./QUICK-START.md)
-[![GitHub Copilot](https://img.shields.io/badge/GitHub_Copilot-238636?style=for-the-badge&logo=github&logoColor=white)](./.github/copilot-instructions.md)
-[![Lovable](https://img.shields.io/badge/Lovable-e05c00?style=for-the-badge&logoColor=white)](./LAYER-1/system-prompt.md)
-[![Bolt](https://img.shields.io/badge/Bolt-8b44ac?style=for-the-badge&logoColor=white)](./LAYER-1/system-prompt.md)
-
-</div>
-
-| IDE / Среда | Файл конфигурации | Уровень поддержки |
+| Level | Tool | Purpose |
 |---|---|---|
-| Claude Code | [CLAUDE.md](./CLAUDE.md), [.claude/](./.claude/) | ✅ Полная |
-| Cursor | [.cursor/rules/](./.cursor/rules/) | ✅ Полная |
-| GitHub Copilot | [copilot-instructions.md](./.github/copilot-instructions.md) | ✅ Полная |
-| OpenCode | [opencode.json](./opencode.json) | ⚠️ Базовая |
-| Gemini | [GEMINI.md](./GEMINI.md) | ⚠️ Минимальная |
-| Lovable / Bolt | [system-prompt.md](./LAYER-1/system-prompt.md) | ⚠️ Через system prompt |
+| **Unified Validation** | `scripts/agentos-validate.py all` | Official human-readable full validation |
+| **Unified Validation JSON** | `scripts/agentos-validate.py all --json` | Official machine-readable validation |
+| **Focused Validation** | `scripts/agentos-validate.py template`, `negative`, `guard`, `audit`, `queue`, `runner` | Debugging focused checks |
+| **Underlying Validators** | `scripts/check-template-integrity.py --strict`, `scripts/test-negative-fixtures.py`, `scripts/test-guard-failures.py`, `scripts/audit-agentos.py`, `scripts/validate-queue.py`, `scripts/validate-runner-protocol.py` | Advanced validator-specific reference |
 
----
+For detailed information, see [docs/VALIDATION.md](docs/VALIDATION.md).
 
-## 📐 Agent Principles · Принципы агента
+## Safety Boundaries
 
-- 🚫 **No code without a confirmed plan** · *Агент не пишет код без подтверждённого плана*
-- 💬 **One question at a time** · *Один вопрос за раз — агент не засыпает списком*
-- 📄 **Documents get filled in**, not left as empty templates · *Документы заполняются, не остаются пустыми шаблонами*
-- 🛡️ `roadmap.md` **protects against scope creep** · *Защищает от расползания проекта*
-- 🔒 `decisions.md` **stops re-discussing settled decisions** · *Останавливает повторное обсуждение*
-- CI (doc-integrity) должен проходить перед merge. Bypass допустим только по явному решению владельца репозитория.
+AgentOS enforces strict safety boundaries:
 
----
+- **Does not execute tasks automatically**
+- **Does not replace `tasks/active-task.md` without explicit human approval**
+- **Does not move queue items autonomously**
+- **Does not run runner protocol scripts unless explicitly invoked by user**
+- **Does not approve execution**
+- **Does not act as a release checklist** (yet)
 
-<div align="center">
+For detailed information, see [docs/SAFETY-BOUNDARIES.md](docs/SAFETY-BOUNDARIES.md).
 
-AgentOS · governed workspace for AI-assisted delivery · *AgentOS — управляемая среда для работы с ИИ*
+## Repository Map
 
-[![Issues](https://img.shields.io/badge/Issues-c0392b?style=flat-square&logo=github&logoColor=white)](https://github.com/NMF13579/AgentOS/issues)
-[![Discussions](https://img.shields.io/badge/Discussions-0366d6?style=flat-square&logo=github&logoColor=white)](https://github.com/NMF13579/AgentOS/discussions)
-[![Use Template](https://img.shields.io/badge/Use_this_template-238636?style=flat-square&logo=github&logoColor=white)](https://github.com/NMF13579/AgentOS/generate)
+Key documentation files:
 
-</div>
+- [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md) – Getting started guide and task flow
+- [docs/VALIDATION.md](docs/VALIDATION.md) – Validation layers and command reference
+- [docs/SAFETY-BOUNDARIES.md](docs/SAFETY-BOUNDARIES.md) – Safety boundaries and execution rules
+- [tools/template-integrity/CHECK-TEMPLATE-INTEGRITY.md](tools/template-integrity/CHECK-TEMPLATE-INTEGRITY.md) – Template integrity checker
+- [tools/negative-fixtures/TEST-NEGATIVE-FIXTURES.md](tools/negative-fixtures/TEST-NEGATIVE-FIXTURES.md) – Negative fixture tests
+- [tools/guard-failure/TEST-GUARD-FAILURES.md](tools/guard-failure/TEST-GUARD-FAILURES.md) – Guard failure runner
+- [tools/audit/AUDIT-AGENTOS.md](tools/audit/AUDIT-AGENTOS.md) – Audit runner
+- [repo-map.md](repo-map.md) – Complete repository structure
+
+## Non-Goals
+
+AgentOS does not aim to be:
+
+- An autonomous coding agent
+- A backend framework
+- A RAG platform
+- A general-purpose orchestration platform
+- A replacement for human review
+- A release checklist (in this milestone)
+
+## Current Status
+
+**Current milestone:** 7.4 Docs Hardening
+
+**Previously completed:**
+- Template Integrity – validates required project structure
+- Negative Fixtures – ensures invalid inputs are rejected
+- Guard Failure Runner – aggregates guard and failure checks
+- Audit Runner – release-readiness validation
+
+## Start Here
+
+| Need | Read |
+|---|---|
+| Quick start with AgentOS | [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md) |
+| Validation commands | [docs/VALIDATION.md](docs/VALIDATION.md) |
+| Safety boundaries | [docs/SAFETY-BOUNDARIES.md](docs/SAFETY-BOUNDARIES.md) |
+| Agent startup | `llms.txt` |
+| Route overview | `ROUTES-REGISTRY.md` |
+| Rule priority and authority | `core-rules/MAIN.md` |
+| Current state, recovery, transitions | `state/MAIN.md` |
+| Planning and execution flow | `workflow/MAIN.md` |
+| Verification and release readiness | `quality/MAIN.md` |
+| Sensitive data and access boundaries | `security/MAIN.md` |
+
+## Canonical Runtime Modules
+
+| Module | Owns |
+|---|---|
+| `core-rules/MAIN.md` | Priority, authority, governance, agent boundaries |
+| `state/MAIN.md` | State lifecycle, events, recovery, transitions |
+| `workflow/MAIN.md` | Plan gate, scope control, execution boundaries, one-task rule |
+| `quality/MAIN.md` | Verification, smoke checks, release blockers, audit output |
+| `security/MAIN.md` | Sensitive data, least privilege, compliance, security stop conditions |
+
+## Common Situations
+
+| Situation | Route |
+|---|---|
+| I need to continue work | `state/MAIN.md` |
+| I need a plan before changes | `workflow/MAIN.md` |
+| The task is expanding | `workflow/MAIN.md` |
+| I need to know which instruction wins | `core-rules/MAIN.md` |
+| I need proof that the task is done | `quality/MAIN.md` |
+| I am preparing for merge or release | `quality/MAIN.md` and `security/MAIN.md` |
+| The task touches personal data, auth, access, API, or database | `security/MAIN.md` |
+| The agent is unsure what to read | `ROUTES-REGISTRY.md`, then ask the owner if no route fits |
+
+## Working Rule
+
+- Use `llms.txt` as the only agent startup path.
+- Use `ROUTES-REGISTRY.md` only to confirm module ownership.
+- Keep runtime behavior inside the five canonical modules.
+- Do not treat archive, adapter, support, or notes files as runtime authority.
+- If the current module does not answer the situation, stop and ask the owner instead of guessing.
+## Example scenarios
+
+Practical documentation scenarios are available in:
+
+- `examples/README.md`
+- `examples/scenario-01-new-feature.md`
+- `examples/scenario-02-bugfix.md`
+- `examples/scenario-03-refactor.md`
+- `examples/scenario-04-validation-only.md`
+
+These examples are not executable fixtures. They illustrate expected AgentOS workflows and safety boundaries.
+
+## Prompt packs
+
+Ready-to-use prompt packs are available in:
+
+- `prompt-packs/README.md`
+- `prompt-packs/cursor.md`
+- `prompt-packs/claude-code.md`
+- `prompt-packs/codex-cli.md`
+- `prompt-packs/chatgpt.md`
+
+Prompt packs help AI coding tools follow AgentOS safety boundaries, read the right context, and run the right validation commands.
+
+## Release checklist
+
+Release readiness checklist:
+
+- `RELEASE-CHECKLIST.md`
+- `tools/release/RELEASE-CHECKLIST.md`
+- `reports/release-checklist.md`
+
+Release approval is manual. AgentOS does not approve release automatically.

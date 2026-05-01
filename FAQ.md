@@ -1,49 +1,36 @@
-# FAQ — частые ситуации
+# FAQ
 
-## Агент не понимает задачу
+## Где начать?
 
-→ Напиши: «Объясни, что ты понял» — агент пересформулирует  
-→ Если не помогло: открой [LAYER-1/context-recovery.md](./LAYER-1/context-recovery.md)
+Для агента: `llms.txt`.
+Для человека: `README.md`, затем нужный canonical module.
 
-## Контекст потерян между сессиями
+## Где понять текущее состояние?
 
-→ Напиши: «Восстанови контекст»  
-→ Агент читает `llms.txt` → `LAYER-3/STATE.md` → `HANDOFF.md` → `LAYER-3/project-status.md`  
-→ Если открываешь файлы сам: [`llms.txt`](./llms.txt) → [`LAYER-3/STATE.md`](./LAYER-3/STATE.md) → [`HANDOFF.md`](./HANDOFF.md) → [`LAYER-3/project-status.md`](./LAYER-3/project-status.md)
+Открой `state/MAIN.md`.
+Он отвечает за состояние, lifecycle, recovery и transition.
 
-## Что-то пошло не так, нужен откат
+## Что делать, если задача расползается?
 
-→ Напиши: «Всё сломалось»  
-→ Агент читает [LAYER-1/error-handling.md](./LAYER-1/error-handling.md)
+Открой `workflow/MAIN.md`.
+Он отвечает за plan gate, scope control и one-task rule.
 
-## Задача начала расползаться
+## Что делать, если непонятно, какое правило важнее?
 
-→ Напиши: «Проверь скоуп»  
-→ Агент читает [LAYER-1/scope-guard.md](./LAYER-1/scope-guard.md)
+Открой `core-rules/MAIN.md`.
+Он отвечает за priority, authority и governance.
 
-## Не знаю, что написать агенту
+## Как понять, задача готова или нет?
 
-→ Открой [LAYER-1/owner.md](./LAYER-1/owner.md) — шпаргалка с командами
+Открой `quality/MAIN.md`.
+Он отвечает за verification, smoke-check и release blockers.
 
-## Хочу начать новый проект с нуля
+## Что делать с личными данными, доступами или секретами?
 
-→ Напиши: «Начнём» — агент проведёт через интервью (см. [LAYER-1/interview-system.md](./LAYER-1/interview-system.md))
+Открой `security/MAIN.md`.
+Он отвечает за sensitive data, least privilege и compliance.
 
-## Как сохранить прогресс перед закрытием
+## Что делать, если маршрута нет?
 
-→ Напиши: «Сохрани контекст»  
-→ Агент обновит `HANDOFF.md` и `LAYER-3/session-log.md`
-
-## Агент предлагает слишком много сразу
-
-→ Напиши: «Один шаг» — агент вернётся к режиму одного вопроса
-
-## Нужно выбрать технологии для проекта
-
-→ Напиши: «Помоги выбрать стек»  
-→ Агент читает [LAYER-1/stack-presets.md](./LAYER-1/stack-presets.md)
-
-## Хочу проверить готовность к релизу
-
-→ Напиши: «Проверь готовность к релизу»  
-→ Агент читает [LAYER-1/task-protocol.md](./LAYER-1/task-protocol.md) и [LAYER-2/qa/](./LAYER-2/qa/)
+Проверь `ROUTES-REGISTRY.md`.
+Если подходящего canonical module нет, остановись и спроси владельца проекта.

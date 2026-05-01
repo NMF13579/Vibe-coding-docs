@@ -1,0 +1,22 @@
+name: "Canonical Architecture Validation (primary)"
+# STATUS: canonical — this is the primary CI truth
+# Validates modular structural integrity as part of primary CI truth.
+
+on:
+  pull_request:
+  push:
+    branches: [main, dev]
+
+jobs:
+  validate-modular-architecture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run modular architecture validators
+        run: bash scripts/validate-architecture.sh

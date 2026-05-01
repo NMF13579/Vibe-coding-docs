@@ -1,14 +1,14 @@
-# memory-bank/
+# memory-bank
 
-**Роль каталога:** слой **совместимости со старыми потоками** (legacy), где часть инструментов или шаблонов ожидает путь `memory-bank/`.
+This directory contains non-runtime notes.
+It is not a source of authority for state, startup, workflow, quality, or security.
 
-**Это не:**
-- отдельная «вторая память» с собственной властью над состоянием;
-- замена `LAYER-3/` или корневого `HANDOFF.md`.
+Canonical route:
 
-**Канон для агентов и состояния** (как в `llms.txt`):
-- формальное состояние — `LAYER-3/STATE.md`;
-- нарратив проекта — `LAYER-3/project-status.md`;
-- контракт сессии — `HANDOFF.md` в корне.
+- `state/MAIN.md` for state and recovery.
+- `workflow/MAIN.md` for execution.
+- `quality/MAIN.md` for verification.
+- `security/MAIN.md` for sensitive data and access.
+- `core-rules/MAIN.md` for authority.
 
-Файл `memory-bank/project-status.md` — указатель и короткий нарратив для совместимости; при расхождении с `LAYER-3/project-status.md` или `STATE.md` верны файлы в **`LAYER-3/`** и **`HANDOFF.md`**.
+If a note here conflicts with a canonical module, the canonical module wins.

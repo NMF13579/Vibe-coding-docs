@@ -1,0 +1,3 @@
+expected_exit: nonzero
+active_task: unchanged
+contains: different task

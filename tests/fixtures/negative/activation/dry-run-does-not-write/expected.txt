@@ -1,0 +1,3 @@
+expected_exit: zero
+active_task: absent
+contains: ACTIVATION DRY-RUN PASS

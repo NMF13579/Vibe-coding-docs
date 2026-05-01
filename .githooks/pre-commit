@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -euo pipefail
+echo "AgentOS pre-commit checks..."
+
+ACTIVE_TASK_FILE="tasks/active-task.md"
+
+is_active_pointer_format() {
+  if [[ ! -f "$ACTIVE_TASK_FILE" ]]; then
+    return 1
+  fi
+
+  if grep -Eq '^[[:space:]]*type:[[:space:]]*active-pointer[[:space:]]*$' "$ACTIVE_TASK_FILE"; then
+    return 0
+  fi
+
+  # Backward-compatible pointer detection for current M12 files without explicit `type`.
+  if grep -Eq '^[[:space:]]*source_task:[[:space:]]+' "$ACTIVE_TASK_FILE" \
+    && grep -Eq '^[[:space:]]*transition:[[:space:]]*approved_for_execution:active[[:space:]]*$' "$ACTIVE_TASK_FILE"; then
+    return 0
+  fi
+
+  return 1
+}
+
+if is_active_pointer_format; then
+  python3 scripts/validate-active-task.py
+  python3 scripts/validate-verification.py reports/verification.md
+else
+  bash scripts/run-all.sh
+fi

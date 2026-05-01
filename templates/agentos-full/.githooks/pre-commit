@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+echo "AgentOS pre-commit checks..."
+bash scripts/run-all.sh

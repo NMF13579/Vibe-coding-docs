@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "task-state.schema.json",
+  "$comment": "This schema validates reports only. It does not execute transitions. It does not grant approval. It does not modify task files.",
+  "title": "Task State Report",
+  "description": "Task State Report v1.1 for read-only task state analysis.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at",
+    "task_id",
+    "state",
+    "analysis_status",
+    "evidence",
+    "missing_evidence",
+    "allowed_next_states",
+    "blocked_reason",
+    "warnings"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.1",
+      "description": "Task State Report schema version."
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC ISO 8601 timestamp when the report was generated."
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Task identifier or task path."
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "idea",
+        "brief_draft",
+        "brief_approved",
+        "review_ready",
+        "review_blocked",
+        "trace_written",
+        "contract_drafted",
+        "approved_for_execution",
+        "active",
+        "completed",
+        "failed",
+        "dropped"
+      ],
+      "description": "Detected task state."
+    },
+    "analysis_status": {
+      "type": "string",
+      "enum": ["ok", "invalid", "conflict"],
+      "description": "Diagnostic status of the analysis operation."
+    },
+    "evidence": {
+      "type": "array",
+      "description": "Structured evidence collected during state analysis.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "path", "status", "note"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "TASK",
+              "REVIEW",
+              "TRACE",
+              "CONTRACT",
+              "APPROVAL",
+              "ACTIVE",
+              "DONE",
+              "FAILED",
+              "FAILED_DIR",
+              "DROPPED",
+              "UNKNOWN"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Relative path to the evidence file or directory."
+          },
+          "status": {
+            "type": "string",
+            "enum": ["present", "missing", "valid", "invalid", "conflicting", "planned"],
+            "description": "Evidence status."
+          },
+          "note": {
+            "type": "string",
+            "description": "Human-readable evidence note."
+          }
+        }
+      }
+    },
+    "missing_evidence": {
+      "type": "array",
+      "description": "List of expected evidence items that are not present.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "allowed_next_states": {
+      "type": "array",
+      "description": "Allowed next states from the detected state.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "idea",
+          "brief_draft",
+          "brief_approved",
+          "review_ready",
+          "review_blocked",
+          "trace_written",
+          "contract_drafted",
+          "approved_for_execution",
+          "active",
+          "completed",
+          "failed",
+          "dropped"
+        ]
+      }
+    },
+    "blocked_reason": {
+      "type": "string",
+      "description": "Reason the current state blocks movement or is in conflict."
+    },
+    "warnings": {
+      "type": "array",
+      "description": "Warnings from analysis. Always present, even when empty.",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

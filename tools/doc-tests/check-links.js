@@ -6,8 +6,6 @@ const EXCLUDED_DIRS = [
   '.git',
   'node_modules',
   path.join('tools', 'doc-tests'),
-  path.join('LAYER-1', 'archive'),
-  path.join('LAYER-1', 'deprecated'),
 ];
 
 function toPosix(filePath) {
@@ -16,6 +14,7 @@ function toPosix(filePath) {
 
 function isExcluded(relativePath) {
   const normalized = toPosix(relativePath);
+
   return EXCLUDED_DIRS.some((excluded) => {
     const excludedPosix = toPosix(excluded);
     return normalized === excludedPosix || normalized.startsWith(`${excludedPosix}/`);

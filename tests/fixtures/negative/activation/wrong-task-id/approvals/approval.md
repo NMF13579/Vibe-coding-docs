@@ -1,0 +1,11 @@
+---
+approval_id: approval-task-002-execution
+task_id: task-002
+approval_type: execution
+approved_by: human
+approved_at: 2099-01-01T00:00:00Z
+status: approved
+scope: activate_task
+transition: approved_for_execution:active
+related_contract: tasks/drafts/task-001-contract-draft.md
+---

@@ -1,0 +1,10 @@
+{
+  "case": "changed-file-outside-in-scope",
+  "target": "scope",
+  "command": "file outside in_scope without out_of_scope hit must be partial",
+  "expected_result": "PARTIAL",
+  "expected_exit_code": 2,
+  "must_not_create_session": true,
+  "must_not_modify_fixture_inputs": true,
+  "notes": "file outside in_scope without out_of_scope hit must be partial"
+}

@@ -1,0 +1,10 @@
+{
+  "case": "active-task-absolute-path-start",
+  "target": "start",
+  "command": "absolute --active-task path must be rejected",
+  "expected_result": "START_NOT_RUN",
+  "expected_exit_code": 2,
+  "must_not_create_session": true,
+  "must_not_modify_fixture_inputs": true,
+  "notes": "absolute --active-task path must be rejected"
+}

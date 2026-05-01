@@ -2,90 +2,71 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT_DIR = path.resolve(__dirname, '..', '..');
-const LAYER1_DIR = path.join(ROOT_DIR, 'LAYER-1');
-
-// MUST match LAYER-1/document-governance.md
-const ALLOWED_ROLES = [
-  'CANONICAL_POLICY', 'RUNTIME_STATE', 'SESSION_CONTEXT',
-  'NARRATIVE_CONTEXT', 'NAVIGATION', 'ADAPTER',
-  'REFERENCE', 'DEPRECATED', 'ARCHIVE'
-];
-
-const ALLOWED_AUTHORITIES = [
-  'PRIMARY', 'SECONDARY', 'TERTIARY', 'NON-AUTHORITY'
-];
-
-const ALLOWED_STATUSES = [
-  'ACTIVE', 'LIMITED', 'DEPRECATED', 'ARCHIVED'
-];
-
-const EXCLUDED_DIRS = new Set(['archive', 'deprecated']);
+const MODULES = ['core-rules', 'state', 'workflow', 'quality', 'security'];
+const REQUIRED = {
+  type: 'canonical',
+  status: 'canonical',
+  authority: 'canonical',
+  when_to_read: 'always',
+};
 
 function toPosix(filePath) {
   return filePath.split(path.sep).join('/');
 }
 
-function collectLayerOneMarkdownFiles(dir, files = []) {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
-
-    if (entry.isDirectory()) {
-      if (EXCLUDED_DIRS.has(entry.name)) {
-        continue;
-      }
-      collectLayerOneMarkdownFiles(fullPath, files);
-      continue;
-    }
-
-    if (entry.isFile() && entry.name.endsWith('.md')) {
-      files.push(fullPath);
-    }
+function parseFrontmatter(content) {
+  const match = content.match(/^---\n([\s\S]*?)\n---\n/);
+  if (!match) return null;
+  const data = {};
+  for (const line of match[1].split(/\r?\n/)) {
+    const index = line.indexOf(':');
+    if (index === -1) continue;
+    data[line.slice(0, index).trim()] = line.slice(index + 1).trim();
   }
-
-  return files;
-}
-
-function parseMetadata(content, key) {
-  const regex = new RegExp(`<!--\\s*${key}:\\s*([^>]+?)\\s*-->`, 'm');
-  const match = content.match(regex);
-  return match ? match[1].trim() : null;
+  return data;
 }
 
 async function run() {
   const failItems = [];
-  const warningItems = [];
-  const files = collectLayerOneMarkdownFiles(LAYER1_DIR);
 
-  for (const file of files) {
-    const content = fs.readFileSync(file, 'utf8');
+  for (const moduleName of MODULES) {
+    const file = path.join(ROOT_DIR, moduleName, 'MAIN.md');
     const relativePath = toPosix(path.relative(ROOT_DIR, file));
 
-    const role = parseMetadata(content, 'ROLE');
-    if (role !== null && !ALLOWED_ROLES.includes(role)) {
+    if (!fs.existsSync(file)) {
       failItems.push({
         level: 'fail',
         file: relativePath,
-        message: `[check-metadata] Invalid ROLE value "${role}".`
+        message: '[check-metadata] Missing canonical module.',
       });
+      continue;
     }
 
-    const authority = parseMetadata(content, 'AUTHORITY');
-    if (authority !== null && !ALLOWED_AUTHORITIES.includes(authority)) {
+    const metadata = parseFrontmatter(fs.readFileSync(file, 'utf8'));
+    if (!metadata) {
       failItems.push({
         level: 'fail',
         file: relativePath,
-        message: `[check-metadata] Invalid AUTHORITY value "${authority}".`
+        message: '[check-metadata] Missing frontmatter.',
       });
+      continue;
     }
 
-    const status = parseMetadata(content, 'STATUS');
-    if (status !== null && !ALLOWED_STATUSES.includes(status)) {
+    for (const [key, expected] of Object.entries(REQUIRED)) {
+      if (metadata[key] !== expected) {
+        failItems.push({
+          level: 'fail',
+          file: relativePath,
+          message: `[check-metadata] ${key} must be ${expected}.`,
+        });
+      }
+    }
+
+    if (metadata.module !== moduleName) {
       failItems.push({
         level: 'fail',
         file: relativePath,
-        message: `[check-metadata] Invalid STATUS value "${status}".`
+        message: `[check-metadata] module must be ${moduleName}.`,
       });
     }
   }
@@ -93,8 +74,8 @@ async function run() {
   return {
     name: 'check-metadata',
     fails: failItems.length,
-    warnings: warningItems.length,
-    issues: [...failItems, ...warningItems]
+    warnings: 0,
+    issues: failItems,
   };
 }
 

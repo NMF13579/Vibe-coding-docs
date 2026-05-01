@@ -1,0 +1,10 @@
+{
+  "case": "changed-file-out-of-scope",
+  "target": "scope",
+  "command": "out_of_scope violation must fail",
+  "expected_result": "FAIL",
+  "expected_exit_code": 1,
+  "must_not_create_session": true,
+  "must_not_modify_fixture_inputs": true,
+  "notes": "out_of_scope violation must fail"
+}
