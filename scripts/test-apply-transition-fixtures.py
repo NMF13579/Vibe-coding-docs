@@ -172,7 +172,6 @@ def run_case(case_name: str, root: Path, verbose: bool) -> tuple[bool, bool, str
     """returns: ok, limitation_warn, output, mutated_paths"""
     inputs = base_inputs(root)
     active = root / "tasks" / "active-task.md"
-    before_active = file_hash(active)
 
     cmd: list[str]
     expected_rc = 1
@@ -328,6 +327,7 @@ def run_case(case_name: str, root: Path, verbose: bool) -> tuple[bool, bool, str
     else:
         return (False, False, f"unknown case {case_name}", [])
 
+    before_active = file_hash(active)
     proc = run_command(cmd, root)
 
     if verbose:
