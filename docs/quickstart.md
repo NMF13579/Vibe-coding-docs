@@ -66,3 +66,10 @@ bash scripts/test-example-project.sh
 
 - backend, RAG, vector DB, agent orchestration
 - Docker image, pip package, npm package
+## Safety Boundaries
+
+- Validation result PASS does not mean AgentOS is MVP-ready.
+- NOT_RUN is not PASS. A check that was not run provides no evidence.
+- AgentOS is not a backend, not a RAG system, not a vector database.
+- AgentOS is not autonomous. Human review is required for all execution decisions.
+- M21 quickstart completion does not override M19/M20 safety gates.

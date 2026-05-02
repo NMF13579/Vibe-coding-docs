@@ -73,6 +73,8 @@ def evaluate(root: Path) -> dict:
     checks_passed = 0
     checks_warned = 0
     checks_failed = 0
+    checks_skipped = 0
+    skipped_checks: list[str] = []
 
     minimal_root = root / MINIMAL_DIR
     full_root = root / FULL_DIR
@@ -90,6 +92,8 @@ def evaluate(root: Path) -> dict:
             "checks_passed": checks_passed,
             "checks_warned": checks_warned,
             "checks_failed": checks_failed,
+            "checks_skipped": checks_skipped,
+            "skipped_checks": skipped_checks,
             "reason": "Neither templates/agentos-minimal nor templates/agentos-full exists",
         }
 
@@ -103,8 +107,11 @@ def evaluate(root: Path) -> dict:
             "checks_passed": checks_passed,
             "checks_warned": checks_warned,
             "checks_failed": checks_failed,
+            "checks_skipped": checks_skipped,
+            "skipped_checks": skipped_checks,
             "reason": "Only one template target exists; both or neither are required",
         }
+    checks_passed += 1
 
     # Both exist: validate minimal required paths
     for rel in MINIMAL_REQUIRED:
@@ -144,6 +151,8 @@ def evaluate(root: Path) -> dict:
     # Empty required files fail
     for rel in MINIMAL_REQUIRED:
         if rel.endswith("/"):
+            checks_skipped += 1
+            skipped_checks.append(f"empty-file-check skipped for directory path: {rel}")
             continue
         checks_run += 1
         p = minimal_root / rel
@@ -154,6 +163,8 @@ def evaluate(root: Path) -> dict:
 
     for rel in FULL_REQUIRED:
         if rel.endswith("/"):
+            checks_skipped += 1
+            skipped_checks.append(f"empty-file-check skipped for directory path: {rel}")
             continue
         checks_run += 1
         p = full_root / rel
@@ -211,6 +222,8 @@ def evaluate(root: Path) -> dict:
         "checks_passed": checks_passed,
         "checks_warned": checks_warned,
         "checks_failed": checks_failed,
+        "checks_skipped": checks_skipped,
+        "skipped_checks": skipped_checks,
         "reason": reason,
     }
 
@@ -222,6 +235,9 @@ def print_text(payload: dict) -> None:
     print(f"TEMPLATE_INTEGRITY_CHECKS_PASSED: {payload['checks_passed']}")
     print(f"TEMPLATE_INTEGRITY_CHECKS_WARNED: {payload['checks_warned']}")
     print(f"TEMPLATE_INTEGRITY_CHECKS_FAILED: {payload['checks_failed']}")
+    print(f"TEMPLATE_INTEGRITY_CHECKS_SKIPPED: {payload['checks_skipped']}")
+    for item in payload["skipped_checks"]:
+        print(f"SKIP: {item}")
     print(f"TEMPLATE_INTEGRITY_REASON: {payload['reason']}")
 
 
@@ -259,6 +275,8 @@ if __name__ == "__main__":
             "checks_passed": 0,
             "checks_warned": 0,
             "checks_failed": 1,
+            "checks_skipped": 0,
+            "skipped_checks": [],
             "reason": f"Unhandled exception: {exc.__class__.__name__}",
         }
         args = sys.argv[1:]
@@ -272,5 +290,6 @@ if __name__ == "__main__":
             print("TEMPLATE_INTEGRITY_CHECKS_PASSED: 0")
             print("TEMPLATE_INTEGRITY_CHECKS_WARNED: 0")
             print("TEMPLATE_INTEGRITY_CHECKS_FAILED: 1")
+            print("TEMPLATE_INTEGRITY_CHECKS_SKIPPED: 0")
             print(f"TEMPLATE_INTEGRITY_REASON: Unhandled exception: {exc.__class__.__name__}")
         sys.exit(1)

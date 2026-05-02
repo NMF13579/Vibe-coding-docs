@@ -64,3 +64,16 @@ python3 scripts/select-context.py "risk guard"
 - Для предварительной проверки используйте `--dry-run`
 - Use `scripts/test-install.sh` to verify that `install.sh` can install AgentOS into a clean temporary git repository.
 - Use `scripts/test-example-project.sh` to verify the full example project path: copy example project, install AgentOS minimal template, run the app, and run AgentOS validation.
+## Scope and Risk
+
+Every task must define explicit scope and risk before execution.
+Scope limits what the agent may touch.
+Risk identifies what could go wrong and how to detect it.
+
+## Safety Boundaries
+
+- NOT_RUN is not PASS. A check that was not run provides no evidence.
+- Validation result PASS does not mean AgentOS is MVP-ready.
+- AgentOS is not a backend, not a RAG system, not a vector database.
+- AgentOS is not autonomous. Human review is required for all execution decisions.
+- M21 usage docs do not override M19/M20 safety gates.

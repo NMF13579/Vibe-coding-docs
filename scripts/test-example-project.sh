@@ -39,8 +39,6 @@ done
 
 python3 -m venv --system-site-packages .venv
 . .venv/bin/activate
-python3 -m pip --version
-python3 -m pip install -r requirements.txt
 
 bash run-example.sh
 bash scripts/run-all.sh
