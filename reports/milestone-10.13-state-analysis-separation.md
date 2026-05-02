@@ -50,10 +50,10 @@
 - state fixtures pass: yes
 
 ## Documentation Changes
-- [docs/TASK-STATE-MACHINE.md](docs/TASK-STATE-MACHINE.md): updated
-- [tools/state/DETECT-TASK-STATE.md](tools/state/DETECT-TASK-STATE.md): updated
-- [tools/state/VALIDATE-TASK-STATE.md](tools/state/VALIDATE-TASK-STATE.md): updated
-- [tools/state/CHECK-TRANSITION.md](tools/state/CHECK-TRANSITION.md): updated
+- [docs/TASK-STATE-MACHINE.md](../docs/TASK-STATE-MACHINE.md): updated
+- [tools/state/DETECT-TASK-STATE.md](../tools/state/DETECT-TASK-STATE.md): updated
+- [tools/state/VALIDATE-TASK-STATE.md](../tools/state/VALIDATE-TASK-STATE.md): updated
+- [tools/state/CHECK-TRANSITION.md](../tools/state/CHECK-TRANSITION.md): updated
 
 ## Command Results
 | Command | Exit | Result | Notes |
