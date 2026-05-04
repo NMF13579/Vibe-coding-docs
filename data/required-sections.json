@@ -1,0 +1,113 @@
+{
+  "profiles": {
+    "markdown_to_script_inventory": {
+      "description": "Required headings for the M22 inventory report",
+      "required_headings": [
+        "Executive Summary",
+        "Observed Repository Coverage",
+        "Markdown Role Inventory",
+        "Markdown-to-Script Candidates",
+        "Meaningful Markdown to Preserve",
+        "Duplication Audit",
+        "MD-to-Agent Gap Audit",
+        "Status and Boundary Semantics",
+        "Script Readiness Map",
+        "Frontmatter Readiness",
+        "Index Readiness",
+        "Do Not Automate Yet",
+        "Recommended Next M22 Tasks",
+        "Validation Evidence",
+        "Final Inventory Result"
+      ]
+    },
+    "markdown_role_classification": {
+      "description": "Required headings for the role classification document",
+      "required_headings": [
+        "Executive Summary",
+        "Role Model",
+        "Markdown File Family Classification",
+        "Semantic Markdown to Preserve",
+        "Scriptable Markdown Parts",
+        "Generated or Derived Markdown Rules",
+        "Role Boundaries",
+        "Unclear Classification Handling",
+        "Frontmatter Implications",
+        "Index Implications",
+        "Do Not Automate Yet",
+        "Recommended Next Task"
+      ]
+    },
+    "source_of_truth_map": {
+      "description": "Required headings for the source-of-truth map",
+      "required_headings": [
+        "Executive Summary",
+        "Inputs Inspected",
+        "Major Concept Map",
+        "Duplicated Ownership Areas",
+        "Ambiguous or Unassigned Areas",
+        "Semantic Markdown Owners to Preserve",
+        "Script Dependency Map",
+        "Source-of-Truth Boundaries",
+        "Rules for Future Consolidation",
+        "Do Not Automate Yet",
+        "Recommended Next Task"
+      ]
+    },
+    "frontmatter_standard": {
+      "description": "Required headings for the frontmatter standard",
+      "required_headings": [
+        "Executive Summary",
+        "Frontmatter Purpose",
+        "Minimum Frontmatter Block",
+        "Field Semantics",
+        "Type Values",
+        "Status Values",
+        "Authority Values",
+        "Unknown Handling",
+        "Role-to-Frontmatter Mapping",
+        "Source-of-Truth Implications",
+        "Derived Artifact Rules",
+        "Future Index Implications",
+        "Future Validator Candidates",
+        "Future Validator Modes",
+        "Do Not Encode in Frontmatter",
+        "Recommended Next Task"
+      ]
+    },
+    "status_semantics": {
+      "description": "Required headings for the status semantics doc",
+      "required_headings": [
+        "Validation Result Markers",
+        "Workflow / Review Status Markers",
+        "Forbidden or Unsafe Status Claims",
+        "Unknown / Custom Markers",
+        "Validator Requirements",
+        "Output Requirements",
+        "Fixture Requirements",
+        "Final Rule"
+      ]
+    },
+    "evidence_report": {
+      "description": "Required headings for evidence reports",
+      "required_headings": [
+        "Executive Summary",
+        "Checks Run",
+        "Results",
+        "Warnings",
+        "Next Step",
+        "Evidence"
+      ]
+    },
+    "completion_review": {
+      "description": "Required headings for completion reviews",
+      "required_headings": [
+        "Executive Summary",
+        "Decision",
+        "Evidence",
+        "Risks",
+        "Follow-Up"
+      ]
+    }
+  }
+}
+

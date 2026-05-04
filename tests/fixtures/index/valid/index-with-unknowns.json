@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-05-04T10:00:00Z",
+  "source": "markdown_frontmatter",
+  "entries": [
+    {
+      "path": "b.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": ["missing_frontmatter"]
+    }
+  ]
+}

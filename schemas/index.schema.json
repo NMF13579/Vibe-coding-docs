@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agentos/index.schema.json",
+  "title": "AgentOS Derived Index Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at",
+    "source",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "minLength": 1,
+      "const": "1.0.0"
+    },
+    "generated_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "source": {
+      "type": "string",
+      "const": "markdown_frontmatter"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "type",
+          "module",
+          "status",
+          "authority",
+          "created",
+          "last_validated"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "canonical",
+              "template",
+              "task",
+              "report",
+              "audit",
+              "verification",
+              "example",
+              "memory",
+              "handoff",
+              "derived",
+              "unknown"
+            ]
+          },
+          "module": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "active",
+              "canonical",
+              "archived",
+              "deprecated",
+              "unknown"
+            ]
+          },
+          "authority": {
+            "type": "string",
+            "enum": [
+              "canonical",
+              "supporting",
+              "derived",
+              "context",
+              "unknown"
+            ]
+          },
+          "created": {
+            "type": "string",
+            "pattern": "^([0-9]{4}-[0-9]{2}-[0-9]{2}|unknown)$"
+          },
+          "last_validated": {
+            "type": "string",
+            "pattern": "^([0-9]{4}-[0-9]{2}-[0-9]{2}|unknown)$"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source_of_truth": {
+            "type": "string"
+          },
+          "derived_from": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
