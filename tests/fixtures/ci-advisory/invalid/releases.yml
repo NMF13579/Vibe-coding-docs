@@ -1,0 +1,9 @@
+name: AgentOS Validate
+on:
+  push:
+    branches: [dev]
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - run: release v1.0.0

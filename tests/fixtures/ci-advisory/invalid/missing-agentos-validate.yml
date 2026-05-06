@@ -1,0 +1,15 @@
+name: AgentOS Validate
+on:
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - run: echo "no agentos validate call"
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agentos-validation-evidence
+          path: reports/ci/agentos-validate.json

@@ -1,0 +1,39 @@
+name: AgentOS Validate
+on:
+  pull_request:
+  push:
+    branches: [dev]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+      - name: Compile validator
+        run: |
+          python -m py_compile scripts/agentos-validate.py
+      - name: Run human validation
+        id: validate_human
+        continue-on-error: true
+        run: |
+          python scripts/agentos-validate.py all
+      - name: Run json validation
+        id: validate_json
+        continue-on-error: true
+        run: |
+          mkdir -p reports/ci
+          python scripts/agentos-validate.py all --json > reports/ci/agentos-validate.json
+      - name: Upload artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agentos-validation-evidence
+          path: reports/ci/agentos-validate.json
+      - name: Report failures
+        if: always()
+        run: |
+          if [ "${{ steps.validate_human.outcome }}" != "success" ] || [ "${{ steps.validate_json.outcome }}" != "success" ]; then
+            exit 1
+          fi

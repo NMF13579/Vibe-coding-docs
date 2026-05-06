@@ -1,0 +1,11 @@
+name: AgentOS Validate
+on:
+  pull_request:
+  push:
+    branches: [dev]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: git push origin dev

@@ -1,0 +1,17 @@
+name: AgentOS Validate
+on:
+  pull_request:
+  push:
+    branches: [dev]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - run: python scripts/agentos-validate.py all
+      - run: python scripts/agentos-validate.py all --json > reports/ci/agentos-validate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: agentos-validation-evidence
+          path: reports/ci/agentos-validate.json
