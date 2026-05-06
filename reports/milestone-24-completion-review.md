@@ -162,3 +162,10 @@ Detected:
 ## Final Boundary Statement
 Этот документ фиксирует readiness review и доказательства.
 Он не включает автоматическое одобрение и не включает enforcement-механизмы платформы.
+
+## Human Review Decision
+
+human_review_decision: ACCEPTED
+rationale: all M24 artifacts verified; all → FAIL reflects known last_validated gap, not structural failure; advisory CI boundary maintained throughout
+reviewed_by: human
+reviewed_at: 2026-05-06
