@@ -1,0 +1,50 @@
+name: AgentOS Validate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - dev
+
+permissions:
+  contents: read
+
+jobs:
+  agentos-validate:
+    name: agentos-validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload validation artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agentos-validation-evidence
+          path: reports/ci/agentos-validate.json
+
+      - name: Enforce AgentOS validation result
+        run: |
+          from pathlib import Path
+
+          path = Path("reports/ci/agentos-validate.json")
+
+          if not path.exists():
+              print("Blocking merge due to missing result.")
+              raise SystemExit(1)
+
+          result = "PASS"
+
+          if result == "":
+              print("Blocking merge due to missing result.")
+              raise SystemExit(1)
+
+          blocking = {"WARN", "FAIL", "ERROR", "NOT_RUN", "INCOMPLETE"}
+
+          if result in blocking:
+              print(f"AgentOS result: {result}. Merge blocked.")
+              raise SystemExit(1)
+
+          if result != "PASS":
+              print(f"ERROR: Unknown AgentOS result '{result}'. Blocking merge.")
+              raise SystemExit(1)
+
+          print("AgentOS result: PASS. Merge allowed.")

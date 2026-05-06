@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import argparse
 from pathlib import Path
 import re
 import sys
@@ -12,7 +13,8 @@ NOT_READY = "NOT_READY"
 
 WARNING_PREFIX = "WARNING"
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_REPO_ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = DEFAULT_REPO_ROOT
 
 HARD_REQUIRED_FILES = [
     Path("docs/ENFORCED-REQUIRED-CHECKS.md"),
@@ -183,6 +185,13 @@ def section_first_value(text: str, heading: str):
     return None
 
 
+def bullet_value(line: str, key: str):
+    match = re.match(rf"^\s*-\s*{re.escape(key)}:\s*(.*)$", line)
+    if not match:
+        return None
+    return match.group(1).strip()
+
+
 def body_non_comment_text(body):
     return "\n".join(line for _, line in body if not is_comment_line(line))
 
@@ -234,21 +243,46 @@ def release_gate_match(line: str):
     return True
 
 
-def main():
+def parse_args(argv=None):
+    parser = argparse.ArgumentParser(description="Read-only audit for M25 enforcement readiness.")
+    parser.add_argument(
+        "--root",
+        default=str(DEFAULT_REPO_ROOT),
+        help="Repository root to audit (default: current repository root).",
+    )
+    return parser.parse_args(argv)
+
+
+def main(argv=None):
+    args = parse_args(argv)
+    repo_root = Path(args.root).resolve()
+
+    WORKFLOW_FILE = repo_root / ".github/workflows/agentos-validate.yml"
+    REQUIRED_CHECK_NAMES_FILE = repo_root / "docs/REQUIRED-CHECK-NAMES.md"
+    ENFORCED_REQUIRED_CHECKS_FILE = repo_root / "docs/ENFORCED-REQUIRED-CHECKS.md"
+    BRANCH_PROTECTION_SETUP_FILE = repo_root / "docs/BRANCH-PROTECTION-SETUP.md"
+    PLATFORM_EVIDENCE_TEMPLATE_FILE = repo_root / "templates/platform-enforcement-evidence.md"
+    PLATFORM_EVIDENCE_REPORT_FILE = repo_root / "reports/platform-required-checks-evidence.md"
+    ENFORCEMENT_REVIEW_TEMPLATE_FILE = repo_root / "templates/enforcement-review.md"
+
     warnings = []
     failures = []
+    platform_report_missing = False
 
     required_file_lines = []
     for rel_path in HARD_REQUIRED_FILES:
-        abs_path = REPO_ROOT / rel_path
+        abs_path = repo_root / rel_path
         status = file_status(abs_path)
         required_file_lines.append(f"- {rel_path.as_posix()}: {status}")
         if status == "MISSING":
-            failures.append(f"Missing hard-required file: {rel_path.as_posix()}")
+            if rel_path == Path("reports/platform-required-checks-evidence.md"):
+                platform_report_missing = True
+            else:
+                failures.append(f"Missing hard-required file: {rel_path.as_posix()}")
 
     advisory_lines = []
     for rel_path in ADVISORY_FILES:
-        abs_path = REPO_ROOT / rel_path
+        abs_path = repo_root / rel_path
         status = file_status(abs_path)
         advisory_lines.append(f"- {rel_path.as_posix()}: {status}")
         if status == "MISSING":
@@ -261,6 +295,7 @@ def main():
     workflow_safe = True
     workflow_body = None
     workflow_body_error = None
+    workflow_permissions_write = False
 
     if workflow_text is None:
         failures.append("Missing workflow file: .github/workflows/agentos-validate.yml")
@@ -365,6 +400,13 @@ def main():
             else:
                 workflow_check_lines.append("- workflow does not hide enforcement failure with || true: PASS")
 
+        if find_line_hits(workflow_text, r"^\s*contents:\s*write\s*$"):
+            workflow_permissions_write = True
+            workflow_check_lines.append("- workflow does not allow contents: write: FAIL")
+            failures.append("Workflow allows contents: write.")
+        else:
+            workflow_check_lines.append("- workflow does not allow contents: write: PASS")
+
     required_check_lines = []
     required_check_text = read_text(REQUIRED_CHECK_NAMES_FILE)
     if required_check_text is None:
@@ -401,7 +443,10 @@ def main():
     bypass_exposure = False
 
     if platform_text is None:
-        failures.append("Missing platform evidence report: reports/platform-required-checks-evidence.md")
+        platform_report_missing = True
+        warnings.append(
+            "Platform evidence report is missing; enforcement cannot be confirmed safely."
+        )
         platform_lines.append("- platform evidence report: MISSING")
     else:
         platform_lines.append("- platform evidence report: PRESENT")
@@ -459,13 +504,15 @@ def main():
                     "Platform evidence claims PLATFORM_ENFORCED while unresolved placeholders or UNKNOWN values remain."
                 )
 
-            exposure_patterns = [
-                r"^\s*-\s*Bypass permissions:\s*(?!NONE\b)(?!UNKNOWN\b).+",
-                r"^\s*-\s*Admin bypass allowed:\s*YES\b",
-            ]
             exposure_hits = []
-            for pattern in exposure_patterns:
-                exposure_hits.extend(search_non_comment_lines(platform_text, pattern))
+            for lineno, line in non_comment_lines_with_numbers(platform_text):
+                bypass_value = bullet_value(line, "Bypass permissions")
+                if bypass_value is not None and bypass_value not in {"NONE", "UNKNOWN"}:
+                    exposure_hits.append(f"{lineno}: {line.strip()}")
+
+                admin_bypass_value = bullet_value(line, "Admin bypass allowed")
+                if admin_bypass_value == "YES":
+                    exposure_hits.append(f"{lineno}: {line.strip()}")
             bypass_exposure = bool(exposure_hits)
             if bypass_exposure:
                 failures.append(
@@ -558,7 +605,7 @@ def main():
     if failures:
         result = NOT_READY
     else:
-        if workflow_body_error is not None or platform_status in (None, "NEEDS_REVIEW"):
+        if workflow_body_error is not None or platform_report_missing or platform_status in (None, "NEEDS_REVIEW"):
             result = NEEDS_REVIEW
         elif platform_status == "NOT_ENFORCED":
             result = NOT_READY
